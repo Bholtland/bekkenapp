@@ -373,7 +373,7 @@ main > div {
 
 main > div > div {
 	padding: 0 15px;
-	margin-bottom: 60px;
+	margin-bottom: 55px;
 	overflow: scroll;
 	transform: translateZ(0);
 }
@@ -456,19 +456,6 @@ main > div > div:first-child {
 			font-size: 16px;
 			display: inline-block;
 		}
-
-		h3::before {
-			content:'';
-			background-image: url(../resources/img/hips-up-dark.svg);
-			width: 50px;
-			height: 20px;
-			background-size: 50px 20px;
-			background-repeat: no-repeat;
-			display: inline-block;
-			margin-right: 6px;
-			position: relative;
-    		top: 4px;
-		}
 	}
 
 	.exercise-duration {
@@ -525,10 +512,6 @@ main > div > div:first-child {
 	.exercise.done {
 		color: $secondary-color-1;
 
-		.exercise-name h3::before {
-			background-image: url(../resources/img/hips-up-light.svg);
-		}
-
 		.exercise-duration p::before {
 			background-image: url(../resources/img/clock-light.svg);
 		}
@@ -584,20 +567,6 @@ main > div > div:first-child {
 		.exercise-name {
 			font-size: 22px;
 			color: $secondary-color-2;
-		}
-
-		.exercise-name:before {
-		    content: '';
-		    background-image: url(../resources/img/hips-up-dark.svg);
-		    background-size: 50px;
-		    background-position: 0px;
-		    background-repeat: no-repeat;
-		    width: 50px;
-		    height: 20px;
-		    margin-right: 10px;
-		    display: inline-block;
-		    position: relative;
-		    top: 2px;
 		}
 
 		.information {

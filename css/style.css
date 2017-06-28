@@ -295,7 +295,7 @@ main > div {
 
 main > div > div {
   padding: 0 15px;
-  margin-bottom: 60px;
+  margin-bottom: 55px;
   overflow: scroll;
   transform: translateZ(0); }
 
@@ -363,17 +363,6 @@ main > div > div:first-child {
     .exercise .exercise-name h3 {
       font-size: 16px;
       display: inline-block; }
-    .exercise .exercise-name h3::before {
-      content: '';
-      background-image: url(../resources/img/hips-up-dark.svg);
-      width: 50px;
-      height: 20px;
-      background-size: 50px 20px;
-      background-repeat: no-repeat;
-      display: inline-block;
-      margin-right: 6px;
-      position: relative;
-      top: 4px; }
   .exercise .exercise-duration {
     margin-top: 22px;
     margin-left: 14px;
@@ -417,8 +406,6 @@ main > div > div:first-child {
 
 .today .exercise.done {
   color: #ffffff; }
-  .today .exercise.done .exercise-name h3::before {
-    background-image: url(../resources/img/hips-up-light.svg); }
   .today .exercise.done .exercise-duration p::before {
     background-image: url(../resources/img/clock-light.svg); }
   .today .exercise.done .exercise-indicator {
@@ -450,18 +437,6 @@ main > div > div:first-child {
     .exercise-screen .top .exercise-name {
       font-size: 22px;
       color: #818c98; }
-    .exercise-screen .top .exercise-name:before {
-      content: '';
-      background-image: url(../resources/img/hips-up-dark.svg);
-      background-size: 50px;
-      background-position: 0px;
-      background-repeat: no-repeat;
-      width: 50px;
-      height: 20px;
-      margin-right: 10px;
-      display: inline-block;
-      position: relative;
-      top: 2px; }
     .exercise-screen .top .information {
       width: 25px;
       height: 25px;
