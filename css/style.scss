@@ -1,15 +1,17 @@
 //VARIABLES
 
 $primary-color-1: #f57d2a;
-$primary-color-2: #3699bc;
+$primary-color-2: #149fd0;
 $primary-color-3: #336e89;
 
-$background: #EBECED;
+$background: #eceef0;
 
 $secondary-color-1: #ffffff;
 $secondary-color-2: #818c98;
 $secondary-color-3: #cccfd2;
 $secondary-color-4: #58687a;
+
+$border-light: #cacaca;
 
 $transition-1: all 300ms cubic-bezier(0.755, -0.460, 0.195, 1.425);
 $transition-2: 0.7s ease-in-out;
@@ -89,22 +91,18 @@ input[type="number"] {
   background-color: white;
   -webkit-transition: $button-transition;
   transition: $button-transition;
-  box-shadow: 0px 3px 0px #A8A8A8;
+  box-shadow: 0px 3px 0px rgba(0,0,0,0.5);
 }
 
 input:checked + .slider {
-  background-color: #3699BC;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  background-color: $primary-color-2;
 }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-  box-shadow: 0px 3px 0px #215577;
+  box-shadow: 0px 3px 0px rgba(0,0,0,0.5);
 }
 
 .slider.round {
@@ -525,7 +523,7 @@ main > div > div:first-child {
 		}
 
 		.exercise-line::before {
-			background-color: #3699bc;
+			background-color: $primary-color-2;
 	    	background-image: url(../resources/img/check-light.svg);
 	    	background-size: 19px;
 	    	background-position: 6px;
@@ -563,16 +561,22 @@ main > div > div:first-child {
 		margin-top: 10px;
 		display: flex;
 		justify-content: space-between;
+		border-bottom: 1px solid $border-light; 
+    	padding-bottom: 15px;
 
 		.exercise-name {
 			font-size: 22px;
-			color: $secondary-color-2;
+			color: $secondary-color-4;
+			width: 100%;
+    		text-align: center;
 		}
 
 		.information {
 			width: 25px;
 			height: 25px;
-			margin-top: 2px;
+			position: absolute;
+			right: 0;
+    		top: 4px;
 		}
 	}
 

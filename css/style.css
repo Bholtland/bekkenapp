@@ -7,7 +7,7 @@
   -webkit-font-smoothing: antialiased; }
 
 body {
-  background-color: #EBECED;
+  background-color: #eceef0;
   overflow-x: hidden; }
 
 h1, h2 {
@@ -52,19 +52,16 @@ input[type="number"] {
   background-color: white;
   -webkit-transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06);
   transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06);
-  box-shadow: 0px 3px 0px #A8A8A8; }
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.5); }
 
 input:checked + .slider {
-  background-color: #3699BC; }
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3; }
+  background-color: #149fd0; }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-  box-shadow: 0px 3px 0px #215577; }
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.5); }
 
 .slider.round {
   border-radius: 34px;
@@ -411,9 +408,9 @@ main > div > div:first-child {
   .today .exercise.done .exercise-indicator {
     display: none; }
   .today .exercise.done .exercise-box {
-    background-color: #3699bc; }
+    background-color: #149fd0; }
   .today .exercise.done .exercise-line::before {
-    background-color: #3699bc;
+    background-color: #149fd0;
     background-image: url(../resources/img/check-light.svg);
     background-size: 19px;
     background-position: 6px;
@@ -433,14 +430,20 @@ main > div > div:first-child {
   .exercise-screen .top {
     margin-top: 10px;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    border-bottom: 1px solid #cacaca;
+    padding-bottom: 15px; }
     .exercise-screen .top .exercise-name {
       font-size: 22px;
-      color: #818c98; }
+      color: #58687a;
+      width: 100%;
+      text-align: center; }
     .exercise-screen .top .information {
       width: 25px;
       height: 25px;
-      margin-top: 2px; }
+      position: absolute;
+      right: 0;
+      top: 4px; }
   .exercise-screen .breather {
     margin-top: 20px; }
     .exercise-screen .breather .countdown {
@@ -490,7 +493,7 @@ main > div > div:first-child {
       fill: #ffffff; }
     .exercise-screen .breather .remaining-time {
       font-size: 22px;
-      color: #3699bc;
+      color: #149fd0;
       text-align: center; }
     .exercise-screen .breather .remaining-time span {
       font-weight: 700; }
@@ -500,14 +503,14 @@ main > div > div:first-child {
   to {
     stroke-dashoffset: 0px; } }
   .exercise-screen .breather.release svg .active-ring {
-    stroke: #3699bc; }
+    stroke: #149fd0; }
   .exercise-screen .breather.release svg {
     transform: rotateY(-180deg) rotateZ(-90deg); }
   .exercise-screen .breather.release .countdown-number {
-    color: #3699bc; }
+    color: #149fd0; }
   .exercise-screen .breather.release .countdown-number:before {
     content: 'Ontspannen';
-    color: #3699bc; }
+    color: #149fd0; }
   .exercise-screen .controls {
     display: flex;
     justify-content: space-around;
@@ -516,7 +519,7 @@ main > div > div:first-child {
     .exercise-screen .controls .button {
       width: 34%; }
     .exercise-screen .controls .start {
-      background-color: #3699bc;
+      background-color: #149fd0;
       color: #ffffff;
       border-color: #336e89; }
     .exercise-screen .controls .reset {
