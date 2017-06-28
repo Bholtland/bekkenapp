@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bekken-app</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<main>
+		<div>
+			<div>
+				<div class="scheme screen">
+					<div class="day today">
+						<h3>Vandaag <span>1 juli</span></h3>
+						<div class="timeline">
+							<div class="exercise done">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+							<div class="exercise">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="day">
+						<h3>Morgen <span>2 juli</span></h3>
+						<div class="timeline">
+							<div class="exercise">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+							<div class="exercise">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+							<div class="exercise">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="day">
+						<h3>3 juli</h3>
+						<div class="timeline">
+							<div class="exercise">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+							<div class="exercise">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+							<div class="exercise">
+								<div class="exercise-line"></div>
+								<div class="exercise-box">
+									<div>
+										<span class="exercise-name"><h3>Hips-up</h3></span>
+										<span class="exercise-duration"><p>5 minuten</p></span>
+										<span class="exercise-indicator"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="exercise-screen screen">
+					<div class="top">
+						<h3 class="exercise-name">Hips-up</h3>
+						<img class="information" src="resources/img/info-dark.svg" alt="">
+					</div>
+					<div class="breather">
+						<div class="countdown">
+							<div class="countdown-number"></div>
+							<svg>
+								<circle class="background-ring" r="90" cx="110" cy="110"></circle>
+								<circle class="active-ring" r="90" cx="110" cy="110"></circle>
+							</svg>
+						</div>
+						<p class="remaining-time">Resterend: <span></span></p>
+					</div>
+					<div class="settings">
+						<ul>
+							<li>
+								<p>Trilsignaal</p>
+								<label class="switch">
+									<input class="vibrate" type="checkbox">
+									<div class="slider round"></div>
+								</label>
+							</li>
+							<li>
+								<p>Geluid</p>
+								<label class="switch">
+									<input type="checkbox">
+									<div class="slider round"></div>
+								</label>
+							</li>
+							<li>
+								<p>Interval <span>(s)</span></p>
+								<input class="interval" type="number" value="4">
+							</li>
+						</ul>
+					</div>
+					<div class="screen-overlay"></div>
+					<div class="controls">
+						<span class="button reset">RESET</span>
+						<span class="button start">START</span>
+					</div>
+					<p class="button-settings">Instellingen</p>
+				</div>
+			</div>
+		</div>
+		</main>
+		<div class="navigation-bar">
+			<h1>Oefenschema</h1>
+			<nav>
+				<span class="button-nav button-nav-main">
+					<button type="button" class="tcon tcon-menu--xcross" aria-label="toggle menu">
+					<span class="tcon-menu__lines" aria-hidden="true"></span>
+					<span class="tcon-visuallyhidden">toggle menu</span>
+					</button>
+				</span>
+				<ul>
+					<li class="button-nav button-nav-stats"><img src="resources/img/stats.svg" alt="Progressie"></li>
+					<li class="button-nav button-nav-scheme"><img src="resources/img/scheme.svg" alt="Schema"></li>
+					<li class="button-nav button-nav-settings"><img src="resources/img/settings.svg" alt="Instellingen"></li>
+				</ul>
+			</nav>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

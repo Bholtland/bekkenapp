@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="66px" height="66px" viewBox="0 0 66 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>clock</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Client" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Oefeningen" transform="translate(-88.000000, -1020.000000)" stroke="#ffffff" stroke-width="4">
+            <g id="Main" transform="translate(-42.000000, 231.000000)">
+                <g id="Opdrachten" transform="translate(82.000000, 40.000000)">
+                    <g id="Dag">
+                        <g id="Opdracht-Copy" transform="translate(0.000000, 533.000000)">
+                            <g id="Group-2" transform="translate(50.000000, 46.000000)">
+                                <g id="Group" transform="translate(0.000000, 159.000000)">
+                                    <g id="clock" transform="translate(0.000000, 13.000000)">
+                                        <circle id="Oval" cx="31" cy="31" r="31"></circle>
+                                        <polyline id="Shape" points="31 12.4 31 31 40.3 40.3"></polyline>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
