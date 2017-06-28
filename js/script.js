@@ -16,10 +16,7 @@ $('.navigation-bar').css('width', $(window).width());
 
 buttonNavMain.click(function(){
 	$('.tcon').toggleClass('tcon-transform');
-	buttonNavMain.toggleClass('button-nav-main-active');
-	buttonStats.toggleClass('active');
-	buttonSettings.toggleClass('active');
-	buttonScheme.toggleClass('active');
+	$('nav').toggleClass('active');
 });
 
 $('.navigation-bar h1').click(function(){

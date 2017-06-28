@@ -165,13 +165,12 @@ input:checked + .slider.round {
 }
 
 .button-nav-main{
-	background-color: $primary-color-1;
 	z-index: 3;
+	right: 16px;
+	padding: 10px;
+	top: 5px;
+	position: absolute;
 	transition: $transition-1;
-}
-
-.button-nav-main-active {
-	background-color: $secondary-color-2;
 }
 
 .navigation-bar {
@@ -203,6 +202,33 @@ input:checked + .slider.round {
 		opacity: 1;
 	}
 
+	nav.active {
+		.button-nav {
+			visibility: visible;
+			transform: scale(1);
+		}
+
+		.button-nav-stats {
+			bottom: 100px;					
+		}
+
+		.button-nav-settings {
+			right: 100px;			
+		}
+
+		.button-nav-scheme {
+			right: 80px;
+			bottom: 80px;
+			background-color: $primary-color-1;	
+		}
+
+		.button-nav-edit {
+			transform: scale(0.1);
+			visibility: hidden;
+			bottom: 0;
+		}
+	}
+
 	ul {
 		.button-nav {
 			visibility: hidden;
@@ -211,32 +237,23 @@ input:checked + .slider.round {
 			transform: scale(0.1);
 		}
 
-		.button-nav-scheme {
+		.button-nav-stats {
 			transition-delay: 0.04s;
 		}
 
-		.button-nav-settings {
+		.button-nav-scheme {
 			transition-delay: 0.08s;
 		}
 
-		.button-nav-stats.active {
-			visibility: visible;
-			bottom: 100px;
-			transform: scale(1);		
+		.button-nav-settings {
+			transition-delay: 0.12s;
 		}
 
-		.button-nav-settings.active {
+		.button-nav-edit {
 			visibility: visible;
-			right: 100px;
-			transform: scale(1);			
-		}
-
-		.button-nav-scheme.active {
-			visibility: visible;
-			right: 80px;
-			bottom: 80px;
 			transform: scale(1);
-			background-color: $primary-color-1;	
+			bottom: 70px;
+			background-color: $primary-color-3;
 		}
 	}
 }
