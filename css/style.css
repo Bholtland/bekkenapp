@@ -502,6 +502,15 @@ main > div > div:first-child {
     stroke-dashoffset: 565px; }
   to {
     stroke-dashoffset: 0px; } }
+  .exercise-screen .breather.precount svg .active-ring {
+    stroke: #818c98; }
+  .exercise-screen .breather.precount svg {
+    transform: rotateY(-180deg) rotateZ(-90deg); }
+  .exercise-screen .breather.precount .countdown-number {
+    color: #818c98; }
+  .exercise-screen .breather.precount .countdown-number:before {
+    content: 'Bereid je voor!';
+    color: #818c98; }
   .exercise-screen .breather.release svg .active-ring {
     stroke: #149fd0; }
   .exercise-screen .breather.release svg {

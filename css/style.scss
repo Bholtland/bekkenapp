@@ -660,6 +660,25 @@ main > div > div:first-child {
 		}
 	}
 
+	.breather.precount {
+		svg .active-ring {
+			stroke: $secondary-color-2;
+		}
+
+		svg {
+			transform: rotateY(-180deg) rotateZ(-90deg);
+		}
+
+		.countdown-number {
+			color: $secondary-color-2;
+		}
+
+		.countdown-number:before {
+			content:'Bereid je voor!';
+			color: $secondary-color-2;
+		}
+	}
+
 	.breather.release {
 		svg .active-ring {
 			stroke: $primary-color-2;

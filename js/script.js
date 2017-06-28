@@ -67,10 +67,16 @@ function startExercise() {
 	var counter = 1;
 	var counterText = $('.countdown-number');
 		counterText.html(counter);
+	var didPrecount = false;
 
 	var localCount = setInterval(function(){
+		if (didPrecount) {
+			breather.removeClass('precount');
+		}
+
 		if(counter==duration){
 			counter = 0;
+			didPrecount = true;			
 			breather.toggleClass('release');
 			if (vibrate){
 				if (!breather.hasClass('release')){
@@ -144,7 +150,7 @@ $('.start').click(function(){
 
 // END CONTROL BUTTONS
 
-// SETTINGS
+// EXERCISE SETTINGS
 
 $('.button-settings').click(function(){
 	$('.screen-overlay').fadeIn();
@@ -156,4 +162,4 @@ $('.screen-overlay').click(function(){
 	$('.settings').fadeOut();
 });
 
-// END SETTINGS
+// END EXERCISE SETTINGS
