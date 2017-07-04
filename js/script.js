@@ -3,11 +3,12 @@ var buttonStats = $('nav ul li:nth-of-type(1)');
 var buttonScheme = $('nav ul li:nth-of-type(2)');
 var buttonSettings= $('nav ul li:nth-of-type(3)');
 
-var setCurrentScreen = 1;
+var setCurrentScreen = 2;
 
 $('main > div').css("width",$(window).width()*2);
 $('main > div').css("height",$(window).height());
 $('main').css("height", $(window).height());
+$('.screen-overlay').css("width", $(window).width());
 
 $('.screen').css('width', $(window).width()-30);
 $('.navigation-bar').css('width', $(window).width());
@@ -19,13 +20,6 @@ buttonNavMain.click(function(){
 	$('nav').toggleClass('active');
 });
 
-$('.navigation-bar h1').click(function(){
-	if ($(this).hasClass('is-sub')) {
-		$('main > div').css('left', '0');
-		$('.navigation-bar h1').removeClass('is-sub');
-	}
-})
-
 // END NAV MENU
 
 // OPEN EXERCISE 
@@ -34,8 +28,17 @@ $('.today .exercise').click(function(){
 	if (!$(this).hasClass('done')) {
 		$('main > div').css('left', -$(window).width()-2);
 		$('.navigation-bar h1').addClass('is-sub');
+		$('.button-nav-edit').addClass('invisible-state');
 	}
 });
+
+$('.navigation-bar h1').click(function(){
+	if ($(this).hasClass('is-sub')) {
+		$('main > div').css('left', '0');
+		$('.navigation-bar h1').removeClass('is-sub');
+		$('.button-nav-edit').removeClass('invisible-state');
+	}
+})
 
 if (setCurrentScreen==2) {
 	$('main > div').css('left', -$(window).width()-2);
@@ -113,6 +116,7 @@ function startExercise() {
 			if (seconds ==00) {
 				clearInterval(globalCount);
 				clearInterval(localCount);
+				popUpScreen($('.feedback'), $('.feedback button'), 1300, false)
 			}
 		}
 
@@ -120,7 +124,7 @@ function startExercise() {
 			seconds = "0"+seconds;
 		}
 		timer.html(currentDurationGlobal+":"+seconds);
-	},1000);
+	},10);
 
 	$('.reset').click(function(){
 		clearInterval(globalCount);
@@ -128,6 +132,7 @@ function startExercise() {
 		timer.html(durationGlobal+":00");
 		exerciseScreen.removeClass('active');
 		breather.removeClass('release');
+		popUpScreen($('.feedback'), $('.feedback button'), 1300, false);
 	});
 
 }
@@ -150,16 +155,47 @@ $('.start').click(function(){
 
 // END CONTROL BUTTONS
 
-// EXERCISE SETTINGS
+// POP UP SCREEN
 
-$('.button-settings').click(function(){
+function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElement) {
 	$('.screen-overlay').fadeIn();
-	$('.settings').fadeIn();
-});
+	screenElement.fadeIn();
 
-$('.screen-overlay').click(function(){
-	$('.screen-overlay').fadeOut();
-	$('.settings').fadeOut();
-});
+	closingItem.click(function(){
+		if (screenHideDelay) {
+			$('.screen-overlay').delay(screenHideDelay).fadeOut();
+		}
+		else {
+			$('.screen-overlay').fadeOut();
+		}	
 
-// END EXERCISE SETTINGS
+		if (hideScreenElement) {	
+			screenElement.fadeOut();
+		}
+	});
+};
+
+$('.button-settings').click(function(){popUpScreen($('.settings'), $('.screen-overlay'), 0, true)});
+
+// END POP UP SCREEN
+
+// FEEDBACK SCREEN
+
+$('.feedback button').click(function(){
+
+	$('.feedback button').fadeOut(200);
+	$('.feedback > div > div').fadeOut(200);
+
+	$('.absolute-wrapper').addClass('active');
+
+	setTimeout(function(){
+		$('.checkmark').fadeOut(200);
+		setTimeout(function(){
+			$('.absolute-wrapper').removeClass('active');
+			$('.checkmark').show();
+
+		},200);
+	},1100);
+})
+
+// END FEEDBACK SCREEN

@@ -13,6 +13,8 @@ $secondary-color-4: #58687a;
 
 $border-light: #cacaca;
 
+$input-background: #f1f1f1;
+
 $transition-1: all 300ms cubic-bezier(0.755, -0.460, 0.195, 1.425);
 $transition-2: 0.7s ease-in-out;
 $screen-transition: 0.3s ease-in-out;
@@ -22,6 +24,12 @@ $title: "TitleFont", helvetica, sans-serif;
 $regular: "Open Sans", helvetica, sans-serif;
 
 // END VARIABLES
+
+// MIXINS
+
+
+
+// END MIXINS
 
 // MAIN SETTINGS
 
@@ -50,10 +58,27 @@ h3, h4, h5, p {
 	font-family: $regular;
 }
 
+h4 {
+	color: $primary-color-1;
+	font-size: 1.4rem;
+	text-align: center;
+}
+
 input[type="number"] {
 	background-color: #F2F2F2;
 	border: $secondary-color-2 1px solid;
 	border-radius: 4px;
+}
+
+.absolute-wrapper {
+	display: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.absolute-wrapper.active {
+	display: block;
 }
 
 // END MAIN SETTINGS
@@ -121,12 +146,22 @@ input:checked + .slider.round {
 .button {
 	display: block;
 	padding: 15px 20px;
+	border:none;
 	text-align: center;
 	font-family: $title;
-	font-size: 20px;
+	font-size: 1rem;
 	background-color: $secondary-color-3;
-	border-bottom: 4px solid $secondary-color-2;
+	border-bottom: 2px solid $secondary-color-2;
+	color: $secondary-color-2;
 	border-radius: 8px;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+}
+
+.primary {
+	background-color: $primary-color-2;
+	color: $secondary-color-1;
+	border-color: $primary-color-3;
 }
 
 // END BUTTONS
@@ -252,6 +287,12 @@ input:checked + .slider.round {
 			transform: scale(1);
 			bottom: 70px;
 			background-color: $primary-color-3;
+
+			&.invisible-state {
+				transform: scale(0.1);
+				visibility: hidden;
+				bottom: 0;
+			}
 		}
 	}
 }
@@ -710,16 +751,6 @@ main > div > div:first-child {
 		.button {
 			width: 34%;
 		}
-
-		.start {
-			background-color: $primary-color-2;
-			color: $secondary-color-1;
-			border-color: $primary-color-3;
-		}
-
-		.reset {
-			color: $secondary-color-2;
-		}
 	}
 }
 
@@ -788,16 +819,146 @@ main > div > div:first-child {
 	}
 }
 
+.feedback {
+	display: none;
+	width: 100%;
+	position: absolute;	
+	top: 0;
+	z-index: 11;
+
+	> div {
+		background-color: $secondary-color-1;
+		border-radius: 12px;
+		position: relative;
+		margin-top: 40px;
+		z-index: 11;
+
+		> div {
+			padding: 10px;
+		}
+	}
+
+	h2 {
+		text-align: center;
+		padding-top: 10px;
+	}
+
+	select,
+	textarea {
+		border: 1px solid $secondary-color-2;
+		background-color: $input-background;
+		border-radius: 5px;
+		font-size: 1rem;
+		color: $secondary-color-4;
+	}
+
+	textarea {
+		width: 100%;
+		box-sizing: border-box;
+    	min-height: 240px;
+    	padding: 10px;
+		&::-webkit-input-placeholder { /* WebKit browsers */
+	    	color: #aaa;
+		}
+	}
+
+	select {
+		width: 100%;
+    	height: 64px;
+    	margin: 14px 0;
+    	text-indent: 10px;
+    	color: $primary-color-2;
+
+    	span {
+    		font-size: 2rem;
+    	}
+	}
+
+	.button {
+		z-index: 11;
+		position: relative;
+		margin-top: 10px;
+		width: 100%;
+	}
+}
+
 .screen-overlay {
 	position: absolute;
 	display: none;
 	top: -15px;
 	left:-15px;
-	width: 160%;
+	width: 100%;
 	height: 9000px;
 	background-color: rgba(0,0,0,0.7);
 	z-index:10;
 }
+
+// Check animation 
+
+// source: https://codepen.io/haniotis/pen/KwvYLO
+
+$curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
+
+.checkmark_circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  stroke: $primary-color-2;
+  fill: none;
+  animation: stroke .6s $curve forwards;
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  top: 10px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 5px;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 0 auto;
+  box-shadow: inset 0px 0px 0px $primary-color-2;
+  animation: fill .3s ease-in-out .3s forwards, scale .3s ease-in-out .7s both;
+}
+
+.checkmark_check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke .2s $curve .6s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 50px $primary-color-2;
+  }
+}
+
+.absolute-wrapper.active {
+	.checkmark {
+		top: 200px;
+	}
+}
+
+// End check animation
 
 
 // END EXERCISE SCREEN
