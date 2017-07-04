@@ -582,6 +582,8 @@ main > div > div:first-child {
 
 	.breather {
 		margin-top: 20px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid $border-light;
 
 		.countdown {
 		  position: relative;
@@ -644,6 +646,7 @@ main > div > div:first-child {
 			font-size: 22px;
 			color: $primary-color-2;
 			text-align: center;
+			padding: 10px;
 		}
 
 		.remaining-time span {
@@ -766,9 +769,23 @@ main > div > div:first-child {
 
 .button-settings {
 	text-align: right;
-	margin: 20px;
+	margin: 10px 0 30px 0;
 	font-weight: 700;
-	color: $secondary-color-4;
+	right: 6px;
+	position: relative;
+	color: $secondary-color-2;
+
+	&:after {
+	    content: '';
+	    background-image: url(../resources/img/settings.svg);
+	    background-size: 30px 30px;
+	    width: 30px;
+	    height: 30px;
+	    position: relative;
+	    display: inline-block;
+	    top: 9px;
+	    left: 6px;
+	}
 }
 
 .screen-overlay {

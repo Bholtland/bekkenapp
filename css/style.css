@@ -445,7 +445,9 @@ main > div > div:first-child {
       right: 0;
       top: 4px; }
   .exercise-screen .breather {
-    margin-top: 20px; }
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #cacaca; }
     .exercise-screen .breather .countdown {
       position: relative;
       margin: auto;
@@ -494,7 +496,8 @@ main > div > div:first-child {
     .exercise-screen .breather .remaining-time {
       font-size: 22px;
       color: #149fd0;
-      text-align: center; }
+      text-align: center;
+      padding: 10px; }
     .exercise-screen .breather .remaining-time span {
       font-weight: 700; }
 @keyframes countdown {
@@ -567,9 +570,21 @@ main > div > div:first-child {
 
 .button-settings {
   text-align: right;
-  margin: 20px;
+  margin: 10px 0 30px 0;
   font-weight: 700;
-  color: #58687a; }
+  right: 6px;
+  position: relative;
+  color: #818c98; }
+  .button-settings:after {
+    content: '';
+    background-image: url(../resources/img/settings.svg);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+    top: 9px;
+    left: 6px; }
 
 .screen-overlay {
   position: absolute;
