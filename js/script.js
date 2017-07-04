@@ -3,7 +3,8 @@ var buttonStats = $('nav ul li:nth-of-type(1)');
 var buttonScheme = $('nav ul li:nth-of-type(2)');
 var buttonSettings= $('nav ul li:nth-of-type(3)');
 
-var setCurrentScreen = 2;
+var currentScreen = "exercise";
+navigateTo(currentScreen);
 
 $('main > div').css("width",$(window).width()*2);
 $('main > div').css("height",$(window).height());
@@ -22,28 +23,34 @@ buttonNavMain.click(function(){
 
 // END NAV MENU
 
-// OPEN EXERCISE 
-
-$('.today .exercise').click(function(){
-	if (!$(this).hasClass('done')) {
+function navigateTo(screen){
+	if (screen == 'exercises') {
+		$('main > div').css('left', '0');
+		$('.navigation-bar h1').removeClass('is-sub');
+		$('.button-nav-edit').removeClass('invisible-state');
+	} else if (screen == 'exercise') {
 		$('main > div').css('left', -$(window).width()-2);
 		$('.navigation-bar h1').addClass('is-sub');
 		$('.button-nav-edit').addClass('invisible-state');
+	}
+}
+
+// OPEN EXERCISE 
+
+var currentExercise;
+
+$('.today .exercise').click(function(){
+	if (!$(this).hasClass('done')) {
+		navigateTo('exercise');
+		currentExercise = $(this);
 	}
 });
 
 $('.navigation-bar h1').click(function(){
 	if ($(this).hasClass('is-sub')) {
-		$('main > div').css('left', '0');
-		$('.navigation-bar h1').removeClass('is-sub');
-		$('.button-nav-edit').removeClass('invisible-state');
+		navigateTo('exercises');
 	}
 })
-
-if (setCurrentScreen==2) {
-	$('main > div').css('left', -$(window).width()-2);
-	$('.navigation-bar h1').addClass('is-sub');
-}
 
 // END OPEN EXERCISE
 
@@ -60,10 +67,19 @@ $('.vibrate').click(function(){
 var exerciseScreen = $('.exercise-screen');
 var breather = $('.breather');
 var timer = $('.remaining-time span');
-var durationGlobal = 5;
+var durationGlobal = 1;
 timer.html(durationGlobal+":00");
 
 function startExercise() {
+
+	function clearBreather(){
+		clearInterval(globalCount);
+		clearInterval(localCount);
+		timer.html(durationGlobal+":00");
+		exerciseScreen.removeClass('active');
+		breather.removeClass('release');	
+	}
+
 	var duration = $('.interval').val();
 	$('svg .active-ring').css('animation-duration', duration+'s')
 	exerciseScreen.addClass('active');
@@ -114,9 +130,8 @@ function startExercise() {
 				seconds = "0"+seconds;
 			}
 			if (seconds ==00) {
-				clearInterval(globalCount);
-				clearInterval(localCount);
-				popUpScreen($('.feedback'), $('.feedback button'), 1300, false)
+				clearBreather();
+				popUpScreen($('.feedback'), $('.feedback button'), 1300, false);
 			}
 		}
 
@@ -124,15 +139,10 @@ function startExercise() {
 			seconds = "0"+seconds;
 		}
 		timer.html(currentDurationGlobal+":"+seconds);
-	},10);
+	},100);
 
 	$('.reset').click(function(){
-		clearInterval(globalCount);
-		clearInterval(localCount);
-		timer.html(durationGlobal+":00");
-		exerciseScreen.removeClass('active');
-		breather.removeClass('release');
-		popUpScreen($('.feedback'), $('.feedback button'), 1300, false);
+		clearBreather();
 	});
 
 }
@@ -193,6 +203,9 @@ $('.feedback button').click(function(){
 		setTimeout(function(){
 			$('.absolute-wrapper').removeClass('active');
 			$('.checkmark').show();
+			navigateTo('exercises');
+
+			setTimeout(function(){currentExercise.addClass('done');}, 400);			
 
 		},200);
 	},1100);

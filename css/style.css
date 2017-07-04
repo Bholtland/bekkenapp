@@ -55,18 +55,17 @@ input[type="number"] {
   background-color: #ccc;
   -webkit-transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06);
   transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06); }
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06);
-  transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06);
-  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.5); }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06);
+    transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.06);
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.5); }
 
 input:checked + .slider {
   background-color: #149fd0; }
@@ -80,9 +79,8 @@ input:checked + .slider:before {
 .slider.round {
   border-radius: 34px;
   border: 1px solid #818c98; }
-
-.slider.round:before {
-  border-radius: 50%; }
+  .slider.round::before {
+    border-radius: 50%; }
 
 input:checked + .slider.round {
   border: 1px solid #336e89; }
