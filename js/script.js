@@ -3,7 +3,7 @@ var buttonStats = $('nav ul li:nth-of-type(1)');
 var buttonScheme = $('nav ul li:nth-of-type(2)');
 var buttonSettings= $('nav ul li:nth-of-type(3)');
 
-var currentScreen = "stats";
+var currentScreen = "exercises";
 navigateTo(currentScreen);
 
 $('main > div').css("width",$(window).width()*2);
