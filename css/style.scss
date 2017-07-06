@@ -1,16 +1,7 @@
 //VARIABLES
 
-$color-1: #f57d2a;
-$color-2: #149fd0;
-$color-3: #336e89;
-$color-4: #818c98;
-$color-5: #cccfd2;
-$color-6: #58687a;
-
-$background: #eceef0;
-$input-background: #f1f1f1;
-$white: #ffffff;
-$border-light: #cacaca;
+@import "partials/color-blue-orange";
+// @import "partials/color-purple";
 
 $transition-1: all 300ms cubic-bezier(0.755, -0.460, 0.195, 1.425);
 $transition-2: 0.7s ease-in-out;
@@ -706,7 +697,7 @@ main > div > div:first-child {
 		}
 
 		svg .active-ring {
-		  stroke-dasharray: 565px;
+		  stroke-dasharray: 566px;
 		  stroke-dashoffset: 0px;
 		  stroke-width: 15px;
 		  stroke: $color-4;
@@ -1067,8 +1058,8 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 
 				&::after {
 					content:'';
-					transition: $transition-1;
-					transition-delay: 0.1s;
+					transition: ease-in-out 0.1s;
+					// transition-delay: 0.1s;
 					border:none;
 					border-color: rgba(255,255,255,0);
 				    width: 0;
