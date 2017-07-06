@@ -583,7 +583,7 @@ main > div > div:first-child {
 		.exercise-name {
 			opacity: 1;
 		}
-
+	}
 		.exercise.done {
 			color: $white;
 
@@ -607,7 +607,6 @@ main > div > div:first-child {
 		    	background-repeat: no-repeat;
 			}
 		}
-	}
 }
 
 // END MAIN EXERCISES
@@ -1011,6 +1010,7 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 		display: block;
     	height: 430px;
     	position: relative;
+    	transform: traslateZ(0);
 
 		.graph-background {
 			width: 100%;
