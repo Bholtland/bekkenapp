@@ -3,7 +3,7 @@ var buttonStats = $('nav ul li:nth-of-type(1)');
 var buttonScheme = $('nav ul li:nth-of-type(2)');
 var buttonSettings= $('nav ul li:nth-of-type(3)');
 
-var currentScreen = "exercises";
+var currentScreen = "stats";
 navigateTo(currentScreen);
 
 $('main > div').css("width",$(window).width()*2);
@@ -12,7 +12,7 @@ $('main > div').css("height",$(window).height());
 $('main').css("height", $(window).height());
 $('.screen-overlay').css("width", $(window).width());
 
-$('.scheme').css('width', $(window).width()-30);
+$('#scheme').css('width', $(window).width()-30);
 $('.stats').css('width', $(window).width());
 $('.navigation-bar').css('width', $(window).width());
 
@@ -172,7 +172,7 @@ function startExercise() {
 			seconds = "0"+seconds;
 		}
 		timer.html(currentDurationGlobal+":"+seconds);
-	},10);
+	},1000);
 
 	$('.reset').click(function(){
 		clearBreather();
@@ -253,24 +253,31 @@ $('.feedback button').click(function(){
 
 // Graph render
 
-var graphHeight = 208;
-
 var pointString = "";
-var feedback = [3,5,6,8,10,9,6,7,10];
+var feedback = [3,5,6,8,10,9,6,7,10,2,5,7,3,1,8,9];
 
 var graphWidth = (feedback.length -1) * 75;
+var graphHeight = 400;
 var pointWidth = 75;
 
 $('.graphSVG').attr('width' ,graphWidth);
 $('.graphSVG').attr('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
 $('#stats .graph span').css('width', graphWidth);
+$('.line-canvas').css('width', graphWidth);
+$('.line-canvas').css('height', graphHeight);
+$('.overflow-extender').css('width', graphWidth);
 
 for(i=0; i < feedback.length; i++) {
 	var pointHeight = (feedback[i]*-graphHeight/10)+graphHeight;
 	var pointNum = i*pointWidth;
 	var point = pointNum + " " + pointHeight + " ";
 
+	var lineHeight = (graphHeight/10)*feedback[i]+"px";
+	var line = "<span style='height:"+lineHeight+";'></span>";
+	$('.line-canvas').append(line);
+
 	pointString = pointString + point;
+
 }
 
 pointString = pointString + (feedback.length -1)*pointWidth + " " + graphHeight + " 0 " + graphHeight;
@@ -278,5 +285,35 @@ pointString = pointString + (feedback.length -1)*pointWidth + " " + graphHeight 
 $('#graphPoly').attr('points', pointString);
 
 // End graph render
+
+// Graph focuspoint
+
+var focus = ($(window).width() - pointWidth) /2;
+
+var focusModulus = focus % pointWidth;
+
+var currentScrollPos;
+var previousLine;
+
+$('.graph').scroll(function(){
+	var scrollLeft = $('.graph').scrollLeft() + focusModulus;
+	var scrollPos = Math.ceil(scrollLeft/pointWidth);
+
+	if (scrollPos != currentScrollPos) {
+		currentScrollPos = scrollPos;
+		
+		var linePos = Math.ceil(focus/pointWidth)+Math.ceil(scrollLeft/pointWidth);
+
+		$(previousLine).removeClass('active')
+		$('.line-canvas span:nth-of-type('+linePos+')').addClass('active');	
+
+		previousLine = '.line-canvas span:nth-of-type('+linePos+')';
+	}
+})
+
+
+
+
+// End graph focuspoint
 
 // END STATS

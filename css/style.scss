@@ -434,12 +434,6 @@ main > div {
 	overflow: hidden;
 }
 
-main > div > div {
-	margin-bottom: 55px;
-	overflow: scroll;
-	transform: translateZ(0);
-}
-
 main > div > div:first-child {
 	border-right: 1px solid $color-4;
 }
@@ -499,6 +493,9 @@ main > div > div:first-child {
 
 #scheme {
 	padding: 0 15px;
+	margin-bottom: 55px;
+	overflow: scroll;
+	transform: translateZ(0);
 }
 
 .scheme {
@@ -637,6 +634,7 @@ main > div > div:first-child {
 
 .exercise-screen {
 	position: relative;
+	margin: 0 15px;
 
 	.top {
 		margin-top: 10px;
@@ -644,6 +642,7 @@ main > div > div:first-child {
 		justify-content: space-between;
 		border-bottom: 1px solid $border-light; 
     	padding-bottom: 15px;
+    	position: relative;
 
 		.exercise-name {
 			font-size: 22px;
@@ -888,7 +887,6 @@ main > div > div:first-child {
 		border: 1px solid $color-4;
 		background-color: $input-background;
 		border-radius: 5px;
-		font-size: 1rem;
 		color: $color-6;
 	}
 
@@ -897,6 +895,7 @@ main > div > div:first-child {
 		box-sizing: border-box;
     	min-height: 240px;
     	padding: 10px;
+    	font-size: 1rem;
 		&::-webkit-input-placeholder { /* WebKit browsers */
 	    	color: #aaa;
 		}
@@ -907,6 +906,7 @@ main > div > div:first-child {
     	height: 64px;
     	margin: 14px 0;
     	text-indent: 10px;
+    	font-size: 1.4rem;
     	color: $color-2;
 
     	span {
@@ -1008,10 +1008,13 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 
 	.graph {
 		overflow-x: scroll;
+		display: block;
+    	height: 430px;
+    	position: relative;
 
-		span {
+		.graph-background {
 			width: 100%;
-			height: 238px;
+			height: 430px;
 			background-color: $color-2;
 			display: block;
 			position: absolute;
@@ -1024,6 +1027,53 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 			g {
 				opacity: 0.4;
 			}
+		}
+
+		.line-canvas {
+			display: block;
+			position: absolute;
+			top: 30px;
+			z-index: 1;
+
+			span {
+				width: 1px;
+				background-color: #fff;
+				display: inline-block;
+				margin-left: 74px;
+
+				&:nth-of-type(1) {
+					margin:0;
+				}
+
+				&:last-of-type {
+					display: none;
+				}
+
+				&::before {
+					content:'';
+					width: 10px;
+					height: 10px;
+					top: -5px;
+    				left: -6px;
+					display: block;
+					border: 2px solid $white;
+					background-color: $color-1;
+					border-radius: 100%;
+					position: relative;
+					transition: $transition-1;
+				}
+
+				&.active::before {
+					width: 50px;
+					height: 50px;
+					top: -25px;
+					left: -26px;
+				}
+			}
+		}
+
+		.overflow-extender {
+			height: 0px;
 		}
 	}
 }
