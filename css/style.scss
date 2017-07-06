@@ -1040,9 +1040,10 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 				background-color: #fff;
 				display: inline-block;
 				margin-left: 74px;
+				transition: $transition-1;
 
 				&:nth-of-type(1) {
-					margin:0;
+					margin:0 !important;
 				}
 
 				&:last-of-type {
@@ -1060,7 +1061,20 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 					background-color: $color-1;
 					border-radius: 100%;
 					position: relative;
+					transition: ease-in-out 0.1s;
+					z-index: 1;
+				}
+
+				&::after {
+					content:'';
 					transition: $transition-1;
+					transition-delay: 0.1s;
+					border:none;
+					border-color: rgba(255,255,255,0);
+				    width: 0;
+				    height: 0;
+				    position: absolute;
+				    bottom: 0;
 				}
 
 				&.active::before {
@@ -1069,12 +1083,28 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 					top: -25px;
 					left: -26px;
 				}
+
+				&.active::after {
+
+				    display: block;
+				    border-left: 37px solid transparent;
+				    border-right: 37px solid transparent;
+				    border-bottom: 30px solid $white;
+				    margin-left: -36px;
+				   	z-index: 0;
+				}
+
+				&.active {
+					width: 3px;
+					margin-left: 73px;
+				}
 			}
 		}
+	}
 
-		.overflow-extender {
-			height: 0px;
-		}
+	.vas-grade {
+		text-align:center;
+		margin-top: 20px;
 	}
 }
 

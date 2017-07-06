@@ -28,11 +28,10 @@ buttonNavMain.click(function(){
 			$('nav').removeClass('active');
 		})		
 	}
-
-
 });
 
 $('.button-nav-stats').click(function(){navigateTo('stats')})
+$('.button-nav-scheme').click(function(){navigateTo('exercises')})
 
 // END NAV MENU
 
@@ -41,6 +40,15 @@ function navigateTo(screen){
 		$('main > div').css('left', '0');
 		$('.navigation-bar h1').removeClass('is-sub');
 		$('.button-nav-edit').removeClass('invisible-state');
+
+		$('.stats').fadeOut(200);
+
+		setTimeout(function(){$('#stats').hide()}, 300);
+		$('.scheme').show();		
+		$('#scheme').delay(300).fadeIn();
+		centerOnToday();
+
+
 	} else if (screen == 'exercise') {
 		$('main > div').css('left', -$(window).width()-2);
 		$('.navigation-bar h1').addClass('is-sub');
@@ -52,7 +60,8 @@ function navigateTo(screen){
 
 		$('.scheme').fadeOut(200);
 
-		setTimeout(function(){$('#scheme').hide()}, 300);		
+		setTimeout(function(){$('#scheme').hide()}, 300);
+		$('.stats').show();		
 		$('#stats').delay(300).fadeIn();
 	}
  }
@@ -254,11 +263,12 @@ $('.feedback button').click(function(){
 // Graph render
 
 var pointString = "";
-var feedback = [3,5,6,8,10,9,6,7,10,2,5,7,3,1,8,9];
+var feedback = [3,5,6,8,10,9,6,7,10,1,5,7,3,1,8,9];
 
-var graphWidth = (feedback.length -1) * 75;
+var pointWidth = $(window).width()/3.5;
+
+var graphWidth = (feedback.length -1) * pointWidth;
 var graphHeight = 400;
-var pointWidth = 75;
 
 $('.graphSVG').attr('width' ,graphWidth);
 $('.graphSVG').attr('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
@@ -273,7 +283,7 @@ for(i=0; i < feedback.length; i++) {
 	var point = pointNum + " " + pointHeight + " ";
 
 	var lineHeight = (graphHeight/10)*feedback[i]+"px";
-	var line = "<span style='height:"+lineHeight+";'></span>";
+	var line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;' value="+feedback[i]+"></span>";
 	$('.line-canvas').append(line);
 
 	pointString = pointString + point;
@@ -305,9 +315,12 @@ $('.graph').scroll(function(){
 		var linePos = Math.ceil(focus/pointWidth)+Math.ceil(scrollLeft/pointWidth);
 
 		$(previousLine).removeClass('active')
-		$('.line-canvas span:nth-of-type('+linePos+')').addClass('active');	
+		var element = '.line-canvas span:nth-of-type('+linePos+')';
 
-		previousLine = '.line-canvas span:nth-of-type('+linePos+')';
+		$(element).addClass('active');	
+		$('.vas-grade').html($(element).attr('value'))
+
+		previousLine = element;
 	}
 })
 
