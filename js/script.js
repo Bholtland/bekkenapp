@@ -3,7 +3,7 @@ var buttonStats = $('nav ul li:nth-of-type(1)');
 var buttonScheme = $('nav ul li:nth-of-type(2)');
 var buttonSettings= $('nav ul li:nth-of-type(3)');
 
-var currentScreen = "exercises";
+var currentScreen = "stats";
 navigateTo(currentScreen);
 
 $('main > div').css("width",$(window).width()*2);
@@ -265,7 +265,22 @@ $('.feedback button').click(function(){
 // Graph render
 
 var pointString = "";
-var feedback = [3,5,6,8,10,9,6,7,10,1,5,7,3,1,8,9];
+// var feedback = [3,5,6,8,10,9,6,7,10,1,5,7,3,1,8,9];
+
+var feedback = [
+	[4,"Ik had ergens last van", "19-07"],
+	[6,"Jep last", "20-07"],
+	[10,"Iets", "21-07"],
+	[7,"Ik had last", "22-07"],
+	[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
+	[6,"Jep last", "24-07"],
+	[10,"Iets", "25-07"],
+	[7,"Ik had last", "26-07"],
+	[4,"Ik had ergens last van", "27-07"],
+	[6,"Jep last", "28-07"],
+	[10,"Iets", "29-07"],
+	[7,"Ik had last", "30-07"]
+];
 
 var pointWidth = $(window).width()/3.5;
 
@@ -280,12 +295,12 @@ $('.line-canvas').css('height', graphHeight);
 $('.overflow-extender').css('width', graphWidth);
 
 for(i=0; i < feedback.length; i++) {
-	var pointHeight = (feedback[i]*-graphHeight/10)+graphHeight;
+	var pointHeight = (feedback[i][0]*-graphHeight/10)+graphHeight;
 	var pointNum = i*pointWidth;
 	var point = pointNum + " " + pointHeight + " ";
 
-	var lineHeight = (graphHeight/10)*feedback[i]+"px";
-	var line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;' value="+feedback[i]+"></span>";
+	var lineHeight = (graphHeight/10)*feedback[i][0]+"px";
+	var line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;'></span>";
 	$('.line-canvas').append(line);
 
 	pointString = pointString + point;
@@ -318,16 +333,16 @@ $('.graph').scroll(function(){
 
 		$(previousLine).removeClass('active')
 		var element = '.line-canvas span:nth-of-type('+linePos+')';
+		elementNumber = $(element).index();
 
 		$(element).addClass('active');	
-		$('.vas-grade').html($(element).attr('value'))
+		$('.vas-grade').html(feedback[elementNumber][0]);
+		$('.vas-results > div > p').html(feedback[elementNumber][1]);
+		$('.vas-results > p').html(feedback[elementNumber][2]);
 
 		previousLine = element;
 	}
 })
-
-
-
 
 // End graph focuspoint
 
