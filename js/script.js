@@ -41,7 +41,7 @@ var buttonNavMain = $('.button-nav-main'),
 	previousLine
 
 // Set the current screen to load
-currentScreen = "exercises";
+currentScreen = "stats";
 navigateTo(currentScreen);
 
 // Set width and height of some screens with JS. For some reason CSS doesn't like doing this. Should look into that again.
@@ -53,6 +53,8 @@ $('.screen-overlay').css("width", $(window).width());
 $('#scheme').css('width', $(window).width()-30);
 $('.stats').css('width', $(window).width());
 $('.navigation-bar').css('width', $(window).width());
+$('.graph-background').css("height",$(window).height());
+$('.graph').css("height",$(window).height());
 
 // ========== NAV MENU ==========
 
@@ -327,10 +329,8 @@ graphHeight = 400;
 
 $('.graphSVG').attr('width' ,graphWidth);
 $('.graphSVG').attr('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
-$('#stats .graph span').css('width', graphWidth);
-$('.line-canvas').css('width', graphWidth);
+$('.line-canvas').css('width', graphWidth+10);
 $('.line-canvas').css('height', graphHeight);
-$('.overflow-extender').css('width', graphWidth);
 
 // A loop that takes data from the feedback array and visualizes that into the graph
 for(i=0; i < feedback.length; i++) {
@@ -350,6 +350,8 @@ for(i=0; i < feedback.length; i++) {
 	lineHeight = (graphHeight/10)*feedback[i][0]+"px";
 	line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;'></span>";
 	$('.line-canvas').append(line);
+
+	$('.dates').append("<p>"+feedback[i][2]+"</p>");
 }
 
 // Finish the string with standard remaining poly's and add it to the DOM
@@ -364,6 +366,13 @@ focus = ($(window).width() - pointWidth) /2;
 // Define the number that remains when fitting the pointWidth in our focus variable
 focusModulus = focus % pointWidth;
 
+$('.graph-background').css('width', graphWidth+(focus*2)+10);
+$('.dates').css('width', graphWidth+(focus*2)+10);
+$('.line-canvas').css('left', focus);
+$('.graphSVG').css('left', focus);
+$('.dates p').css('width', pointWidth-1);
+$('.dates p:first-child').css('width', focus-(pointWidth/2)-6);
+
 $('.graph').scroll(function(){
 	// combine scrollposition x and focusModulus
 	scrollLeft = $('.graph').scrollLeft() + focusModulus;
@@ -376,7 +385,7 @@ $('.graph').scroll(function(){
 		currentScrollPos = scrollPos;
 		
 		// define the line that is highlighted by combining the scrollPos and the space between x=0 and the focuspoint
-		linePos = Math.ceil(focus/pointWidth)+scrollPos;
+		linePos = Math.ceil(focus/pointWidth-1)+scrollPos;
 
 		$(previousLine).removeClass('active');
 
