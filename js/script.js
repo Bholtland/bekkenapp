@@ -1,23 +1,62 @@
-var buttonNavMain = $('.button-nav-main');
-var buttonStats = $('nav ul li:nth-of-type(1)');
-var buttonScheme = $('nav ul li:nth-of-type(2)');
-var buttonSettings= $('nav ul li:nth-of-type(3)');
+// Defining global variables
+var buttonNavMain = $('.button-nav-main'),
+	buttonStats = $('nav ul li:nth-of-type(1)'),
+	buttonScheme = $('nav ul li:nth-of-type(2)'),
+	buttonSettings = $('nav ul li:nth-of-type(3)'),
 
-var currentScreen = "stats";
+	currentScreen,
+	centerOffset,
+	currentExercise,
+	vibrate = false,
+
+	exerciseScreen = $('.exercise-screen'),
+	breather = $('.breather'),
+	timer = $('.remaining-time span'),
+	durationGlobal = 1,
+
+	hasStarted = false,
+
+	// Stats screen
+	pointString = "",
+	feedback = [],
+	pointWidth,
+	pointHeight,
+	pointNum,
+	point,
+	pointString,
+	graphWidth,
+	graphHeight,
+	line,
+	lineHeight,
+
+	focus,
+	focusModulus,
+	currentScrollPos,
+	previousLine,
+	scrollLeft,
+	scrollPos,
+	linePos,
+	element,
+	elementNumber,
+	previousLine
+
+// Set the current screen to load
+currentScreen = "exercises";
 navigateTo(currentScreen);
 
+// Set width and height of some screens with JS. For some reason CSS doesn't like doing this. Should look into that again.
 $('main > div').css("width",$(window).width()*2);
 $('main > div > div').css("width",$(window).width());
 $('main > div').css("height",$(window).height());
 $('main').css("height", $(window).height());
 $('.screen-overlay').css("width", $(window).width());
-
 $('#scheme').css('width', $(window).width()-30);
 $('.stats').css('width', $(window).width());
 $('.navigation-bar').css('width', $(window).width());
 
-// NAV MENU
+// ========== NAV MENU ==========
 
+// Toggle navigation buttons onclick
 buttonNavMain.click(function(){
 	$('.tcon').toggleClass('tcon-transform');
 	$('nav').toggleClass('active');
@@ -26,67 +65,71 @@ buttonNavMain.click(function(){
 		$('.button-nav').click(function(){
 			$('.tcon').removeClass('tcon-transform');
 			$('nav').removeClass('active');
-		})		
-	}
+		});	
+	};
 });
 
-$('.button-nav-stats').click(function(){navigateTo('stats')})
-$('.button-nav-scheme').click(function(){navigateTo('exercises')})
+// Screen to navigate to per button
+$('.button-nav-stats').click(function(){navigateTo('stats')});
+$('.button-nav-scheme').click(function(){navigateTo('exercises')});
 
-// END NAV MENU
-
+// This function is used to navigate between screens
 function navigateTo(screen){
 	if (screen == 'exercises') {
 		$('main > div').css('left', '0');
 		$('.navigation-bar h1').removeClass('is-sub');
 		$('.button-nav-edit').removeClass('invisible-state');
-
 		$('.stats').fadeOut(200);
 
 		setTimeout(function(){$('#stats').hide()}, 300);
 		$('.scheme').show();		
 		$('#scheme').delay(300).fadeIn();
 		centerOnToday();
+	} 
 
-
-	} else if (screen == 'exercise') {
+	else if (screen == 'exercise') {
 		$('main > div').css('left', -$(window).width()-2);
 		$('.navigation-bar h1').addClass('is-sub');
 		$('.button-nav-edit').addClass('invisible-state');
-	} else if (screen == 'stats') {
+	}
+
+	else if (screen == 'stats') {
 		$('main > div').css('left', '0');
 		$('.navigation-bar h1').removeClass('is-sub');	
 		$('.button-nav-edit').addClass('invisible-state');	
-
 		$('.scheme').fadeOut(200);
 
 		setTimeout(function(){$('#scheme').hide()}, 300);
 		$('.stats').show();		
 		$('#stats').delay(300).fadeIn();
 	}
- }
+ };
 
-// EXERCISES
+// ========== END NAV MENU ==========
 
-var centerOffset = ($('#scheme').height() - $('.today').height()) /2;
+// ========== EXERCISES SCHEME ==========
 
+centerOffset = ($('#scheme').height() - $('.today').height()) /2;
+
+// A function to center on today's exercises
 function centerOnToday() {
-	$('#scheme').scrollTop(0)
+	$('#scheme').scrollTop(0);
 	$('#scheme').scrollTop($(".today").offset().top - centerOffset);
 }
 
 centerOnToday();
 
-// END EXERCISES
+// ========== END EXERCISES SCHEME ==========
 
-// OPEN EXERCISE 
+// ========== OPEN EXERCISE ========== 
 
-var currentExercise;
-
+// Navigate back and forth between exercises and exercise screen
 $('.today .exercise').click(function(){
 	if (!$(this).hasClass('done')) {
 		navigateTo('exercise');
-		currentExercise = $(this);
+
+		// Define the current exercise, to mark it as "done" later
+ 		currentExercise = $(this);
 	}
 });
 
@@ -96,10 +139,11 @@ $('.navigation-bar h1').click(function(){
 	}
 })
 
-// END OPEN EXERCISE
+// ========== END OPEN EXERCISE ==========
 
-// BREATHER
-var vibrate = false;
+// ========== BREATHER SETTINGS ==========
+
+// Check if the vibrate setting is on
 $('.vibrate').click(function(){
     if (this.checked) {
         vibrate = true;
@@ -108,39 +152,58 @@ $('.vibrate').click(function(){
     }
 }) 
 
-var exerciseScreen = $('.exercise-screen');
-var breather = $('.breather');
-var timer = $('.remaining-time span');
-var durationGlobal = 1;
+// ========== END BREATHER SETTINGS ==========
+
+// ========== EXERCISE ==========
+
 timer.html(durationGlobal+":00");
 
 function startExercise() {
+	// Defining local variables
+	var duration = $('.interval').val(),
+		counterText = $('.countdown-number'),
+		localSeconds = 1,
+		globalSeconds = 60,
+		didPrecount = false,
 
+		localCount,
+		globalCount,
+		currentDurationGlobal = durationGlobal;
+
+	// Create a function to clear all timers etc.
 	function clearBreather(){
 		clearInterval(globalCount);
 		clearInterval(localCount);
 		timer.html(durationGlobal+":00");
 		exerciseScreen.removeClass('active');
 		breather.removeClass('release');	
+		didPrecount = false;
+		breather.addClass('precount');
 	}
 
-	var duration = $('.interval').val();
-	$('svg .active-ring').css('animation-duration', duration+'s')
 	exerciseScreen.addClass('active');
-	var counter = 1;
-	var counterText = $('.countdown-number');
-		counterText.html(counter);
-	var didPrecount = false;
+	$('svg .active-ring').css('animation-duration', duration+'s');
 
-	var localCount = setInterval(function(){
+	counterText.html(localSeconds);
+	timer.html(currentDurationGlobal+":00");
+
+	currentDurationGlobal-=1;
+	
+	// Create a counter for relaxing and exerting 
+	localCount = setInterval(function(){	
+		localSeconds++;
+
 		if (didPrecount) {
 			breather.removeClass('precount');
 		}
 
-		if(counter==duration){
-			counter = 0;
+		// Toggle relaxation or exertion after given amount of seconds
+		if(localSeconds > duration){
+			localSeconds = 1;
 			didPrecount = true;			
 			breather.toggleClass('release');
+
+			// Vibrate of turned on
 			if (vibrate){
 				if (!breather.hasClass('release')){
 					navigator.vibrate(500);
@@ -151,55 +214,55 @@ function startExercise() {
 					},250);
 				}
 			}
-		}
-		counter++;
-		counterText.html(counter);
+		}		
+		counterText.html(localSeconds);
 	},1000);
 
-	var currentDurationGlobal = durationGlobal;
-	var seconds = 60;
+	// Create a counter for the global duration
+	globalCount = setInterval(function(){
+		globalSeconds--;
 
-	timer.html(currentDurationGlobal+":00");
-
-	currentDurationGlobal-=1;
-
-	var globalCount = setInterval(function(){
-		seconds--;
-		if(seconds==0-1){
-			seconds = 59;
+		// reduce one minute
+		if(globalSeconds==0-1){
+			globalSeconds = 59;
 			currentDurationGlobal--;
 		}
+
+		// if there are no minutes left, the countdown proceeds till 0
 		if(currentDurationGlobal==0) {
-			if (seconds < 10) {
-				seconds = "0"+seconds;
+			if (globalSeconds < 10) {
+				globalSeconds = "0"+globalSeconds;
 			}
-			if (seconds ==00) {
+			if (globalSeconds ==00) {
+				// Clear everything and show the feedback screen
 				clearBreather();
 				popUpScreen($('.feedback'), $('.feedback button'), 1300, false);
 			}
 		}
 
-		else if (seconds < 10) {
-			seconds = "0"+seconds;
+		else if (globalSeconds < 10) {
+			globalSeconds = "0"+globalSeconds;
 		}
-		timer.html(currentDurationGlobal+":"+seconds);
+		timer.html(currentDurationGlobal+":"+globalSeconds);
 	},1000);
 
+	// When clicking reset, all is cleared
 	$('.reset').click(function(){
 		clearBreather();
 	});
 
 }
 
-// END BREATHER
+// The button that opens the local "settings" screen
+$('.button-settings').click(function(){popUpScreen($('.settings'), $('.screen-overlay'), 0, true)});
 
-// CONTROL BUTTONS
+// ========== END EXERCISE ==========
 
-var hasStarted = false;
+// ========== CONTROL BUTTONS ==========
 
+// When clicking start and the counter hasn't started yet, start the exercise
 $('.start').click(function(){
 	if (hasStarted) {
-
 		hasStarted = false;
 	} else {
 		startExercise();
@@ -207,10 +270,13 @@ $('.start').click(function(){
 	}
 });
 
-// END CONTROL BUTTONS
+// ========== END CONTROL BUTTONS ==========
 
-// POP UP SCREEN
+// ========== POP UP SCREEN ==========
 
+// A function for calling general popup screens
+// screenElement is the screen to be called, closingItem is the element that closes the window on click
+// screenHideDelay is the delay on closing the popup, hideScreenElement hides the screen except for the background overlay
 function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElement) {
 	$('.screen-overlay').fadeIn();
 	screenElement.fadeIn();
@@ -219,6 +285,7 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 		if (screenHideDelay) {
 			$('.screen-overlay').delay(screenHideDelay).fadeOut();
 		}
+
 		else {
 			$('.screen-overlay').fadeOut();
 		}	
@@ -229,12 +296,11 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 	});
 };
 
-$('.button-settings').click(function(){popUpScreen($('.settings'), $('.screen-overlay'), 0, true)});
+// ========== END POP UP SCREEN ==========
 
-// END POP UP SCREEN
+// ========== FEEDBACK SCREEN ==========
 
-// FEEDBACK SCREEN
-
+// When clicking the feedback screen button, the corresponding animation is showed
 $('.feedback button').click(function(){
 
 	$('.feedback button').fadeOut(200);
@@ -258,16 +324,12 @@ $('.feedback button').click(function(){
 	},1100);
 })
 
-// END FEEDBACK SCREEN
+// ========== END FEEDBACK SCREEN ==========
 
-// STATS
+// ========== STATS ==========
 
-// Graph render
-
-var pointString = "";
-// var feedback = [3,5,6,8,10,9,6,7,10,1,5,7,3,1,8,9];
-
-var feedback = [
+// An array that contains the user's feedback
+feedback = [
 	[4,"Ik had ergens last van", "19-07"],
 	[6,"Jep last", "20-07"],
 	[10,"Iets", "21-07"],
@@ -282,10 +344,12 @@ var feedback = [
 	[7,"Ik had last", "30-07"]
 ];
 
-var pointWidth = $(window).width()/3.5;
+// Defining the space between feedback points
+pointWidth = $(window).width()/3.5;
 
-var graphWidth = (feedback.length -1) * pointWidth;
-var graphHeight = 400;
+// Defining the graph size based on the amount of feedback
+graphWidth = (feedback.length -1) * pointWidth;
+graphHeight = 400;
 
 $('.graphSVG').attr('width' ,graphWidth);
 $('.graphSVG').attr('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
@@ -294,56 +358,70 @@ $('.line-canvas').css('width', graphWidth);
 $('.line-canvas').css('height', graphHeight);
 $('.overflow-extender').css('width', graphWidth);
 
+// A loop that takes data from the feedback array and visualizes that into the graph
 for(i=0; i < feedback.length; i++) {
-	var pointHeight = (feedback[i][0]*-graphHeight/10)+graphHeight;
-	var pointNum = i*pointWidth;
-	var point = pointNum + " " + pointHeight + " ";
+	// Define absolute height of an SVG poly
+	pointHeight = (feedback[i][0]*-graphHeight/10)+graphHeight;
 
-	var lineHeight = (graphHeight/10)*feedback[i][0]+"px";
-	var line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;'></span>";
-	$('.line-canvas').append(line);
+	// Define the x position of the poly
+	pointNum = i*pointWidth;
 
+	// Create a poly
+	point = pointNum + " " + pointHeight + " ";
+
+	// Build a string to create the SVG width
 	pointString = pointString + point;
 
+	// Define the height of a line and create a span element to add to the DOM
+	lineHeight = (graphHeight/10)*feedback[i][0]+"px";
+	line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;'></span>";
+	$('.line-canvas').append(line);
 }
 
-pointString = pointString + (feedback.length -1)*pointWidth + " " + graphHeight + " 0 " + graphHeight;
-
+// Finish the string with standard remaining poly's and add it to the DOM
+pointString = pointString + ((feedback.length -1)*pointWidth) + " " + graphHeight + " 0 " + graphHeight;
 $('#graphPoly').attr('points', pointString);
 
-// End graph render
+// GRAPH FOCUSPOINT
 
-// Graph focuspoint
+// Create a focus in which the screen will focus on a given feedbackpoint. The variable focus is the position x of the focuspoint
+focus = ($(window).width() - pointWidth) /2;
 
-var focus = ($(window).width() - pointWidth) /2;
-
-var focusModulus = focus % pointWidth;
-
-var currentScrollPos;
-var previousLine;
+// Define the number that remains when fitting the pointWidth in our focus variable
+focusModulus = focus % pointWidth;
 
 $('.graph').scroll(function(){
-	var scrollLeft = $('.graph').scrollLeft() + focusModulus;
-	var scrollPos = Math.ceil(scrollLeft/pointWidth);
+	// combine scrollposition x and focusModulus
+	scrollLeft = $('.graph').scrollLeft() + focusModulus;
 
+	// Divide the absolute scrollposition by the width of a point, so we'll get numbers like 1,2,3 etc. which will define feedbackpoints
+ 	scrollPos = Math.ceil(scrollLeft/pointWidth);
+
+	// Only fire this when a new point is highlighted within our focuspoint (Some optimization)
 	if (scrollPos != currentScrollPos) {
 		currentScrollPos = scrollPos;
 		
-		var linePos = Math.ceil(focus/pointWidth)+Math.ceil(scrollLeft/pointWidth);
+		// define the line that is highlighted by combining the scrollPos and the space between x=0 and the focuspoint
+		linePos = Math.ceil(focus/pointWidth)+scrollPos;
 
-		$(previousLine).removeClass('active')
-		var element = '.line-canvas span:nth-of-type('+linePos+')';
+		$(previousLine).removeClass('active');
+
+		element = '.line-canvas span:nth-of-type('+linePos+')';
+		$(element).addClass('active');
+
+		// Get the currently higlighted element
 		elementNumber = $(element).index();
-
-		$(element).addClass('active');	
+		
+		// Add the corresponding data to the DOM
 		$('.vas-grade').html(feedback[elementNumber][0]);
 		$('.vas-results > div > p').html(feedback[elementNumber][1]);
 		$('.vas-results > p').html(feedback[elementNumber][2]);
 
+		// Set the current element as previous so it's "active" class will be removed when another point is highlighted
 		previousLine = element;
 	}
 })
 
-// End graph focuspoint
+// END GRAPH FOCUSPOINT
 
-// END STATS
+// ========== END STATS ==========
