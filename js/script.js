@@ -12,7 +12,7 @@ var buttonNavMain = $('.button-nav-main'),
 	exerciseScreen = $('.exercise-screen'),
 	breather = $('.breather'),
 	timer = $('.remaining-time span'),
-	durationGlobal = 1,
+	sessions = 1,
 
 	hasStarted = false,
 
@@ -156,25 +156,20 @@ $('.vibrate').click(function(){
 
 // ========== EXERCISE ==========
 
-timer.html(durationGlobal+":00");
-
 function startExercise() {
 	// Defining local variables
 	var duration = $('.interval').val(),
 		counterText = $('.countdown-number'),
 		localSeconds = 1,
-		globalSeconds = 60,
 		didPrecount = false,
 
 		localCount,
-		globalCount,
-		currentDurationGlobal = durationGlobal;
+		sessionsToGo = sessions;
 
 	// Create a function to clear all timers etc.
 	function clearBreather(){
-		clearInterval(globalCount);
 		clearInterval(localCount);
-		timer.html(durationGlobal+":00");
+		timer.html(sessions);
 		exerciseScreen.removeClass('active');
 		breather.removeClass('release');	
 		didPrecount = false;
@@ -185,9 +180,7 @@ function startExercise() {
 	$('svg .active-ring').css('animation-duration', duration+'s');
 
 	counterText.html(localSeconds);
-	timer.html(currentDurationGlobal+":00");
-
-	currentDurationGlobal-=1;
+	timer.html(sessionsToGo)
 	
 	// Create a counter for relaxing and exerting 
 	localCount = setInterval(function(){	
@@ -199,9 +192,13 @@ function startExercise() {
 
 		// Toggle relaxation or exertion after given amount of seconds
 		if(localSeconds > duration){
+			if (didPrecount && !breather.hasClass('release')) {
+				sessionsToGo--;
+			}
 			localSeconds = 1;
 			didPrecount = true;			
 			breather.toggleClass('release');
+			timer.html(sessionsToGo);
 
 			// Vibrate of turned on
 			if (vibrate){
@@ -216,34 +213,11 @@ function startExercise() {
 			}
 		}		
 		counterText.html(localSeconds);
-	},1000);
 
-	// Create a counter for the global duration
-	globalCount = setInterval(function(){
-		globalSeconds--;
-
-		// reduce one minute
-		if(globalSeconds==0-1){
-			globalSeconds = 59;
-			currentDurationGlobal--;
+		if (sessionsToGo == 0) {
+			clearBreather();
+			popUpScreen($('.feedback'), $('.feedback button'), 1300, false);
 		}
-
-		// if there are no minutes left, the countdown proceeds till 0
-		if(currentDurationGlobal==0) {
-			if (globalSeconds < 10) {
-				globalSeconds = "0"+globalSeconds;
-			}
-			if (globalSeconds ==00) {
-				// Clear everything and show the feedback screen
-				clearBreather();
-				popUpScreen($('.feedback'), $('.feedback button'), 1300, false);
-			}
-		}
-
-		else if (globalSeconds < 10) {
-			globalSeconds = "0"+globalSeconds;
-		}
-		timer.html(currentDurationGlobal+":"+globalSeconds);
 	},1000);
 
 	// When clicking reset, all is cleared
