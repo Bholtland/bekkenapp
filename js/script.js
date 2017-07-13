@@ -1,17 +1,49 @@
 // Defining global variables
-var buttonNavMain = $('.button-nav-main'),
-	buttonStats = $('nav ul li:nth-of-type(1)'),
-	buttonScheme = $('nav ul li:nth-of-type(2)'),
-	buttonSettings = $('nav ul li:nth-of-type(3)'),
+var buttonNavMain = document.querySelector('.button-nav-main'),
+	buttonStats = document.querySelector('nav ul li:nth-of-type(1)'),
+	buttonScheme = document.querySelector('nav ul li:nth-of-type(2)'),
+	buttonSettings = document.querySelector('nav ul li:nth-of-type(3)'),
+
+	screens = document.querySelectorAll('main > div > section'),
+	screenCanvas = document.querySelector('main > div'),
+	screenOverlay = document.querySelector('.screen-overlay'),
+	navBar = document.querySelector('.navigation-bar'),
+	navBarTitle = document.querySelector('.navigation-bar h1'),
+	buttonNavEdit = document.querySelector('.button-nav-edit'),
 
 	currentScreen,
 	centerOffset,
 	currentExercise,
 	vibrate = false,
 
-	exerciseScreen = $('.exercise-screen'),
-	breather = $('.breather'),
-	timer = $('.remaining-time span'),
+	exerciseScreen = document.querySelector('.exercise-screen'),
+	breather = document.querySelector('.breather'),
+	timer = document.querySelector('.remaining-time span'),
+	screenScheme = document.querySelector('#scheme'),
+	screenStats = document.querySelector('#stats'),
+	today = document.querySelector('.today'),
+	todayExercises = document.querySelectorAll('.today .exercise'),
+
+	stats = document.querySelector('.stats'),
+
+	buttonExerciseVibrate = document.querySelector('.vibrate'),
+	buttonExerciseSettings = document.querySelector('.button-settings'),
+	buttonExerciseStart = document.querySelector('.start'),
+	exerciseSettings = document.querySelector('.settings'),
+
+	feedbackScreen = document.querySelector('.feedback'),
+	feedbackButton = document.querySelector('.feedback button'),
+	lineCanvas = document.querySelector('.line-canvas'),
+	graphPoly = document.querySelector('#graphPoly'),
+	graph = document.querySelector('.graph'),
+	graphBackground = document.querySelector('.graph-background'),
+	dates = document.querySelector('.dates'),
+	datesElement = document.querySelector('.dates p'),
+	datesElementFirst = document.querySelector('.dates p:first-child'),
+	graphVasGrade = document.querySelector('.vas-grade'),
+	graphVasDate = document.querySelector('.vas-results > div > p'),
+	graphVasText = document.querySelector('.vas-results > p'),
+
 	sessions = 1,
 
 	hasStarted = false,
@@ -38,72 +70,91 @@ var buttonNavMain = $('.button-nav-main'),
 	linePos,
 	element,
 	elementNumber,
-	previousLine
+	previousLine;
+
+function hd(element){
+	element.classList.add('invisible');
+}
+
+function sw(element){
+	element.classList.remove('invisible');
+}
 
 // Set the current screen to load
-currentScreen = "stats";
+currentScreen = "exercise";
 navigateTo(currentScreen);
 
-// Set width and height of some screens with JS. For some reason CSS doesn't like doing this. Should look into that again.
-$('main > div').css("width",$(window).width()*2);
-$('main > div > div').css("width",$(window).width());
-$('main > div').css("height",$(window).height());
-$('main').css("height", $(window).height());
-$('.screen-overlay').css("width", $(window).width());
-$('#scheme').css('width', $(window).width()-30);
-$('.stats').css('width', $(window).width());
-$('.navigation-bar').css('width', $(window).width());
-$('.graph-background').css("height",$(window).height());
-$('.graph').css("height",$(window).height());
+// Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
+document.querySelector('main > div').style.width = window.innerWidth*2 + 'px';
+
+for(var i=0; i < screens.length; i++) {
+	screens[i].style.width = window.innerWidth + 'px';
+}
+
+screenCanvas.style.height = window.innerHeight + 'px';
+document.querySelector('main').style.height = window.innerHeight + 'px';
+screenOverlay.style.width = window.innerWidth + 'px';
+screenScheme.style.width = window.innerWidth-30 + 'px';
+document.querySelector('.stats').style.width = window.innerWidth + 'px';
+navBar.style.width = window.innerWidth + 'px';
+document.querySelector('.graph-background').style.height = window.innerHeight + 'px';
+document.querySelector('.graph').style.height = window.innerHeight + 'px';
 
 // ========== NAV MENU ==========
 
 // Toggle navigation buttons onclick
-buttonNavMain.click(function(){
-	$('.tcon').toggleClass('tcon-transform');
-	$('nav').toggleClass('active');
+buttonNavMain.addEventListener('click',function(){
+	var navMainButton = document.querySelector('.tcon'),
+		nav = document.querySelector('nav'),
+		navButtons = document.querySelectorAll('.button-nav')
 
-	if ($('nav').hasClass('active')) {
-		$('.button-nav').click(function(){
-			$('.tcon').removeClass('tcon-transform');
-			$('nav').removeClass('active');
-		});	
+
+	navMainButton.classList.toggle('tcon-transform');
+	nav.classList.toggle('active');
+
+	if (nav.classList.contains('active')) {
+		for(var i=0; i < navButtons.length; i++) {
+			navButtons[i].addEventListener('click', function(){
+				navMainButton.classList.remove('tcon-transform');
+				nav.classList.remove('active');
+			});
+		};
 	};
 });
 
 // Screen to navigate to per button
-$('.button-nav-stats').click(function(){navigateTo('stats')});
-$('.button-nav-scheme').click(function(){navigateTo('exercises')});
+document.querySelector('.button-nav-stats').addEventListener('click', function(){navigateTo('stats')});
+document.querySelector('.button-nav-scheme').addEventListener('click', function(){navigateTo('exercises')});
 
 // This function is used to navigate between screens
 function navigateTo(screen){
 	if (screen == 'exercises') {
-		$('main > div').css('left', '0');
-		$('.navigation-bar h1').removeClass('is-sub');
-		$('.button-nav-edit').removeClass('invisible-state');
-		$('.stats').fadeOut(200);
+		screenCanvas.style.left = '0';
+		navBarTitle.classList.remove('is-sub');
+		buttonNavEdit.classList.remove('invisible-state');
+		hd(stats);
 
-		setTimeout(function(){$('#stats').hide()}, 300);
-		$('.scheme').show();		
-		$('#scheme').delay(300).fadeIn();
+		setTimeout(function(){hd(screenStats)}, 300);
+		sw(scheme);		
+		setTimeout(function(){sw(screenScheme)})
 		centerOnToday();
 	} 
 
 	else if (screen == 'exercise') {
-		$('main > div').css('left', -$(window).width()-2);
-		$('.navigation-bar h1').addClass('is-sub');
-		$('.button-nav-edit').addClass('invisible-state');
+		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
+		navBarTitle.classList.add('is-sub');
+		buttonNavEdit.classList.add('invisible-state');
 	}
 
 	else if (screen == 'stats') {
-		$('main > div').css('left', '0');
-		$('.navigation-bar h1').removeClass('is-sub');	
-		$('.button-nav-edit').addClass('invisible-state');	
-		$('.scheme').fadeOut(200);
+		screenCanvas.style.left = '0';
+		navBarTitle.classList.remove('is-sub');	
+		buttonNavEdit.classList.add('invisible-state');	
+		hd(scheme);
 
-		setTimeout(function(){$('#scheme').hide()}, 300);
-		$('.stats').show();		
-		$('#stats').delay(300).fadeIn();
+		setTimeout(function(){hd(scheme)}, 300);
+		sw(stats)		
+		setTimeout(function(){sw(screenStats)}, 300);
 	}
  };
 
@@ -111,14 +162,12 @@ function navigateTo(screen){
 
 // ========== EXERCISES SCHEME ==========
 
-centerOffset = ($('#scheme').height() - $('.today').height()) /2;
+centerOffset = (screenScheme.clientHeight - today.clientHeight) /2;
 
 // A function to center on today's exercises
 function centerOnToday() {
-	$('#scheme').scrollTop(0);
-	$('#scheme').scrollTop($(".today").offset().top - centerOffset);
+	screenScheme.scrollTop = (today.offsetTop - centerOffset);
 }
-
 centerOnToday();
 
 // ========== END EXERCISES SCHEME ==========
@@ -126,17 +175,19 @@ centerOnToday();
 // ========== OPEN EXERCISE ========== 
 
 // Navigate back and forth between exercises and exercise screen
-$('.today .exercise').click(function(){
-	if (!$(this).hasClass('done')) {
-		navigateTo('exercise');
+for (var i=0; i < todayExercises.length; i++) {
+	todayExercises[i].addEventListener('click', function(){
+		if (!this.classList.contains('done')) {
+			navigateTo('exercise');
 
-		// Define the current exercise, to mark it as "done" later
- 		currentExercise = $(this);
-	}
-});
+			// Define the current exercise, to mark it as "done" later
+	 		currentExercise = this;
+		}
+	});	
+}
 
-$('.navigation-bar h1').click(function(){
-	if ($(this).hasClass('is-sub')) {
+navBarTitle.addEventListener('click',function(){
+	if (this.classList.contains('is-sub')) {
 		navigateTo('exercises');
 	}
 })
@@ -146,22 +197,27 @@ $('.navigation-bar h1').click(function(){
 // ========== BREATHER SETTINGS ==========
 
 // Check if the vibrate setting is on
-$('.vibrate').click(function(){
+buttonExerciseVibrate.addEventListener('click', function(){
     if (this.checked) {
         vibrate = true;
     } else {
     	vibrate = false;
     }
-}) 
+}); 
 
 // ========== END BREATHER SETTINGS ==========
 
 // ========== EXERCISE ==========
 
+timer.innerHTML = sessions;
+
 function startExercise() {
 	// Defining local variables
-	var duration = $('.interval').val(),
-		counterText = $('.countdown-number'),
+	var duration = document.querySelector('.interval').value,
+		counterText = document.querySelector('.countdown-number'),
+		activeRing = document.querySelector('svg .active-ring'),
+		resetButton = document.querySelector('.reset'),
+
 		localSeconds = 1,
 		didPrecount = false,
 
@@ -171,40 +227,41 @@ function startExercise() {
 	// Create a function to clear all timers etc.
 	function clearBreather(){
 		clearInterval(localCount);
-		timer.html(sessions);
-		exerciseScreen.removeClass('active');
-		breather.removeClass('release');	
+		timer.innerHTML = sessions;
+		exerciseScreen.classList.remove('active');
+		breather.classList.remove('release');	
 		didPrecount = false;
-		breather.addClass('precount');
+		breather.classList.add('precount');
 	}
 
-	exerciseScreen.addClass('active');
-	$('svg .active-ring').css('animation-duration', duration+'s');
+	exerciseScreen.classList.add('active');
+	activeRing.style.animationDuration = duration+'s';
 
-	counterText.html(localSeconds);
-	timer.html(sessionsToGo)
+	counterText.innerHTML = localSeconds;
+	timer.innerHTML = sessionsToGo;
 	
 	// Create a counter for relaxing and exerting 
 	localCount = setInterval(function(){	
 		localSeconds++;
 
-		if (didPrecount) {
-			breather.removeClass('precount');
-		}
-
 		// Toggle relaxation or exertion after given amount of seconds
 		if(localSeconds > duration){
-			if (didPrecount && !breather.hasClass('release')) {
-				sessionsToGo--;
+
+			localSeconds = 1;		
+			
+			if (didPrecount) {
+				if (breather.classList.contains('release')) {
+					sessionsToGo--;	
+				}
+				breather.classList.toggle('release');
+
 			}
-			localSeconds = 1;
-			didPrecount = true;			
-			breather.toggleClass('release');
-			timer.html(sessionsToGo);
+			
+			timer.innerHTML = sessionsToGo;
 
 			// Vibrate of turned on
 			if (vibrate){
-				if (!breather.hasClass('release')){
+				if (!breather.classList.contains('release')){
 					navigator.vibrate(500);
 				} else {
 					navigator.vibrate(80);
@@ -213,31 +270,36 @@ function startExercise() {
 					},250);
 				}
 			}
+			if (!didPrecount) {
+				breather.classList.remove('release');
+			}
+			didPrecount = true;
+			breather.classList.remove('precount');
 		}		
-		counterText.html(localSeconds);
+		counterText.innerHTML = localSeconds;
 
 		if (sessionsToGo == 0) {
 			clearBreather();
-			popUpScreen($('.feedback'), $('.feedback button'), 1300, false);
+			popUpScreen(feedbackScreen, feedbackButton, 1300, false);
 		}
 	},1000);
 
 	// When clicking reset, all is cleared
-	$('.reset').click(function(){
+	resetButton.addEventListener('click',function(){
 		clearBreather();
 	});
 
 }
 
 // The button that opens the local "settings" screen
-$('.button-settings').click(function(){popUpScreen($('.settings'), $('.screen-overlay'), 0, true)});
+buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, screenOverlay, 0, true)});
 
 // ========== END EXERCISE ==========
 
 // ========== CONTROL BUTTONS ==========
 
 // When clicking start and the counter hasn't started yet, start the exercise
-$('.start').click(function(){
+buttonExerciseStart.addEventListener('click',function(){
 	if (hasStarted) {
 		hasStarted = false;
 	} else {
@@ -254,22 +316,27 @@ $('.start').click(function(){
 // screenElement is the screen to be called, closingItem is the element that closes the window on click
 // screenHideDelay is the delay on closing the popup, hideScreenElement hides the screen except for the background overlay
 function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElement) {
-	$('.screen-overlay').fadeIn();
-	screenElement.fadeIn();
+	sw(screenOverlay);
+	sw(screenElement);
 
-	closingItem.click(function(){
+	function closePopup(){
 		if (screenHideDelay) {
-			$('.screen-overlay').delay(screenHideDelay).fadeOut();
+			setTimeout(function(){
+				hd(screenOverlay);
+			},screenHideDelay);
 		}
 
 		else {
-			$('.screen-overlay').fadeOut();
+			hd(screenOverlay);
 		}	
 
 		if (hideScreenElement) {	
-			screenElement.fadeOut();
-		}
-	});
+			hd(screenElement);
+		}		
+		this.removeEventListener('click', closePopup);
+	};
+
+	closingItem.addEventListener('click',closePopup);
 };
 
 // ========== END POP UP SCREEN ==========
@@ -277,24 +344,30 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 // ========== FEEDBACK SCREEN ==========
 
 // When clicking the feedback screen button, the corresponding animation is showed
-$('.feedback button').click(function(){
+feedbackButton.addEventListener('click',function(){
+	var form = document.querySelector('.feedback form'),
+		absoluteWrapper = document.querySelector('.absolute-wrapper'),
+		checkmark = document.querySelector('.checkmark');
 
-	$('.feedback button').fadeOut(200);
-	$('.feedback > div > div').fadeOut(200);
-
-	$('.absolute-wrapper').addClass('active');
+	sw(absoluteWrapper);
+	hd(feedbackButton);
+	hd(form);
+	absoluteWrapper.classList.add('active');
 
 	setTimeout(function(){
-		$('.checkmark').fadeOut(100);
+		hd(checkmark);
 		setTimeout(function(){
-			$('.absolute-wrapper').removeClass('active');
-			$('.checkmark').show();
-			$('.feedback > div > div').show();
-			$('.feedback button').show();
-			$('.feedback').hide();
+			absoluteWrapper.classList.remove('active');
+			sw(checkmark);
+			sw(form);
+			sw(feedbackButton);
+			hd(feedbackScreen);
+			hd(absoluteWrapper)
 			navigateTo('exercises');
 
-			setTimeout(function(){currentExercise.addClass('done');}, 400);			
+			if (currentExercise) {
+				setTimeout(function(){currentExercise.classList.add('done');}, 400);	
+			}		
 
 		},200);
 	},1100);
@@ -321,16 +394,18 @@ feedback = [
 ];
 
 // Defining the space between feedback points
-pointWidth = $(window).width()/3.5;
+pointWidth = window.innerWidth/3.5;
 
 // Defining the graph size based on the amount of feedback
 graphWidth = (feedback.length -1) * pointWidth;
 graphHeight = 400;
 
-$('.graphSVG').attr('width' ,graphWidth);
-$('.graphSVG').attr('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
-$('.line-canvas').css('width', graphWidth+10);
-$('.line-canvas').css('height', graphHeight);
+graphSVG = document.querySelector('.graphSVG');
+
+graphSVG.setAttribute('width' ,graphWidth);
+graphSVG.setAttribute('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
+lineCanvas.style.width = graphWidth+10+'px';
+lineCanvas.style.height = graphHeight+'px';
 
 // A loop that takes data from the feedback array and visualizes that into the graph
 for(i=0; i < feedback.length; i++) {
@@ -356,26 +431,30 @@ for(i=0; i < feedback.length; i++) {
 
 // Finish the string with standard remaining poly's and add it to the DOM
 pointString = pointString + ((feedback.length -1)*pointWidth) + " " + graphHeight + " 0 " + graphHeight;
-$('#graphPoly').attr('points', pointString);
+graphPoly.setAttribute('points', pointString);
 
 // GRAPH FOCUSPOINT
 
 // Create a focus in which the screen will focus on a given feedbackpoint. The variable focus is the position x of the focuspoint
-focus = ($(window).width() - pointWidth) /2;
+focus = (window.innerWidth - pointWidth) /2;
 
 // Define the number that remains when fitting the pointWidth in our focus variable
 focusModulus = focus % pointWidth;
 
-$('.graph-background').css('width', graphWidth+(focus*2)+10);
-$('.dates').css('width', graphWidth+(focus*2)+10);
-$('.line-canvas').css('left', focus);
-$('.graphSVG').css('left', focus);
-$('.dates p').css('width', pointWidth-1);
-$('.dates p:first-child').css('width', focus-(pointWidth/2)-6);
+graphBackground.style.width = graphWidth+(focus*2)+10+'px';
+dates.style.width =  graphWidth+(focus*2)+10+'px';
+lineCanvas.style.left = focus+'px';
+graphSVG.style.left = focus+'px';
 
-$('.graph').scroll(function(){
+for (var i=0; i < datesElement.length; i++) {
+	datesElement[i].style.width = pointWidth-1+'px';
+}
+
+datesElementFirst.style.width = focus-(pointWidth/2)-6+'px';
+
+graph.addEventListener('scroll',function(){
 	// combine scrollposition x and focusModulus
-	scrollLeft = $('.graph').scrollLeft() + focusModulus;
+	scrollLeft = graph.scrollLeft + focusModulus;
 
 	// Divide the absolute scrollposition by the width of a point, so we'll get numbers like 1,2,3 etc. which will define feedbackpoints
  	scrollPos = Math.ceil(scrollLeft/pointWidth);
@@ -387,18 +466,20 @@ $('.graph').scroll(function(){
 		// define the line that is highlighted by combining the scrollPos and the space between x=0 and the focuspoint
 		linePos = Math.ceil(focus/pointWidth-1)+scrollPos;
 
-		$(previousLine).removeClass('active');
+		if (previousLine){
+			previousLine.classList.remove('active');
+		}
 
-		element = '.line-canvas span:nth-of-type('+linePos+')';
-		$(element).addClass('active');
+		element = document.querySelector('.line-canvas span:nth-of-type('+linePos+')');
+		element.classList.add('active');
 
 		// Get the currently higlighted element
-		elementNumber = $(element).index();
+		elementNumber = linePos;
 		
 		// Add the corresponding data to the DOM
-		$('.vas-grade').html(feedback[elementNumber][0]);
-		$('.vas-results > div > p').html(feedback[elementNumber][1]);
-		$('.vas-results > p').html(feedback[elementNumber][2]);
+		graphVasGrade.innerHTML = feedback[elementNumber][0];
+		graphVasDate.innerHTML = feedback[elementNumber][1];
+		graphVasText.innerHTML = feedback[elementNumber][2];
 
 		// Set the current element as previous so it's "active" class will be removed when another point is highlighted
 		previousLine = element;

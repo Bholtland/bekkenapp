@@ -59,7 +59,7 @@ input[type="number"] {
 }
 
 .absolute-wrapper {
-	display: none;
+	display: block;
 	position: absolute;
 	top: 0;
 	width: 100%;
@@ -425,7 +425,7 @@ main > div {
 	overflow: hidden;
 }
 
-main > div > div:first-child {
+main > div > section:first-child {
 	border-right: 1px solid $color-4;
 }
 
@@ -784,7 +784,7 @@ main > div > div:first-child {
 }
 
 .settings {
-	display: none;
+	display: block;
 	background-color: $white;
 	border-radius: 12px;
 	position: absolute;
@@ -849,7 +849,7 @@ main > div > div:first-child {
 }
 
 .feedback {
-	display: none;
+	display: block;
 	width: 100%;
 	position: absolute;	
 	top: 0;
@@ -862,7 +862,7 @@ main > div > div:first-child {
 		margin-top: 40px;
 		z-index: 11;
 
-		> div {
+		> form {
 			padding: 10px;
 		}
 	}
@@ -914,7 +914,7 @@ main > div > div:first-child {
 
 .screen-overlay {
 	position: absolute;
-	display: none;
+	display: block;
 	top: -15px;
 	left:-15px;
 	width: 100%;
@@ -994,7 +994,7 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 // STATS
 
 #stats {
-	display: none;
+	display: block;
 
 	.stats {
 		position: relative;
@@ -1146,6 +1146,10 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 			}
 		}		
 	}
+}
+
+.invisible {
+	display: none !important;
 }
 
 // END STATS

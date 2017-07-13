@@ -28,7 +28,7 @@ input[type="number"] {
   border-radius: 4px; }
 
 .absolute-wrapper {
-  display: none;
+  display: block;
   position: absolute;
   top: 0;
   width: 100%; }
@@ -315,7 +315,7 @@ main > div {
   left: 0;
   overflow: hidden; }
 
-main > div > div:first-child {
+main > div > section:first-child {
   border-right: 1px solid #818c98; }
 
 .timeline {
@@ -564,7 +564,7 @@ main > div > div:first-child {
       width: 34%; }
 
 .settings {
-  display: none;
+  display: block;
   background-color: #ffffff;
   border-radius: 12px;
   position: absolute;
@@ -613,7 +613,7 @@ main > div > div:first-child {
     left: 6px; }
 
 .feedback {
-  display: none;
+  display: block;
   width: 100%;
   position: absolute;
   top: 0;
@@ -624,7 +624,7 @@ main > div > div:first-child {
     position: relative;
     margin-top: 40px;
     z-index: 11; }
-    .feedback > div > div {
+    .feedback > div > form {
       padding: 10px; }
   .feedback h2 {
     text-align: center;
@@ -661,7 +661,7 @@ main > div > div:first-child {
 
 .screen-overlay {
   position: absolute;
-  display: none;
+  display: block;
   top: -15px;
   left: -15px;
   width: 100%;
@@ -712,7 +712,7 @@ main > div > div:first-child {
   top: 200px; }
 
 #stats {
-  display: none; }
+  display: block; }
   #stats .stats {
     position: relative; }
   #stats .graph {
@@ -822,5 +822,8 @@ main > div > div:first-child {
       padding: 10px; }
       #stats .vas-results > div p {
         color: #58687a; }
+
+.invisible {
+  display: none !important; }
 
 /*# sourceMappingURL=style.css.map */
