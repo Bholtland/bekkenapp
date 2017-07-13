@@ -72,6 +72,7 @@ var buttonNavMain = document.querySelector('.button-nav-main'),
 	elementNumber,
 	previousLine;
 
+// Hide and show functions
 function hd(element){
 	element.classList.add('invisible');
 }
@@ -474,7 +475,8 @@ graph.addEventListener('scroll',function(){
 		element.classList.add('active');
 
 		// Get the currently higlighted element
-		elementNumber = linePos;
+		elementNumber = linePos-1;
+		console.log(elementNumber)
 		
 		// Add the corresponding data to the DOM
 		graphVasGrade.innerHTML = feedback[elementNumber][0];
