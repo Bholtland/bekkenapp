@@ -1,48 +1,48 @@
 // Defining global variables
-var buttonNavMain = document.querySelector('.button-nav-main'),
-	buttonStats = document.querySelector('nav ul li:nth-of-type(1)'),
-	buttonScheme = document.querySelector('nav ul li:nth-of-type(2)'),
-	buttonSettings = document.querySelector('nav ul li:nth-of-type(3)'),
+var buttonNavMain = q('.button-nav-main'),
+	buttonStats = q('nav ul li:nth-of-type(1)'),
+	buttonScheme = q('nav ul li:nth-of-type(2)'),
+	buttonSettings = q('nav ul li:nth-of-type(3)'),
 
-	screens = document.querySelectorAll('main > div > section'),
-	screenCanvas = document.querySelector('main > div'),
-	screenOverlay = document.querySelector('.screen-overlay'),
-	navBar = document.querySelector('.navigation-bar'),
-	navBarTitle = document.querySelector('.navigation-bar h1'),
-	buttonNavEdit = document.querySelector('.button-nav-edit'),
+	screens = qAll('main > div > section'),
+	screenCanvas = q('main > div'),
+	screenOverlay = q('.screen-overlay'),
+	navBar = q('.navigation-bar'),
+	navBarTitle = q('.navigation-bar h1'),
+	buttonNavEdit = q('.button-nav-edit'),
 
 	currentScreen,
 	centerOffset,
 	currentExercise,
 	vibrate = false,
 
-	exerciseScreen = document.querySelector('.exercise-screen'),
-	breather = document.querySelector('.breather'),
-	timer = document.querySelector('.remaining-time span'),
-	screenScheme = document.querySelector('#scheme'),
-	screenStats = document.querySelector('#stats'),
-	today = document.querySelector('.today'),
-	todayExercises = document.querySelectorAll('.today .exercise'),
+	exerciseScreen = q('.exercise-screen'),
+	breather = q('.breather'),
+	timer = q('.remaining-time span'),
+	screenScheme = q('#scheme'),
+	screenStats = q('#stats'),
+	today = q('.today'),
+	todayExercises = qAll('.today .exercise'),
 
-	stats = document.querySelector('.stats'),
+	stats = q('.stats'),
 
-	buttonExerciseVibrate = document.querySelector('.vibrate'),
-	buttonExerciseSettings = document.querySelector('.button-settings'),
-	buttonExerciseStart = document.querySelector('.start'),
-	exerciseSettings = document.querySelector('.settings'),
+	buttonExerciseVibrate = q('.vibrate'),
+	buttonExerciseSettings = q('.button-settings'),
+	buttonExerciseStart = q('.start'),
+	exerciseSettings = q('.settings'),
 
-	feedbackScreen = document.querySelector('.feedback'),
-	feedbackButton = document.querySelector('.feedback button'),
-	lineCanvas = document.querySelector('.line-canvas'),
-	graphPoly = document.querySelector('#graphPoly'),
-	graph = document.querySelector('.graph'),
-	graphBackground = document.querySelector('.graph-background'),
-	dates = document.querySelector('.dates'),
-	datesElement = document.querySelector('.dates p'),
-	datesElementFirst = document.querySelector('.dates p:first-child'),
-	graphVasGrade = document.querySelector('.vas-grade'),
-	graphVasDate = document.querySelector('.vas-results > div > p'),
-	graphVasText = document.querySelector('.vas-results > p'),
+	feedbackScreen = q('.feedback'),
+	feedbackButton = q('.feedback button'),
+	lineCanvas = q('.line-canvas'),
+	graphPoly = q('#graphPoly'),
+	graph = q('.graph'),
+	graphBackground = q('.graph-background'),
+	dates = q('.dates'),
+	datesElement = q('.dates p'),
+	datesElementFirst = q('.dates p:first-child'),
+	graphVasGrade = q('.vas-grade'),
+	graphVasDate = q('.vas-results > div > p'),
+	graphVasText = q('.vas-results > p'),
 
 	sessions = 1,
 
@@ -81,33 +81,42 @@ function sw(element){
 	element.classList.remove('invisible');
 }
 
+// faster querySelectors
+function q(element){
+	return document.querySelector(element)
+}
+
+function qAll(element){
+	return document.querySelectorAll(element)
+}
+
 // Set the current screen to load
 currentScreen = "exercise";
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
-document.querySelector('main > div').style.width = window.innerWidth*2 + 'px';
+q('main > div').style.width = window.innerWidth*2 + 'px';
 
 for(var i=0; i < screens.length; i++) {
 	screens[i].style.width = window.innerWidth + 'px';
 }
 
 screenCanvas.style.height = window.innerHeight + 'px';
-document.querySelector('main').style.height = window.innerHeight + 'px';
+q('main').style.height = window.innerHeight + 'px';
 screenOverlay.style.width = window.innerWidth + 'px';
 screenScheme.style.width = window.innerWidth-30 + 'px';
-document.querySelector('.stats').style.width = window.innerWidth + 'px';
+q('.stats').style.width = window.innerWidth + 'px';
 navBar.style.width = window.innerWidth + 'px';
-document.querySelector('.graph-background').style.height = window.innerHeight + 'px';
-document.querySelector('.graph').style.height = window.innerHeight + 'px';
+q('.graph-background').style.height = window.innerHeight + 'px';
+q('.graph').style.height = window.innerHeight + 'px';
 
 // ========== NAV MENU ==========
 
 // Toggle navigation buttons onclick
 buttonNavMain.addEventListener('click',function(){
-	var navMainButton = document.querySelector('.tcon'),
-		nav = document.querySelector('nav'),
-		navButtons = document.querySelectorAll('.button-nav')
+	var navMainButton = q('.tcon'),
+		nav = q('nav'),
+		navButtons = qAll('.button-nav')
 
 
 	navMainButton.classList.toggle('tcon-transform');
@@ -124,8 +133,8 @@ buttonNavMain.addEventListener('click',function(){
 });
 
 // Screen to navigate to per button
-document.querySelector('.button-nav-stats').addEventListener('click', function(){navigateTo('stats')});
-document.querySelector('.button-nav-scheme').addEventListener('click', function(){navigateTo('exercises')});
+q('.button-nav-stats').addEventListener('click', function(){navigateTo('stats')});
+q('.button-nav-scheme').addEventListener('click', function(){navigateTo('exercises')});
 
 // This function is used to navigate between screens
 function navigateTo(screen){
@@ -214,10 +223,10 @@ timer.innerHTML = sessions;
 
 function startExercise() {
 	// Defining local variables
-	var duration = document.querySelector('.interval').value,
-		counterText = document.querySelector('.countdown-number'),
-		activeRing = document.querySelector('svg .active-ring'),
-		resetButton = document.querySelector('.reset'),
+	var duration = q('.interval').value,
+		counterText = q('.countdown-number'),
+		activeRing = q('svg .active-ring'),
+		resetButton = q('.reset'),
 
 		localSeconds = 1,
 		didPrecount = false,
@@ -346,9 +355,9 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 
 // When clicking the feedback screen button, the corresponding animation is showed
 feedbackButton.addEventListener('click',function(){
-	var form = document.querySelector('.feedback form'),
-		absoluteWrapper = document.querySelector('.absolute-wrapper'),
-		checkmark = document.querySelector('.checkmark');
+	var form = q('.feedback form'),
+		absoluteWrapper = q('.absolute-wrapper'),
+		checkmark = q('.checkmark');
 
 	sw(absoluteWrapper);
 	hd(feedbackButton);
@@ -401,7 +410,7 @@ pointWidth = window.innerWidth/3.5;
 graphWidth = (feedback.length -1) * pointWidth;
 graphHeight = 400;
 
-graphSVG = document.querySelector('.graphSVG');
+graphSVG = q('.graphSVG');
 
 graphSVG.setAttribute('width' ,graphWidth);
 graphSVG.setAttribute('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
@@ -471,12 +480,11 @@ graph.addEventListener('scroll',function(){
 			previousLine.classList.remove('active');
 		}
 
-		element = document.querySelector('.line-canvas span:nth-of-type('+linePos+')');
+		element = q('.line-canvas span:nth-of-type('+linePos+')');
 		element.classList.add('active');
 
 		// Get the currently higlighted element
 		elementNumber = linePos-1;
-		console.log(elementNumber)
 		
 		// Add the corresponding data to the DOM
 		graphVasGrade.innerHTML = feedback[elementNumber][0];
