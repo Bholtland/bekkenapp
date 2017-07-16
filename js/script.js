@@ -1,4 +1,3 @@
-// Defining global variables
 var buttonNavMain = q('.button-nav-main'),
 	buttonStats = q('nav ul li:nth-of-type(1)'),
 	buttonScheme = q('nav ul li:nth-of-type(2)'),
@@ -43,6 +42,8 @@ var buttonNavMain = q('.button-nav-main'),
 	graphVasGrade = q('.vas-grade'),
 	graphVasDate = q('.vas-results > div > p'),
 	graphVasText = q('.vas-results > p'),
+
+	schemeSettings = q('.scheme-settings'),
 
 	sessions = 1,
 
@@ -103,7 +104,6 @@ for(var i=0; i < screens.length; i++) {
 
 screenCanvas.style.height = window.innerHeight + 'px';
 q('main').style.height = window.innerHeight + 'px';
-screenOverlay.style.width = window.innerWidth + 'px';
 screenScheme.style.width = window.innerWidth-30 + 'px';
 q('.stats').style.width = window.innerWidth + 'px';
 navBar.style.width = window.innerWidth + 'px';
@@ -134,11 +134,11 @@ buttonNavMain.addEventListener('click',function(){
 
 // Screen to navigate to per button
 q('.button-nav-stats').addEventListener('click', function(){navigateTo('stats')});
-q('.button-nav-scheme').addEventListener('click', function(){navigateTo('exercises')});
+q('.button-nav-scheme').addEventListener('click', function(){navigateTo('scheme')});
 
 // This function is used to navigate between screens
 function navigateTo(screen){
-	if (screen == 'exercises') {
+	if (screen == 'scheme') {
 		screenCanvas.style.left = '0';
 		navBarTitle.classList.remove('is-sub');
 		buttonNavEdit.classList.remove('invisible-state');
@@ -148,12 +148,14 @@ function navigateTo(screen){
 		sw(scheme);		
 		setTimeout(function(){sw(screenScheme)})
 		centerOnToday();
+		currentScreen = 'scheme';
 	} 
 
-	else if (screen == 'exercise') {
+	else if (screen == 'exercise-screen') {
 		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
 		navBarTitle.classList.add('is-sub');
 		buttonNavEdit.classList.add('invisible-state');
+		currentScreen = 'exercise-screen';
 	}
 
 	else if (screen == 'stats') {
@@ -165,6 +167,7 @@ function navigateTo(screen){
 		setTimeout(function(){hd(scheme)}, 300);
 		sw(stats)		
 		setTimeout(function(){sw(screenStats)}, 300);
+		currentScreen = 'stats';
 	}
  };
 
@@ -188,7 +191,7 @@ centerOnToday();
 for (var i=0; i < todayExercises.length; i++) {
 	todayExercises[i].addEventListener('click', function(){
 		if (!this.classList.contains('done')) {
-			navigateTo('exercise');
+			navigateTo('exercise-screen');
 
 			// Define the current exercise, to mark it as "done" later
 	 		currentExercise = this;
@@ -198,7 +201,7 @@ for (var i=0; i < todayExercises.length; i++) {
 
 navBarTitle.addEventListener('click',function(){
 	if (this.classList.contains('is-sub')) {
-		navigateTo('exercises');
+		navigateTo('scheme');
 	}
 })
 
@@ -302,7 +305,8 @@ function startExercise() {
 }
 
 // The button that opens the local "settings" screen
-buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, screenOverlay, 0, true)});
+buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, "screenOverlay", 0, true)});
+buttonNavEdit.addEventListener('click', function(){popUpScreen(schemeSettings, "screenOverlay", 0, true)})
 
 // ========== END EXERCISE ==========
 
@@ -326,18 +330,20 @@ buttonExerciseStart.addEventListener('click',function(){
 // screenElement is the screen to be called, closingItem is the element that closes the window on click
 // screenHideDelay is the delay on closing the popup, hideScreenElement hides the screen except for the background overlay
 function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElement) {
-	sw(screenOverlay);
 	sw(screenElement);
+
+	$('.'+currentScreen).append('<div class="screen-overlay" style="width:'+window.innerWidth+'px;"></div>');
+	overlay = q('.screen-overlay');
 
 	function closePopup(){
 		if (screenHideDelay) {
 			setTimeout(function(){
-				hd(screenOverlay);
+				$('.screen-overlay').remove();
 			},screenHideDelay);
 		}
 
 		else {
-			hd(screenOverlay);
+			$('.screen-overlay').remove();
 		}	
 
 		if (hideScreenElement) {	
@@ -346,7 +352,13 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 		this.removeEventListener('click', closePopup);
 	};
 
+	if (closingItem == 'screenOverlay') {
+		closingItem = q('.screen-overlay');
+		closingItem.addEventListener('click',closePopup);
+	} 
 	closingItem.addEventListener('click',closePopup);
+
+	
 };
 
 // ========== END POP UP SCREEN ==========
@@ -373,7 +385,7 @@ feedbackButton.addEventListener('click',function(){
 			sw(feedbackButton);
 			hd(feedbackScreen);
 			hd(absoluteWrapper)
-			navigateTo('exercises');
+			navigateTo('scheme');
 
 			if (currentExercise) {
 				setTimeout(function(){currentExercise.classList.add('done');}, 400);	
