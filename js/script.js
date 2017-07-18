@@ -28,7 +28,7 @@ var buttonNavMain = q('.button-nav-main'),
 	buttonExerciseVibrate = q('.vibrate'),
 	buttonExerciseSettings = q('.button-settings'),
 	buttonExerciseStart = q('.start'),
-	exerciseSettings = q('.settings'),
+	exerciseSettings = q('.exercise-settings'),
 
 	feedbackScreen = q('.feedback'),
 	feedbackButton = q('.feedback button'),
@@ -92,7 +92,7 @@ function qAll(element){
 }
 
 // Set the current screen to load
-currentScreen = "exercise";
+currentScreen = "scheme";
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
@@ -305,8 +305,8 @@ function startExercise() {
 }
 
 // The button that opens the local "settings" screen
-buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, "screenOverlay", 0, true)});
-// buttonNavEdit.addEventListener('click', function(){popUpScreen(schemeSettings, "screenOverlay", 0, true)})
+buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, "screenOverlay", 300, false)});
+buttonNavEdit.addEventListener('click', function(){popUpScreen(schemeSettings, "screenOverlay", 300, false)})
 
 // ========== END EXERCISE ==========
 
@@ -331,11 +331,20 @@ buttonExerciseStart.addEventListener('click',function(){
 // screenHideDelay is the delay on closing the popup, hideScreenElement hides the screen except for the background overlay
 function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElement) {
 	sw(screenElement);
+	screenElement.classList.add('resize')
 
 	$('.'+currentScreen).append('<div class="screen-overlay" style="width:'+window.innerWidth+'px;"></div>');
 	overlay = q('.screen-overlay');
 
+	setTimeout(function(){
+		overlay.classList.add('active');
+	},10)
+	
+
 	function closePopup(){
+		screenElement.classList.remove('resize');
+		overlay.classList.remove('active');
+
 		if (screenHideDelay) {
 			setTimeout(function(){
 				$('.screen-overlay').remove();
@@ -511,14 +520,3 @@ graph.addEventListener('scroll',function(){
 // END GRAPH FOCUSPOINT
 
 // ========== END STATS ==========
-
-$('.button-nav-edit-content').css('width', window.innerWidth-60);
-$('.button-nav-edit-content').css('height', window.innerHeight-80);
-
-$('.button-nav-edit').click(function(){
-	$('.button-nav-edit').css('width', window.innerWidth-20);
-	$('.button-nav-edit').css('height', window.innerHeight-80);
-	$('.button-nav-edit').css('border-radius', '10px');
-	$('.button-nav-edit > img').fadeOut(200);
-	$('.button-nav-edit').addClass('open');
-})

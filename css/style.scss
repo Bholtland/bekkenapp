@@ -3,8 +3,9 @@
 // @import "partials/color-blue-orange";
 @import "partials/color-purple";
 
-// $transition-1: all 300ms cubic-bezier(0.755, -0.460, 0.195, 1.425);
-$transition-1: all 200ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$bouncy: all 300ms cubic-bezier(0.755, -0.460, 0.195, 1.425);
+$ease-out: ease-in-out 200ms;
+$ease-in: all 300ms cubic-bezier(0.895, 0.030, 0.685, 0.220);
 $transition-2: 0.7s ease-in-out;
 $screen-transition: 0.2s ease-in-out;
 $button-transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.060);
@@ -182,7 +183,7 @@ input:checked + .slider.round {
 	padding: 10px;
 	top: 5px;
 	position: absolute;
-	transition: $transition-1;
+	transition: $bouncy;
 }
 
 .navigation-bar {
@@ -253,7 +254,7 @@ input:checked + .slider.round {
 		.button-nav {
 			visibility: hidden;
 			background-color: $white;
-			transition: $transition-1;
+			transition: $bouncy;
 			transform: scale(0.1);
 		}
 
@@ -300,7 +301,7 @@ input:checked + .slider.round {
 				background-color: $white;
 
 				.button-nav-edit-content {
-					transition: $transition-1;
+					transition: $bouncy;
 					transition-delay: 160ms;
 					opacity: 1;
 					top: 0;
@@ -327,7 +328,7 @@ input:checked + .slider.round {
 	-ms-flex-align: center;
 	align-items: center;
 	height: 25px;
-	transition: $transition-1;
+	transition: $bouncy;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -356,7 +357,7 @@ input:checked + .slider.round {
 	height: 3.71429px;
 	width: 25px;
 	border-radius: 2.85714px;
-	transition: $transition-1;
+	transition: $bouncy;
 	background: $color-4;
 	position: relative; 
 }
@@ -366,7 +367,7 @@ input:checked + .slider.round {
 	height: 3.71429px;
 	width: 25px;
 	border-radius: 2.85714px;
-	transition: $transition-1;
+	transition: $bouncy;
 	background: $color-4;
 	content: '';
 	position: absolute;
@@ -516,6 +517,8 @@ main > div > section:first-child {
 }
 
 .scheme {
+	position: relative;
+
 	.exercise {
 		display: flex;
 		padding: 10px 0px;
@@ -624,6 +627,8 @@ main > div > section:first-child {
 		    	background-repeat: no-repeat;
 			}
 		}
+	.scheme-settings {
+	}
 }
 
 // END MAIN EXERCISES
@@ -809,14 +814,7 @@ main > div > section:first-child {
 	}
 }
 
-.settings {
-	display: block;
-	background-color: $white;
-	border-radius: 12px;
-	position: absolute;
-	width: 100%;
-	z-index: 11;
-	top: 80px;
+.exercise-settings {
 	
 	ul {
 		padding: 10px 10px;
@@ -850,6 +848,38 @@ main > div > section:first-child {
 				color: $color-4;
 			}
 		}
+	}
+}
+
+.popup {
+	display: block;
+	background-color: $white;
+	border-radius: 12px;
+	position: absolute;
+	width: 100%;
+	z-index: 11;
+	top: 6px;
+	height: 80vh;
+	transition: $ease-out;
+	opacity: 0;
+	transform: scale(1, 0);
+  	transform-origin: 50%;
+	overflow: scroll;
+
+	&.resize {
+		transform: scale(1, 1);
+		opacity: 1;
+
+		.popup-inner {
+			top: 0px;
+		}
+	}
+
+	.popup-inner {
+		position: relative;
+		top: 20px;
+		transition: $ease-out;
+		transition-delay: 160ms;
 	}
 }
 
@@ -941,12 +971,18 @@ main > div > section:first-child {
 .screen-overlay {
 	position: absolute;
 	display: block;
+	opacity: 0;
 	top: -15px;
 	left:-15px;
 	width: 100%;
 	height: 9000px;
 	background-color: rgba(0,0,0,0.7);
 	z-index:10;
+	transition: $ease-out;
+
+	&.active {
+		opacity: 1;
+	}
 }
 
 // Check animation 
@@ -1061,7 +1097,7 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 				background-color: #fff;
 				display: inline-block;
 				margin-left: 74px;
-				transition: $transition-1;
+				transition: $bouncy;
 
 				&:nth-of-type(1) {
 					margin:0 !important;
