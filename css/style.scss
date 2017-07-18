@@ -1,7 +1,7 @@
 //VARIABLES
 
-@import "partials/color-blue-orange";
-// @import "partials/color-purple";
+// @import "partials/color-blue-orange";
+@import "partials/color-purple";
 
 // $transition-1: all 300ms cubic-bezier(0.755, -0.460, 0.195, 1.425);
 $transition-1: all 200ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -9,7 +9,7 @@ $transition-2: 0.7s ease-in-out;
 $screen-transition: 0.2s ease-in-out;
 $button-transition: all 200ms cubic-bezier(0.665, -0.055, 0.325, 1.060);
 
-$title: "TitleFont", helvetica, sans-serif;
+// $title: "TitleFont", helvetica, sans-serif;
 $regular: "Open Sans", helvetica, sans-serif;
 
 // END VARIABLES
@@ -34,21 +34,20 @@ $regular: "Open Sans", helvetica, sans-serif;
 }
 
 body {
-	background-color: $background;
+	background-color: $white;
 	overflow-x: hidden;
 }
 
 h1, h2 {
-	font-family: $title;
 	text-transform: uppercase;
 }
 
-h3, h4, h5, p {
+h1, h2, h3, h4, h5, p {
 	font-family: $regular;
 }
 
 h4 {
-	color: $color-1;
+	color: $color-4;
 	font-size: 1.4rem;
 	text-align: center;
 }
@@ -137,10 +136,10 @@ input:checked + .slider.round {
 	padding: 15px 20px;
 	border:none;
 	text-align: center;
-	font-family: $title;
+	font-family: $regular;
 	font-size: 1rem;
-	background-color: $color-5;
-	border-bottom: 2px solid $color-4;
+	background-color: $color-6;
+	border-bottom: 2px solid rgba(0,0,0,0.3);
 	color: $color-4;
 	border-radius: 8px;
 	text-transform: uppercase;
@@ -150,20 +149,11 @@ input:checked + .slider.round {
 .primary {
 	background-color: $color-2;
 	color: $white;
-	border-color: $color-3;
 }
 
 // END BUTTONS
 
 // NAVIGATION
-
-.navigation-bar {
-	width: 100%;
-	height: 55px;
-	background-color: $color-3;
-	position: fixed;
-	bottom:0;
-}
 
 .button-nav {
 	width: 60px;
@@ -196,11 +186,19 @@ input:checked + .slider.round {
 }
 
 .navigation-bar {
+	width: 100%;
+	height: 55px;
+	background-color: $color-3;
+	position: fixed;
+	bottom:0;
+	box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.19);
+
 	h1 {
-		font-size: 1.3rem;
-		margin-top: 12px;
+		font-size: 1.1rem;
+		margin-top: 15px;
     	margin-left: 16px;
-    	color: $white;
+    	color: $color-4;
+    	font-weight: 700;
     	z-index: 1;
     	position:relative;
 	}
@@ -359,7 +357,7 @@ input:checked + .slider.round {
 	width: 25px;
 	border-radius: 2.85714px;
 	transition: $transition-1;
-	background: $white;
+	background: $color-4;
 	position: relative; 
 }
 
@@ -369,7 +367,7 @@ input:checked + .slider.round {
 	width: 25px;
 	border-radius: 2.85714px;
 	transition: $transition-1;
-	background: $white;
+	background: $color-4;
 	content: '';
 	position: absolute;
 	left: 0;
@@ -460,12 +458,12 @@ main > div > section:first-child {
 .timeline {
 	margin-left: 20px;
 	min-height: 40px;
-	border-left: dashed 1px $color-4;
+	border-left: dashed 2px $border-light;
 }
 
 .day > h3 {
 	font-size: 15px;
-	color: $color-6;
+	color: $color-4;
 	font-weight: 400;
 	margin: 15px 0px;
 
@@ -476,7 +474,6 @@ main > div > section:first-child {
 
 .today > h3{
 	font-size: 25px;
-	color: $color-6;
 	margin-bottom: 10px;
 	font-weight: 600;
 }
@@ -495,7 +492,7 @@ main > div > section:first-child {
 	display:inline-block;
 	height:45px;
 	flex: 0 0 60px;
-	border-bottom: dashed 1px $color-4;
+	border-bottom: dashed 2px $border-light;
 }
 
 .exercise-line::before {
@@ -515,6 +512,7 @@ main > div > section:first-child {
 	margin-bottom: 55px;
 	overflow: scroll;
 	transform: translateZ(0);
+	background-image: url(../resources/img/background-main.png);
 }
 
 .scheme {
@@ -522,7 +520,7 @@ main > div > section:first-child {
 		display: flex;
 		padding: 10px 0px;
 		position: relative;
-		color: $color-6;
+		color: $color-4;
 		
 		h3, p {
 			margin-top: -4px;
@@ -664,7 +662,7 @@ main > div > section:first-child {
 
 		.exercise-name {
 			font-size: 22px;
-			color: $color-6;
+			color: $color-2;
 			width: 100%;
     		text-align: center;
 		}
@@ -742,7 +740,7 @@ main > div > section:first-child {
 
 		.remaining-time {
 			font-size: 22px;
-			color: $color-2;
+			color: $color-4;
 			text-align: center;
 			padding: 10px;
 		}
@@ -763,7 +761,7 @@ main > div > section:first-child {
 
 	.breather.precount {
 		svg .active-ring {
-			stroke: $color-4;
+			stroke: #afafaf;
 		}
 
 		svg {
@@ -837,7 +835,7 @@ main > div > section:first-child {
 
 			p {
 				padding-top: 5px;
-				color: $color-6;
+				color: $color-4;
 			}
 
 			span {
@@ -861,7 +859,7 @@ main > div > section:first-child {
 	font-weight: 700;
 	right: 6px;
 	position: relative;
-	color: $color-4;
+	color: $color-2;
 
 	&:after {
 	    content: '';
@@ -902,7 +900,7 @@ main > div > section:first-child {
 
 	select,
 	textarea {
-		border: 1px solid $color-4;
+		border: 1px solid $color-6;
 		background-color: $input-background;
 		border-radius: 5px;
 		color: $color-6;
@@ -925,7 +923,7 @@ main > div > section:first-child {
     	margin: 14px 0;
     	text-indent: 10px;
     	font-size: 1.4rem;
-    	color: $color-2;
+    	color: $color-4;
 
     	span {
     		font-size: 2rem;
@@ -1170,7 +1168,7 @@ $curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
 			padding: 10px;
 
 			p {
-				color: $color-6;
+				color: $color-4;
 			}
 		}		
 	}
