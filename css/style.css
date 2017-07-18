@@ -606,31 +606,6 @@ main > div > section:first-child {
       font-size: 18px;
       color: #333; }
 
-.popup {
-  display: block;
-  background-color: #ffffff;
-  border-radius: 12px;
-  position: absolute;
-  width: 100%;
-  z-index: 11;
-  top: 6px;
-  height: 80vh;
-  transition: ease-in-out 200ms;
-  opacity: 0;
-  transform: scale(1, 0);
-  transform-origin: 50%;
-  overflow: scroll; }
-  .popup.resize {
-    transform: scale(1, 1);
-    opacity: 1; }
-    .popup.resize .popup-inner {
-      top: 0px; }
-  .popup .popup-inner {
-    position: relative;
-    top: 20px;
-    transition: ease-in-out 200ms;
-    transition-delay: 160ms; }
-
 .button-settings {
   text-align: right;
   margin: 10px 0 30px 0;
@@ -696,20 +671,6 @@ main > div > section:first-child {
     margin-top: 10px;
     width: 100%; }
 
-.screen-overlay {
-  position: absolute;
-  display: block;
-  opacity: 0;
-  top: -15px;
-  left: -15px;
-  width: 100%;
-  height: 9000px;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 10;
-  transition: ease-in-out 200ms; }
-  .screen-overlay.active {
-    opacity: 1; }
-
 .checkmark_circle {
   stroke-dasharray: 166;
   stroke-dashoffset: 166;
@@ -738,6 +699,48 @@ main > div > section:first-child {
   stroke-dashoffset: 48;
   animation: stroke 0.2s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards; }
 
+.absolute-wrapper.active .checkmark {
+  top: 200px; }
+
+.popup {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 12px;
+  position: absolute;
+  width: 100%;
+  z-index: 11;
+  top: 6px;
+  height: 80vh;
+  transition: ease-in-out 200ms;
+  opacity: 0;
+  transform: scale(1, 0);
+  transform-origin: 50%;
+  overflow: scroll; }
+  .popup.resize {
+    transform: scale(1, 1);
+    opacity: 1; }
+    .popup.resize .popup-inner {
+      top: 0px; }
+  .popup .popup-inner {
+    position: relative;
+    top: 10px;
+    transition: ease-in-out 200ms;
+    transition-delay: 100ms; }
+
+.screen-overlay {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  top: -15px;
+  left: -15px;
+  width: 100%;
+  height: 9000px;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  transition: ease-in-out 200ms; }
+  .screen-overlay.active {
+    opacity: 1; }
+
 @keyframes stroke {
   100% {
     stroke-dashoffset: 0; } }
@@ -749,9 +752,6 @@ main > div > section:first-child {
 @keyframes fill {
   100% {
     box-shadow: inset 0px 0px 0px 50px #aa3b71; } }
-.absolute-wrapper.active .checkmark {
-  top: 200px; }
-
 #stats {
   display: block; }
   #stats .stats {

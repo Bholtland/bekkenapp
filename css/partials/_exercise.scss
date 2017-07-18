@@ -1,0 +1,338 @@
+.exercise-screen.active {
+	.breather {
+		svg .active-ring {
+			animation: countdown linear infinite forwards;
+			animation-duration: 4s;
+		}
+
+		.countdown-number:before {
+			content: "Vasthouden";
+			color: $color-1;
+		}
+
+		svg .active-ring {
+			stroke: $color-1;
+		}
+	}
+}
+
+.exercise-screen {
+	position: relative;
+	margin: 0 15px;
+
+	.top {
+		margin-top: 10px;
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid $border-light; 
+    	padding-bottom: 15px;
+    	position: relative;
+
+		.exercise-name {
+			font-size: 22px;
+			color: $color-2;
+			width: 100%;
+    		text-align: center;
+		}
+
+		.information {
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			right: 0;
+    		top: 4px;
+		}
+	}
+
+	.breather {
+		margin-top: 20px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid $border-light;
+
+		.countdown {
+		  position: relative;
+		  margin: auto;
+		  height: 220px;
+		  width: 220px;
+		  text-align: center;
+		}
+
+		.countdown-number {
+		  color: $color-1;
+		  display: inline-block;
+		  line-height: 40px;
+		  z-index: 3;
+		  position: relative;
+		  font-size: 50px;
+		  font-family: $regular;
+		  font-weight: 700;
+		  top: 68px;
+		}
+
+		.countdown-number:before {
+			content: "Druk op start";
+			position: relative;
+			text-align: center;
+			z-index: 4;
+			font-size: 14px;
+			font-weight: bold;
+			display: block;
+			color: $color-4;
+		}
+
+		svg {
+		  position: absolute;
+		  top: 0;
+		  right: 0;
+		  width: 220px;
+		  height: 220px;
+		  transform: rotateY(-180deg) rotateZ(-90deg) scale(1);
+		  transition: $transition-2;
+		}
+
+		svg .active-ring {
+		  stroke-dasharray: 566px;
+		  stroke-dashoffset: 0px;
+		  stroke-width: 15px;
+		  stroke: $color-4;
+		  fill: none;
+		}
+
+		svg .background-ring {
+		  stroke-dasharray: 566px;
+		  stroke-dashoffset: 0px;
+		  stroke-width: 30px;
+		  stroke: $color-5;
+		  fill: $white;			
+		}
+
+		.remaining-time {
+			font-size: 22px;
+			color: $color-4;
+			text-align: center;
+			padding: 10px;
+		}
+
+		.remaining-time span {
+			font-weight: 700;
+		}
+
+		@keyframes countdown {
+		  from {
+		    stroke-dashoffset: 565px;
+		  }
+		  to {
+		    stroke-dashoffset: 0px;
+		  }
+		}
+	}
+
+	.breather.precount {
+		svg .active-ring {
+			stroke: #afafaf;
+		}
+
+		svg {
+			transform: rotateY(-180deg) rotateZ(-90deg);
+		}
+
+		.countdown-number {
+			color: $color-4;
+		}
+
+		.countdown-number:before {
+			content:'Bereid je voor!';
+			color: $color-4;
+		}
+	}
+
+	.breather.release {
+		svg .active-ring {
+			stroke: $color-2;
+		}
+
+		svg {
+			transform: rotateY(-180deg) rotateZ(-90deg);
+		}
+
+		.countdown-number {
+			color: $color-2;
+		}
+
+		.countdown-number:before {
+			content:'Ontspannen';
+			color: $color-2;
+		}
+	}
+
+	.controls {
+		display: flex;
+		justify-content: space-around;
+		width: 100%;
+		margin-top: 20px;
+
+		.button {
+			width: 34%;
+		}
+	}
+}
+
+.exercise-settings {
+	
+	ul {
+		padding: 10px 10px;
+    	margin: 0 10px;
+
+		li {
+			list-style-type: none;
+			display: flex;
+			justify-content: space-between;
+			padding: 15px 0px;
+			border-bottom: $color-5 1px solid;
+
+			&:last-child {
+				border: none;
+			}
+
+			p {
+				padding-top: 5px;
+				color: $color-4;
+			}
+
+			span {
+				opacity: 0.5;
+			}
+
+			input[type="number"] {
+				height: 40px;
+				width: 60px;
+				text-align: center;
+				font-size: 18px;
+				color: $color-4;
+			}
+		}
+	}
+}
+
+.button-settings {
+	text-align: right;
+	margin: 10px 0 30px 0;
+	font-weight: 700;
+	right: 6px;
+	position: relative;
+	color: $color-2;
+
+	&:after {
+	    content: '';
+	    background-image: url(../resources/img/settings.svg);
+	    background-size: 30px 30px;
+	    width: 30px;
+	    height: 30px;
+	    position: relative;
+	    display: inline-block;
+	    top: 9px;
+	    left: 6px;
+	}
+}
+
+.feedback {
+	display: block;
+	width: 100%;
+	position: absolute;	
+	top: 0;
+	z-index: 11;
+
+	> div {
+		background-color: $white;
+		border-radius: 12px;
+		position: relative;
+		margin-top: 40px;
+		z-index: 11;
+
+		> form {
+			padding: 10px;
+		}
+	}
+
+	h2 {
+		text-align: center;
+		padding-top: 10px;
+	}
+
+	select,
+	textarea {
+		border: 1px solid $color-6;
+		background-color: $input-background;
+		border-radius: 5px;
+		color: $color-6;
+	}
+
+	textarea {
+		width: 100%;
+		box-sizing: border-box;
+    	min-height: 240px;
+    	padding: 10px;
+    	font-size: 1rem;
+		&::-webkit-input-placeholder { /* WebKit browsers */
+	    	color: #aaa;
+		}
+	}
+
+	select {
+		width: 100%;
+    	height: 64px;
+    	margin: 14px 0;
+    	text-indent: 10px;
+    	font-size: 1.4rem;
+    	color: $color-4;
+
+    	span {
+    		font-size: 2rem;
+    	}
+	}
+
+	.button {
+		z-index: 11;
+		position: relative;
+		margin-top: 10px;
+		width: 100%;
+	}
+}
+
+// source: https://codepen.io/haniotis/pen/KwvYLO
+.checkmark_circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  stroke: $color-2;
+  fill: none;
+  animation: stroke .6s $curve forwards;
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 5px;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 0 auto;
+  box-shadow: inset 0px 0px 0px $color-2;
+  animation: fill .3s ease-in-out .3s forwards, scale .3s ease-in-out .7s both;
+}
+
+.checkmark_check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke .2s $curve .6s forwards;
+}
+
+.absolute-wrapper.active {
+	.checkmark {
+		top: 200px;
+	}
+}

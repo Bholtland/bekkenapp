@@ -73,24 +73,6 @@ var buttonNavMain = q('.button-nav-main'),
 	elementNumber,
 	previousLine;
 
-// Hide and show functions
-function hd(element){
-	element.classList.add('invisible');
-}
-
-function sw(element){
-	element.classList.remove('invisible');
-}
-
-// faster querySelectors
-function q(element){
-	return document.querySelector(element)
-}
-
-function qAll(element){
-	return document.querySelectorAll(element)
-}
-
 // Set the current screen to load
 currentScreen = "scheme";
 navigateTo(currentScreen);
@@ -135,41 +117,6 @@ buttonNavMain.addEventListener('click',function(){
 // Screen to navigate to per button
 q('.button-nav-stats').addEventListener('click', function(){navigateTo('stats')});
 q('.button-nav-scheme').addEventListener('click', function(){navigateTo('scheme')});
-
-// This function is used to navigate between screens
-function navigateTo(screen){
-	if (screen == 'scheme') {
-		screenCanvas.style.left = '0';
-		navBarTitle.classList.remove('is-sub');
-		buttonNavEdit.classList.remove('invisible-state');
-		hd(stats);
-
-		setTimeout(function(){hd(screenStats)}, 300);
-		sw(scheme);		
-		setTimeout(function(){sw(screenScheme)})
-		centerOnToday();
-		currentScreen = 'scheme';
-	} 
-
-	else if (screen == 'exercise-screen') {
-		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
-		navBarTitle.classList.add('is-sub');
-		buttonNavEdit.classList.add('invisible-state');
-		currentScreen = 'exercise-screen';
-	}
-
-	else if (screen == 'stats') {
-		screenCanvas.style.left = '0';
-		navBarTitle.classList.remove('is-sub');	
-		buttonNavEdit.classList.add('invisible-state');	
-		hd(scheme);
-
-		setTimeout(function(){hd(scheme)}, 300);
-		sw(stats)		
-		setTimeout(function(){sw(screenStats)}, 300);
-		currentScreen = 'stats';
-	}
- };
 
 // ========== END NAV MENU ==========
 
@@ -520,3 +467,56 @@ graph.addEventListener('scroll',function(){
 // END GRAPH FOCUSPOINT
 
 // ========== END STATS ==========
+
+// Hide and show functions
+function hd(element){
+	element.classList.add('invisible');
+}
+
+function sw(element){
+	element.classList.remove('invisible');
+}
+
+// faster querySelectors
+function q(element){
+	return document.querySelector(element)
+}
+
+function qAll(element){
+	return document.querySelectorAll(element)
+}
+
+// This function is used to navigate between screens
+function navigateTo(screen){
+	if (screen == 'scheme') {
+		screenCanvas.style.left = '0';
+		navBarTitle.classList.remove('is-sub');
+		buttonNavEdit.classList.remove('invisible-state');
+		hd(stats);
+
+		setTimeout(function(){hd(screenStats)}, 300);
+		sw(scheme);		
+		setTimeout(function(){sw(screenScheme)})
+		centerOnToday();
+		currentScreen = 'scheme';
+	} 
+
+	else if (screen == 'exercise-screen') {
+		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
+		navBarTitle.classList.add('is-sub');
+		buttonNavEdit.classList.add('invisible-state');
+		currentScreen = 'exercise-screen';
+	}
+
+	else if (screen == 'stats') {
+		screenCanvas.style.left = '0';
+		navBarTitle.classList.remove('is-sub');	
+		buttonNavEdit.classList.add('invisible-state');	
+		hd(scheme);
+
+		setTimeout(function(){hd(scheme)}, 300);
+		sw(stats)		
+		setTimeout(function(){sw(screenStats)}, 300);
+		currentScreen = 'stats';
+	}
+ };

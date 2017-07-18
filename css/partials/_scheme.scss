@@ -1,0 +1,174 @@
+.timeline {
+	margin-left: 20px;
+	min-height: 40px;
+	border-left: dashed 2px $border-light;
+}
+
+.day > h3 {
+	font-size: 15px;
+	color: $color-4;
+	font-weight: 400;
+	margin: 15px 0px;
+
+	span {
+		opacity: 0.5;
+	}
+}
+
+.today > h3{
+	font-size: 25px;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
+.exercise-box {
+	height: 90px;
+	border-radius: 5px;
+	background-color: $white;
+	display:inline-block;
+	width: 100%;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.17);
+}
+
+.exercise-line{
+	width: 60px;
+	display:inline-block;
+	height:45px;
+	flex: 0 0 60px;
+	border-bottom: dashed 2px $border-light;
+}
+
+.exercise-line::before {
+	content:"";
+	width: 31px;
+	height: 31px;
+	border-radius: 100px;
+	margin-left: -17px;
+    margin-top: 30px;
+	display: block;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.17);
+	background-color: $white;
+}
+
+#scheme {
+	padding: 0 15px;
+	margin-bottom: 55px;
+	overflow: scroll;
+	transform: translateZ(0);
+	background-image: url(../resources/img/background-main.png);
+}
+
+.scheme {
+	position: relative;
+
+	.exercise {
+		display: flex;
+		padding: 10px 0px;
+		position: relative;
+		color: $color-4;
+		
+		h3, p {
+			margin-top: -4px;
+		}
+
+		.exercise-duration,
+		.exercise-indicator,
+		.exercise-name {
+			opacity: 0.4;
+		}
+
+		.exercise-name {
+			margin-top: 14px;
+			display: block;
+			margin-left: 14px;
+			display: flex;
+			height: 17px;
+
+			h3 {
+				font-size: 16px;
+				display: inline-block;
+			}
+		}
+
+		.exercise-duration {
+			margin-top: 22px;
+	    	margin-left: 14px;
+			display: block;
+			display: flex;
+			height: 17px;
+
+			p {
+				display: inline;
+				font-size: 14px;
+				margin-top: -1px;
+			}
+
+			p::before {
+				content:'';
+				background-image: url(../resources/img/clock-dark.svg);
+				width: 20px;
+	    		height: 20px;
+	    		background-size: 20px 20px;
+				background-repeat: no-repeat;
+				display: inline-block;
+				margin-right: 6px;
+				position: relative;
+	    		top: 4px;			
+			}
+		}
+
+		.exercise-indicator {
+			position: absolute;
+			right: 20px;
+			top: 47px;
+			background-image: url(../resources/img/info-dark.svg);
+	    	background-size: 22px;
+	    	opacity: 0.5;
+	    	width: 22px;
+	    	height: 22px;
+			background-repeat: no-repeat;
+		}
+	}
+
+	.today {
+		.exercise-indicator {
+			background-image: url(../resources/img/caret-right-dark.svg);
+			opacity: 0.5;
+			background-size: 10px;
+			width: 10px;
+			height: 18px;
+			right: 20px;
+			top: 47px;
+		}
+
+		.exercise-duration,
+		.exercise-name {
+			opacity: 1;
+		}
+	}
+		.exercise.done {
+			color: $white;
+
+			.exercise-duration p::before {
+				background-image: url(../resources/img/clock-light.svg);
+			}
+
+			.exercise-indicator {
+				display: none;
+			}
+
+			.exercise-box {
+				background-color: $color-2;
+			}
+
+			.exercise-line::before {
+				background-color: $color-2;
+		    	background-image: url(../resources/img/check-light.svg);
+		    	background-size: 19px;
+		    	background-position: 6px;
+		    	background-repeat: no-repeat;
+			}
+		}
+	.scheme-settings {
+	}
+}
