@@ -520,3 +520,7 @@ function navigateTo(screen){
 		currentScreen = 'stats';
 	}
  };
+
+ screenScheme.addEventListener('scroll', function(){
+ 	this.style.backgroundPositionY = -this.scrollTop/4 + 'px';
+ })
