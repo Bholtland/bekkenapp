@@ -1,6 +1,6 @@
 @keyframes stroke {
   100% {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 565px;
   }
 }
 
@@ -15,6 +15,101 @@
 
 @keyframes fill {
   100% {
-    box-shadow: inset 0px 0px 0px 50px $color-2;
+    box-shadow: inset 0px 0px 0px 50px $color-1;
   }
+}
+
+.shine {
+  position: relative;
+  z-index: 0;
+}
+
+.shine i {
+/* positioning */
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+/* gradient */
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.03) 1%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.85) 70%, rgba(255,255,255,0.85) 71%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(1%,rgba(255,255,255,0.03)), color-stop(30%,rgba(255,255,255,0.85)), color-stop(50%,rgba(255,255,255,0.85)), color-stop(70%,rgba(255,255,255,0.85)), color-stop(71%,rgba(255,255,255,0.85)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.03) 1%,rgba(255,255,255,0.6) 30%,rgba(255,255,255,0.85) 50%,rgba(255,255,255,0.85) 70%,rgba(255,255,255,0.85) 71%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.03) 1%,rgba(255,255,255,0.6) 30%,rgba(255,255,255,0.85) 50%,rgba(255,255,255,0.85) 70%,rgba(255,255,255,0.85) 71%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.03) 1%,rgba(255,255,255,0.6) 30%,rgba(255,255,255,0.85) 50%,rgba(255,255,255,0.85) 70%,rgba(255,255,255,0.85) 71%,rgba(255,255,255,0) 100%); /* IE10+ */
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.03) 1%,rgba(255,255,255,0.6) 30%,rgba(255,255,255,0.85) 50%,rgba(255,255,255,0.85) 70%,rgba(255,255,255,0.85) 71%,rgba(255,255,255,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+
+/* forming the shine element
+    play around with the width, skew and gradient to get different effects
+  */
+  width: 15%;
+  height: 100%;
+  transform: skew(-10deg,0deg);
+  -webkit-transform: skew(-10deg,0deg);
+  -moz-transform: skew(-10deg,0deg);
+  -ms-transform: skew(-10deg,0deg);
+  -o-transform: skew(-10deg,0deg);
+
+/* animating it */
+  animation: move 1.5s;
+  animation-iteration-count: 1;
+  animation-delay: 0.5s;
+  -webkit-animation: move 1.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 0.5s;
+  -moz-transform: skew(-10deg,0deg);
+  -moz-animation: move 1.5s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-delay: 0.5s;
+  -ms-transform: skew(-10deg,0deg);
+  -ms-animation: move 1.5s;
+  -ms-animation-iteration-count: 1;
+  -ms-animation-delay: 0.5s;
+  -o-transform: skew(-10deg,0deg);
+  -o-animation: move 1.5s;
+  -o-animation-iteration-count: 1;
+  -o-animation-delay: 0.5s;
+ }
+
+/* */
+@keyframes move {
+ 0% { left: -10%; opacity: 0; }
+ 5% {opacity: 0.0}
+ 48% {opacity: 0.4}
+ 80% {opacity: 0.0}
+ 100% { left: 92%}
+}
+
+@-webkit-keyframes move {
+ 0% { left: 0; opacity: 0; }
+ 5% {opacity: 0.0}
+ 48% {opacity: 0.4}
+ 80% {opacity: 0.0}
+ 100% { left: 82%}
+}
+
+@-moz-keyframes move {
+ 0% { left: 0; opacity: 0; }
+ 5% {opacity: 0.0}
+ 48% {opacity: 0.4}
+ 80% {opacity: 0.0}
+ 100% { left: 88%}
+}
+
+@-ms-keyframes move {
+ 0% { left: 0; opacity: 0; }
+ 5% {opacity: 0.0}
+ 48% {opacity: 0.4}
+ 80% {opacity: 0.0}
+ 100% { left: 82%}
+}
+
+@-o-keyframes move {
+ 0% { left: 0; opacity: 0; }
+ 5% {opacity: 0.0}
+ 48% {opacity: 0.4}
+ 80% {opacity: 0.0}
+ 100% { left: 82%}
 }

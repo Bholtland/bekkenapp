@@ -32,6 +32,8 @@ var buttonNavMain = q('.button-nav-main'),
 
 	feedbackScreen = q('.feedback'),
 	feedbackButton = q('.feedback button'),
+	hiddenTextArea = q('.hidden-textarea'),
+	hiddenTextButton = q('.hidden-textarea > p'),
 	lineCanvas = q('.line-canvas'),
 	graphPoly = q('#graphPoly'),
 	graph = q('.graph'),
@@ -252,7 +254,7 @@ function startExercise() {
 }
 
 // The button that opens the local "settings" screen
-buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, "screenOverlay", 300, false)});
+buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, q('.popup button.primary'), 300, false)});
 buttonNavEdit.addEventListener('click', function(){popUpScreen(schemeSettings, "screenOverlay", 300, false)})
 
 // ========== END EXERCISE ==========
@@ -344,12 +346,21 @@ feedbackButton.addEventListener('click',function(){
 			navigateTo('scheme');
 
 			if (currentExercise) {
-				setTimeout(function(){currentExercise.classList.add('done');}, 400);	
+				setTimeout(function(){
+					currentExercise.classList.add('done','shine');
+					var node = document.createElement("i");                 // Create a <li> node                              // Append the text to <li>
+					currentExercise.appendChild(node); 
+				}, 400);	
 			}		
 
 		},200);
 	},1100);
 })
+
+hiddenTextButton.addEventListener('click', function(){
+	hiddenTextArea.classList.toggle('invisible');
+	hiddenTextArea.classList.contains('invisible') ? hiddenTextButton.innerHTML = "&or;" : hiddenTextButton.innerHTML = "&and;";
+});
 
 // ========== END FEEDBACK SCREEN ==========
 

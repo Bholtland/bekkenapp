@@ -28,6 +28,12 @@
 		transition: $ease-out;
 		transition-delay: 100ms;
 	}
+
+	button.primary {
+		width: 100%;
+		position: absolute;
+    	bottom: 0px;
+	}
 }
 
 .screen-overlay {

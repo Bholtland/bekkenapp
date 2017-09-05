@@ -146,29 +146,30 @@
 			opacity: 1;
 		}
 	}
-		.exercise.done {
-			color: $white;
+	.exercise.done {
+		color: $white;
 
-			.exercise-duration p::before {
-				background-image: url(../resources/img/clock-light.svg);
-			}
-
-			.exercise-indicator {
-				display: none;
-			}
-
-			.exercise-box {
-				background-color: $color-2;
-			}
-
-			.exercise-line::before {
-				background-color: $color-2;
-		    	background-image: url(../resources/img/check-light.svg);
-		    	background-size: 19px;
-		    	background-position: 6px;
-		    	background-repeat: no-repeat;
-			}
+		.exercise-duration p::before {
+			background-image: url(../resources/img/clock-light.svg);
 		}
+
+		.exercise-indicator {
+			display: none;
+		}
+
+		.exercise-box {
+			background-color: $color-1;
+		}
+
+		.exercise-line::before {
+			background-color: $color-1;
+		   	background-image: url(../resources/img/check-light.svg);
+		   	background-size: 19px;
+		   	background-position: 6px;
+		   	background-repeat: no-repeat;
+		}
+	}		
+
 	.scheme-settings {
 	}
 }
