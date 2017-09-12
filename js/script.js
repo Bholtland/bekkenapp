@@ -205,6 +205,8 @@ function startExercise() {
 
 	counterText.innerHTML = localSeconds;
 	timer.innerHTML = sessionsToGo;
+
+	playAudio(2, false, true);
 	
 	// Create a counter for relaxing and exerting 
 	localCount = setInterval(function(){	
@@ -248,6 +250,18 @@ function startExercise() {
 			clearBreather();
 			popUpScreen(feedbackScreen, feedbackButton, 1300, false);
 		}
+
+		if (duration - localSeconds == 1){
+			playAudio(localSeconds+1, true);
+		}
+		else if (duration == localSeconds) {
+			playAudio(1, false, true);
+		}
+
+		else {
+			playAudio(localSeconds+1, false);
+		}
+		
 	},1000);
 
 	// When clicking reset, all is cleared
@@ -578,4 +592,28 @@ function navigateTo(screen){
  	this.style.backgroundPositionY = -this.scrollTop/4 + 'px';
  })
 
+ function playAudio(number, isLast, noDelay){
+ 	var dir = "resources/audio/";
+ 	var audio;
 
+ 	if (number){
+ 		variation = Math.ceil(Math.random() * 3);
+
+ 		if (isLast) {
+ 			audio = new Audio(dir+'nr_last'+number+"_"+variation+".ogg");
+ 			console.log('nr_last'+number+"_"+variation+'.ogg');
+ 		}
+ 		// else if (noDelay){
+ 		// 	audio = new Audio(dir+'nr_nodelay'+number+"_"+variation+".ogg");
+ 		// }
+
+ 		else {
+ 			audio = new Audio(dir+'nr'+number+"_"+variation+".ogg");
+ 			console.log('nr'+number+"_"+variation+'.ogg');
+ 		}
+
+
+ 		audio.play();
+ 	}
+
+ }
