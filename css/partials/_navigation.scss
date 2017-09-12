@@ -67,6 +67,12 @@
 		opacity: 1;
 	}
 
+	&.popped-up {
+		h1:before{
+			transform: rotate(-90deg);
+		}
+	}
+
 	nav.active {
 		.button-nav {
 			visibility: visible;

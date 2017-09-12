@@ -1,32 +1,22 @@
 .popup {
 	display: block;
+	visibility: hidden;
 	background-color: $white;
 	border-radius: 12px;
 	position: absolute;
 	width: 100%;
 	z-index: 11;
-	top: 6px;
-	height: 80vh;
-	transition: $ease-out;
+	left: 0;
+    top: 100px;
+	height: 92vh;
+	transition: $ease;
 	opacity: 0;
-	transform: scale(1, 0);
-  	transform-origin: 50%;
 	overflow: scroll;
-
-	&.resize {
-		transform: scale(1, 1);
-		opacity: 1;
-
-		.popup-inner {
-			top: 0px;
-		}
-	}
 
 	.popup-inner {
 		position: relative;
 		top: 10px;
-		transition: $ease-out;
-		transition-delay: 100ms;
+		transition: $ease;
 	}
 
 	button.primary {
@@ -34,21 +24,10 @@
 		position: absolute;
     	bottom: 0px;
 	}
-}
 
-.screen-overlay {
-	position: absolute;
-	display: block;
-	opacity: 0;
-	top: -15px;
-	left:-15px;
-	width: 100%;
-	height: 9000px;
-	background-color: rgba(0,0,0,0.7);
-	z-index:10;
-	transition: $ease-out;
-
-	&.active {
+	&.open {
 		opacity: 1;
+		top: -10px;
+		visibility: visible;
 	}
 }

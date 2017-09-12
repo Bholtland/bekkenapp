@@ -158,6 +158,8 @@ input:checked + .slider:before {
   .navigation-bar .is-sub:before {
     margin-left: 0;
     opacity: 1; }
+  .navigation-bar.popped-up h1:before {
+    transform: rotate(-90deg); }
   .navigation-bar nav.active .button-nav {
     visibility: visible;
     transform: scale(1); }
@@ -476,7 +478,7 @@ main > div > section:first-child {
 
 .exercise-screen {
   position: relative;
-  margin: 0 15px; }
+  padding: 0 15px; }
   .exercise-screen .top {
     margin-top: 10px;
     display: flex;
@@ -722,46 +724,30 @@ main > div > section:first-child {
 
 .popup {
   display: block;
+  visibility: hidden;
   background-color: #ffffff;
   border-radius: 12px;
   position: absolute;
   width: 100%;
   z-index: 11;
-  top: 6px;
-  height: 80vh;
-  transition: ease-in-out 200ms;
+  left: 0;
+  top: 100px;
+  height: 92vh;
+  transition: all 300ms ease-in-out;
   opacity: 0;
-  transform: scale(1, 0);
-  transform-origin: 50%;
   overflow: scroll; }
-  .popup.resize {
-    transform: scale(1, 1);
-    opacity: 1; }
-    .popup.resize .popup-inner {
-      top: 0px; }
   .popup .popup-inner {
     position: relative;
     top: 10px;
-    transition: ease-in-out 200ms;
-    transition-delay: 100ms; }
+    transition: all 300ms ease-in-out; }
   .popup button.primary {
     width: 100%;
     position: absolute;
     bottom: 0px; }
-
-.screen-overlay {
-  position: absolute;
-  display: block;
-  opacity: 0;
-  top: -15px;
-  left: -15px;
-  width: 100%;
-  height: 9000px;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 10;
-  transition: ease-in-out 200ms; }
-  .screen-overlay.active {
-    opacity: 1; }
+  .popup.open {
+    opacity: 1;
+    top: -10px;
+    visibility: visible; }
 
 @keyframes stroke {
   100% {

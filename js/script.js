@@ -51,6 +51,8 @@ var buttonNavMain = q('.button-nav-main'),
 
 	hasStarted = false,
 
+	currentPopup,
+
 	// Stats screen
 	pointString = "",
 	feedback = [],
@@ -149,8 +151,10 @@ for (var i=0; i < todayExercises.length; i++) {
 }
 
 navBarTitle.addEventListener('click',function(){
-	if (this.classList.contains('is-sub')) {
+	if (this.classList.contains('is-sub') && !currentPopup) {
 		navigateTo('scheme');
+	} else {
+		closePopupScreen(currentPopup);
 	}
 })
 
@@ -254,7 +258,7 @@ function startExercise() {
 }
 
 // The button that opens the local "settings" screen
-buttonExerciseSettings.addEventListener('click',function(){popUpScreen(exerciseSettings, q('.popup button.primary'), 300, false)});
+buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings)});
 buttonNavEdit.addEventListener('click', function(){popUpScreen(schemeSettings, "screenOverlay", 300, false)})
 
 // ========== END EXERCISE ==========
@@ -315,11 +319,36 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 		closingItem.addEventListener('click',closePopup);
 	} 
 	closingItem.addEventListener('click',closePopup);
-
-	
 };
 
 // ========== END POP UP SCREEN ==========
+
+// ========== POP UP SCREEN FULL ==========
+
+function popUpScreenFull(screen) {
+	currentPopup = screen;
+
+	sw(screen);
+	screen.classList.add('open');
+
+	navBarTitle.innerHTML = "Sluiten";
+
+	navBar.classList.add('popped-up');
+}
+
+function closePopupScreen(screen) {
+	screen.classList.remove('open');
+
+	currentPopup = null;
+
+	navBarTitle.classList.contains('is-sub') ? navBarTitle.innerHTML = "Terug" : navBarTitle.innerHTML = "Oefenschema";
+
+	navBar.classList.remove('popped-up');
+
+}
+
+
+// ========== END POP UP SCREEN FULL ==========
 
 // ========== FEEDBACK SCREEN ==========
 
@@ -499,9 +528,19 @@ function qAll(element){
 
 // This function is used to navigate between screens
 function navigateTo(screen){
+	if (currentPopup){
+		closePopupScreen(currentPopup);
+		setTimeout(()=> {navigate()},300);
+	}
+	else {
+		navigate();
+	}
+
+	function navigate(){
 	if (screen == 'scheme') {
 		screenCanvas.style.left = '0';
 		navBarTitle.classList.remove('is-sub');
+		navBarTitle.innerHTML = 'Oefenschema';
 		buttonNavEdit.classList.remove('invisible-state');
 		hd(stats);
 
@@ -515,6 +554,7 @@ function navigateTo(screen){
 	else if (screen == 'exercise-screen') {
 		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
 		navBarTitle.classList.add('is-sub');
+		navBarTitle.innerHTML = 'Terug';
 		buttonNavEdit.classList.add('invisible-state');
 		currentScreen = 'exercise-screen';
 	}
@@ -522,6 +562,7 @@ function navigateTo(screen){
 	else if (screen == 'stats') {
 		screenCanvas.style.left = '0';
 		navBarTitle.classList.remove('is-sub');	
+		navBarTitle.innerHTML = "Grafiek"
 		buttonNavEdit.classList.add('invisible-state');	
 		hd(scheme);
 
@@ -530,8 +571,11 @@ function navigateTo(screen){
 		setTimeout(function(){sw(screenStats)}, 300);
 		currentScreen = 'stats';
 	}
+	}
  };
 
  screenScheme.addEventListener('scroll', function(){
  	this.style.backgroundPositionY = -this.scrollTop/4 + 'px';
  })
+
+
