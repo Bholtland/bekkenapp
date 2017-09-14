@@ -139,13 +139,13 @@ input:checked + .slider:before {
 	text-align: center;
 	font-family: $regular;
 	font-size: 1rem;
-	background-color: $color-6;
 	border-bottom: 2px solid rgba(0,0,0,0.3);
 	color: $color-4;
 	border-radius: 8px;
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
 	font-weight: 600;
+	width: 100%;
 }
 
 .primary {
@@ -153,9 +153,76 @@ input:checked + .slider:before {
 	color: $white;
 }
 
+.secondary {
+	color: $color-1;
+	border: 1.5px dashed $color-1;
+	background-color: rgba(0,0,0,0);
+}
+
 // END BUTTONS
 
 @import "partials/navigation";
+
+// COMMON COMPONENTS 
+
+.margin-base {
+	padding: 10px 10px;
+    margin: 0 10px;
+}
+
+.outline {
+	li {
+		list-style-type: none;
+		display: flex;
+		justify-content: space-between;
+		padding: 15px 0px;
+		border-bottom: $color-5 1px solid;
+
+		&:last-child {
+			border: none;
+		}
+
+		p {
+			padding-top: 5px;
+		}
+
+		p:nth-of-type(2) {
+			font-weight: bold;
+		}
+
+		span {
+			opacity: 0.5;
+		}
+
+		input[type="number"] {
+			height: 40px;
+			width: 60px;
+			text-align: center;
+			font-size: 18px;
+			color: $color-4;
+		}
+	}
+
+}
+
+.average {
+	color: #DF810A;
+}
+
+.good {
+	color: #07A817;
+}
+
+.cards {
+	> li, .exercise-box {
+		width: 100%;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.17);
+		border-radius: 5px;
+		list-style-type: none;
+	}
+}
+
+// END COMMON COMPONENTS
 
 // MAIN EXERCISES
 

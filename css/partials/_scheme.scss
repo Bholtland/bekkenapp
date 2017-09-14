@@ -23,11 +23,8 @@
 
 .exercise-box {
 	height: 90px;
-	border-radius: 5px;
 	background-color: $white;
 	display:inline-block;
-	width: 100%;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.17);
 }
 
 .exercise-line{
@@ -173,6 +170,23 @@
 	}		
 
 	.scheme-settings {
+		background-color: $input-background;
+
+		.cards {
+			> li {
+				background-color: $white;
+				margin-top: 20px;
+			}	
+
+			> li:last-of-type{
+				background-color: rgba(0,0,0,0);
+				box-shadow: none;
+			}	
+
+			> li:nth-of-type(1) {
+				margin-top: 10px;
+			}	
+		}
 	}
 }
 

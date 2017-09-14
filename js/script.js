@@ -11,6 +11,7 @@ var buttonNavMain = q('.button-nav-main'),
 	buttonNavEdit = q('.button-nav-edit'),
 
 	currentScreen,
+	previousScreen,
 	centerOffset,
 	currentExercise,
 	vibrate = false,
@@ -46,6 +47,8 @@ var buttonNavMain = q('.button-nav-main'),
 	graphVasText = q('.vas-results > p'),
 
 	schemeSettings = q('.scheme-settings'),
+	progressionGraph = q('.progression-graph'),
+
 	scrollBox = q('.scroll-box'),
 
 	sessions = 1,
@@ -67,6 +70,8 @@ var buttonNavMain = q('.button-nav-main'),
 	line,
 	lineHeight,
 
+	manualSub,
+
 	focus,
 	focusModulus,
 	currentScrollPos,
@@ -78,9 +83,54 @@ var buttonNavMain = q('.button-nav-main'),
 	elementNumber,
 	previousLine;
 
+
+var screenHierarchy = {
+	scheme : {
+		name : "scheme",
+		title : "Oefenschema",
+		edit : {
+			name : "schemeEdit",
+			title : "Schema aanpassen",
+			parent : "scheme"
+		}
+	},
+	exercise : {
+		name : "exercise",
+		title : "Ontspannen",
+		settings : {
+			name : "exerciseSettings",
+			title : "Instellingen",
+			parent : "exercise"
+		},
+		feedback : {
+			name : "exerciseFeedback",
+			title : "Hoe ging het?",
+			parent : "exercise"
+		},
+		info : {
+			name : "exerciseInfo",
+			title : "Informatie",
+			parent : "exercise"
+		}
+	},
+	progress : {
+		name : "progress",
+		title : "Voortgang",
+		graph : {
+			name : "progressGraph",
+			title : "Resultaat per dag",
+			parent : "progress"
+		}
+	},
+	account : {
+		name : "account",
+		title : "Mijn account"
+	}
+}
+
 // Set the current screen to load
-currentScreen = "scheme";
-navigateTo(currentScreen);
+currentScreen = screenHierarchy.scheme;
+navigateTo(currentScreen.name);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
 q('main > div').style.width = window.innerWidth*2 + 'px';
@@ -121,8 +171,8 @@ buttonNavMain.addEventListener('click',function(){
 });
 
 // Screen to navigate to per button
-q('.button-nav-stats').addEventListener('click', function(){navigateTo('stats')});
-q('.button-nav-scheme').addEventListener('click', function(){navigateTo('scheme')});
+q('.button-nav-stats').addEventListener('click', function(){navigateTo(screenHierarchy.progress)});
+q('.button-nav-scheme').addEventListener('click', function(){navigateTo(screenHierarchy.scheme)});
 
 // ========== END NAV MENU ==========
 
@@ -144,7 +194,7 @@ centerOnToday();
 for (var i=0; i < todayExercises.length; i++) {
 	todayExercises[i].addEventListener('click', function(){
 		if (!this.classList.contains('done')) {
-			navigateTo('exercise-screen');
+			navigateTo(screenHierarchy.exercise);
 
 			// Define the current exercise, to mark it as "done" later
 	 		currentExercise = this;
@@ -154,9 +204,11 @@ for (var i=0; i < todayExercises.length; i++) {
 
 navBarTitle.addEventListener('click',function(){
 	if (this.classList.contains('is-sub') && !currentPopup) {
-		navigateTo('scheme');
+		navigateTo(screenHierarchy.scheme);
+	} else if (this.classList.contains('is-sub')) {
+		closePopupScreen(currentPopup);
 	} else {
-		closePopupScreen(currentPopup, "Ontspannen");
+		return;
 	}
 })
 
@@ -274,8 +326,9 @@ function startExercise() {
 }
 
 // The button that opens the local "settings" screen
-buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, "Instellingen")});
-buttonNavEdit.addEventListener('click', function(){popUpScreen(schemeSettings, "screenOverlay", 300, false)})
+buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
+q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
+buttonNavEdit.addEventListener('click', function(){popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)})
 
 // ========== END EXERCISE ==========
 
@@ -341,27 +394,6 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 
 // ========== POP UP SCREEN FULL ==========
 
-function popUpScreenFull(screen, navBarName) {
-	currentPopup = screen;
-
-	sw(screen);
-	screen.classList.add('open');
-
-	navBarTitle.innerHTML = navBarName;
-
-	navBar.classList.add('popped-up');
-}
-
-function closePopupScreen(screen, navBarName) {
-	screen.classList.remove('open');
-
-	currentPopup = null;
-
-	navBarTitle.innerHTML = navBarName;
-
-	navBar.classList.remove('popped-up');
-
-}
 
 
 // ========== END POP UP SCREEN FULL ==========
@@ -542,8 +574,47 @@ function qAll(element){
 	return document.querySelectorAll(element)
 }
 
-// This function is used to navigate between screens
+// This function is used to navigate between popup screens
+function popUpScreenFull(screen, name, manualSub) {
+	currentPopup = screen;
+
+	currentScreen = name;
+
+	sw(screen);
+	screen.classList.add('open');
+
+	navBarTitle.innerHTML = name.title;
+
+	if (manualSub) {
+		manualSub = true;
+		navBarTitle.classList.add('is-sub');
+	}
+
+	navBar.classList.add('popped-up');
+
+}
+
+function closePopupScreen(screen) {
+	screen.classList.remove('open');
+
+	var parent = currentScreen.parent;
+	parent = "screenHierarchy."+parent;
+	parent = eval(parent);
+	
+	navBarTitle.innerHTML = parent.title;
+
+	currentScreen = parent;
+
+	navBar.classList.remove('popped-up');
+	currentPopup = null;
+
+}
+
+
+// This function is used to navigate between main screens
 function navigateTo(screen){
+	screen = screen.name
+
 	if (currentPopup){
 		closePopupScreen(currentPopup, "Ontspannen");
 		setTimeout(()=> {navigate()},300);
@@ -556,33 +627,33 @@ function navigateTo(screen){
 	if (screen == 'scheme') {
 		screenCanvas.style.left = '0';
 		navBarTitle.classList.remove('is-sub');
-		navBarTitle.innerHTML = 'Oefenschema';
+		navBarTitle.innerHTML = screenHierarchy.scheme.title;
 		hd(stats);
 
 		setTimeout(function(){hd(screenStats)}, 300);
 		sw(scheme);		
 		setTimeout(function(){sw(screenScheme)})
 		centerOnToday();
-		currentScreen = 'scheme';
+		currentScreen = screenHierarchy.scheme;
 	} 
 
-	else if (screen == 'exercise-screen') {
+	else if (screen == 'exercise') {
 		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
 		navBarTitle.classList.add('is-sub');
-		navBarTitle.innerHTML = 'Ontspannen';
-		currentScreen = 'exercise-screen';
+		navBarTitle.innerHTML = screenHierarchy.exercise.title;
+		currentScreen = screenHierarchy.exercise;
 	}
 
-	else if (screen == 'stats') {
+	else if (screen == 'progress') {
 		screenCanvas.style.left = '0';
 		navBarTitle.classList.remove('is-sub');	
-		navBarTitle.innerHTML = "Grafiek"
+		navBarTitle.innerHTML = screenHierarchy.progress.title;
 		hd(scheme);
 
 		setTimeout(function(){hd(scheme)}, 300);
 		sw(stats)		
 		setTimeout(function(){sw(screenStats)}, 300);
-		currentScreen = 'stats';
+		currentScreen = screenHierarchy.progress;
 	}
 	}
  };

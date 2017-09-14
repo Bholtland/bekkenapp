@@ -44,7 +44,6 @@
 	}
 
 	.breather {
-		margin-top: 20px;
 		padding-bottom: 20px;
 		border-bottom: 1px solid $border-light;
 
@@ -173,43 +172,6 @@
 
 		.button {
 			width: 34%;
-		}
-	}
-}
-
-.exercise-settings {
-	
-	ul {
-		padding: 10px 10px;
-    	margin: 0 10px;
-
-		li {
-			list-style-type: none;
-			display: flex;
-			justify-content: space-between;
-			padding: 15px 0px;
-			border-bottom: $color-5 1px solid;
-
-			&:last-child {
-				border: none;
-			}
-
-			p {
-				padding-top: 5px;
-				color: $color-4;
-			}
-
-			span {
-				opacity: 0.5;
-			}
-
-			input[type="number"] {
-				height: 40px;
-				width: 60px;
-				text-align: center;
-				font-size: 18px;
-				color: $color-4;
-			}
 		}
 	}
 }

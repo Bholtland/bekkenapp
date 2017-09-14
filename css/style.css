@@ -89,17 +89,22 @@ input:checked + .slider:before {
   text-align: center;
   font-family: "Open Sans", helvetica, sans-serif;
   font-size: 1rem;
-  background-color: #e3e3e3;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   color: #333;
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  font-weight: 600; }
+  font-weight: 600;
+  width: 100%; }
 
 .primary {
   background-color: #08C1CF;
   color: #ffffff; }
+
+.secondary {
+  color: #08C1CF;
+  border: 1.5px dashed #08C1CF;
+  background-color: transparent; }
 
 .button-nav {
   width: 60px;
@@ -292,6 +297,43 @@ input:checked + .slider:before {
   position: static;
   width: auto; }
 
+.margin-base {
+  padding: 10px 10px;
+  margin: 0 10px; }
+
+.outline li {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0px;
+  border-bottom: rgba(0, 0, 0, 0.1) 1px solid; }
+  .outline li:last-child {
+    border: none; }
+  .outline li p {
+    padding-top: 5px; }
+  .outline li p:nth-of-type(2) {
+    font-weight: bold; }
+  .outline li span {
+    opacity: 0.5; }
+  .outline li input[type="number"] {
+    height: 40px;
+    width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #333; }
+
+.average {
+  color: #DF810A; }
+
+.good {
+  color: #07A817; }
+
+.cards > li, .cards .exercise-box {
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+  border-radius: 5px;
+  list-style-type: none; }
+
 main {
   overflow-x: hidden; }
 
@@ -329,11 +371,8 @@ main > div > section {
 
 .exercise-box {
   height: 90px;
-  border-radius: 5px;
   background-color: #ffffff;
-  display: inline-block;
-  width: 100%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17); }
+  display: inline-block; }
 
 .exercise-line {
   width: 60px;
@@ -438,6 +477,16 @@ main > div > section {
       background-size: 19px;
       background-position: 6px;
       background-repeat: no-repeat; }
+  .scheme .scheme-settings {
+    background-color: #f1f1f1; }
+    .scheme .scheme-settings .cards > li {
+      background-color: #ffffff;
+      margin-top: 20px; }
+    .scheme .scheme-settings .cards > li:last-of-type {
+      background-color: transparent;
+      box-shadow: none; }
+    .scheme .scheme-settings .cards > li:nth-of-type(1) {
+      margin-top: 10px; }
 
 .button-nav-edit {
   visibility: visible;
@@ -510,7 +559,6 @@ main > div > section {
     right: 21px;
     top: 14px; }
   .exercise-screen .breather {
-    margin-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
     .exercise-screen .breather .countdown {
@@ -596,29 +644,6 @@ main > div > section {
     margin-top: 20px; }
     .exercise-screen .controls .button {
       width: 34%; }
-
-.exercise-settings ul {
-  padding: 10px 10px;
-  margin: 0 10px; }
-  .exercise-settings ul li {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0px;
-    border-bottom: rgba(0, 0, 0, 0.1) 1px solid; }
-    .exercise-settings ul li:last-child {
-      border: none; }
-    .exercise-settings ul li p {
-      padding-top: 5px;
-      color: #333; }
-    .exercise-settings ul li span {
-      opacity: 0.5; }
-    .exercise-settings ul li input[type="number"] {
-      height: 40px;
-      width: 60px;
-      text-align: center;
-      font-size: 18px;
-      color: #333; }
 
 .button-settings {
   text-align: right;
@@ -738,7 +763,6 @@ main > div > section {
   display: block;
   visibility: hidden;
   background-color: #ffffff;
-  border-radius: 12px;
   position: absolute;
   width: 100%;
   z-index: 11;
@@ -752,13 +776,9 @@ main > div > section {
     position: relative;
     top: 10px;
     transition: all 300ms ease-in-out; }
-  .popup button.primary {
-    width: 100%;
-    position: absolute;
-    bottom: 0px; }
   .popup.open {
     opacity: 1;
-    top: -10px;
+    top: 0px;
     visibility: visible; }
 
 @keyframes stroke {

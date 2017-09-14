@@ -12,12 +12,12 @@
 			<div>
 				<section id="stats" class="invisible">
 					<div class="stats">
-						<div>
+						<div class="progression-graph popup">
 							<div class="vas-results">
 								<h2 class="vas-grade">6</h2>
 								<p></p>
 								<div>
-									<p>Test</p>
+									<ul></ul>
 								</div>
 							</div>
 							<div class="graph">
@@ -36,27 +36,57 @@
 								</div>
 							</div>
 						</div>
+						<div class="progression margin-base">
+							<ul class="outline">
+								<li>
+									<p>Oefeningen voltooid <span>(%)</span></p>
+									<p class="average">55%</p>
+								</li>
+								<li>
+									<p>Oefeningen voltooid</p>
+									<p>7 / 13</p>
+								</li>
+								<li>
+									<p>Effectiviteit van de oefeningen</p>
+									<p class="good">Zeer goed</p>
+								</li>
+								<li>
+								<button class="button secondary testbtn">Toon grafiek</button>
+							</ul>
+						</div>
 					</div>
 				</section>
 				<section id="scheme">
 					<div class="scheme">
+						<div class="scheme-settings popup">
+							<ul class="cards margin-base">
+								<li>
+									<h2 class="margin-base">Krachttraining (snel)</h2>
+									<ul class="outline margin-base">
+										<li>
+											<p>Aanspannen <span>(s)</span></p>
+											<input class="interval" type="number" value="4">
+										</li>
+										<li>
+											<p>Ontspannen <span>(s)</span></p>
+											<input class="interval" type="number" value="4">
+										</li>
+										<li>
+											<p>Herhalen <span>(aantal keer)</span></p>
+											<input class="interval" type="number" value="4">
+										</li>
+										<li>
+											<p>Sessies <span></span></p>
+											<input class="interval" type="number" value="4">
+										</li>
+									</ul>
+								</li>
+								<li><button class="button secondary">Oefening toevoegen</button></li>
+							</ul>
+
+						</div>
 						<div class="scroll-box">
-							<div class="scheme-settings popup invisible">
-								<ul>
-									<li>
-										<p>Geluid</p>
-										<label class="switch">
-											<input type="checkbox">
-											<div class="slider round"></div>
-										</label>
-									</li>
-									<li>
-										<p>Interval <span>(s)</span></p>
-										<input class="interval" type="number" value="4">
-									</li>
-								</ul>
-							</div>
-							<div class="scheme-days">
+							<div class="scheme-days cards">
 								<div class="day">
 									<h3>Gisteren <span>30 juni</span></h3>
 									<div class="timeline">
@@ -183,7 +213,7 @@
 							</div>
 						</div>
 						<div class="exercise-settings popup">
-							<ul class=popup-inner>
+							<ul class="popup-inner margin-base outline">
 								<li>
 									<p>Trilsignaal</p>
 									<label class="switch">

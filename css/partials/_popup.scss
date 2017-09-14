@@ -2,7 +2,6 @@
 	display: block;
 	visibility: hidden;
 	background-color: $white;
-	border-radius: 12px;
 	position: absolute;
 	width: 100%;
 	z-index: 11;
@@ -19,15 +18,12 @@
 		transition: $ease;
 	}
 
-	button.primary {
-		width: 100%;
-		position: absolute;
-    	bottom: 0px;
-	}
-
 	&.open {
 		opacity: 1;
-		top: -10px;
+		top: 0px;
 		visibility: visible;
 	}
 }
+
+
+
