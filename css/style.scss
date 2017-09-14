@@ -176,6 +176,10 @@ main > div > section:first-child {
 	border-right: 1px solid $color-4;
 }
 
+main > div > section {
+	margin-top: 55px;
+}
+
 @import "partials/scheme";
 @import "partials/exercise";
 

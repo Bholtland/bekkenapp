@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="62px" viewBox="0 0 80 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Client" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Oefeningen-Copy-17" transform="translate(-85.000000, -84.000000)" stroke="#818C98" stroke-width="9">
+            <g id="Top-Copy" transform="translate(2.000000, 0.000000)">
+                <g id="arrow-left" transform="translate(88.000000, 89.000000)">
+                    <path d="M70,26.0465116 L0,26.0465116" id="Shape"></path>
+                    <polyline id="Shape" points="26.25 52.5 0 26.25 26.25 0"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -104,7 +104,7 @@ input:checked + .slider:before {
 .button-nav {
   width: 60px;
   height: 60px;
-  bottom: 10px;
+  top: -3px;
   right: 10px;
   position: absolute;
   border-radius: 100px;
@@ -131,89 +131,58 @@ input:checked + .slider:before {
 .navigation-bar {
   width: 100%;
   height: 55px;
-  background-color: #f6f6f6;
+  background-color: #ffffff;
   position: fixed;
-  bottom: 0;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.19); }
+  top: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.19); }
   .navigation-bar h1 {
     font-size: 1.1rem;
     margin-top: 15px;
-    margin-left: 16px;
     color: #333;
     font-weight: 700;
     z-index: 1;
     position: relative; }
   .navigation-bar h1:before {
     content: "";
-    background-image: url(../resources/img/caret-left.svg);
-    width: 10px;
-    background-size: 10px;
+    background-image: url(../resources/img/arrow-left.svg);
+    width: 24px;
+    background-size: 20px;
     display: inline-block;
-    height: 14px;
+    height: 15px;
     margin-right: 10px;
     background-repeat: no-repeat;
     margin-left: -15px;
     transition: 0.2s ease-in-out;
     opacity: 0; }
   .navigation-bar .is-sub:before {
-    margin-left: 0;
+    margin-left: 20px;
     opacity: 1; }
-  .navigation-bar.popped-up h1:before {
-    transform: rotate(-90deg); }
   .navigation-bar nav.active .button-nav {
     visibility: visible;
     transform: scale(1); }
   .navigation-bar nav.active .button-nav-stats {
-    bottom: 100px; }
+    top: 150px; }
   .navigation-bar nav.active .button-nav-settings {
-    right: 100px; }
+    top: 70px; }
   .navigation-bar nav.active .button-nav-scheme {
-    right: 80px;
-    bottom: 80px;
+    top: 230px;
     background-color: #08C1CF; }
   .navigation-bar nav.active .button-nav-edit {
-    transform: scale(0.1);
+    transform: scale(0);
     visibility: hidden;
-    bottom: 0; }
+    bottom: 0;
+    position: fixed; }
   .navigation-bar ul .button-nav {
     visibility: hidden;
     background-color: #ffffff;
     transition: all 300ms cubic-bezier(0.755, -0.46, 0.195, 1.425);
     transform: scale(0.1); }
   .navigation-bar ul .button-nav-stats {
-    transition-delay: 0.04s; }
-  .navigation-bar ul .button-nav-scheme {
     transition-delay: 0.08s; }
-  .navigation-bar ul .button-nav-settings {
+  .navigation-bar ul .button-nav-scheme {
     transition-delay: 0.12s; }
-  .navigation-bar ul .button-nav-edit {
-    visibility: visible;
-    transform: scale(1);
-    bottom: 70px;
-    background-color: #08C1CF;
-    overflow: hidden; }
-    .navigation-bar ul .button-nav-edit > img {
-      position: absolute;
-      right: 0;
-      bottom: 0; }
-    .navigation-bar ul .button-nav-edit .button-nav-edit-content {
-      display: block;
-      overflow: hidden;
-      padding: 20px;
-      opacity: 0;
-      position: relative;
-      top: 20px; }
-    .navigation-bar ul .button-nav-edit.invisible-state {
-      transform: scale(0.1);
-      bottom: 0; }
-    .navigation-bar ul .button-nav-edit.open {
-      background-color: #ffffff; }
-      .navigation-bar ul .button-nav-edit.open .button-nav-edit-content {
-        transition: all 300ms cubic-bezier(0.755, -0.46, 0.195, 1.425);
-        transition-delay: 160ms;
-        opacity: 1;
-        top: 0;
-        overflow: scroll; }
+  .navigation-bar ul .button-nav-settings {
+    transition-delay: 0.04s; }
 
 .tcon {
   -webkit-appearance: none;
@@ -337,6 +306,9 @@ main > div {
 main > div > section:first-child {
   border-right: 1px solid #333; }
 
+main > div > section {
+  margin-top: 55px; }
+
 .timeline {
   margin-left: 20px;
   min-height: 40px;
@@ -382,14 +354,14 @@ main > div > section:first-child {
   background-color: #ffffff; }
 
 #scheme {
-  padding: 0 15px;
-  margin-bottom: 55px;
-  overflow: scroll;
-  transform: translateZ(0);
   background-image: url(../resources/img/background-main.png); }
 
 .scheme {
   position: relative; }
+  .scheme .scroll-box {
+    overflow-y: scroll;
+    transform: translateZ(0);
+    padding: 0 15px; }
   .scheme .exercise {
     display: flex;
     padding: 10px 0px;
@@ -467,6 +439,46 @@ main > div > section:first-child {
       background-position: 6px;
       background-repeat: no-repeat; }
 
+.button-nav-edit {
+  visibility: visible;
+  transform: scale(1);
+  background-color: #08C1CF;
+  overflow: hidden;
+  width: 60px;
+  height: 60px;
+  bottom: 15px;
+  right: 15px;
+  position: absolute;
+  border-radius: 100px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  display: block;
+  z-index: 2; }
+  .button-nav-edit img,
+  .button-nav-edit button {
+    width: 25px;
+    height: 25px;
+    top: 18px;
+    left: 18px;
+    position: relative; }
+  .button-nav-edit .button-nav-edit-content {
+    display: block;
+    overflow: hidden;
+    padding: 20px;
+    opacity: 0;
+    position: relative;
+    top: 20px; }
+  .button-nav-edit.invisible-state {
+    transform: scale(0.1);
+    bottom: 0; }
+  .button-nav-edit.open {
+    background-color: #ffffff; }
+    .button-nav-edit.open .button-nav-edit-content {
+      transition: all 300ms cubic-bezier(0.755, -0.46, 0.195, 1.425);
+      transition-delay: 160ms;
+      opacity: 1;
+      top: 0;
+      overflow: scroll; }
+
 .exercise-screen.active .breather svg .active-ring {
   animation: countdown linear infinite forwards;
   animation-duration: 4s; }
@@ -491,12 +503,12 @@ main > div > section:first-child {
       color: #08C1CF;
       width: 100%;
       text-align: center; }
-    .exercise-screen .top .information {
-      width: 25px;
-      height: 25px;
-      position: absolute;
-      right: 0;
-      top: 4px; }
+  .exercise-screen .information {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 21px;
+    top: 14px; }
   .exercise-screen .breather {
     margin-top: 20px;
     padding-bottom: 20px;

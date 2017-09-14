@@ -46,6 +46,7 @@ var buttonNavMain = q('.button-nav-main'),
 	graphVasText = q('.vas-results > p'),
 
 	schemeSettings = q('.scheme-settings'),
+	scrollBox = q('.scroll-box'),
 
 	sessions = 1,
 
@@ -90,11 +91,12 @@ for(var i=0; i < screens.length; i++) {
 
 screenCanvas.style.height = window.innerHeight + 'px';
 q('main').style.height = window.innerHeight + 'px';
-screenScheme.style.width = window.innerWidth-30 + 'px';
+screenScheme.style.width = window.innerWidth + 'px';
 q('.stats').style.width = window.innerWidth + 'px';
 navBar.style.width = window.innerWidth + 'px';
 q('.graph-background').style.height = window.innerHeight + 'px';
 q('.graph').style.height = window.innerHeight + 'px';
+scrollBox.style.height = window.innerHeight-55 + 'px';
 
 // ========== NAV MENU ==========
 
@@ -126,11 +128,11 @@ q('.button-nav-scheme').addEventListener('click', function(){navigateTo('scheme'
 
 // ========== EXERCISES SCHEME ==========
 
-centerOffset = (screenScheme.clientHeight - today.clientHeight) /2;
+centerOffset = (scrollBox.clientHeight - today.clientHeight) /2;
 
 // A function to center on today's exercises
 function centerOnToday() {
-	screenScheme.scrollTop = (today.offsetTop - centerOffset);
+	scrollBox.scrollTop = (today.offsetTop - centerOffset);
 }
 centerOnToday();
 
@@ -154,7 +156,7 @@ navBarTitle.addEventListener('click',function(){
 	if (this.classList.contains('is-sub') && !currentPopup) {
 		navigateTo('scheme');
 	} else {
-		closePopupScreen(currentPopup);
+		closePopupScreen(currentPopup, "Ontspannen");
 	}
 })
 
@@ -272,7 +274,7 @@ function startExercise() {
 }
 
 // The button that opens the local "settings" screen
-buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings)});
+buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, "Instellingen")});
 buttonNavEdit.addEventListener('click', function(){popUpScreen(schemeSettings, "screenOverlay", 300, false)})
 
 // ========== END EXERCISE ==========
@@ -339,23 +341,23 @@ function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElem
 
 // ========== POP UP SCREEN FULL ==========
 
-function popUpScreenFull(screen) {
+function popUpScreenFull(screen, navBarName) {
 	currentPopup = screen;
 
 	sw(screen);
 	screen.classList.add('open');
 
-	navBarTitle.innerHTML = "Sluiten";
+	navBarTitle.innerHTML = navBarName;
 
 	navBar.classList.add('popped-up');
 }
 
-function closePopupScreen(screen) {
+function closePopupScreen(screen, navBarName) {
 	screen.classList.remove('open');
 
 	currentPopup = null;
 
-	navBarTitle.classList.contains('is-sub') ? navBarTitle.innerHTML = "Terug" : navBarTitle.innerHTML = "Oefenschema";
+	navBarTitle.innerHTML = navBarName;
 
 	navBar.classList.remove('popped-up');
 
@@ -543,7 +545,7 @@ function qAll(element){
 // This function is used to navigate between screens
 function navigateTo(screen){
 	if (currentPopup){
-		closePopupScreen(currentPopup);
+		closePopupScreen(currentPopup, "Ontspannen");
 		setTimeout(()=> {navigate()},300);
 	}
 	else {
@@ -555,7 +557,6 @@ function navigateTo(screen){
 		screenCanvas.style.left = '0';
 		navBarTitle.classList.remove('is-sub');
 		navBarTitle.innerHTML = 'Oefenschema';
-		buttonNavEdit.classList.remove('invisible-state');
 		hd(stats);
 
 		setTimeout(function(){hd(screenStats)}, 300);
@@ -568,8 +569,7 @@ function navigateTo(screen){
 	else if (screen == 'exercise-screen') {
 		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
 		navBarTitle.classList.add('is-sub');
-		navBarTitle.innerHTML = 'Terug';
-		buttonNavEdit.classList.add('invisible-state');
+		navBarTitle.innerHTML = 'Ontspannen';
 		currentScreen = 'exercise-screen';
 	}
 
@@ -577,7 +577,6 @@ function navigateTo(screen){
 		screenCanvas.style.left = '0';
 		navBarTitle.classList.remove('is-sub');	
 		navBarTitle.innerHTML = "Grafiek"
-		buttonNavEdit.classList.add('invisible-state');	
 		hd(scheme);
 
 		setTimeout(function(){hd(scheme)}, 300);
