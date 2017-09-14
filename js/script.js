@@ -658,8 +658,8 @@ function navigateTo(screen){
 	}
  };
 
- screenScheme.addEventListener('scroll', function(){
- 	this.style.backgroundPositionY = -this.scrollTop/4 + 'px';
+ scrollBox.addEventListener('scroll', function(){
+ 	screenScheme.style.backgroundPositionY = -this.scrollTop/4 + 'px';
  })
 
  function playAudio(number, isLast, noDelay){
