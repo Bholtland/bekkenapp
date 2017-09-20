@@ -1,0 +1,171 @@
+:root {
+	--main-bg-color: #eee;
+	--font-color-standard: #333;
+	--color-primary-1: #333;
+	--color-primary-2: #fff;
+	--color-primary-3: #ED7D31;
+
+	--sans: arial,sans-serif;
+}
+
+@font-face {
+	src: url('../fonts/titles.otf');
+	font-family: titles;
+}
+
+* {
+	margin:0;
+	padding:0;
+	font-family: ;
+	line-height: 150%;
+	color: var(--font-color-standard);
+	text-decoration: none;
+}
+
+body {
+/*	background-color: var(--main-bg-color);*/
+}
+
+img {
+	max-width: 100%;
+}
+
+main a {
+	color: #1678d2;
+}
+
+.wrapper {
+	max-width: 1170px;
+	width: 100%;
+	display: flex;
+	margin:0 auto;
+	padding-top: 40px;
+}
+
+.doc-title {
+	color: var(--color-primary-3);
+	font-family: 'titles';
+	margin: 10px 0px 10px 0px;
+	text-transform: uppercase;
+	font-size: 30px;
+}
+
+main {
+	width: 70%;
+	min-height: 
+}
+
+aside {
+	width: 30%;
+}
+
+h1, h2, h3, h4, h5, h6, .contents-title {
+	font-family: 'titles';
+	margin: 10px 0px 10px 0px;
+	text-transform: uppercase;
+}
+
+h3 {
+	margin-top: 30px;
+}
+
+
+section {
+	padding: 30px 0px 30px 0px;
+	border-bottom: 1px dashed #ddd;
+}
+
+main p, main li {
+	margin: 0px 0px 10px 0px;
+	font-size: 1.1em;
+}
+
+q { 
+	font-style: italic;
+	font-size: 1.2em;
+}
+
+p {
+	color: inherit;
+}
+
+.toc-link-1 {
+	padding-left: 0px;
+}
+
+.top-bar {
+	background: var(--color-primary-1);
+	height: 30px;
+	padding:6px 0px 0px 0px;
+	width: 100%;
+	position: fixed;
+}
+
+.top-bar span {
+	color: var(--color-primary-2);
+	font-family: 'titles';
+}
+
+.top-bar > div {
+	max-width: 1170px;
+    width: 100%;
+	display: flex;
+	margin:0 auto;
+	justify-content: space-between;
+	color: var(--color-primary-2);
+	font-family: var(--sans);
+}
+
+.top-bar > div p, .top-bar > div span {
+	margin: 0px 10px;
+}
+
+.toc-link-2 {
+	margin-left: 20px;
+	text-transform: lowercase;
+}
+
+.toc-link-3 {
+	margin-left: 40px;
+	text-transform: lowercase;
+}
+
+.cover span {
+	margin: 10px 0px 10px 0px;
+}
+
+#toc {
+	margin-top: 30px;
+	max-width: 320px;
+	position: fixed;
+}
+
+.toc-ul a{
+	font-family: var(--sans);
+	font-weight: 400;
+}
+
+.toc-ul a:hover {
+	font-weight: 700;
+}
+
+#toc li {
+	list-style-type: none;
+}
+
+ul {
+	padding-left: 20px;
+}
+
+.active {
+	font-weight: 700 !important;
+	color: var(--color-primary-3);
+}
+
+@media screen and (max-width: 768px) {
+	aside {display: none;}
+
+	.wrapper {margin: 0px 10px; width: 96%;}
+
+	main {width: 100%;}
+}
