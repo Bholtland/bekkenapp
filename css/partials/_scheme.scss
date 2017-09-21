@@ -182,13 +182,10 @@
 				margin-top: 20px;
 			}	
 
-			> li:last-of-type{
-				background-color: rgba(0,0,0,0);
-				box-shadow: none;
-			}	
-
 			> li:nth-of-type(1) {
 				margin-top: 10px;
+				background-color: rgba(0,0,0,0);
+				box-shadow: none;
 			}	
 		}
 	}

@@ -469,11 +469,10 @@ main > div > section {
     .scheme .scheme-settings .cards > li {
       background-color: #ffffff;
       margin-top: 20px; }
-    .scheme .scheme-settings .cards > li:last-of-type {
+    .scheme .scheme-settings .cards > li:nth-of-type(1) {
+      margin-top: 10px;
       background-color: transparent;
       box-shadow: none; }
-    .scheme .scheme-settings .cards > li:nth-of-type(1) {
-      margin-top: 10px; }
 
 .button-nav-edit {
   visibility: visible;

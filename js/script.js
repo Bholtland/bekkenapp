@@ -22,7 +22,7 @@ var buttonNavMain = q('.button-nav-main'),
 	screenScheme = q('#scheme'),
 	screenStats = q('#stats'),
 	today = q('.today'),
-	todayExercises = qAll('.today .exercise'),
+	// todayExercises = qAll('.today .exercise'),
 
 	stats = q('.stats'),
 
@@ -46,6 +46,10 @@ var buttonNavMain = q('.button-nav-main'),
 	graphVasText = q('.vas-results > p'),
 
 	schemeSettings = q('.scheme-settings'),
+	schemeSettingsCards = q('.scheme-settings .cards'),
+	schemeSettingsButton = q('.scheme-settings .button'),
+	schemeDays = q('.scheme-days'),
+
 	informationScreen = q('.information-screen'),
 	informationButton = q('.information'),
 	progressionGraph = q('.progression-graph'),
@@ -82,7 +86,9 @@ var buttonNavMain = q('.button-nav-main'),
 	linePos,
 	element,
 	elementNumber,
-	previousLine;
+	previousLine,
+
+	planForDays = 14;
 
 
 var screenHierarchy = {
@@ -128,6 +134,228 @@ var screenHierarchy = {
 		title : "Mijn account"
 	}
 }
+
+var exercisePlanning = [1,1,2,0];
+
+var exerciseData = [
+	[
+		['Co&ouml;rdinatie'],
+		['Aanspannen (s)', 5],
+		['Ontspannen (s)', 15],
+		['Herhalen (aantal keer)', 6],
+		['series', exercisePlanning[0]]
+	],
+	[
+		['Krachttraining (snel)'],
+		['Aanspannen (s)', 1],
+		['Ontspannen (s)', 2],
+		['Herhalen (aantal keer)', 10],
+		['series', exercisePlanning[1]]
+	],
+	[
+		['Krachttraining'],
+		['Aanspannen (s)', 10],
+		['Ontspannen (s)', 20],
+		['Herhalen (aantal keer)', 12],
+		['series', exercisePlanning[2]]
+	],
+	[
+		['Ontspanning'],
+		['Duur (min)', 20],
+		['series', exercisePlanning[3]]
+	],
+
+];
+
+schemeSettingsButton.addEventListener('click', ()=>{
+	inputs = document.querySelectorAll('.scheme-settings input');
+
+	for (i = 0; i < inputs.length; i++){
+		let serie = inputs[i].getAttribute("serie");
+		let key = inputs[i].getAttribute("key");
+
+		exerciseData[serie][key][1] = inputs[i].value;
+	}
+
+	makeScheme();
+});
+
+function makeSchemeSettings(){
+	for (i = 0; i < exercisePlanning.length; i++){
+		if (exercisePlanning[i] === 0){
+
+		}
+
+		else {
+			const li = document.createElement('li');
+
+			const name = document.createElement('h2');
+			name.setAttribute('class','margin-base');
+			name.innerHTML = exerciseData[i][0][0];
+
+			const outline = document.createElement('ul');
+			outline.setAttribute('class','outline margin-base');
+
+			li.appendChild(name);
+			li.appendChild(outline);
+
+			schemeSettingsCards.appendChild(li);
+
+			for(a = 0; a < exerciseData[i].length; a++){
+				const outlineLi = document.createElement('li');
+
+				const outlineName = document.createElement('p');
+				outlineName.innerHTML = exerciseData[i][a][0];
+
+				if (typeof(exerciseData[i][a][1]) === 'number'){
+					const outlineType = document.createElement('input');
+					outlineType.setAttribute('type','number');
+					outlineType.setAttribute('value',exerciseData[i][a][1]);
+					outlineType.setAttribute('serie',i);
+					outlineType.setAttribute('key',a);
+
+					outlineLi.appendChild(outlineName);
+					outlineLi.appendChild(outlineType);
+
+					outline.appendChild(outlineLi);
+				}
+
+			}
+		}
+
+	}
+}
+
+var today = 0;
+
+function makeScheme(){
+	schemeDays.innerHTML = '';
+
+	for (i = 0; i < planForDays; i++){
+
+		const day = document.createElement('div');
+
+		if (i==today){
+			day.setAttribute('class','day today');
+		}
+
+		else {
+			day.setAttribute('class','day');
+		}
+
+		const oneDay = document.createElement('h3');
+		oneDay.innerHTML = 'Dag '+(i+1);
+
+		const timeline = document.createElement('div');
+		timeline.setAttribute('class','timeline');
+
+		day.appendChild(oneDay);
+		day.appendChild(timeline);
+
+		schemeDays.appendChild(day);
+		
+		for (a = 0; a < exercisePlanning.length; a++){
+			if (exercisePlanning[a] > 1){
+
+				var amount = exercisePlanning[a]+1;
+
+				for(b = 1; b < amount; b++){
+					createSerie(a);
+				}
+			}
+
+			else if (exercisePlanning[a]===0){
+			}
+
+			else{
+				createSerie(a);
+			}
+			
+
+			function createSerie(serieType){
+				const serie = document.createElement('div');
+				serie.setAttribute('class','exercise');
+
+				if (i===today){
+						serie.addEventListener('click', function(){
+							if (!this.classList.contains('done')) {
+								navigateTo(screenHierarchy.exercise);
+
+								sessions = exerciseData[serieType][3][1];
+								timer.innerHTML = exerciseData[serieType][3][1];						
+
+								// Define the current exercise, to mark it as "done" later
+						 		currentExercise = this;
+							}
+						});	
+				}
+
+				const exerciseLine = document.createElement('div');
+				exerciseLine.setAttribute('class','exercise-line');
+
+				const exerciseBox = document.createElement('div');
+				exerciseBox.setAttribute('class','exercise-box');
+
+				serie.appendChild(exerciseLine);
+				serie.appendChild(exerciseBox);
+
+				const exerciseName = document.createElement('span');
+				exerciseName.setAttribute('class','exercise-name');
+				const exerciseNameTitle = document.createElement('h3');
+
+				const exerciseDuration = document.createElement('span');
+				exerciseDuration.setAttribute('class','exercise-duration');
+				const exerciseDurationText = document.createElement('p');
+
+				const exerciseIndicator = document.createElement('span');
+				exerciseIndicator.setAttribute('class','exercise-indicator');
+
+
+				switch(a){
+					case 0:
+						serie.setAttribute('class', 'exercise coordination');
+
+						exerciseNameTitle.innerHTML = 'Co&ouml;rdinatie';
+						exerciseDurationText.innerHTML = exerciseData[0][3][1]+' herhalingen';
+
+						break;
+					case 1:
+						serie.setAttribute('class', 'exercise power-fast');
+
+						exerciseNameTitle.innerHTML = 'Krachttraining (snel)';
+						exerciseDurationText.innerHTML = exerciseData[1][3][1]+' herhalingen';
+
+						break;
+					case 2:
+						serie.setAttribute('class', 'exercise power-slow');
+
+						exerciseNameTitle.innerHTML = 'Krachttraining';
+						exerciseDurationText.innerHTML = exerciseData[2][3][1]+' herhalingen';
+
+						break;
+					case 3:
+						serie.setAttribute('class', 'exercise relaxation');
+
+						exerciseNameTitle.innerHTML = 'Ontspannen';
+						exerciseDurationText.innerHTML = exerciseData[3][1][1]+' minuten';
+
+						break;
+				}
+
+				exerciseName.appendChild(exerciseNameTitle);
+				exerciseDuration.appendChild(exerciseDurationText);
+
+				exerciseBox.appendChild(exerciseName);
+				exerciseBox.appendChild(exerciseDuration);
+				exerciseBox.appendChild(exerciseIndicator);
+
+				timeline.appendChild(serie);
+			}
+		}
+	}
+}
+
+makeScheme()
 
 // Set the current screen to load
 currentScreen = screenHierarchy.scheme;
@@ -179,29 +407,20 @@ q('.button-nav-scheme').addEventListener('click', function(){navigateTo(screenHi
 
 // ========== EXERCISES SCHEME ==========
 
-centerOffset = (scrollBox.clientHeight - today.clientHeight) /2;
+if (today){
+	centerOffset = (scrollBox.clientHeight - today.clientHeight) /2;
 
-// A function to center on today's exercises
-function centerOnToday() {
-	scrollBox.scrollTop = (today.offsetTop - centerOffset);
+	// A function to center on today's exercises
+	function centerOnToday() {
+		scrollBox.scrollTop = (today.offsetTop - centerOffset);
+	}
+	centerOnToday();
+
 }
-centerOnToday();
 
 // ========== END EXERCISES SCHEME ==========
 
 // ========== OPEN EXERCISE ========== 
-
-// Navigate back and forth between exercises and exercise screen
-for (var i=0; i < todayExercises.length; i++) {
-	todayExercises[i].addEventListener('click', function(){
-		if (!this.classList.contains('done')) {
-			navigateTo(screenHierarchy.exercise);
-
-			// Define the current exercise, to mark it as "done" later
-	 		currentExercise = this;
-		}
-	});	
-}
 
 navBarTitle.addEventListener('click',function(){
 	if (this.classList.contains('is-sub') && !currentPopup) {
@@ -320,7 +539,7 @@ function startExercise() {
 // The button that opens the local "settings" screen
 buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
 q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
-buttonNavEdit.addEventListener('click', function(){popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
+buttonNavEdit.addEventListener('click', function(){makeSchemeSettings(); popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
 informationButton.addEventListener('click', function(){popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)});
 
 // ========== END EXERCISE ==========
@@ -625,7 +844,7 @@ function navigateTo(screen){
 		setTimeout(function(){hd(screenStats)}, 300);
 		sw(scheme);		
 		setTimeout(function(){sw(screenScheme)})
-		centerOnToday();
+		// centerOnToday();
 		currentScreen = screenHierarchy.scheme;
 	} 
 
