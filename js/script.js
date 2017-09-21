@@ -118,7 +118,7 @@ var screenHierarchy = {
 		title : "Voortgang",
 		graph : {
 			name : "progressGraph",
-			title : "Resultaat per dag",
+			title : "VAS-meting",
 			parent : "progress"
 		}
 	},
