@@ -228,6 +228,33 @@ input:checked + .slider:before {
 	}
 }
 
+.notification {
+    color: $white;
+    position: fixed;
+    top: 40px;
+    z-index: 100;
+    width: 100%;
+	visibility: hidden;
+	transition: $bouncy;
+
+    span {
+		padding: 10px;
+	    background: $color-3;
+	    width: 50%;
+	    min-width: 100px;
+	    display: block;
+	    margin: 0 auto;
+	    text-align: center;
+	    border-radius: 4px;
+	    box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+    }
+
+    &.show {
+    	top: 70px;
+    	visibility: visible;
+    }
+}
+
 // END COMMON COMPONENTS
 
 // MAIN EXERCISES

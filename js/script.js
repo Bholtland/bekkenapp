@@ -54,6 +54,9 @@ var buttonNavMain = q('.button-nav-main'),
 	informationButton = q('.information'),
 	progressionGraph = q('.progression-graph'),
 
+	notification = q('.notification'),
+	notificationText = q('.notification p'),
+
 	scrollBox = q('.scroll-box'),
 
 	sessions = 4,
@@ -187,6 +190,8 @@ schemeSettingsButton.addEventListener('click', ()=>{
 
 		
 	}
+
+	showNotification('Instellingen opgeslagen!', 2000);
 
 	makeScheme();
 });
@@ -366,7 +371,17 @@ function makeScheme(){
 	}
 }
 
-makeScheme()
+makeScheme();
+
+function showNotification(text, time){
+	notificationText.innerHTML = text;
+	notification.classList.add('show');
+	closePopupScreen(currentPopup);
+
+	setTimeout(()=>{
+		notification.classList.remove('show');
+	},time)
+}
 
 // Set the current screen to load
 currentScreen = screenHierarchy.scheme;
