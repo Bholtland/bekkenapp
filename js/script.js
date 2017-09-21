@@ -46,6 +46,8 @@ var buttonNavMain = q('.button-nav-main'),
 	graphVasText = q('.vas-results > p'),
 
 	schemeSettings = q('.scheme-settings'),
+	informationScreen = q('.information-screen'),
+	informationButton = q('.information'),
 	progressionGraph = q('.progression-graph'),
 
 	scrollBox = q('.scroll-box'),
@@ -108,7 +110,7 @@ var screenHierarchy = {
 		},
 		info : {
 			name : "exerciseInfo",
-			title : "Informatie",
+			title : "Uitleg",
 			parent : "exercise"
 		}
 	},
@@ -318,7 +320,8 @@ function startExercise() {
 // The button that opens the local "settings" screen
 buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
 q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
-buttonNavEdit.addEventListener('click', function(){popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)})
+buttonNavEdit.addEventListener('click', function(){popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
+informationButton.addEventListener('click', function(){popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)});
 
 // ========== END EXERCISE ==========
 

@@ -24,7 +24,7 @@ h4 {
 
 input[type="number"] {
   background-color: #F2F2F2;
-  border: #333 1px solid;
+  border: #818c98 1px solid;
   border-radius: 4px; }
 
 .absolute-wrapper {
@@ -68,7 +68,8 @@ input[type="number"] {
     box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.5); }
 
 input:checked + .slider {
-  background-color: #08C1CF; }
+  background-color: #08C1CF;
+  border-color: #067982; }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
@@ -78,7 +79,7 @@ input:checked + .slider:before {
 
 .slider.round {
   border-radius: 34px;
-  border: 1px solid #333; }
+  border: 1px solid #818c98; }
   .slider.round::before {
     border-radius: 50%; }
 
@@ -152,7 +153,7 @@ nav {
     margin-left: 20px;
     opacity: 1; }
   nav .menu ul {
-    height: 70px;
+    height: 0px;
     background: #ffffff;
     border-top: 1px solid #d0d0d0;
     margin-top: 15px;
@@ -161,14 +162,16 @@ nav {
     z-index: 0;
     transform: scaley(0);
     transform-origin: 0 0;
-    transition: 0.2s ease-in-out; }
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.19); }
     nav .menu ul .button-nav {
       display: inline-block;
       width: 32%;
       text-align: center;
       padding-top: 10px; }
   nav.active ul {
-    transform: scaley(1); }
+    transform: scaley(1);
+    height: 70px; }
 
 .tcon {
   -webkit-appearance: none;
@@ -291,7 +294,8 @@ nav {
   .outline li:last-child {
     border: none; }
   .outline li p {
-    padding-top: 5px; }
+    padding-top: 5px;
+    color: #58687a; }
   .outline li p:nth-of-type(2) {
     font-weight: bold; }
   .outline li span {
@@ -697,6 +701,11 @@ main > div > section {
     z-index: 11;
     position: relative;
     margin-top: 10px; }
+
+.information-screen img {
+  max-width: 100%; }
+.information-screen li {
+  margin: 10px 0; }
 
 .checkmark_circle {
   stroke-dasharray: 166;

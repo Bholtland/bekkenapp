@@ -52,7 +52,7 @@ nav{
 
 	.menu {
 		ul {
-		    height: 70px;
+		    height: 0px;
 	    	background: $white;
 	    	border-top: 1px solid $separation-border;
 	    	margin-top: 15px;
@@ -62,6 +62,7 @@ nav{
 	    	transform: scaley(0);
 	    	transform-origin: 0 0;
 	    	transition: $screen-transition;
+	    	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.19);
 
 	    	.button-nav {
 	    		display: inline-block;
@@ -75,6 +76,7 @@ nav{
 	&.active {
 		ul {
 			transform: scaley(1);
+			height: 70px;
 		}
 	}
 }

@@ -59,7 +59,7 @@ h4 {
 
 input[type="number"] {
 	background-color: #F2F2F2;
-	border: $color-4 1px solid;
+	border: $color-2 1px solid;
 	border-radius: 4px;
 }
 
@@ -114,6 +114,7 @@ input[type="number"] {
 
 input:checked + .slider {
   background-color: $color-1;
+  border-color: #067982;
 }
 
 input:checked + .slider:before {
@@ -125,7 +126,7 @@ input:checked + .slider:before {
 
 .slider.round {
   border-radius: 34px;
-  border: 1px solid $color-4;
+  border: 1px solid $color-2;
 
   &::before {
 	  border-radius: 50%;
@@ -188,6 +189,7 @@ input:checked + .slider:before {
 
 		p {
 			padding-top: 5px;
+			color: $color-3;
 		}
 
 		p:nth-of-type(2) {
