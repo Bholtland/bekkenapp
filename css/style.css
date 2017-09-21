@@ -519,9 +519,9 @@ main > div > section {
   animation-duration: 4s; }
 .exercise-screen.active .breather .countdown-number:before {
   content: "Vasthouden";
-  color: #08C1CF; }
+  color: #cf3b0d; }
 .exercise-screen.active .breather svg .active-ring {
-  stroke: #08C1CF; }
+  stroke: #cf3b0d; }
 
 .exercise-screen {
   position: relative;
@@ -554,7 +554,7 @@ main > div > section {
       width: 220px;
       text-align: center; }
     .exercise-screen .breather .countdown-number {
-      color: #08C1CF;
+      color: #cf3b0d;
       display: inline-block;
       line-height: 40px;
       z-index: 3;

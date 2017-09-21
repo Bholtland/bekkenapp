@@ -7,11 +7,11 @@
 
 		.countdown-number:before {
 			content: "Vasthouden";
-			color: $color-1;
+			color: $breather-active;
 		}
 
 		svg .active-ring {
-			stroke: $color-1;
+			stroke: $breather-active;
 		}
 	}
 }
@@ -56,7 +56,7 @@
 		}
 
 		.countdown-number {
-		  color: $color-1;
+		  color: $breather-active;
 		  display: inline-block;
 		  line-height: 40px;
 		  z-index: 3;
