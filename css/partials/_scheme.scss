@@ -54,6 +54,10 @@
 .scheme {
 	position: relative;
 
+	.button {
+		width: 100%;
+	}
+
 	.scroll-box {
 		overflow-y: scroll;    
 		transform: translateZ(0);

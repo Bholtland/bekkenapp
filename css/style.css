@@ -94,8 +94,7 @@ input:checked + .slider:before {
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  font-weight: 600;
-  width: 100%; }
+  font-weight: 600; }
 
 .primary {
   background-color: #08C1CF;
@@ -105,6 +104,10 @@ input:checked + .slider:before {
   color: #08C1CF;
   border: 1.5px dashed #08C1CF;
   background-color: transparent; }
+
+.tertiary {
+  background-color: #58687a;
+  color: #ffffff; }
 
 .button-nav img,
 .button-nav button {
@@ -375,6 +378,8 @@ main > div > section {
 
 .scheme {
   position: relative; }
+  .scheme .button {
+    width: 100%; }
   .scheme .scroll-box {
     overflow-y: scroll;
     transform: translateZ(0);
@@ -647,47 +652,39 @@ main > div > section {
   position: absolute;
   top: 0;
   z-index: 11; }
+  .feedback h4 {
+    color: #ffffff;
+    font-size: 1.8rem; }
+  .feedback p {
+    color: #ffffff;
+    margin-top: 40px;
+    text-align: center; }
   .feedback > div {
-    background-color: #ffffff;
-    border-radius: 12px;
-    position: relative;
     margin-top: 40px;
     z-index: 11; }
-    .feedback > div > form {
-      padding: 10px; }
   .feedback h2 {
     text-align: center;
     padding-top: 10px; }
   .feedback select,
   .feedback textarea {
-    border: 1px solid #e3e3e3;
-    background-color: #f1f1f1;
+    border: 1px solid #818c98;
+    background-color: #ffffff;
     border-radius: 5px;
-    color: #e3e3e3; }
+    color: #818c98;
+    font-size: 1.1rem; }
   .feedback textarea {
     width: 100%;
     box-sizing: border-box;
-    min-height: 240px;
-    padding: 10px;
-    font-size: 1rem; }
+    height: 64px;
+    padding: 10px; }
     .feedback textarea::-webkit-input-placeholder {
       /* WebKit browsers */
       color: #aaa; }
+    .feedback textarea.open {
+      height: 240px; }
   .feedback .hidden-textarea {
     max-height: 310px;
-    overflow: hidden;
-    border: none;
     transition: ease-in-out 200ms; }
-    .feedback .hidden-textarea p {
-      font-size: 1.3rem;
-      text-align: center;
-      font-weight: bold;
-      max-width: 10%;
-      padding: 10px;
-      color: #aaa;
-      margin: 0 auto;
-      margin-bottom: 10px;
-      display: block; }
   .feedback .hidden-textarea.invisible {
     display: block !important;
     max-height: 50px; }
@@ -695,16 +692,11 @@ main > div > section {
     width: 100%;
     height: 64px;
     margin: 14px 0;
-    text-indent: 10px;
-    font-size: 1.4rem;
-    color: #333; }
-    .feedback select span {
-      font-size: 2rem; }
+    text-indent: 10px; }
   .feedback .button {
     z-index: 11;
     position: relative;
-    margin-top: 10px;
-    width: 100%; }
+    margin-top: 10px; }
 
 .checkmark_circle {
   stroke-dasharray: 166;
@@ -758,6 +750,8 @@ main > div > section {
     opacity: 1;
     top: 0px;
     visibility: visible; }
+  .popup.dark {
+    background-color: #08C1CF; }
 
 @keyframes stroke {
   100% {
@@ -889,6 +883,8 @@ main > div > section {
     left: 82%; } }
 #stats {
   display: block; }
+  #stats .button {
+    width: 100%; }
   #stats .stats {
     position: relative; }
   #stats .graph {

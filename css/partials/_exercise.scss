@@ -204,16 +204,20 @@
 	top: 0;
 	z-index: 11;
 
+	h4 {
+		color: $white;
+		font-size: 1.8rem;
+	}
+
+	p {
+		color: $white;
+		margin-top: 40px;
+		text-align: center;
+	}
+
 	> div {
-		background-color: $white;
-		border-radius: 12px;
-		position: relative;
 		margin-top: 40px;
 		z-index: 11;
-
-		> form {
-			padding: 10px;
-		}
 	}
 
 	h2 {
@@ -223,40 +227,30 @@
 
 	select,
 	textarea {
-		border: 1px solid $color-6;
-		background-color: $input-background;
+		border: 1px solid $color-2;
+		background-color: $white;
 		border-radius: 5px;
-		color: $color-6;
+		color: $color-2;
+		font-size: 1.1rem;
 	}
 
 	textarea {
 		width: 100%;
 		box-sizing: border-box;
-    	min-height: 240px;
+    	height: 64px;
     	padding: 10px;
-    	font-size: 1rem;
 		&::-webkit-input-placeholder { /* WebKit browsers */
 	    	color: #aaa;
+		}
+
+		&.open {
+			height: 240px;
 		}
 	}
 
 	.hidden-textarea {
 		max-height: 310px;
-    	overflow: hidden;
-    	border: none;
     	transition: $ease-out;
-
-    	p {
-    		font-size: 1.3rem;
-    		text-align: center;
-    		font-weight: bold;
-    		max-width: 10%;
-    		padding: 10px;
-    		color: $semidark;
-    		margin:0 auto;
-    		margin-bottom: 10px;
-    		display: block;
-    	}
 	}
 
 	.hidden-textarea.invisible {
@@ -269,19 +263,12 @@
     	height: 64px;
     	margin: 14px 0;
     	text-indent: 10px;
-    	font-size: 1.4rem;
-    	color: $color-4;
-
-    	span {
-    		font-size: 2rem;
-    	}
 	}
 
 	.button {
 		z-index: 11;
 		position: relative;
 		margin-top: 10px;
-		width: 100%;
 	}
 }
 

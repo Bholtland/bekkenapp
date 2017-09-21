@@ -32,9 +32,8 @@ var buttonNavMain = q('.button-nav-main'),
 	exerciseSettings = q('.exercise-settings'),
 
 	feedbackScreen = q('.feedback'),
-	feedbackButton = q('.feedback button'),
+	feedbackButton = q('.feedback .button'),
 	hiddenTextArea = q('.hidden-textarea'),
-	hiddenTextButton = q('.hidden-textarea > p'),
 	lineCanvas = q('.line-canvas'),
 	graphPoly = q('#graphPoly'),
 	graph = q('.graph'),
@@ -104,7 +103,7 @@ var screenHierarchy = {
 		},
 		feedback : {
 			name : "exerciseFeedback",
-			title : "Hoe ging het?",
+			title : "Ontspannen",
 			parent : "exercise"
 		},
 		info : {
@@ -259,8 +258,6 @@ function startExercise() {
 
 	counterText.innerHTML = localSeconds;
 	timer.innerHTML = sessionsToGo;
-
-	playAudio(2, false, true);
 	
 	// Create a counter for relaxing and exerting 
 	localCount = setInterval(function(){	
@@ -302,18 +299,11 @@ function startExercise() {
 
 		if (sessionsToGo == 0) {
 			clearBreather();
-			popUpScreen(feedbackScreen, feedbackButton, 1300, false);
+			popUpScreenFull(feedbackScreen, screenHierarchy.exercise.feedback, true);
 		}
 
-		if (duration - localSeconds == 1){
+		if (duration == 10){
 			playAudio(localSeconds+1, true);
-		}
-		else if (duration == localSeconds) {
-			playAudio(1, false, true);
-		}
-
-		else {
-			playAudio(localSeconds+1, false);
 		}
 		
 	},1000);
@@ -420,7 +410,7 @@ feedbackButton.addEventListener('click',function(){
 			sw(feedbackButton);
 			hd(feedbackScreen);
 			hd(absoluteWrapper)
-			navigateTo('scheme');
+			navigateTo(screenHierarchy.scheme);
 
 			if (currentExercise) {
 				setTimeout(function(){
@@ -434,9 +424,8 @@ feedbackButton.addEventListener('click',function(){
 	},1100);
 })
 
-hiddenTextButton.addEventListener('click', function(){
-	hiddenTextArea.classList.toggle('invisible');
-	hiddenTextArea.classList.contains('invisible') ? hiddenTextButton.innerHTML = "&or;" : hiddenTextButton.innerHTML = "&and;";
+hiddenTextArea.addEventListener('click', function(){
+	hiddenTextArea.classList.add('open');
 });
 
 // ========== END FEEDBACK SCREEN ==========

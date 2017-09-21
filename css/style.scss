@@ -145,7 +145,6 @@ input:checked + .slider:before {
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
 	font-weight: 600;
-	width: 100%;
 }
 
 .primary {
@@ -157,6 +156,11 @@ input:checked + .slider:before {
 	color: $color-1;
 	border: 1.5px dashed $color-1;
 	background-color: rgba(0,0,0,0);
+}
+
+.tertiary {
+	background-color: $color-3;
+	color: $white;
 }
 
 // END BUTTONS

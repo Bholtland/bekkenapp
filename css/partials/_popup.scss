@@ -23,6 +23,10 @@
 		top: 0px;
 		visibility: visible;
 	}
+
+	&.dark {
+		background-color: $color-1;
+	}
 }
 
 

@@ -266,10 +266,11 @@
 								</li>
 							</ul>
 						</div>
-						<div class="feedback invisible">
-							<div>
+						<div class="popup feedback dark">
+							<div class="margin-base">
 								<form>
 									<h4>Hoe voelde het?</h4>
+									<p>Geef je klachten bij deze oefening aan door middel van een cijfer</p>
 									<select>
 										<option value="1">Kies je gevoel...</option>
 										<option value="1"><span>1</span> - Geen last!</option>
@@ -283,16 +284,15 @@
 										<option value="9"><span>9</span></option>
 										<option value="10"><span>10</span> - Erg veel last</option>
 									</select>
-									<fieldset class="hidden-textarea invisible">
-										<p>&or;</p>
-										<textarea placeholder="Beschrijf hoe je je voelde tijdens het oefenen..." cols="50" rows="4"></textarea>
-									</fieldset>
+									<textarea class="hidden-textarea" placeholder="Beschrijf hoe je je voelde tijdens het oefenen..." cols="50" rows="4"></textarea>
+
+									<a class="button tertiary">Opslaan</a>
 								</form>
 							</div>
 							<span class="absolute-wrapper invisible">
 								<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
 							</span>
-							<button class="button primary">Opslaan</button>
+							
 						</div>
 						<p class="button-settings">Instellingen</p>
 						<div class="controls">
