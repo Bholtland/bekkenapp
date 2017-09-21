@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Eindverslag Berend Holtland</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/prism.css">
+		<link href="css/lightbox.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="top-bar">
+			<div>
+				<span>FYSICALLY</span>
+				<p>Berend Holtland</p>
+			</div>
+		</div>
+		<div class="wrapper">
+			<aside>
+				<div id="toc">					
+						<span class="contents-title">INHOUD</span>				
+				</div>
+			</aside>
+			<main>
+			<section class="cover">
+				<span class="doc-title">Fysically</span>
+				<span>
+					<p><strong>Begeleider</strong><br />Joost Faber</p>
+				</span>
+				<span>
+					<p><strong>Student</strong><br />Berend Holtland<br />500655838<br />20-09-2017<br />Versie 0.1</p>
+				</span>
+				<span>
+					<p><strong>Potentiele opdrachtgever</strong><br /><a href="http://dacostafysiotherapie.nl" target="_blank">Da Costa Fysiotherapie</a></p>
+				</span>
+
+				<span>
+					<p><a href="https://bholtlandmedia.nl/afstuderen/prototype" target="_blank">Link naar prototype</a> (pas beschikbaar op 27-09-2017)</p>
+				</span>
+			</section>
+			<section>
+				<h2>1. Dankwoord</h2>
+					<p>Graag wil ik Joost Faber bedanken voor zijn toegewijde begeleiding tijdens dit project. Daarnaast bedank ik groepsgenoten Thinh Tran, Emiel Peperkamp en Michael Post voor de wekelijkse feedbackrondes die mijn eindproduct gemaakt hebben tot wat het nu is. Ook gaat mijn dank uit naar de respondenten, testpersonen en begeleidenden vanuit Da Costa Fysiotherapie.</p>
+			</section>
+			<section>
+				<h2>2. Voorwoord</h2>
+				
+					<p>De markt voor digitale producten lijkt soms verzadigd te zijn, maar is het nog niet. Zo kijk ik zelf graag naar bedrijven en sectoren waar nog veel (digitale) innovaties mogelijk zijn. Ik kwam daarom uit bij Da Costa Fysiotherapie. Een kleine praktijk voor fysiotherapie met een specialisatie op het gebied van bekkenfysiotherapie en psychosomatische fysiotherapie. </p>
+
+					<p>Na meerdere, open gesprekken met de eigenaren, kwamen er enkele probleemstellingen naar boven. Slechts &eacute;&eacute;n probleemstelling werd niet onderuitgehaald.</p>
+			</section>
+<!-- 			<section>
+				<h2>Management samenvatting</h2>
+					<p></p>
+			</section> -->
+			<section>
+				<h2>3. Inleiding</h2>
+					<h3>3.1 Probleemstelling</h3>
+						<p class="question">Op welke manier worden oefeningen momenteel aangeboden?</p>
+						<p>Wanneer je als pati&euml;nt fysiotherapeutische klachten hebt, dan worden deze klachten vaak verholpen aan de hand van oefeningen. Dit geldt ook voor (bekken)fysiotherapeutische klachten. Bij Da Costa Fysiotherapie wordt nog gewerkt met papier om zo de oefeningen over te dragen aan de pati&euml;nt. Het gebruik van papier heeft complicaties. Je raakt het vaak kwijt en het is passief (en niet interactief waardoor het minder motiveert) <a target="_blank" href="attachments/html/interviews.html#bron-1">[Therapeut > Bron 1]</a>.</p>
+
+						<p>De therapeut kan op deze manier nooit te weten komen of de pati&euml;nt zijn/haar oefeningen zorgvuldig en altijd uitvoert, en kan dus ook niet inschatten hoe effectief de oefeningen zijn.</p>
+
+						<p>Nu zijn er een hoop digitale toepassingen die een oplossing bieden voor begeleiding en interactie tijdens het oefenen <a href="attachments/img/concurrentie.jpg" target="_blank">[Bijlage concurrentiecanvas]</a>. Deze toepassingen lossen echter niet alle problemen op <a href="attachments/html/interviews.html#bron-4" target="_blank">[Therapeut > Bron 4]</a>. Ook geven pati&euml;nten aan dat zij de bestaande toepassingen vaak te saai en te serieus vinden <a href="attachments/html/interviews.html#bron-1-2" target="_blank">[Pati&euml;nt > Bron 1]</a>.</p>
+
+						<p>Uiteraard valt deze probleemstelling ook door te trekken naar algemene fysiotherapeutische klachten. Waarom doe ik dat niet? Omdat alle verschillende klachten zodanig complex zijn en de oefeningen hun eigen uitvoering hebben, dat de toepassing daardoor te complex zou worden en zijn focus zou verliezen. Door in te zoomen op bekkenfysiotherapie, is er een specifiekere doelgroep, en kan ik meer in de diepte gaan om vervolgens een betere oplossing te bedenken.</p>
+
+					<h3>3.2 Stakeholders</h3>
+						<p class="question">Waar lopen patiënten tegenaan wanneer zij oefeningen meekrijgen en moeten uitvoeren?</p>
+						<p><strong>Pati&euml;nt:</strong> Pati&euml;nten vinden het lastig om consistent te zijn in het uitvoeren van de oefeningen <a href="attachments/html/interviews.html#bron-4-1" target="_blank">[Therapeut 2 > Bron 4]</a>. Het vergt veel moeite en discipline aangezien het niet altijd leuk is om te doen. Een interactieve toepassing kan het leuker en makkelijker maken voor de pati&euml;nt om de oefeningen uit te voeren en de progressie bij te houden. Daarnaast kan het motivatie bieden om harder aan de klacht te werken. Een positievere ervaring biedt meer motivatie om de klacht (ook thuis) te verhelpen.</p>
+
+						<p><strong>Therapeut:</strong> Therapeuten hebben geen inzicht in de mate waarin huiswerk door de pati&euml;nt daadwerkelijk wordt uitgevoerd en wat het met de pati&euml;nt doet <a href="attachments/html/interviews.html#bron-5-1" target="_blank">[Therapeut 2 > Bron 5]</a>. Daardoor is het lastig in te schatten welke oefeningen goed werken bij het verhelpen van de klacht.</p>
+
+					<h3>3.3 Design challenge</h3>
+						<q>Hoe kan een online, interactief product ervoor zorgen dat pati&euml;nten met bekkenbodemklachten meer gemotiveerd worden om de oefeningen die zij meekrijgen uit te voeren en daarnaast bekkenfysiotherapeuten meer inzicht geven in de effectiviteit van oefenschema's en de therapietrouw van de pati&euml;nten?</q>
+
+					<h3>3.4 Deelvragen</h3>
+						<h4>3.4.1 Onderzoeksfase</h4>
+							<ul>
+								<li>Waar lopen pati&euml;nten tegenaan wanneer zij oefeningen meekrijgen en moeten uitvoeren?</li>
+								<li>Hoeveel uitleg heeft een bekkenfysiotherapiegerelateerde oefening nodig?</li>
+								<li>Hoe vaak moet een pati&euml;nt oefeningen doen?</li>
+								<li>Wat voor bekkenfysiotherapiegerelateerde oefeningen zijn er?</li>
+								<li>Op welke manier worden oefeningen momenteel aangeboden?</li>
+								<li>Welke apps bestaan er op het gebied van bekkenfysiotherapie en welke behoeften vervullen zij al?</li>
+							</ul>
+
+						<h4>3.4.2 Conceptfase</h4>
+							<li>Welke features zijn bruikbaar voor een MVP en welke zijn nice-to-have?</li>
+
+						<h4>3.4.3 Ontwerpfase</h4>
+							<li>Hoe gaat het eerste prototype eruit zien en welke prototyping tool is daarvoor het meest geschikt?</li>
+
+						<h4>3.4.4 Development</h4>
+							<li>Welke scripttaal / welk framework is geschikt voor het maken van de applicatie?</li>
+					<h3>3.5 Roadmap</h3>
+						<img src="img/roadmap.png" alt="">
+						<figcaption>Roadmap: <a href="https://trello.com/b/PtWPmWUH/roadmap" target="_blank">openen</a></figcaption>
+						<p>De roadmap is onderverdeeld in zes fasen. In realiteit liepen deze fasen door elkaar heen. Dit gold vooral voor de ontwerp-, prototyping- en developmentfase. Voor de leesbaarheid heb ik het document zo veel mogelijk opgedeeld in fases.</p>
+
+					<h3>3.6 Woordenlijst</h3>
+						<ul>
+							<li><strong>VAS-score:</strong> Een wereldwijd erkende, betrouwbare en gemakkelijke methode om pijnintensiteit te meten. <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 1]</a></li>
+							<li><strong>Therapietrouw:</strong> De mate van opvolging van het advies van de therapeut.</li>
+							<li><strong>Native:</strong> Onafhankelijk van het web. Afhankelijk van het besturingssysteem zoals iOs of Android.</li>
+							<li><strong>Probe:</strong> Een fysiek apparaat dat in het lichaam wordt ingebracht om metingen te doen.</li>
+							<li><strong>Sketch:</strong> Een design tool voor het ontwerpen van user interfaces.</li>
+						</ul>
+			</section>
+			<section>
+				<h2>4. Onderzoeksfase</h2>
+					<h3>4.1 Doelgroep analyse</h3>
+						<p>In contact komen met bekkenfysiotherapeutische patiënten is behoorlijk lastig. Therapeuten willen liever niet dat patiënten tijdens bezoekuren ondervraagd worden door derden. Het zijn intieme klachten en de therapeuten willen dan ook liever de integriteit behouden <a href="attachments/html/interviews.html#bron-6-1" target="_blank">[Therapeut 2 > Bron 6]</a>.</p>
+						<p>Het voordeel is wel dat therapeuten veel weten over de patiënten. Ze weten wat de patiënten wel en niet fijn vinden, en wat zij willen en niet willen. Gelukkig kende ik iemand die bekkenfysiotherapeutische klachten heeft gehad, die wilde testen. Ze heeft aangegeven dat zij anoniem wil blijven.</p>
+						<p>Het overgrote deel van de patiënten met bekkenfysiotherapeutische klachten heeft te maken, of recent te maken gehad met zwangerschap <a href="attachments/html/interviews.html#bron-8-1" target="_blank">[Therapeut 2 > Bron 8]</a>. De scope van dit project is dan ook op deze doelgroep gericht. De therapeuten zijn stakeholders van dit project maar ook een beetje doelgroep. Ook voor hen moet het makkelijk kunnen zijn om de voortgang van de patiënt bij te houden.</p>
+						<h4>Gebruikte onderzoeksmiddelen</h4>
+						<p>Ik begon met het inplannen van interviews. Nadat ik deze interviews had afgenomen, heb ik de meest opvallende punten eruit gehaald en in een Journey gezet <a href="attachments/img/journey.png" target="_blank">[bijlage journey]</a>. Ook heb ik op basis van de ge&iuml;nterviewde personen een empathymap gemaakt <a href="attachments/img/empathymap.png" target="_blank">[bijlage empathymap]</a>. Deze documenten dienen als leidraad voor de gemaakte ontwerpkeuzes.</p>
+
+					<h3>4.2 Inhoudelijk onderzoek</h3>
+						<p class="question">Wat voor bekkenfysiotherapiegerelateerde oefeningen zijn er?</p>
+						<p class="question">Hoe vaak moet een patiënt oefeningen doen?</p>
+						<h4>4.2.1 Oefeningen</h4>
+							<p>Pati&euml;nten krijgen tussen de twee en zes oefeningen per dag mee, afhankelijk van wat zij aankunnen. Een ontmoeting tussen therapeut en pati&euml;nt vindt normaal gezien 1 keer per week plaats. In die week voert de pati&euml;nt elke dag de oefeningen uit die door de therapeut zijn meegegeven. Er zijn vier soorten oefeningen met elk hun variaties. Variaties zijn bijvoorbeeld houdingen waarin de oefening wordt uitgevoerd. Voor een uitgebreide beschrijving van de oefeningen, zie <a href="attachments/html/oefeningen.html" target="_blank">[bijlage oefeningen]</a>.</p>
+							<p>De vier oefeningen zijn:</p>
+							<ul>
+								<li><strong>Co&ouml;rdinatie.</strong> Om je bewust te maken van de spieren.</li>
+								<li><strong>Kracht en uithoudingsvermogen</strong> Om de "slow" spieren sterker te maken.</li>
+								<li><strong>Snelle oefening</strong> Om de "twitch en gast" spieren te training.</li>
+								<li><strong>Ontspanning</strong> Om te leren de spieren te ontspannen.</li>
+							</ul>
+							Al deze informatie is afkomstig van interviews met de therapeut. <a href="attachments/html/interviews.html#bron-1" target="_blank">[Therapeut > bron 1]</a>
+						<h4>4.2.2 VAS-score</h4>
+							<p>De VAS-meting is een meting die binnen veel medische instanties wordt gebruikt om subjectieve metingen te doen (meestal pijn) <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 1]</a>. De meting is wereldwijd erkend. Ook wordt het binnen fysiotherapie gebruikt om de heftigheid van bepaalde klachten te meten. Voor deze toepassing is het een belangrijke, makkelijke en relatief betrouwbare manier om voortgang te meten. Het is absoluut niet de bedoeling dat de therapeut op basis van deze informatie beslissingen maakt, maar het dient juist een toevoeging te zijn op de methoden die de therapeut op dit moment al gebruikt. Een van die methoden is bijvoorbeeld het meten door middel van een probe. <a href="attachments/html/interviews.html#bron-7" target="_blank">[Therapeut 2 > Bron 7]</a></p>
+
+					<h3>4.3 Kansen en bedreigingen</h3>
+						
+						<h4>4.3.1 Bedreigingen</h4>
+							<p class="question">Welke apps bestaan er op het gebied van bekkenfysiotherapie en welke behoeften vervullen zij al?</p>
+							<p>Er zijn meerdere apps op de markt die zich bezighouden met bekkenfysiotherapie <a href="attachments/img/concurrentie.jpg" target="_blank">[Bijlage concurrentiecanvas]</a>. Het overgrote deel van deze apps richt zich op het begeleiden van de patiënt. Een paar richten zich op het motiveren van de patiënt. Ook doelen sommige apps op het verschaffen van inzicht in de voortgang voor de therapeut.</p> 
+
+						<h4>4.3.2 Kansen</h4>
+							<p>Het klinkt alsof de hoofdvraag hiermee beantwoord is. Wat valt er voor mij dan te verbeteren?</p>
+							<p>Bestaande apps worden vaak als onhandig en saai ervaren <a href="attachments/html/interviews.html#bron-4" target="_blank">[Therapeut > Bron 4]</a>. Daarnaast is de enige vorm van motivatie binnen bestaande apps, het ontvangen van push notificaties. Push notificaties worden door veel mensen als irritant beschouwd, zeker wanneer ze niet nodig zijn <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 2]</a>. Push notificaties kunnen absoluut helpen, maar over het gebruik moet goed worden nagedacht. Verkeerd gebruik van push notificaties kan tot catastrofale gevolgen voor je app leiden.
+							<p>Naast motivatie, is er saaiheid. De bestaande apps bieden een klinische ervaring. Veel patiënten willen juist dat het uitvoeren van oefeningen leuk wordt <a href="attachments/html/interviews.html#bron-3-2" target="_blank">[Pati&euml;nt > Bron 2]</a>. Uiteraard moeten klachten serieus worden genomen, maar dat betekent niet dat het gehele revalidatieproces serieus moet zijn.</p>
+							<p>Bij bestaande apps kun je aan het einde van de oefening een notitie maken. Er wordt echter niks met die data gedaan, behalve dat je het terug kunt lezen. Door de VAS-score te gebruiken krijg je veel meer inzicht in het revalidatieproces. Denk bijvoorbeeld aan de ups en downs tijdens oefeningen. Daarnaast kun je de score koppelen aan motivatie elementen. Wanneer de patiënt veel oefent en het de cijfers worden steeds beter, kan dit een direct motivatie zijn om meer te oefenen. Dit effect kan worden verhoogd door de data visueel weer te geven, wat andere apps niet doen.</p>
+							<p>In bestaande apps is de begeleiding minimaal. De opties die je hebt zijn visuele begeleiding en begeleiding door middel van tril of een geluidje. Veel patiënten vinden het fijn om door een goede stem te worden begeleid <a href="attachments/html/interviews.html#bron-3" target="_blank">[Therapeut > Bron 3]</a>. Die mogelijkheid moet er dus ook zijn.</p>
+
+					<h3>4.4 Conclusie Onderzoek</h3>
+						<p>Er zijn al een aantal bekkenbodem gerelateerde apps op de markt. Veel daarvan lopen mogelijkheden mis of voeren bepaalde functies verkeerd uit. Door te kijken naar wat de pati&euml;nten echt willen en wat ze motiveert, zou mijn toepassing beter kunnen zijn dan de bestaande toepassingen.</p>
+			</section>
+
+			<section>
+				<h2>5. Conceptfase</h2>
+					<h3>5.1 Ideation</h3>
+						<p>Tijdens ideation sessies, samen dan wel alleen, heb ik nagedacht over de belangrijkste features binnen de toepassing. Ik maakte hierbij gebruik van een digitaal touchscreen om virtuele post-it's op te "plakken" <a href="attachments/img/postit.png" target="_blank">[bijlage "post-it"]</a>.</p> 
+
+					<h3>5.2 must-haves</h3>
+						<p class="question">Welke features zijn bruikbaar voor een MVP en welke zijn nice-to-have?</p>
+						<p>Een gehele lijst van requirements staat op <a href="https://github.com/Bholtland/bekkenapp/issues" target="_blank">Github</a>. Ik beschrijf hieronder de features die de app op zijn minst als extra moet hebben om de probleemstelling te kunnen tackelen en beter te zijn dan de concurrent:</p>
+
+						<p><strong>Progressie gekoppeld aan VAS-score</strong><br/>Uit het onderzoek blijkt dat de pati&euml;nt weinig gemotiveerd is om de oefeningen uit te voeren <a href="attachments/html/interviews.html#bron-1-2" target="_blank">[Pati&euml;nt > Bron 1]</a>. Er zijn genoeg methoden die ervoor zorgen dat een gebruiker van een digitale toepassing, de toepassing blijft gebruiken <a href="attachments/html/bibliografie.html#boeken" target="_blank">[boeken > bron 1]</a>. Het zou ideaal zijn als de VAS-score gekoppeld wordt aan de progressie van de pati&euml;nt. Wanneer de pati&euml;nt ziet dat door meer te oefenen, de resultaten beter worden, leidt dat hopelijk tot meer motivatie. Indien de resultaten niet beter worden, kan de therapeut betere conclusies trekken en de benodigde handelingen verrichten, zoals verwijzing naar een chirurg als het een hardnekkiger probleem betreft.</p>
+
+						<p><strong>Humor, sexyness</strong><br/>Veel pati&euml;nten hebben aangegeven dat zij de bestaande apps te saai of niet sexy genoeg vonden <a href="attachments/html/interviews.html#bron-11" target="_blank">[Therapeut > Bron 11]</a>. Dit helpt ook niet mee in de motivatie. Door de oefeningen leuk te maken, zijn pati&euml;nten waarschijnlijk sneller geneigd om de oefeningen uit te voeren.</p>
+
+						<p><strong>Vrijheid in begeleiding</strong><br/>Pati&euml;nten prefereren allemaal hun eigen manier van oefenen. De &eacute;&eacute;n kijkt graag naar het scherm met tril-feedback. De ander doet het graag op basis van geluid of stembegeleiding <a href="attachments/html/interviews.html#bron-3" target="_blank">[Therapeut > Bron 3]</a>. Er moeten op zijn minst meerdere manieren van begeleidende feedback zijn om aan ieders wens te voldoen.</p>
+
+						<p><strong>Zelf instellen van oefenschema binnen de app.</strong><br/>De therapeut heeft weinig tijd en moet snel en gemakkelijk een schema aan kunnen passen <a href="attachments/html/interviews.html#bron-8" target="_blank">[Therapeut > Bron 8]</a>. Bijvoorbeeld het aanpassen van de herhalingen, sessies en de variaties.</p>
+
+					<h3>5.3 Een app, of iets anders?</h3>
+						<p>Uit de <a href="attachments/html/feedbackfrenzy.html" target="_blank">Feedback Frenzy</a> kwam de trechte vraag naar voren "Waarom een app? en niet iets anders?". Goeie vraag. Ik heb nagedacht over verschillende mogelijkheden. Een fysiek apparaatje. Hiermee zou je zelfs preciezere metingen kunnen doen, zoals met een "probe". Een groot nadeel van zo'n apparaat is dat het veel geld kost. Een app kan gratis zijn en is makkelijk verkrijgbaar. Daarnaast, en dat is een assumptie, denk ik dat veel mensen die op zoek zijn naar begeleiding, dan wel op zoek gaan naar een app of naar een menselijke begeleider.</p>
+
+					<h3>5.4 Businessmodel</h3>
+						<p>Over het businessmodel heb ik meerdere malen nagedacht. Ook heb ik daar met de therapeuten zelf naar gekeken. Het zou een optie kunnen zijn om de app door pati&euml;nten te laten kopen. Ik heb dit idee langs een paar mensen gehaald en die gaven aan dat ze dat niet zouden doen tenzij het &eacute;cht op aanraden van de therapeut is. Het leek mij daarom ook veel logische om de app als extensie van de therapie in te zetten. De therapeut betaalt een x-bedrag om de app te kunnen gebruiken. Voor de pati&euml;nt is het dan gratis. Of dit een werkend businessmodel is, kunnen we pas zien wanneer het product op de markt verschenen is.</p>
+
+					<h3>5.5 Schetsen</h3>
+						<p>Voor het uitvoeren van oefeningen keek ik naar andere apps. De meeste apps maakten gebruik van een cirkel waarop afgeteld werd. Ik wilde echter ook iets anders proberen:</p>
+						<img src="img/schetsen_1.png" alt="" class="screen">
+
+						<p>Uit de eerste test bleek dat de cirkel toch de voorkeur genoot <a href="attachments/html/interviews.html#bron-1-3" target="_blank">[User tests > Bron 1]</a>. Ik ben al vrij snel binnen Sketch gaan werken. Ik werk er sneller mee en kan interacties beter uitbeelden.</p>
+			</section>
+			<section>
+				<h2>6. Ontwerpfase</h2>
+
+					<h3>6.1 Style en Branding</h3>
+							<h4>6.1.1 Discretie</h4>
+								<p>Binnen de applicatie wordt gebruik gemaakt van zeer gevoelige informatie. Het zijn onderwerpen waar je het het liefst niet met anderen over hebt. Om die reden heb ik ervoor gekozen om de applicatie, in tegenstelling tot concurrerende apps , geen naam te geven die iets met bekkenbodemklachten te maken heeft. "Fysically" zegt iets over het menselijk lichaam, zonder gevoelige informatie kenbaar te maken. Daarnaast biedt het mogelijkheid tot uitbreiding naar andere takken binnen fysiotherapie.</p>
+
+							<h4>6.1.2 Styleguide</h4>
+								<img src="img/styleguide.png" alt="">
+								<p>In eerste instantie gebruikte ik een combinatie van oranje en blauw. Dit heb ik later veranderd. Ten eerste omdat ik sowieso van plan was om die kleuren tijdelijk te behouden en daarnaast omdat ze als saai werden ervaren <a href="attachments/html/interviews.html#bron-2-3" target="_blank">[User tests > Bron 2]</a>.</p>
+								<p>De bovenstaande kleuren stralen meer energie uit en zijn aantrekkelijk bij vrouwen, zonder daarbij te feminien te zijn.</p>
+								<p>Ik kies voor een tone-of-voice die de problemen van de pati&euml;nt serieus neemt, zonder daarbij te saai te zijn. Ook moet de copy positief worden ingestoken.</p>
+					
+					<h3>6.2 Design Patterns</h3>
+						<p>Ik maak binnen de toepassing veel gebruik van Material Design. Het is een van de bekendste design guidelines en is zowel bruikbaar binnen iOs als Android.</p>
+						<p>Voor het gebruik van bepaalde functies en componenten heb ik inspiratie gehaald uit een aantal bestaande patterns. Ik heb de patterns niet altijd in hun volledigheid overgenomen, maar een twist gegeven die aansluit op de gehele applicatie. Zie de <a href="attachments/html/patterns.html" target="_blank">bijlage</a> voor de specifieke toepassingen.</p>
+						<p>Ik kies ervoor om zoveel mogelijk interacties te laten plaatsvinden door middel van ingebouwde interacties van het besturingssysteem. Gebruikers zijn vertrouwd met deze interacties en hoeven niet iets nieuws aan te leren, wat resulteert in een kortere leercurve. Denk bijvoorbeeld aan "pickers" en tekstvelden.</p>
+
+					<h3>6.3 Persuasion</h3>
+						<p>Het doel van verleiding is mensen iets te laten doen. Er zijn echter meerdere mogelijkheden dan alleen motiveren. Wanneer je iets gemakkelijk maakt gaan mensen het ook sneller doen. Ik heb hiervoor het Behaviour Model van B.J. Fogg in het achterhoofd gehouden <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 3]</a>. Hoe belangrijker de functie is, hoe makkelijker het voor de gebruiker moet zijn om uit te voeren. Een voorbeeld volgt.</p>
+
+					<h3>6.4 Applicatie</h3>
+						<p>Ik beschrijf en toon hier de schermen van de applicatie aan de hand van user stories. Alle user stories staan in deze <a href="attachments/html/userstories.html" target="_blank">[bijlage]</a>. Ook vertel ik over aanpassingen die hebben geleid tot het uiteindelijke design.</p>
+						<h4>6.4.1 Onboarding</h4>
+							<q>De pati&euml;nt opent de app voor het eerst </q>
+							<div class="img-box-screens broad4">
+								<figure>
+									<a href="img/onboarding_1a.png" data-lightbox="onboarding" data-title="Onboarding 1a">
+										<img src="img/onboarding_1a.png" alt=""/></a>
+									<figcaption>Onboarding 1a</figcaption>
+								</figure>
+								<figure>
+									<a href="img/onboarding_1b.png" data-lightbox="onboarding" data-title="Onboarding 1b">
+										<img src="img/onboarding_1b.png" alt=""/></a>
+									<figcaption>Onboarding 1b</figcaption>
+								</figure>
+								<figure>
+									<a href="img/onboarding_1c.png" data-lightbox="onboarding" data-title="Onboarding 1c">
+										<img src="img/onboarding_1c.png" alt=""/></a>
+									<figcaption>Onboarding 1c</figcaption>
+								</figure>
+								<figure>
+									<a href="img/onboarding_2.png" data-lightbox="onboarding" data-title="Onboarding 2">
+										<img src="img/onboarding_2.png" alt=""/></a>
+									<figcaption>Onboarding 2</figcaption>
+								</figure>								
+							</div>
+							<p><strong>Stap 1:</strong> De pati&euml;nt is voor het eerst bij de therapeut. Samen installeren zij de app en wordt deze geopend. De therapeut krijgt via het controlepaneel <a href="img/controlepaneel.png" data-lightbox="controlepaneel" data-title="Controlepaneel">[zie schetsen]</a> een unieke code die gekoppeld is aan de gegevens van de pati&euml;nt. Zij vullen deze in [onboarding 1b]. Als de invoer incorrrect is, ontvangt de gebruiker een melding die aangeeft wat er fout is. Als de pati&euml;nt de app pas thuis installeert (wat niet de bedoeling is), en geen code heeft ontvangen, dient hij/zij deze bij de therapeut aan te vragen.</p>
+							<p><strong>Stap 2:</strong> Wanneer de pati&euml;nt succesvol is ingelogd, wordt er gevraagd of hij/zij wil beginnen met een oefening. Als de pati&euml;nt "Nee" klikt. Gaat hij/zij meteen door naar het schema <a href="#oefenschema">[zie schema]</a>. Wanneer de pati&euml;nt "Ja" aangeeft, wordt de eerste oefening geopend.</p>
+
+						<h4>6.4.2 Een oefening uitvoeren</h4>
+							<div class="img-box-screens broad5">
+								<figure>
+									<a href="img/oefening_1a.png" data-lightbox="oefening" data-title="Oefening 1a">
+										<img src="img/oefening_1a.png" alt=""/></a>
+									<figcaption>Oefening 1a</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_instellingen_1.png" data-lightbox="oefening" data-title="Oefening instellingen 1">
+										<img src="img/oefening_instellingen_1.png" alt=""/></a>
+									<figcaption>Oefening instellingen 1</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_uitleg_1.png" data-lightbox="oefening" data-title="Oefening uitleg 1">
+										<img src="img/oefening_uitleg_1.png" alt=""/></a>
+									<figcaption>Oefening uitleg 1</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_1b.png" data-lightbox="oefening" data-title="Oefening 1b">
+										<img src="img/oefening_1b.png" alt=""/></a>
+									<figcaption>Oefening 1b</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_1c.png" data-lightbox="oefening" data-title="Oefening 1c">
+										<img src="img/oefening_1c.png" alt=""/></a>
+									<figcaption>Oefening 1c</figcaption>
+								</figure>								
+							</div>
+							<p><strong>Stap 1:</strong> De eerste oefening is een voorbeeld oefening. Het gaat er hier om dat de pati&euml;nt leert begrijpen hoe de app werkt. Het is dan ook de bedoeling dat pati&euml;nt en therapeut deze stap samen doorlopen.</p>
+							<p><strong>Stap 2:</strong> De pati&euml;nt wordt gewezen op de mogelijkheid tot het instellen van de begeleiding naar voorkeur. Hier kan de pati&euml;nt kiezen tussen begeleiding door trilsignaal, geluid, een stem en muziek [Oefening instellingen 1]. In eerste instantie stonden de instellingen direct in het oefeningen scherm. <a href="img/oefening_oud_1.png" data-lightbox="oefening_oud" data-title="Oefening oud 1">[zie eerdere schermen]</a> er was echter weinig ruimte tot uitbreiding en er waren te veel elementen voor de gebruiker om op te focussen. Door deze elementen te scheiden, waren zij beter te interpreteren <a href="attachments/html/interviews.html#bron-3-3" target="_blank">[User tests > Bron 3]</a></p>
+							<p class="question">Hoeveel uitleg heeft een bekkenfysiotherapiegerelateerde oefening nodig?</p>
+							<p><strong>Stap 3:</strong> Wanneer de pati&euml;nt meer uitleg nodig heeft, of niet bij de therapeut was en geen uitleg heeft gehad, kan hij/zij de uitleg nog eens bekijken in video- of tekstvorm [oefening uitleg 1]. In eerste instantie was er geen uitleg, omdat het belangrijk is dat de uitleg door de therapeut wordt gedaan <a href="attachments/html/interviews.html#bron-7" target="_blank">[Therapeut 2 > Bron 7]</a>. Tijdens de Feedback Frenzy gaven meerdere mensen aan dat ze wel iets van uitleg in de vorm van tekst of beeld wilden zien <a href="attachments/html/feedbackfrenzy.html" target="_blank">[Bijlage feedback frenzy]</a></p>
+							<p><strong>Stap 4:</strong> De pati&euml;nt kan vervolgens beginnen met oefenen. Er wordt afgeteld en de oefening begint [oefening 1b en 1c]. Wanneer de oefening klaar is wordt het feedbackscherm getoont [Oefening feedback 1].</p>
+
+							<div class="img-box-screens broad3">
+								<figure>
+									<a href="img/oefening_feedback_1.png" data-lightbox="oefeningfeedback" data-title="Oefening feedback 1a">
+										<img src="img/oefening_feedback_1.png" alt=""/></a>
+									<figcaption>Oefening feedback 1a</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_feedback_1b.png" data-lightbox="oefeningfeedback" data-title="Oefening feedback 1b">
+										<img src="img/oefening_feedback_1b.png" alt=""/></a>
+									<figcaption>Oefening feedback 1b</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_feedback_2.png" data-lightbox="oefeningfeedback" data-title="Oefening feedback 1">
+										<img src="img/oefening_feedback_2.png" alt=""/></a>
+									<figcaption>Oefening feedback 1</figcaption>
+								</figure>								
+							</div>
+
+							<p><strong>Stap 5:</strong> In het feedbackscherm kan de pati&euml;nt een cijfer aangeven. Volgens de officiele VAS-methode betekent een "10" erg veel last en een "1" geen last. Deze data wordt gebruikt om later de voortgang bij te kunnen houden. De pati&euml;nt kan ook eventueel een gedetailleerde beschrijving geven van het gevoel. Wanneer de pati&euml;nt een beschrijving wil invoeren, wordt het tekstveld groter.</p>
+							<p>Ik heb dit systeem ook getest met een slider. Het werd echter minder goed ontvangen, omdat het op een klein scherm en met grote vingers lastig te besturen was <a href="attachments/html/interviews.html#bron-4-3" target="_blank">[User tests > Bron 4]</a>. <a href="img/VAS_1.png" data-lightbox="Oefening feedback oud" data-title="Oefening feedback oud">[zie eerdere schermen]. </a>Wanneer de pati&euml;nt op "Opslaan" klikt gaat hij/zij naar het oefenschema.</p>
+						<h4>6.4.3 Oefenschema</h4>
+							<div class="img-box-screens broad4">
+								<figure>
+									<a href="img/schema_1a.png" data-lightbox="schema" data-title="Oefenschema 1a">
+										<img src="img/schema_1a.png" alt=""/></a>
+									<figcaption>Oefenschema 1a</figcaption>
+								</figure>
+								<figure>
+									<a href="img/schema_aanpassen_1.png" data-lightbox="schema" data-title="Oefenschema aanpassen 1">
+										<img src="img/schema_aanpassen_1.png" alt=""/></a>
+									<figcaption>Oefenschema aanpassen 1</figcaption>
+								</figure>	
+								<figure>
+									<a href="img/schema_aanpassen_1b.png" data-lightbox="schema" data-title="Oefenschema aanpassen 1b">
+										<img src="img/schema_aanpassen_1b.png" alt=""/></a>
+									<figcaption>Oefenschema aanpassen 1b</figcaption>
+								</figure>
+								<figure>
+									<a href="img/schema_1b.png" data-lightbox="schema" data-title="Oefenschema 1b">
+										<img src="img/schema_1b.png" alt=""/></a>
+									<figcaption>Oefenschema 1b</figcaption>
+								</figure>							
+							</div>	
+							<p><strong>Stap 1:</strong> Er staat een standaard oefenschema ingesteld. Als de pati&euml;nt een eerste oefening heeft voltooid, dan wordt deze gemarkeerd als voltooid. Zo krijgt de pati&euml;nt direct een beter beeld van hoe de applicatie werkt en wordt hij/zij vast op weg geholpen.</p>
+							<p>Het oefenschema laat per dag de oefeningen zien die gedaan dienen te worden. Een oefening wordt ook wel een "serie" genoemd. Er zijn dus vier soorten series <a href="attachments/html/oefeningen.html" target="_blank">[bijlage series]</a>. Wanneer een serie voltooid is, wordt deze ingekleurd. Dit zorgt voor een stimulerend effect <a href="attachments/html/interviews.html#bron-5-3" target="_blank">[User tests > Bron 5]</a>.</p>
+							<p>Het "kaarten" systeem dat ik in eerste instantie had gebruikt, kwam nog niet goed over als een planning <a href="attachments/html/interviews.html#bron-5-3" target="_blank">[User tests > Bron 5]</a> <a href="img/schema_oud_1.png" data-lightbox="Oefenschema oud" data-title="Oefenschema oud">[zie eerdere schermen]</a>. (Een serie wordt weergegeven als "kaart".) Daarnaast was er veel onnodige witruimte.</p>
+							<p>Ik besloot om de kaarten in het laatste scherm kleiner te maken. Zo kwam er ruimte vrij voor een tijdlijn en een manier om beter aan te geven dat een oefening/kaart afgevinkt was. Die aanpassing leidde tot meer duidelijkheid.</p>
+							<p><strong>Stap 2:</strong> Door op de "Material design" button te tikken, Kunnen er series worden aangepast, toegevoegd of verwijderd [Oefenschema aanpassen 1]. Elke serie heeft zijn eigen parameters. De ingestelde series worden elke dag herhaald totdat deze weer aangepast worden. Series kunnen worden toegevoegd door op "oefening toevoegen" te tikken. Er wordt dan een "native picker" geopend. Het aanpassen dient alleen te gebeuren in overleg met de therapeut.</p>
+							<p><strong>Stap: 3</strong> Na een aantal dagen zou het schema er dus uit kunnen zien zoals in [oefenschema 1b]. Er zit geen restrictie op het aantal oefening dat mag worden toegevoegd.</p>
+
+						<h4>6.4.4 Navigatie</h4>
+							<div class="img-box-screens broad2">
+								<figure>
+									<a href="img/navigatie_1a.png" data-lightbox="navigatie" data-title="Navigatie 1a">
+										<img src="img/navigatie_1a.png" alt=""/></a>
+									<figcaption>Navigatie 1a</figcaption>
+								</figure>
+								<figure>
+									<a href="img/navigatie_1b.png" data-lightbox="navigatie" data-title="Navigatie 1b">
+										<img src="img/navigatie_1b.png" alt=""/></a>
+									<figcaption>Navigatie 1b</figcaption>
+								</figure>							
+							</div>	
+							<p>De navigatie was een complex iets, en heeft veel iteraties gehad. De drie belangrijkste functies die direct zichtbaar moeten zijn, zijn de sessies/het schema, de voortgang en daarbij nog het profiel van de pati&euml;nt. In eerste instantie stond de navigatiebalk bovenaan. Veel Apps hebben echter een navigatiebalk onderaan het scherm. Dit heb ik ook gebrobeerd te doen <a href="img/navigatie_oud_1.png" data-lightbox="Navigatie oud 1" data-title="Navigatie oud 1">[zie eerdere schermen]</a>. Het voordeel hiervan is dat de navigatiebalk dicht bij de vingers van de gebruiker zit. Het nadeel hiervan is dat mensen toch gewend zijn om als eerste in de linker bovenhoek te kijken. Het laatste argument bleek toch sterker mee te spelen dan het eerste <a href="attachments/html/interviews.html#bron-7-3" target="_blank">[User tests > Bron 7]</a>. Daarnaast cre&euml;erde het verwarring met de knop voor het aanpassen van de series dus heb ik het teruggedraaid <a href="attachments/html/interviews.html#bron-6-3" target="_blank">[User tests > Bron 6]</a>.</p>
+							<p>Waarom koos ik ervoor om het menu uitklapbaar te maken? Je zou kunnen zeggen dat de drie knoppen prima in de navigatiebalk passen. Dat klopt in principe in dit geval, maar op kleine telefoons en schermen met een lange titel, is er niet zoveel ruimte meer.</p>
+
+						<h4>6.4.5 Voortgang bekijken</h4>
+							<div class="img-box-screens broad2">
+								<figure>
+									<a href="img/voortgang_1.png" data-lightbox="voortgang" data-title="Voortgang 1">
+										<img src="img/voortgang_1.png" alt=""/></a>
+									<figcaption>Voortgang 1</figcaption>
+								</figure>
+								<figure>
+									<a href="img/voortgang_grafiek_1.png" data-lightbox="voortgang" data-title="Voortgang VAS-meting 1">
+										<img src="img/voortgang_grafiek_1.png" alt=""/></a>
+									<figcaption>Voortgang VAS-meting 1</figcaption>
+								</figure>							
+							</div>	
+							<p>Een van de belangrijkste functies van de applicatie is het bijhouden van de voortgang. De opgeslagen data moet op een makkelijke manier inzichtelijk maken of de oefeningen effectief zijn en hoe vaak de pati&euml;nt oefeningen uitvoert.</p>
+							<p>Om de pati&euml;nt te motiveren, kan hij/zij badges ontvangen voor het uitvoeren van oefeningen. Een progressiebalk toont wanneer de pati&euml;nt een nieuwe badge haalt [Voortgang VAS-meting 1]. Door badges te halen kan de pati&euml;nt nieuwe achtergrondmuziek uitspelen. In eerste instantie waren dat stemmen, maar die bleken te cruciaal te zijn voor de applicatie <a href="attachments/html/interviews.html#bron-1-1" target="_blank">[Therapeut 2 > Bron 1]</a>. De pati&euml;nt kan ook zien hoeveel van de oefeningen hij/zij uitgevoerd heeft ten opzichte van het totaal. Dit bleek effectief te zijn. De gebruiker wilde namelijk 100% halen <a href="attachments/html/interviews.html#bron-5" target="_blank">[Therapeut > Bron 5]</a>.</p>
+							<p>Aan de hand van de hoeveelheid uitgevoerde oefeningen en de mate van verbetering van de VAS-score. Wordt een "efficientie index" getoond. Dit moet een makkelijke manier zijn om snel te kunnen zien hoe effectief de oefening is. Om meer inzicht te krijgen in de effectiviteit, kan er een datavisualisatie getoond worden [Voortgang VAS-meting 1]. Om door de tabel heen te bewegen, swipe je naar lings of rechts. Dit was voor de tester vrij vanzelfsprekend. Wat wel opviel was dat de tester ook op bolletjes probeerde te klikken in plaats van alleen te swipen. In een eerdere versie zat de grafiek bovenaan in het scherm <a href="img/grafiek_1.png" data-lightbox="Grafiek oud 1" data-title="Grafiek oud 1">[zie eerdere schermen]</a>. Wat uit de eerste test naar boven kwam was dat de bediening in het eerste scherm erg onhandig was <a href="attachments/html/interviews.html#bron-9-3" target="_blank">[User tests > Bron 9]</a>. De tester kwam er namelijk lastig bij met haar vinger, en de grafiek was erg klein. In scherm 2 heb ik dit opgelost door de grafiek onderaan te plaatsen en groter te maken.</p>
+							<p>Alle data wordt vernieuwd nadat de series zijn aangepast. Zo kan de therapeut bij elke afspraak zien hoe het de afgelopen week is gegaan.</p>							
+
+						<h4>6.4.6 Mijn Account</h4>
+							<div class="img-box-screens">
+								<figure>
+									<a href="img/profiel_1.png" data-lightbox="profiel" data-title="Profiel 1">
+										<img src="img/profiel_1.png" alt=""/></a>
+									<figcaption>Profiel 1</figcaption>
+								</figure>								
+							</div>
+							<p>Het profiel is op dit moment redelijk leeg. De pati&euml;nt kan hier uitloggen en meldingen aan of uitzetten. Er zullen naarmate de app complexer wordt, ook meer instellingen komen.</p>
+
+						<h4>6.4.7 Notificaties</h4>
+							<div class="img-box-screens broad2">
+								<figure>
+									<a href="img/notificatie.jpg" data-lightbox="notificaties" data-title="Notificaties 1">
+										<img src="img/notificatie.jpg" alt=""/></a>
+									<figcaption>Notificaties 1</figcaption>
+								</figure>								
+								<figure>
+									<a href="img/inapp_notificaties.png" data-lightbox="notificaties" data-title="Notificaties 2">
+										<img src="img/inapp_notificaties.png" alt=""/></a>
+									<figcaption>Notificaties 2</figcaption>
+								</figure>
+							</div>
+							<p>Ik heb ervoor gekozen om alleen gebruik te maken van push berichten wanneer de pati&euml;nt een paar dagen niet heeft geoefend. Een push bericht moet vooral gebruikt worden om nuttige informatie af te leveren waar de gebruiker van op de hoogte wil worden gesteld, zoals een Whatsapp bericht. Push berichten ter motivatie kunnen nuttig zijn om iemand te triggeren, maar moeten niet vaak worden gebruikt <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 2]</a>. Het is dan ook de bedoeling dat een push bericht, zoals in [Notificaties 1] maximaal 1 keer per week kan worden verstuurd.</p>
+							<p>Naast push notificaties, heb ik ook "in-app" notificaties ge&iuml;ntroduceerd. Deze notificaties dienen deels ter motivatie en anderzijds als heads-up. Stel dat je bijvoorbeeld elke dag heel veel oefeningen moet doen. Dan is zo'n heads-up handig om aan te geven hoeveel oefeningen er nog gedaan moeten worden. De testers gaven aan dat ze dit wel fijn vonden voor het overzicht, maar alleen op de juiste momenten en niet te vaak.<a href="attachments/html/interviews.html#bron-11-1" target="_blank">[User tests > bron 11]</a></p>
+
+					<h3>6.5 Conclusie Design</h3>
+						<p>Het ontwerp heeft een hoop metamorfoses ondergaan; vooral op microniveau. Sommige schermen, zoals het profiel, zijn er later bij gekomen. Het uiteindelijke ontwerp wordt goed ontvangen. Nu is het tijd om een lange termijn test uit te voeren.</p>
+			</section>
+			<section>
+				<h2>7. Prototypen en ontwikkelen</h2>
+					<p class="question">Hoe gaat het eerste prototype eruit zien en welke prototyping tool is daarvoor het meest geschikt?</p>
+					<h3>7.1 Technology driven design</h3>
+						<h4>7.1.1 Wat is Technology driven design?</h4>
+							<p>Voor mij betekent Technology driven design: het itereren op een ontwerp door al prototypend te ontwikkelen. Dat bekent dus dat ik vrij snel ben begonnen met coderen. Na coding sessies ben ik steeds gaan "rapid prototypen" Dat betekende vaak dat ik de eerste beste persoon in mijn omgeving bepaalde flows liet doorlopen.</p>
+						<h4>7.1.2 Wat zijn de voor- en nadelen?</h4>
+							<p>Vanuit code prototypen kan ervoor zorgen dat je focus verliest. Het is wel eens voorgekomen dat ik veel te lang bezig was met het ontwikkelen van een feature, terwijl dat niet nodig was. Technology driven design kan er juist ook voor zorgen dat je inspiratie haalt uit de mogelijkheden met code. Denk hierbij aan animaties en dergelijken. Uiteraard kun je animaties ook testen met een tool als Framer of Principle, maar daar voelen ze toch anders dan wanneer je ze in de browser draait. Een ander voordeel is dat je bepaalde elementen juist heel snel kunt aanpassen. Door met duidelijke, geordende code te werken, kun je iets er anders uit laten zien door &eacute;&eacute;n CSS class aan te passen.</p>
+					
+					<h3>7.2 Scripttaal en framework</h3>
+						<p class="question">Welke scripttaal / welk framework is geschikt voor het maken van de applicatie?</p>
+						<p>Mijn toepassing is een webapplicatie. In de toekomst zou het het best een native app kunnen zijn. Aangezien ik wil afstuderen als Designer met een voorkeur voor web development, heb ik mij hier ook op gefocust. Een goed framework voor mijn applicatie zou React JS zijn. Het biedt de mogelijkheid om modulaire apps op te bouwen die "performant" zijn. Mijn kennis van React is echter bescheiden; daarom zou ik daar te veel tijd aan kwijt zijn geweest.</p>
+
+						<p>De applicatie is gebouwd in HTML. Daarbij maak ik gebruik van Javascript en SCSS. SCSS is een CSS "preprocessor" die het schrijven van CSS effici&euml;nter maakt. Voor Javascript gebruik ik ook jQuerry. Later heb ik het gebruik van jQuerry zoveel mogelijk uitgefaseerd; Backend scripts vallen niet onder het MVP, maar ik heb er wel mee ge&euml;xperimenteerd. Hiervoor heb ik NodeJS en mySQL gebruikt.</p>
+
+					<h3>7.3 Opbouw applicatie</h3>
+						<h4>7.3.1 Structuur</h4>
+							<p>De applicatie bestaat uit een enkel HTML bestand. Ik heb plannen om dit uiteindelijk op te breken zodat de applicatie modulair wordt. De CSS code is wel opgedeeld in componenten. Zo kunnen ze eventueel worden hergebruikt en houdt het de applicatie overzichtelijk. Het Javascript is een enkel bestand met daarin alle functies en variabelen.</p>
+
+						<h4>7.3.2 Progressive Web App</h4>
+							<div class="img-box-screens">
+								<figure>
+									<a href="img/pwa_1.png" data-lightbox="pwa" data-title="Progressive Web App">
+										<img src="img/pwa_1.png" alt=""/></a>
+									<figcaption>Progressive Web App</figcaption>
+								</figure>							
+							</div>
+							<p>Een progressive web app is eigenlijk een website / web app die door de browser in een apart jasje wordt gestoken. De website / app kan zelfs met een icoontje op het startscherm worden weergegeven zodat je het idee hebt dat het een native app is. zie [Progressive Web App]. Daarnaast installeer je een zogehete "Service Worker" <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 4]</a> die ervoor zorgt dat alle bestanden lokaal kunnen worden opgeslagen. Je kunt de app dan dus ook offline gebruiken. In Fysically maak ik ook gebruik van de Progressive Web App. Het voordeel is dat je geen aparte app hoeft te bouwen voor iedere smartphone. Het nadeel is dat animaties vaak wat stroever zijn en dat er nog niet evenveel mogelijkheden zijn als met een native app.</p>
+
+					<h3>7.4 Code review</h3>
+						<p>Op 12 juli hielden wij als groep een code review. Deze review heeft mij veel verder geholpen en tevens gewezen op een aantal "bad practices" die ik toepaste in mijn project. Voor meer details zie <a href="attachments/html/code.html" target="_blank">bijlage</a>.</p>
+
+					<h3>7.5 Conclusie Development</h3>
+						<p>Technology driven design werkte voor mij voordelig maar ook nadelig. Ik ben toch vaak teruggekeerd naar Sketch om schermen opnieuw te ontwerpen. Dat ging vaak wat sneller. Wat wel heel fijn is, is dat de applicatie grotendeels al staat. Het is dus relatief weinig werk om het nog te realiseren. Ik zou volgende keer denk ik toch nog wat langer de tijd nemen om alle schermen te ontwerpen binnen Sketch en ze goed te testen om daarna pas te beginnen met coderen.</p>
+			</section>
+			<section>
+				<h2>8. MVP en verder</h2>
+					<h3>8.1 Oplossing tot nu toe</h3>
+						<p>Bij CMD hebben we niet alleen geleerd om droogjes een designproces te volgen. Als designer ben je verantwoordelijk voor wat je cre&euml;ert. Het is daarom belangrijk om na te denken over de maatschappelijke impact van je project. Zo heb ik ook nagedacht over de impact van mijn project. Ik heb rekening gehouden met sociale behoeften door bij elke designkeuze na te denken over de privacy van de pati&euml;nt. De achterliggende gedachte van de applicatie is om een betere maatschappij te cre&euml;ren waar klachten sneller verholpen worden.</p>
+						<p>Het product op dit moment is slechts het begin van deze app. Ik ben van plan om het verder uit te breiden en op de markt te brengen.</p>
+						<p><em>Voldoet het product aan de minimale eisen?</em></p>
+						<p>Hiervoor gaan we de minimale eisen langs die eerder in dit hoofdstuk zijn opgesteld.</p>
+						<p><strong>Progressie gekoppeld aan VAS-score</strong><br/>In de huidige versie van de applicatie wordt de geboekte progressie van de pati&euml;nt bijgehouden. Deze progressie wordt weergegeven in een grafiek met daarbij informatie over de VAS-score en het percentage uitgevoerde oefeningen. Zowel de pati&euml;nt als de therapeut heeft nu meer inzicht in de effectiviteit van de oefening. Lange termijn tests moeten gaan aantonen of dit leidt tot meer motivatie bij de pati&euml;nt. De therapeut geeft echter aan hier beter inzicht door te krijgen. <a href="attachments/html/interviews.html#bron-8" target="_blank">[Therapeut > Bron 8]</a></p>
+
+						<p><strong>Humor en Sexyness</strong><br/>De in-app notificaties en begeleidende stemmen zorgen voor meer variatie en minder saaiheid. Uit de tests blijkt dat pati&euml;nten dit fijn vinden <a href="attachments/html/interviews.html#bron-11-1" target="_blank">[User tests > Bron 11]</a>. Ook hier moeten lange termijn tests aantonen of dit leidt tot meer motivatie.</p>
+
+						<p><strong>Vrijheid in begeleiding</strong><br/>Een belangrijke feature binnen de toepassing is de hoeveelheid mogelijkheden omtrent begeleiding. De pati&euml;nt kan kiezen of hij/zij begeleid wil worden door een stem, een geluidje, een trilsignaal of een visuele weergave. Daarnaast kan tijdsduur gewijzigd worden. Gebruikers geven aan dat zij hier tevreden mee zijn <a href="attachments/html/interviews.html#bron-10-3" target="_blank">[User tests > Bron 10]</a>.</p>
+
+						<p><strong>Zelf instellen van oefenschema binnen de app.</strong><br/>De therapeut hoeft maar &eacute;&eacute;n knop aan te tikken om het oefenschema aan te kunnen passen. De hoeveelheid instellingen kunnen in eerste instantie ingewikkeld overkomen, maar zijn later wel duidelijk <a href="attachments/html/interviews.html#bron-10-1" target="_blank">[User tests > Bron 10]</a>.</p>
+
+					<h3>8.2 Probleemstelling</h3>
+						<p><em>Tackled de oplossing het fundamentele probleem binnen de probleemstelling?</em></p>
+						<p>Hiervoor bekijken we nogmaals de Design challenge:</p>
+						<q>Hoe kan een online, interactief product ervoor zorgen dat pati&euml;nten met bekkenbodemklachten meer gemotiveerd worden om de oefeningen die zij meekrijgen uit te voeren en daarnaast bekkenfysiotherapeuten meer inzicht geven in de effectiviteit van oefenschema's en de therapietrouw van de pati&euml;nten?</q><br><br>
+
+						<p>Om verhoging van motivatie meetbaar te maken, moet je langere tijd en op grote schaal tests uitvoeren. Helaas is het afstudeertraject niet lang genoeg om dit te kunnen doen. Het product moet daarvoor namelijk vrijwel af zijn. Wat ik wel heb kunnen doen, is onderzoeken waar de doelgroep gemotiveerd van raakt <a href="attachments/html/interviews.html#bron-3-2" target="_blank">[Pati&euml;nt > Bron 3]</a>. Op basis daarvan heb ik elementen bedacht die hierop in kunnen haken, zoals het vrijspelen van stemmen en het ontvangen van notificaties.</p>
+
+						<p>De therapeut inzicht geven is wel makkelijker meetbaar. De therapeut geeft namelijk aan dat herstel van de klacht wordt gemeten tijdens de wekelijkse afspraak <a href="attachments/html/interviews.html#bron-7" target="_blank">[Therapeut > Bron 7]</a>. Aan de hand van de data uit Fysically kan de therapeut direct zien hoeveel de pati&euml;nt heeft geoefend en hoe de pati&euml;nt zich daarbij voelde. De pati&euml;nt hoeft dus niet meer te graven in het geheugen, waardoor informatie specifieker en betrouwbaarder is.</p>
+
+					<h3>8.3 Toekomstbeeld</h3>
+						<p>Voor de toekomst van het product staat nog veel op de planning. Graag breng ik het volgende onder de aandacht:</p>
+						<p><strong>Controlepaneel</strong><br/>Aan het begin van dit project wilde ik ook een Controlepaneel maken voor de therapeut <a href="img/controlepaneel.png" data-lightbox="controlepaneel" data-title="Controlepaneel">[zie schetsen]</a>. Hiermee kon hij/zij oefenschema's aanmaken voor de pati&euml;nt. Dit idee had echter niet genoeg prioriteit om binnen het MVP te vallen. In het interview kwam naar voren dat de therapeut liever schema's wou instellen op de telefoon van de pati&euml;nt. Dit toonde namelijk meer betrokkenheid. Daarnaast gaf de therapeut aan toch niet tussen afspraken door naar de data van de pati&euml;nt te kijken <a href="attachments/html/interviews.html#bron-8" target="_blank">[Therapeut > Bron 8]</a>.</p>
+
+						<p><strong>Meer opties</strong><br/>Op dit moment kan de pati&euml;nt alleen audio, zoals muziek en stemmen, aan- of uitzetten. In de toekomst moet de pati&euml;nt ook volumes kunnen instellen.</p>
+							<div class="img-box-screens">
+								<figure>
+									<a href="img/oefening_2.png" data-lightbox="oefeningen_toekomst" data-title="Oefening instellingen toekomst">
+										<img src="img/oefening_2.png" alt=""/></a>
+									<figcaption>Oefening instellingen toekomst</figcaption>
+								</figure>							
+							</div>
+
+						<p><strong>Inloggen en beveiliging</strong><br/>Iets dat binnen dit project niet behandeld is, is inloggen en veiligheid. Wanneer de app daadwerkelijk bruikbaar wordt, is het noodzakelijk dat pati&euml;nten in kunnen loggen en dat er zorgvuldig met hun data wordt omgegaan. Het laatste wat je wilt is dat zulke persoonlijke en intieme data in handen van derden komt.</p>
+
+			</section>
+			<section>
+				<h2>9. Conclusie en reflectie</h2>
+					<h3>9.1 Conclusie</h3>
+					<p>Het huidige product is slechts een MVP van de uiteindelijke productvisie. Het heeft nog een lange weg te gaan om een volwaardige applicatie te worden. Persoonlijk vind ik dat iets goeds. Het betekent namelijk dat er genoeg mogelijkheden zijn (ook ten opzichte van de concurrentie). Daarnaast moet de applicatie grootschalig en langdurig gebruikt worden. Pas dan kan er gekeken worden naar het effect op de doelgroep en daarmee, de oplossing aansluitend op de probleemstelling.</p>
+					<p>De huidige features bewijzen zich op korte termijn in ieder geval als oplossing van de problemen die op dit moment spelen binnen de klachtafhandeling van bekkenfysiotherapeutische klachten.</p>
+					<h3>9.2 Reflectie</h3>
+						<h4>9.2.1 Wat waren de tegenslagen?</h4>
+							<p>Het schrijven van code is veel werk. CMD is een designopleiding en geen developmentopleiding. Er wordt van ons verwacht dat wij de beheersing van alle competenties binnen CMD kunnen aantonen. Dat is ook niet zo gek. Naast het aantonen van deze competenties, heb ik zoveel tijd gestoken in het schrijven van code, dat daardoor soms andere competenties op de achtergrond bleven hangen. Ik heb daardoor uiteindelijk nog meer tijd aan het project besteed dan verwacht werd.</p>
+							<p>Het gevaar van werken met code, is dat je als developer wilt "debuggen". Naast het maken van een prototype, is het zeer aanlokkelijk om een zoveel mogelijk, met name ingewikkelde, features uit te gaan werken terwijl dat niet nodig is. Wat ik daarvan geleerd heb, is dat het extra belangrijk is met een development mindset om een goede hi&euml;rarchische planning te maken.</p>
+							<p>Ik wil het er eigenlijk bijna niet over hebben, maar mijn Git branches zijn een grote gruwel. Ik neem mijzelf dat niet zo erg kwalijk, want mijn ervaring met Git is zeer beperkt. Het plan was om voor elke feature aparte branches te maken, maar op een gegeven moment had ik het zo overhoop gegooid, dat er niets meer aan te doen was. Jammer, eerst maar eens goed leren en dan doen we het de volgende keer beter. </p>
+
+						<h4>9.2.2 Waar ging het goed?</h4>
+							<p>Laat ik gewoon direct zeggen dat ik nog nooit met zo veel lol en passie aan een CMD-gerelateerd project heb gewerkt. Het onderwerp sprak me aan, en het gehele proces was leuk.</p>
+							<p>Wanneer een project leuk is, ga je er ook meer tijd in steken. Daarnaast wil ik dit project ook gaan doorpakken en er echt product van gaan maken. Die gedachte stimuleert ook heel erg.</p>
+							<p>Waar ik heel tevreden over ben zijn de feedbackrondes met begeleider en studenten. We hebben elkaar ontzettend veel feedback gegeven en gezorgd dat we op het juiste pad bleven. In het begin heb ik best een tijd met mijn hoofd bij een ander onderwerp gezeten. Uiteindelijk bleek dat project lastig uitvoerbaar. Gelukkig heb ik het bekkenfysiotherapie project snel kunnen oppakken en luchtte dat ontzettend op. Vanaf toen ben ik eigenlijk alleen maar als een trein gegaan..</p>
+			</section>
+			<section>
+				<h2>10. Bijlage</h2>
+				<ul>
+					<li><a href="attachments/html/designbrief/index.html">Designbrief</a></li>
+					<li><a href="attachments/html/bibliografie.html">Bibliografie</a></li>
+					<li><a href="attachments/html/feedbackfrenzy.html">Inhoud Feedback Frenzy</a></li>
+					<li><a href="https://github.com/Bholtland/bekkenapp/issues">Github</a></li>
+					<li><a href="attachments/html/interviews.html">Interviews</a></li>
+					<li><a href="attachments/html/patterns.html">Patterns</a></li>
+					<li><a href="attachments/html/procesboek.html">Procesboek</a></li>
+					<li><a href="attachments/html/code.html">Code</a></li>
+					<li><a href="attachments/html/userstories.html">Interviews</a></li>
+					<li><a href="attachments/html/oefeningen.html">Oefeningen</a></li>
+					<li><a href="attachments/img/concurrentie.jpg">Concurrentie Canvas</a></li>
+					<li><a href="attachments/img/empathymap.png">Empathymap</a></li>
+				</ul>
+			</section>
+			</main>
+		</div>
+
+		<!-- 
+		BIJLAGE:
+			Bibliografie
+			Logboek
+			Interviews en tests
+			Debriefing
+			Users stories
+			User Requirements List
+			Moodboard
+			Feedback Frenzy
+
+
+
+		 -->
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-scrollspy.js"></script>
+		<script type="text/javascript" src="js/prism.js"></script>
+		<script type="text/javascript" src="js/list.js"></script>	
+		<script src="js/lightbox.js"></script>	
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Eindverslag Berend Holtland</title>
+		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../css/prism.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="top-bar">
+			<div>
+				<span>CODE</span>
+				<p>Berend Holtland</p>
+			</div>
+		</div>
+		<div class="wrapper">
+			<aside>
+				<a href="../../index.html" class="backbutton">< Terug</a>
+				<div id="toc">					
+						<span class="contents-title">INHOUD</span>				
+				</div>
+			</aside>
+			<main>
+
+			<section>
+				<h2>Code</h2>
+				<h3>Naamgeving</h3>
+				<p>Voor de naamgeving heb ik de volgende structuur:</p>
+				<p><strong>In CSS:</strong><br/>Huidige scherm - component - onderdeel van component. Dus bijvoorbeeld:<br/><pre><code class="language-css">.scheme-exercise-name</code></pre></p>
+
+				<p><strong>In Javascript:</strong><br/>In Javascript geldt hier eigenlijk hetzelfde, maar zijn er geen tussenliggende streepjes. De variabelen en functies zijn geschreven conform de normen en waarden van het web. Waar alleen de eerste woorden zonder hoofdletter worden geschreven. Bijvoorbeeld:<br/><pre><code class="language-js">var schemeExerciseName</code></pre></p>
+
+				<h4>Coding patterns en Best practices</h4>
+				<p>Scopes</p>
+				<p></p>
+
+				<h3>Code review</h3>
+				<p><strong>HTML semantiek</strong><br/>Op 12 juli hielden wij als groep een code review. Deze review heeft mij veel verder geholpen en tevens gewezen op een aantal "bad practices" die ik toepaste in mijn project. Zo gebruikte ik veel "div's" en weinig HTML-elementen die beter geschikt waren. Het gevolg daarvan is dat browsers minder inzicht hebben in het doel van je HTML-secties. Blinde mensen zullen daardoor bijvoorbeeld meer moeite hebben met het gebruik van de applicatie. Ook heb daarom zoveel mogelijk elementen herschreven.</p>
+
+				<p><strong>Gebruik zo min mogelijk jQuery</strong><br/>jQuery, een Javascript library die het schrijven van Javascript makkelijker maakt, heeft veel invloed op de performance van je applicatie. In eerste instantie schreef ik zo'n beetje alles met jQuery. Vervolgens heb ik alle jQuery elementen die ik in vanilla Javascript kon schrijven, herschreven in Javascript. Mijn applicatie werd daardoor aanzienlijk sneller.</p>
+
+				<p><strong>Deel CSS in componenten op</strong><br/>Een van de voordelen van SCSS is dat je "partials" kunt gebruiken. Dat zijn opgedeelde stukken code die ervoor zorgen dat jij het overzicht kunt behouden en dat je ze kunt hergebruiken. Nu hoef je voor CSS in principe niks te hergebruiken, maar werk je wel sneller.</p>
+
+				<p><strong>Gebruik zo min mogelijk CSS code in Javascript</strong><br/>Voor anderen is het lastig werken als zij erachter moeten komen dat veel CSS-code ergens in je Javascript verstopt zit. Ik had daarom veel dynamische stijlaanpassingen herschreven. Wat eerst het volgende was:</p>
+				<pre><code class="language-js">document.getElementsByClassName('class').style.backgroundColor = "#something";</code></pre>
+				<p>Herschreef ik als:</p>
+				<pre><code class="language-js">document.getElementsByClassName('class').classList.add('new-background');</code></pre>
+
+				<p><strong>Verander pixels in andere CSS-eenheden</strong><br/>Ik maakte heel veel gebruik van pixels. Het voordeel is dat je op de pixel precies kunt aangeven welk formaat een element moet zijn. Het nadeel is dat het gebruik ervan resulteert in een minder “responsive” applicatie. Waar ik bijvoorbeeld het volgende gebruikte:</p>
+				<pre><code class="language-css">
+				.element {
+					margin: 20px 10px;
+					line-height: 20px;
+				}
+				</code></pre>
+				<p>Herschreef ik dit als:</p>
+				<pre><code class="language-css">
+				.element {
+					margin: 1.1rem 0.55rem;
+					line-height: 1.1rem;
+				}
+				</code></pre>
+			</section>
+			</main>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-scrollspy.js"></script>
+		<script type="text/javascript" src="../../js/prism.js"></script>
+		<script type="text/javascript" src="../../js/list.js"></script>		
+		<script type="text/javascript" src="../../js/script.js"></script>
+	</body>
+</html>
