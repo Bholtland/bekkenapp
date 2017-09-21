@@ -56,7 +56,9 @@ var buttonNavMain = q('.button-nav-main'),
 
 	scrollBox = q('.scroll-box'),
 
-	sessions = 1,
+	sessions = 4,
+	tightenTime = 10,
+	relaxTime = 20, 
 
 	hasStarted = false,
 
@@ -174,7 +176,16 @@ schemeSettingsButton.addEventListener('click', ()=>{
 		let serie = inputs[i].getAttribute("serie");
 		let key = inputs[i].getAttribute("key");
 
-		exerciseData[serie][key][1] = inputs[i].value;
+		if (exerciseData[serie][key][0] === 'series'){
+			exerciseData[serie][key][1] = inputs[i].value;
+			// exercisePlanning[serie]=inputs[i].value;
+		}
+
+		else {
+			exerciseData[serie][key][1] = inputs[i].value;
+		}
+
+		
 	}
 
 	makeScheme();
@@ -279,7 +290,10 @@ function makeScheme(){
 								sessions = exerciseData[serieType][3][1];
 								timer.innerHTML = exerciseData[serieType][3][1];	
 
-								navBarTitle.innerHTML =	exerciseData[serieType][0][0];				
+								navBarTitle.innerHTML =	exerciseData[serieType][0][0];	
+
+								tightenTime = exerciseData[serieType][1][1];	
+								relaxTime = exerciseData[serieType][2][1];		
 
 								// Define the current exercise, to mark it as "done" later
 						 		currentExercise = this;
@@ -450,7 +464,8 @@ timer.innerHTML = sessions;
 
 function startExercise() {
 	// Defining local variables
-	var duration = q('.interval').value,
+	var duration = 4,
+
 		counterText = q('.countdown-number'),
 		activeRing = q('svg .active-ring'),
 		resetButton = q('.reset'),
@@ -472,7 +487,10 @@ function startExercise() {
 	}
 
 	exerciseScreen.classList.add('active');
-	activeRing.style.animationDuration = duration+'s';
+
+	activeRing.style.strokeDashOffset = '0'
+	activeRing.style.animationDuration = 4+'s';
+	duration = 4;
 
 	counterText.innerHTML = localSeconds;
 	timer.innerHTML = sessionsToGo;
@@ -483,7 +501,16 @@ function startExercise() {
 
 		// Toggle relaxation or exertion after given amount of seconds
 		if(localSeconds > duration){
-
+			if (duration === tightenTime){ 
+				duration = relaxTime;
+				activeRing.style.animationDuration = relaxTime+'s';
+				activeRing.style.animationName = "relax";
+			}
+			else {
+				duration = tightenTime;
+				activeRing.style.animationDuration = tightenTime+'s';
+				activeRing.style.animationName = "tighten";
+			}	
 			localSeconds = 1;		
 			
 			if (didPrecount) {
@@ -493,6 +520,8 @@ function startExercise() {
 				breather.classList.toggle('release');
 
 			}
+
+			
 			
 			timer.innerHTML = sessionsToGo;
 
@@ -520,7 +549,7 @@ function startExercise() {
 			popUpScreenFull(feedbackScreen, screenHierarchy.exercise.feedback, true);
 		}
 
-		if (duration == 10){
+		if (tightenTime == 100){
 			playAudio(localSeconds+1, true);
 		}
 		

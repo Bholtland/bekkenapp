@@ -1,7 +1,10 @@
 .exercise-screen.active {
 	.breather {
 		svg .active-ring {
-			animation: countdown linear infinite forwards;
+			animation-direction: forwards;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-name: tighten;
 			animation-duration: 4s;
 		}
 
@@ -116,7 +119,16 @@
 			font-size: 1.4rem;
 		}
 
-		@keyframes countdown {
+		@keyframes tighten {
+		  from {
+		    stroke-dashoffset: 0px;
+		  }
+		  to {
+		    stroke-dashoffset: 565px;
+		  }
+		}
+
+		@keyframes relax {
 		  from {
 		    stroke-dashoffset: 0px;
 		  }

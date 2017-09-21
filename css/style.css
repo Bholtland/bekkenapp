@@ -515,7 +515,10 @@ main > div > section {
       overflow: scroll; }
 
 .exercise-screen.active .breather svg .active-ring {
-  animation: countdown linear infinite forwards;
+  animation-direction: forwards;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-name: tighten;
   animation-duration: 4s; }
 .exercise-screen.active .breather .countdown-number:before {
   content: "Vasthouden";
@@ -600,7 +603,12 @@ main > div > section {
     .exercise-screen .breather .remaining-time span {
       font-weight: 700;
       font-size: 1.4rem; }
-@keyframes countdown {
+@keyframes tighten {
+  from {
+    stroke-dashoffset: 0px; }
+  to {
+    stroke-dashoffset: 565px; } }
+@keyframes relax {
   from {
     stroke-dashoffset: 0px; }
   to {
