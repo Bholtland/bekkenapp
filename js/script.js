@@ -182,11 +182,7 @@ schemeSettingsButton.addEventListener('click', ()=>{
 
 function makeSchemeSettings(){
 	for (i = 0; i < exercisePlanning.length; i++){
-		if (exercisePlanning[i] === 0){
 
-		}
-
-		else {
 			const li = document.createElement('li');
 
 			const name = document.createElement('h2');
@@ -221,7 +217,6 @@ function makeSchemeSettings(){
 				}
 
 			}
-		}
 
 	}
 }
