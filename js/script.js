@@ -88,7 +88,7 @@ var buttonNavMain = q('.button-nav-main'),
 	elementNumber,
 	previousLine,
 
-	planForDays = 14;
+	planForDays = 7;
 
 
 var screenHierarchy = {
@@ -277,7 +277,9 @@ function makeScheme(){
 								navigateTo(screenHierarchy.exercise);
 
 								sessions = exerciseData[serieType][3][1];
-								timer.innerHTML = exerciseData[serieType][3][1];						
+								timer.innerHTML = exerciseData[serieType][3][1];	
+
+								navBarTitle.innerHTML =	exerciseData[serieType][0][0];				
 
 								// Define the current exercise, to mark it as "done" later
 						 		currentExercise = this;
@@ -846,7 +848,6 @@ function navigateTo(screen){
 	else if (screen == 'exercise') {
 		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
 		navBarTitle.classList.add('is-sub');
-		navBarTitle.innerHTML = screenHierarchy.exercise.title;
 		currentScreen = screenHierarchy.exercise;
 	}
 
