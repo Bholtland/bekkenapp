@@ -1161,4 +1161,16 @@ main > div > section {
         .progression .progression-unlock .progression-unlock-container .locked img {
           opacity: 0.3; }
 
+.profile .outline p:nth-of-type(2):after {
+  content: '';
+  background-image: url(../resources/img/caret-right-dark.svg);
+  background-size: 7px;
+  background-repeat: no-repeat;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  left: 6px; }
+
 /*# sourceMappingURL=style.css.map */

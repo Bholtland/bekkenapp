@@ -62,6 +62,8 @@ var buttonNavMain = q('.button-nav-main'),
  	tutorialButtonNo = q('.tutorial-question .button:nth-of-type(1)'),
  	tutorialButtonYes = q('.tutorial-question .button:nth-of-type(2)'),
 
+ 	profileScreen = q('.profile'),
+
 	scrollBox = q('.scroll-box'),
 
 	sessions = 4,
@@ -139,9 +141,10 @@ var screenHierarchy = {
 			parent : "progress"
 		}
 	},
-	account : {
-		name : "account",
-		title : "Mijn account"
+	profile : {
+		name : "profile",
+		title : "Profiel",
+		parent : "scheme"
 	},
 	onboarding: {
 		name : "onboarding",
@@ -393,7 +396,7 @@ function showNotification(text, time){
 }
 
 // Set the current screen to load
-currentScreen = screenHierarchy.onboarding;
+currentScreen = screenHierarchy.scheme;
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
@@ -1012,3 +1015,9 @@ function login(){
  		navigateTo(screenHierarchy.scheme);
  	}
  }
+
+
+
+buttonSettings.addEventListener('click',()=>{
+	popUpScreenFull(profileScreen, screenHierarchy.profile);
+})
