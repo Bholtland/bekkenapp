@@ -157,10 +157,6 @@
 	}
 }
 
-.invisible {
-	display: none !important;
-}
-
 .progression {
 	color: $color-3;
 
@@ -234,11 +230,21 @@
 					height: 80px;
 					border-radius: 100%;
 					background-color: $input-background;
+					border: 2px solid $color-1;
+   					box-sizing: border-box;
 				}
 
 				p {
 					display: block;
 					text-align: center;
+				}
+			}
+
+			.locked {
+				filter: grayscale(100%);
+
+				img {
+					opacity: 0.3;
 				}
 			}
 		}

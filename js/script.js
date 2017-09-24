@@ -25,6 +25,7 @@ var buttonNavMain = q('.button-nav-main'),
 	// todayExercises = qAll('.today .exercise'),
 
 	stats = q('.stats'),
+	onboarding = q('.onboarding'),
 
 	buttonExerciseVibrate = q('.vibrate'),
 	buttonExerciseSettings = q('.button-settings'),
@@ -56,6 +57,10 @@ var buttonNavMain = q('.button-nav-main'),
 
 	notification = q('.notification'),
 	notificationText = q('.notification p'),
+
+ 	loginButton = q('.login .button'),
+ 	tutorialButtonNo = q('.tutorial-question .button:nth-of-type(1)'),
+ 	tutorialButtonYes = q('.tutorial-question .button:nth-of-type(2)'),
 
 	scrollBox = q('.scroll-box'),
 
@@ -137,6 +142,10 @@ var screenHierarchy = {
 	account : {
 		name : "account",
 		title : "Mijn account"
+	},
+	onboarding: {
+		name : "onboarding",
+		title : ""
 	}
 }
 
@@ -384,8 +393,8 @@ function showNotification(text, time){
 }
 
 // Set the current screen to load
-currentScreen = screenHierarchy.scheme;
-navigateTo(currentScreen.name);
+currentScreen = screenHierarchy.onboarding;
+navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
 q('main > div').style.width = window.innerWidth*2 + 'px';
@@ -876,36 +885,46 @@ function navigateTo(screen){
 	}
 
 	function navigate(){
-	if (screen == 'scheme') {
-		screenCanvas.style.left = '0';
-		navBarTitle.classList.remove('is-sub');
-		navBarTitle.innerHTML = screenHierarchy.scheme.title;
-		hd(stats);
+		sw(navBar);
+		if (screen == 'scheme') {
+			screenCanvas.style.left = '0';
+			navBarTitle.classList.remove('is-sub');
+			navBarTitle.innerHTML = screenHierarchy.scheme.title;
+			hd(stats);
+			hd(onboarding);
 
-		setTimeout(function(){hd(screenStats)}, 300);
-		sw(scheme);		
-		setTimeout(function(){sw(screenScheme)})
-		// centerOnToday();
-		currentScreen = screenHierarchy.scheme;
-	} 
+			setTimeout(function(){hd(screenStats)}, 300);
+			sw(scheme);		
+			setTimeout(function(){sw(screenScheme)})
+			// centerOnToday();
+			currentScreen = screenHierarchy.scheme;
+		} 
 
-	else if (screen == 'exercise') {
-		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
-		navBarTitle.classList.add('is-sub');
-		currentScreen = screenHierarchy.exercise;
-	}
+		else if (screen == 'exercise') {
+			screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
+			navBarTitle.classList.add('is-sub');
+			currentScreen = screenHierarchy.exercise;
+		}
 
-	else if (screen == 'progress') {
-		screenCanvas.style.left = '0';
-		navBarTitle.classList.remove('is-sub');	
-		navBarTitle.innerHTML = screenHierarchy.progress.title;
-		hd(scheme);
+		else if (screen == 'progress') {
+			screenCanvas.style.left = '0';
+			navBarTitle.classList.remove('is-sub');	
+			navBarTitle.innerHTML = screenHierarchy.progress.title;
+			hd(scheme);
+			hd(onboarding);
 
-		setTimeout(function(){hd(scheme)}, 300);
-		sw(stats)		
-		setTimeout(function(){sw(screenStats)}, 300);
-		currentScreen = screenHierarchy.progress;
-	}
+			setTimeout(function(){hd(scheme)}, 300);
+			sw(stats)		
+			setTimeout(function(){sw(screenStats)}, 300);
+			currentScreen = screenHierarchy.progress;
+		}
+		else if (screen == 'onboarding') {
+			screenCanvas.style.left = '0';
+			hd(navBar)
+			hd(scheme);
+			sw(onboarding)		
+			currentScreen = screenHierarchy.onboarding;
+		}
 	}
  };
 
@@ -933,8 +952,63 @@ function navigateTo(screen){
  			console.log('nr'+number+"_"+variation+'.ogg');
  		}
 
-
  		audio.play();
  	}
+ }
 
+loginButton.addEventListener('click',()=>{
+	login();
+})
+
+function login(){
+ 	var login = q('.login');
+ 	var errorText = q('.error');
+ 	var loginDate = q('.login input:nth-of-type(1)');
+ 	var loginCode = q('.login input:nth-of-type(2)');
+ 	var tutorialQuestion = q('.tutorial-question');
+
+ 	if(checkCode() && loginDate.value !== ''){
+ 		proceed();
+ 	}
+ 	else if (loginDate.value === ""){
+ 		throwError('Vul a.u.b. een geldige datum in<br/>bijvoorbeeld 25-03-1995');
+ 	}
+ 	else if (!checkCode()){
+ 		throwError('Vul a.u.b. een geldige code in<br/>Een code heeft 9 karakters');
+ 	}
+
+ 	function checkCode(){
+ 		if (loginCode.value !== "" && loginCode.value.length === 9){
+ 			return true;
+ 		}
+ 		else{
+ 			return false;
+ 		}
+ 	}
+
+ 	function throwError(text){
+ 		errorText.innerHTML = text; 
+ 	}
+
+ 	function proceed(){
+ 		hd(login);
+ 		sw(tutorialQuestion);
+ 	}
+ }
+
+ tutorialButtonNo.addEventListener('click', ()=> {
+ 	tutorial(false);
+ });
+
+ tutorialButtonYes.addEventListener('click', ()=> {
+ 	tutorial(true);
+ });
+
+ function tutorial(choice){
+ 	if(choice){
+ 		navigateTo(screenHierarchy.exercise);
+ 	} 
+ 	else {
+ 		navigateTo(screenHierarchy.scheme);
+ 	}
  }

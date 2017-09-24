@@ -237,19 +237,8 @@
 		padding-top: 10px;
 	}
 
-	select,
 	textarea {
-		border: 1px solid $color-2;
-		background-color: $white;
-		border-radius: 5px;
-		color: $color-2;
-		font-size: 1.1rem;
-	}
-
-	textarea {
-		width: 100%;
 		box-sizing: border-box;
-    	height: 64px;
     	padding: 10px;
 		&::-webkit-input-placeholder { /* WebKit browsers */
 	    	color: #aaa;

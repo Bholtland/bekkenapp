@@ -110,6 +110,11 @@ input:checked + .slider:before {
   background-color: #58687a;
   color: #ffffff; }
 
+.quartiary {
+  color: #ffffff;
+  border: 1.5px dashed #ffffff;
+  background-color: transparent; }
+
 .button-nav img,
 .button-nav button {
   width: 25px;
@@ -341,6 +346,21 @@ nav {
     top: 70px;
     visibility: visible; }
 
+form input,
+form select,
+form textarea {
+  border: 1px solid #818c98;
+  background-color: #ffffff;
+  border-radius: 5px;
+  color: #818c98;
+  font-size: 1.1rem;
+  width: 100%;
+  height: 64px;
+  text-indent: 10px; }
+
+.invisible {
+  display: none !important; }
+
 main {
   overflow-x: hidden; }
 
@@ -357,6 +377,50 @@ main > div > section:first-child {
 
 main > div > section {
   margin-top: 55px; }
+
+.onboarding {
+  margin: 0;
+  background-color: #08C1CF;
+  position: relative; }
+  .onboarding .wrap {
+    margin-top: 20px; }
+  .onboarding h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2em; }
+  .onboarding form input {
+    margin-top: 10px; }
+  .onboarding form p {
+    text-align: center;
+    color: #ffffff; }
+  .onboarding form .no-code {
+    margin-top: 20px; }
+  .onboarding form .button {
+    margin-top: 10px;
+    margin-top: 20px; }
+  .onboarding form .error {
+    height: 44px;
+    margin-top: 20px; }
+  .onboarding form .discretion {
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px);
+    font-size: 0.8em; }
+    .onboarding form .discretion strong {
+      font-size: inherit; }
+  .onboarding .tutorial-question {
+    padding-top: 50%; }
+    .onboarding .tutorial-question p {
+      font-size: 1.6em;
+      text-align: center;
+      color: #ffffff; }
+      .onboarding .tutorial-question p strong {
+        font-size: inherit; }
+    .onboarding .tutorial-question form {
+      display: flex;
+      justify-content: space-between; }
+      .onboarding .tutorial-question form .button {
+        width: 34%; }
 
 .timeline {
   margin-left: 20px;
@@ -698,17 +762,8 @@ main > div > section {
   .feedback h2 {
     text-align: center;
     padding-top: 10px; }
-  .feedback select,
   .feedback textarea {
-    border: 1px solid #818c98;
-    background-color: #ffffff;
-    border-radius: 5px;
-    color: #818c98;
-    font-size: 1.1rem; }
-  .feedback textarea {
-    width: 100%;
     box-sizing: border-box;
-    height: 64px;
     padding: 10px; }
     .feedback textarea::-webkit-input-placeholder {
       /* WebKit browsers */
@@ -802,6 +857,17 @@ main > div > section {
 @keyframes fill {
   100% {
     box-shadow: inset 0px 0px 0px 50px #08C1CF; } }
+@keyframes flyUp {
+  0% {
+    top: 40px;
+    opacity: 0; }
+  100% {
+    top: 0;
+    opacity: 1; } }
+.flyUp {
+  animation: flyUp 200ms ease-in-out;
+  position: relative; }
+
 .shine {
   position: relative;
   z-index: 0; }
@@ -1033,9 +1099,6 @@ main > div > section {
       #stats .vas-results > div p {
         color: #333; }
 
-.invisible {
-  display: none !important; }
-
 .progression {
   color: #58687a; }
   .progression .progression-bar p {
@@ -1087,9 +1150,15 @@ main > div > section {
           width: 80px;
           height: 80px;
           border-radius: 100%;
-          background-color: #f1f1f1; }
+          background-color: #f1f1f1;
+          border: 2px solid #08C1CF;
+          box-sizing: border-box; }
         .progression .progression-unlock .progression-unlock-container > div p {
           display: block;
           text-align: center; }
+      .progression .progression-unlock .progression-unlock-container .locked {
+        filter: grayscale(100%); }
+        .progression .progression-unlock .progression-unlock-container .locked img {
+          opacity: 0.3; }
 
 /*# sourceMappingURL=style.css.map */
