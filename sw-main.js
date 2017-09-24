@@ -24,6 +24,10 @@ var cachedFiles = [
   '/bekkenapp/resources/img/settings.svg',
   '/bekkenapp/resources/img/stats.svg',
   '/bekkenapp/resources/img/user.svg',
+  '/bekkenapp/resources/audio/10x20-1.ogg',
+  '/bekkenapp/resources/audio/10x20-2.ogg',
+  '/bekkenapp/resources/audio/10x20-3.ogg',
+  '/bekkenapp/resources/audio/music1.ogg',
   '/bekkenapp/sw-register.js',
 ]
 

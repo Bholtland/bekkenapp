@@ -15,6 +15,7 @@ var buttonNavMain = q('.button-nav-main'),
 	centerOffset,
 	currentExercise,
 	vibrate = false,
+	audio = false,
 
 	exerciseScreen = q('.exercise-screen'),
 	breather = q('.breather'),
@@ -28,6 +29,7 @@ var buttonNavMain = q('.button-nav-main'),
 	onboarding = q('.onboarding'),
 
 	buttonExerciseVibrate = q('.vibrate'),
+	buttonExerciseAudio = q('.playAudio'),
 	buttonExerciseSettings = q('.button-settings'),
 	buttonExerciseStart = q('.start'),
 	exerciseSettings = q('.exercise-settings'),
@@ -483,6 +485,14 @@ buttonExerciseVibrate.addEventListener('click', function(){
     }
 }); 
 
+buttonExerciseAudio.addEventListener('click', function(){
+    if (this.checked) {
+        audio = true;
+    } else {
+    	audio = false;
+    }
+}); 
+
 // ========== END BREATHER SETTINGS ==========
 
 // ========== EXERCISE ==========
@@ -490,6 +500,13 @@ buttonExerciseVibrate.addEventListener('click', function(){
 timer.innerHTML = sessions;
 
 function startExercise() {
+	if (audio){
+		setTimeout(()=>{
+			if (tightenTime == 10){
+				playAudio();
+			}
+		},4000)
+	}
 	// Defining local variables
 	var duration = 4,
 
@@ -542,13 +559,16 @@ function startExercise() {
 			
 			if (didPrecount) {
 				if (breather.classList.contains('release')) {
-					sessionsToGo--;	
+					sessionsToGo--;
+					if (audio){
+						if (tightenTime == 10){
+							playAudio();
+						}
+					}	
 				}
 				breather.classList.toggle('release');
 
 			}
-
-			
 			
 			timer.innerHTML = sessionsToGo;
 
@@ -563,6 +583,8 @@ function startExercise() {
 					},250);
 				}
 			}
+
+
 			if (!didPrecount) {
 				breather.classList.remove('release');
 			}
@@ -574,10 +596,6 @@ function startExercise() {
 		if (sessionsToGo == 0) {
 			clearBreather();
 			popUpScreenFull(feedbackScreen, screenHierarchy.exercise.feedback, true);
-		}
-
-		if (tightenTime == 100){
-			playAudio(localSeconds+1, true);
 		}
 		
 	},1000);
@@ -935,28 +953,42 @@ function navigateTo(screen){
  	screenScheme.style.backgroundPositionY = -this.scrollTop/4 + 'px';
  })
 
- function playAudio(number, isLast, noDelay){
+ // function playAudio(number, isLast, noDelay){
+ // 	var dir = "resources/audio/";
+ // 	var audio;
+
+ // 	if (number){
+ // 		variation = Math.ceil(Math.random() * 3);
+
+ // 		if (isLast) {
+ // 			audio = new Audio(dir+'nr_last'+number+"_"+variation+".ogg");
+ // 			console.log('nr_last'+number+"_"+variation+'.ogg');
+ // 		}
+ // 		// else if (noDelay){
+ // 		// 	audio = new Audio(dir+'nr_nodelay'+number+"_"+variation+".ogg");
+ // 		// }
+
+ // 		else {
+ // 			audio = new Audio(dir+'nr'+number+"_"+variation+".ogg");
+ // 			console.log('nr'+number+"_"+variation+'.ogg');
+ // 		}
+
+ // 		audio.play();
+ // 	}
+ // }
+
+ function playAudio(){
  	var dir = "resources/audio/";
- 	var audio;
+ 	var audio;	
+ 	var music;
 
- 	if (number){
- 		variation = Math.ceil(Math.random() * 3);
+ 	variation = Math.ceil(Math.random() * 3);
 
- 		if (isLast) {
- 			audio = new Audio(dir+'nr_last'+number+"_"+variation+".ogg");
- 			console.log('nr_last'+number+"_"+variation+'.ogg');
- 		}
- 		// else if (noDelay){
- 		// 	audio = new Audio(dir+'nr_nodelay'+number+"_"+variation+".ogg");
- 		// }
+ 	var audio = new Audio(dir+"10x20-"+variation+".ogg");
+ 	audio.play();
 
- 		else {
- 			audio = new Audio(dir+'nr'+number+"_"+variation+".ogg");
- 			console.log('nr'+number+"_"+variation+'.ogg');
- 		}
-
- 		audio.play();
- 	}
+ 	var music = new Audio(dir+"music1.ogg");
+ 	music.play();
  }
 
 loginButton.addEventListener('click',()=>{
