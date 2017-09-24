@@ -5,8 +5,8 @@ var cachedFiles = [
   '/bekkenapp/css/style.css.map',
   '/bekkenapp/index.html',
   '/bekkenapp/js/jquery-3.2.1.min.js',
-  '/bekkenapp/script-jquery.js',
-  '/bekkenapp/script.js',
+  '/bekkenapp/js/script-jquery.js',
+  '/bekkenapp/js/script.js',
   '/bekkenapp/resources/img/arrow-left.svg',
   '/bekkenapp/resources/img/background-main.png',
   '/bekkenapp/resources/img/caret-left.svg',
@@ -24,7 +24,7 @@ var cachedFiles = [
   '/bekkenapp/resources/img/settings.svg',
   '/bekkenapp/resources/img/stats.svg',
   '/bekkenapp/resources/img/user.svg',
-  '/bekkenapp/resources/img/sw-register.js',
+  '/bekkenapp/sw-register.js',
 ]
 
 self.addEventListener('install', function(event) {
