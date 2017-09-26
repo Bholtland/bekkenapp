@@ -30,6 +30,7 @@ var buttonNavMain = q('.button-nav-main'),
 
 	buttonExerciseVibrate = q('.vibrate'),
 	buttonExerciseAudio = q('.playAudio'),
+	buttonExerciseMusic = q('.playMusic'),
 	buttonExerciseSettings = q('.button-settings'),
 	buttonExerciseStart = q('.start'),
 	exerciseSettings = q('.exercise-settings'),
@@ -101,6 +102,9 @@ var buttonNavMain = q('.button-nav-main'),
 	element,
 	elementNumber,
 	previousLine,
+
+	audio,
+	music,
 
 	planForDays = 7;
 
@@ -185,6 +189,10 @@ var exerciseData = [
 	],
 
 ];
+
+// Set the current screen to load
+currentScreen = screenHierarchy.onboarding;
+navigateTo(currentScreen);
 
 schemeSettingsButton.addEventListener('click', ()=>{
 	inputs = document.querySelectorAll('.scheme-settings input');
@@ -397,10 +405,6 @@ function showNotification(text, time){
 	},time)
 }
 
-// Set the current screen to load
-currentScreen = screenHierarchy.scheme;
-navigateTo(currentScreen);
-
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
 q('main > div').style.width = window.innerWidth*2 + 'px';
 
@@ -493,6 +497,14 @@ buttonExerciseAudio.addEventListener('click', function(){
     }
 }); 
 
+buttonExerciseMusic.addEventListener('click', function(){
+    if (this.checked) {
+        music = true;
+    } else {
+    	music = false;
+    }
+}); 
+
 // ========== END BREATHER SETTINGS ==========
 
 // ========== EXERCISE ==========
@@ -503,7 +515,15 @@ function startExercise() {
 	if (audio){
 		setTimeout(()=>{
 			if (tightenTime == 10){
-				playAudio();
+				playAudio('voice');
+			}
+		},4000)
+	}
+
+	if (music){
+		setTimeout(()=>{
+			if (tightenTime == 10){
+				playAudio('music');
 			}
 		},4000)
 	}
@@ -560,9 +580,20 @@ function startExercise() {
 			if (didPrecount) {
 				if (breather.classList.contains('release')) {
 					sessionsToGo--;
-					if (audio){
-						if (tightenTime == 10){
-							playAudio();
+
+					console.log(sessionsToGo)
+
+					if (sessionsToGo !== 0){
+						if (audio){
+							if (tightenTime == 10){
+								playAudio('voice');
+							}
+						}
+
+						if (music){
+							if (tightenTime == 10){
+								playAudio('music');
+							}
 						}
 					}	
 				}
@@ -728,7 +759,7 @@ hiddenTextArea.addEventListener('click', function(){
 // An array that contains the user's feedback
 feedback = [
 	[4,"Ik had ergens last van", "19-07"],
-	[6,"Jep last", "20-07"],
+	[7,"Ik had constant last van mijn rechterdij", "20-07"],
 	[10,"Iets", "21-07"],
 	[7,"Ik had last", "22-07"],
 	[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
@@ -977,18 +1008,22 @@ function navigateTo(screen){
  // 	}
  // }
 
- function playAudio(){
+ function playAudio(type){
  	var dir = "resources/audio/";
- 	var audio;	
- 	var music;
+ 	var audioFile;	
+ 	var musicFile;
 
  	variation = Math.ceil(Math.random() * 3);
 
- 	var audio = new Audio(dir+"10x20-"+variation+".ogg");
- 	audio.play();
+ 	if (type === 'voice'){
+	 	var voiceFile = new Audio(dir+"10x20-"+variation+".ogg");
+	 	voiceFile.play();
+ 	}
 
- 	var music = new Audio(dir+"music1.ogg");
- 	music.play();
+ 	if (type === 'music'){
+	 	var musicFile = new Audio(dir+"music1.ogg");
+	 	musicFile.play();
+ 	}
  }
 
 loginButton.addEventListener('click',()=>{
@@ -1042,6 +1077,16 @@ function login(){
  function tutorial(choice){
  	if(choice){
  		navigateTo(screenHierarchy.exercise);
+
+		sessions = 2;
+		timer.innerHTML = 2;	
+
+		navBarTitle.innerHTML =	exerciseData[2][0][0];	
+
+		tightenTime = exerciseData[2][1][1];	
+		relaxTime = exerciseData[2][2][1];		
+
+		currentExercise = q('.today .exercise:nth-of-type(3)');
  	} 
  	else {
  		navigateTo(screenHierarchy.scheme);

@@ -313,10 +313,10 @@ nav {
     color: #333; }
 
 .average {
-  color: #DF810A; }
+  color: #DF810A !important; }
 
 .good {
-  color: #07A817; }
+  color: #07A817 !important; }
 
 .cards > li, .cards .exercise-box {
   width: 100%;
@@ -389,7 +389,8 @@ main > div > section {
     color: #ffffff;
     font-size: 2em; }
   .onboarding form input {
-    margin-top: 10px; }
+    margin-top: 10px;
+    font-family: "Open Sans", helvetica, sans-serif; }
   .onboarding form p {
     text-align: center;
     color: #ffffff; }
