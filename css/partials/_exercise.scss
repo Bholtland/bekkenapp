@@ -1,17 +1,20 @@
 .exercise-screen.active {
 	.breather {
 		svg .active-ring {
-			animation: countdown linear infinite forwards;
+			animation-direction: forwards;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-name: tighten;
 			animation-duration: 4s;
 		}
 
 		.countdown-number:before {
 			content: "Vasthouden";
-			color: $color-1;
+			color: $breather-active;
 		}
 
 		svg .active-ring {
-			stroke: $color-1;
+			stroke: $breather-active;
 		}
 	}
 }
@@ -56,7 +59,7 @@
 		}
 
 		.countdown-number {
-		  color: $color-1;
+		  color: $breather-active;
 		  display: inline-block;
 		  line-height: 40px;
 		  z-index: 3;
@@ -116,7 +119,16 @@
 			font-size: 1.4rem;
 		}
 
-		@keyframes countdown {
+		@keyframes tighten {
+		  from {
+		    stroke-dashoffset: 0px;
+		  }
+		  to {
+		    stroke-dashoffset: 565px;
+		  }
+		}
+
+		@keyframes relax {
 		  from {
 		    stroke-dashoffset: 0px;
 		  }
@@ -204,16 +216,20 @@
 	top: 0;
 	z-index: 11;
 
+	h4 {
+		color: $white;
+		font-size: 1.8rem;
+	}
+
+	p {
+		color: $white;
+		margin-top: 40px;
+		text-align: center;
+	}
+
 	> div {
-		background-color: $white;
-		border-radius: 12px;
-		position: relative;
 		margin-top: 40px;
 		z-index: 11;
-
-		> form {
-			padding: 10px;
-		}
 	}
 
 	h2 {
@@ -221,42 +237,21 @@
 		padding-top: 10px;
 	}
 
-	select,
 	textarea {
-		border: 1px solid $color-6;
-		background-color: $input-background;
-		border-radius: 5px;
-		color: $color-6;
-	}
-
-	textarea {
-		width: 100%;
 		box-sizing: border-box;
-    	min-height: 240px;
     	padding: 10px;
-    	font-size: 1rem;
 		&::-webkit-input-placeholder { /* WebKit browsers */
 	    	color: #aaa;
+		}
+
+		&.open {
+			height: 240px;
 		}
 	}
 
 	.hidden-textarea {
 		max-height: 310px;
-    	overflow: hidden;
-    	border: none;
     	transition: $ease-out;
-
-    	p {
-    		font-size: 1.3rem;
-    		text-align: center;
-    		font-weight: bold;
-    		max-width: 10%;
-    		padding: 10px;
-    		color: $semidark;
-    		margin:0 auto;
-    		margin-bottom: 10px;
-    		display: block;
-    	}
 	}
 
 	.hidden-textarea.invisible {
@@ -269,19 +264,22 @@
     	height: 64px;
     	margin: 14px 0;
     	text-indent: 10px;
-    	font-size: 1.4rem;
-    	color: $color-4;
-
-    	span {
-    		font-size: 2rem;
-    	}
 	}
 
 	.button {
 		z-index: 11;
 		position: relative;
 		margin-top: 10px;
-		width: 100%;
+	}
+}
+
+.information-screen {
+	img {
+		max-width: 100%;
+	}
+
+	li {
+		margin: 10px 0;
 	}
 }
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="88px" viewBox="0 0 80 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>user</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Client" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="navigatie_1b" transform="translate(-1161.000000, -270.000000)" stroke="#818C98" stroke-width="9">
+            <g id="Group-5" transform="translate(-10.000000, 233.000000)">
+                <g id="Group-4" transform="translate(1066.000000, 42.000000)">
+                    <g id="user" transform="translate(110.000000, 0.000000)">
+                        <path d="M70,78 L70,69.3333333 C70,59.7603977 62.1649831,52 52.5,52 L17.5,52 C7.83501688,52 0,59.7603977 0,69.3333333 L0,78" id="Shape"></path>
+                        <circle id="Oval" cx="35.5" cy="17.5" r="17.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

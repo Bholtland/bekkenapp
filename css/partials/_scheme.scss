@@ -54,6 +54,10 @@
 .scheme {
 	position: relative;
 
+	.button {
+		width: 100%;
+	}
+
 	.scroll-box {
 		overflow-y: scroll;    
 		transform: translateZ(0);
@@ -178,13 +182,10 @@
 				margin-top: 20px;
 			}	
 
-			> li:last-of-type{
-				background-color: rgba(0,0,0,0);
-				box-shadow: none;
-			}	
-
 			> li:nth-of-type(1) {
 				margin-top: 10px;
+				background-color: rgba(0,0,0,0);
+				box-shadow: none;
 			}	
 		}
 	}

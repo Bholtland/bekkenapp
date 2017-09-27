@@ -6,12 +6,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="manifest" href="manifest.json">
 	</head>
 	<body>
+		<div class="notification">
+			<span>
+				<p>Notificatie waar wat tekst in kan staan etc.</p>
+			</span>
+		</div>
 		<main>
 			<div>
 				<section id="stats" class="invisible">
-					<div class="stats">
+					<div class="stats flyUp">
 						<div class="progression-graph popup">
 							<div class="vas-results">
 								<h2 class="vas-grade">6</h2>
@@ -36,8 +42,19 @@
 								</div>
 							</div>
 						</div>
-						<div class="progression margin-base">
-							<ul class="outline">
+						<div class="progression">
+							<div class="progression-bar margin-base">
+								<div>
+									<img src="" alt="">
+								</div>
+								<div class="progression-bar-box">
+									<span class="bar-full"></span>
+									<span class="bar-empty"></span>
+									<p>73%</p>
+								</div>
+								<p>Nog <strong>2</strong> oefeningen tot zilver</p>
+							</div>
+							<ul class="outline margin-base">
 								<li>
 									<p>Oefeningen voltooid <span>(%)</span></p>
 									<p class="average">55%</p>
@@ -53,145 +70,57 @@
 								<li>
 								<button class="button secondary testbtn">Toon grafiek</button>
 							</ul>
+							<div class="progression-unlock">
+								<p class="margin-base">Achtergrondmuziek vrijspelen</p>
+								<div class="progression-unlock-container">
+									<div>
+										<img src="resources/img/music1.jpg" alt="">
+										<p><strong>Woodwind</strong></p>
+									</div>
+									<div>
+										<img src="resources/img/music2.jpg" alt="">
+										<p><strong>Sunrise</strong></p>
+									</div>
+									<div class="locked">
+										<img src="resources/img/music3.jpg" alt="">
+										<p><strong>Windwake</strong><br>Haal zilver</p>
+									</div>
+									<div class="locked">
+										<img src="resources/img/music4.jpg" alt="">
+										<p><strong>Seashell</strong><br>Haal goud</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
 				<section id="scheme">
-					<div class="scheme">
+					<div class="scheme flyUp">
+						<div class="profile popup">
+							<ul class="outline margin-base">
+								<li>
+									<p>Push meldingen</span></p>
+									<p>Aan</p>
+								</li>
+								<li>
+									<p>In-app meldingen</p>
+									<p>Elke dag</p>
+								</li>
+								<li>
+									<p>Berend</p>
+									<p>Uitloggen</p>
+								</li>
+							</ul>
+						</div>
 						<div class="scheme-settings popup">
 							<ul class="cards margin-base">
-								<li>
-									<h2 class="margin-base">Krachttraining (snel)</h2>
-									<ul class="outline margin-base">
-										<li>
-											<p>Aanspannen <span>(s)</span></p>
-											<input class="interval" type="number" value="4">
-										</li>
-										<li>
-											<p>Ontspannen <span>(s)</span></p>
-											<input class="interval" type="number" value="4">
-										</li>
-										<li>
-											<p>Herhalen <span>(aantal keer)</span></p>
-											<input class="interval" type="number" value="4">
-										</li>
-										<li>
-											<p>Sessies <span></span></p>
-											<input class="interval" type="number" value="4">
-										</li>
-									</ul>
-								</li>
-								<li><button class="button secondary">Oefening toevoegen</button></li>
+								<li><button class="button secondary">Opslaan</button></li>
 							</ul>
 
 						</div>
 						<div class="scroll-box">
 							<div class="scheme-days cards">
-								<div class="day">
-									<h3>Gisteren <span>30 juni</span></h3>
-									<div class="timeline">
-										<div class="exercise done">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-										<div class="exercise done">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-										<div class="exercise done">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="day today">
-									<h3>Vandaag <span>1 juli</span></h3>
-									<div class="timeline">
-										<div class="exercise done">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-										<div class="exercise">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-										<div class="exercise">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="day">
-									<h3>Morgen <span>2 juli</span></h3>
-									<div class="timeline">
-										<div class="exercise">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-										<div class="exercise">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-										<div class="exercise">
-											<div class="exercise-line"></div>
-											<div class="exercise-box">
-												<div>
-													<span class="exercise-name"><h3>Ontspannen</h3></span>
-													<span class="exercise-duration"><p>5 minuten</p></span>
-													<span class="exercise-indicator"></span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+							
 							</div>
 						</div>
 						<li class="button-nav-edit">
@@ -199,11 +128,32 @@
 						</li>
 					</div>
 				</section>
+				<section class="onboarding invisible">
+					<div class="wrap margin-base login">
+						<h2>Fysically</h2>
+						<form action="">
+							<p class="error"></p>
+							<input type="date" placeholder="Geboortedatum">
+							<input type="text" placeholder="Unieke code: Za4Thm#3">
+							<p class="no-code"><strong>Nog geen unieke code?</strong><br>
+							Neem contact op met je therapeut</p>
+							<a class="button tertiary">Inloggen</a>
+							<p class="discretion">Wij gaan zeer zorgvuldig om met gevoelige informatie. Persoonlijke gegevens worden daarom <strong>in geen enkel geval gedeeld</strong> met derden.</p>
+						</form>
+					</div>	
+					<div class="wrap margin-base tutorial-question invisible flyUp">
+						<p>Wil je beginnen<br>met een <strong>korte oefening?</strong></p>
+						<form action="">
+							<a class="button quartiary">Nee</a>
+							<a class="button tertiary">Ja</a>
+						</form>
+					</div>				
+				</section>
 				<section>
 					<div class="exercise-screen screen">
 						<img class="information" src="resources/img/info-dark.svg" alt="">
 						<div class="breather precount">
-							<p class="remaining-time">Sessies: <span></span></p>
+							<p class="remaining-time">Herhalingen: <span></span></p>
 							<div class="countdown">
 								<div class="countdown-number"></div>
 								<svg>
@@ -222,45 +172,59 @@
 									</label>
 								</li>
 								<li>
-									<p>Geluid</p>
+									<p>Stem begeleiding</p>
 									<label class="switch">
-										<input type="checkbox">
+										<input class="playAudio" type="checkbox">
 										<div class="slider round"></div>
 									</label>
 								</li>
 								<li>
-									<p>Interval <span>(s)</span></p>
-									<input class="interval" type="number" value="4">
+									<p>Muziek</p>
+									<label class="switch">
+										<input class="playMusic" type="checkbox">
+										<div class="slider round"></div>
+									</label>
 								</li>
 							</ul>
 						</div>
-						<div class="feedback invisible">
-							<div>
+						<div class="information-screen popup">
+							<img src="resources/img/explanationvideo.jpg" alt="">
+							<div class="margin-base">
+								<h5>Uitleg ontspanning</h5>
+								<ol class="margin-base">
+									<li><p>Ga in een confortabele houding zitten.</p></li>
+									<li><p>Haal diep adem en ontspan je buik en je bekkenbodem.</p></li>
+									<li><p>Span de bekkenbodem aan zolang dat wordt aangegeven. Ontspan de bekkenbodem vervolgens wanneer dat wordt aangegeven.</p></li>
+								</ol>
+							</div>
+						</div>
+						<div class="popup feedback dark">
+							<div class="margin-base">
 								<form>
 									<h4>Hoe voelde het?</h4>
+									<p>Geef je klachten bij deze oefening aan door middel van een cijfer</p>
 									<select>
 										<option value="1">Kies je gevoel...</option>
-										<option value="1"><span>1</span> - Verschrikkelijk!</option>
-										<option value="2"><span>2</span> - Zeer slecht</option>
-										<option value="3"><span>3</span> - Slecht</option>
-										<option value="4"><span>4</span> - Niet relaxed</option>
-										<option value="5"><span>5</span> - Matig</option>
-										<option value="6"><span>6</span> - Wel oke</option>
-										<option value="7"><span>7</span> - Best wel goed</option>
-										<option value="8"><span>8</span> - Goed</option>
-										<option value="9"><span>9</span> - Heel goed</option>
-										<option value="10"><span>10</span> - Echt top!</option>
+										<option value="1"><span>1</span> - Geen last!</option>
+										<option value="2"><span>2</span></option>
+										<option value="3"><span>3</span></option>
+										<option value="4"><span>4</span></option>
+										<option value="5"><span>5</span></option>
+										<option value="6"><span>6</span></option>
+										<option value="7"><span>7</span></option>
+										<option value="8"><span>8</span></option>
+										<option value="9"><span>9</span></option>
+										<option value="10"><span>10</span> - Erg veel last</option>
 									</select>
-									<fieldset class="hidden-textarea invisible">
-										<p>&or;</p>
-										<textarea placeholder="Beschrijf hoe je je voelde tijdens het oefenen..." cols="50" rows="4"></textarea>
-									</fieldset>
+									<textarea class="hidden-textarea" placeholder="Beschrijf hoe je je voelde tijdens het oefenen..." cols="50" rows="4"></textarea>
+
+									<a class="button tertiary">Opslaan</a>
 								</form>
 							</div>
 							<span class="absolute-wrapper invisible">
 								<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
 							</span>
-							<button class="button primary">Opslaan</button>
+							
 						</div>
 						<p class="button-settings">Instellingen</p>
 						<div class="controls">
@@ -271,9 +235,9 @@
 				</section>
 			</div>
 		</main>
-		<footer class="navigation-bar">
+		<nav class="navigation-bar">
 			<h1>Oefenschema</h1>
-			<nav>
+			<div class="menu">
 				<span class="button-nav-main">
 					<span type="button" class="tcon tcon-menu--xcross" aria-label="toggle menu">
 						<span class="tcon-menu__lines" aria-hidden="true"></span>
@@ -281,12 +245,23 @@
 					</span>
 				</span>
 				<ul>
-					<li class="button-nav button-nav-stats"><img src="resources/img/stats.svg" alt="Progressie"></li>
-					<li class="button-nav button-nav-scheme"><img src="resources/img/scheme.svg" alt="Schema"></li>
-					<li class="button-nav button-nav-settings"><img src="resources/img/settings.svg" alt="Instellingen"></li>
+
+					<li class="button-nav button-nav-scheme">
+						<img src="resources/img/scheme.svg" alt="Schema">
+						<p>series</p>
+					</li>
+					<li class="button-nav button-nav-stats">
+						<img src="resources/img/stats.svg" alt="Progressie">
+						<p>voortgang</p>
+					</li>
+					<li class="button-nav button-nav-settings">
+						<img src="resources/img/user.svg" alt="Instellingen">
+						<p>profiel</p>
+					</li>
 				</ul>
-			</nav>
-		</footer>
+			</div>
+		</nav>
+		<script type="text/javascript" src="sw-register.js"></script>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</body>

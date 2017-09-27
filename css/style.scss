@@ -59,7 +59,7 @@ h4 {
 
 input[type="number"] {
 	background-color: #F2F2F2;
-	border: $color-4 1px solid;
+	border: $color-2 1px solid;
 	border-radius: 4px;
 }
 
@@ -114,6 +114,7 @@ input[type="number"] {
 
 input:checked + .slider {
   background-color: $color-1;
+  border-color: #067982;
 }
 
 input:checked + .slider:before {
@@ -125,7 +126,7 @@ input:checked + .slider:before {
 
 .slider.round {
   border-radius: 34px;
-  border: 1px solid $color-4;
+  border: 1px solid $color-2;
 
   &::before {
 	  border-radius: 50%;
@@ -145,7 +146,6 @@ input:checked + .slider:before {
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
 	font-weight: 600;
-	width: 100%;
 }
 
 .primary {
@@ -157,6 +157,17 @@ input:checked + .slider:before {
 	color: $color-1;
 	border: 1.5px dashed $color-1;
 	background-color: rgba(0,0,0,0);
+}
+
+.tertiary {
+	background-color: $color-3;
+	color: $white;
+}
+
+.quartiary {
+	color: $white;
+	border: 1.5px dashed $white;
+	background-color: rgba(0,0,0,0);	
 }
 
 // END BUTTONS
@@ -184,6 +195,7 @@ input:checked + .slider:before {
 
 		p {
 			padding-top: 5px;
+			color: $color-3;
 		}
 
 		p:nth-of-type(2) {
@@ -222,6 +234,52 @@ input:checked + .slider:before {
 	}
 }
 
+.notification {
+    color: $white;
+    position: fixed;
+    top: 40px;
+    z-index: 100;
+    width: 100%;
+	visibility: hidden;
+	transition: $bouncy;
+
+    span {
+		padding: 10px;
+	    background: $color-3;
+	    width: 50%;
+	    min-width: 100px;
+	    display: block;
+	    margin: 0 auto;
+	    text-align: center;
+	    border-radius: 4px;
+	    box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+    }
+
+    &.show {
+    	top: 70px;
+    	visibility: visible;
+    }
+}
+
+form {
+	input,
+	select,
+	textarea {
+		border: 1px solid $color-2;
+		background-color: $white;
+		border-radius: 5px;
+		color: $color-2;
+		font-size: 1.1rem;
+		width: 100%;
+		height: 64px;
+		text-indent: 10px;
+	}
+}
+
+.invisible {
+	display: none !important;
+}
+
 // END COMMON COMPONENTS
 
 // MAIN EXERCISES
@@ -247,6 +305,8 @@ main > div > section {
 	margin-top: 55px;
 }
 
+@import "partials/onboarding";
+
 @import "partials/scheme";
 @import "partials/exercise";
 
@@ -256,3 +316,5 @@ main > div > section {
 @import "partials/animations";
 
 @import "partials/stats";
+
+@import "partials/profile";

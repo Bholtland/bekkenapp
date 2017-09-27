@@ -1,24 +1,8 @@
 // NAVIGATION
-
-.button-nav {
-	width: 60px;
-	height: 60px;
-	top: -3px;
-	right: 10px;
-	position: absolute;
-	border-radius: 100px;
-	box-shadow: 0 3px 7px rgba(0,0,0,0.3);
-	display: block;
-	z-index: 2;
-}
-
 .button-nav img,
 .button-nav button {
 	width: 25px;
 	height: 25px;
-	top: 18px;
-	left: 18px;
-	position: relative;
 }
 
 .button-nav-main{
@@ -30,7 +14,7 @@
 	transition: $bouncy;
 }
 
-.navigation-bar {
+nav{
 	width: 100%;
 	height: 55px;
 	background-color: $white;
@@ -66,53 +50,34 @@
 		opacity: 1;
 	}
 
-	nav.active {
-		.button-nav {
-			visibility: visible;
-			transform: scale(1);
-		}
+	.menu {
+		ul {
+		    height: 0px;
+	    	background: $white;
+	    	border-top: 1px solid $separation-border;
+	    	margin-top: 15px;
+	    	display: flex;
+	    	justify-content: space-around;
+	    	z-index: 0;
+	    	transform: scaley(0);
+	    	transform-origin: 0 0;
+	    	transition: $screen-transition;
+	    	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.19);
 
-		.button-nav-stats {
-			top: 150px;					
-		}
-
-		.button-nav-settings {
-			top: 70px;		
-		}
-
-		.button-nav-scheme {
-			top: 230px;
-			background-color: $color-1;	
-		}
-
-		.button-nav-edit {
-			transform: scale(0);
-			visibility: hidden;
-			bottom: 0;
-			position: fixed;
+	    	.button-nav {
+	    		display: inline-block;
+	    		width: 32%;
+	    		text-align: center;
+	    		padding-top: 10px;
+	    	}
 		}
 	}
 
-	ul {
-		.button-nav {
-			visibility: hidden;
-			background-color: $white;
-			transition: $bouncy;
-			transform: scale(0.1);
+	&.active {
+		ul {
+			transform: scaley(1);
+			height: 70px;
 		}
-
-		.button-nav-stats {
-			transition-delay: 0.08s;
-		}
-
-		.button-nav-scheme {
-			transition-delay: 0.12s;
-		}
-
-		.button-nav-settings {
-			transition-delay: 0.04s;
-		}
-
 	}
 }
 

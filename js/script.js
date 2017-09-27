@@ -15,6 +15,7 @@ var buttonNavMain = q('.button-nav-main'),
 	centerOffset,
 	currentExercise,
 	vibrate = false,
+	audio = false,
 
 	exerciseScreen = q('.exercise-screen'),
 	breather = q('.breather'),
@@ -22,19 +23,21 @@ var buttonNavMain = q('.button-nav-main'),
 	screenScheme = q('#scheme'),
 	screenStats = q('#stats'),
 	today = q('.today'),
-	todayExercises = qAll('.today .exercise'),
+	// todayExercises = qAll('.today .exercise'),
 
 	stats = q('.stats'),
+	onboarding = q('.onboarding'),
 
 	buttonExerciseVibrate = q('.vibrate'),
+	buttonExerciseAudio = q('.playAudio'),
+	buttonExerciseMusic = q('.playMusic'),
 	buttonExerciseSettings = q('.button-settings'),
 	buttonExerciseStart = q('.start'),
 	exerciseSettings = q('.exercise-settings'),
 
 	feedbackScreen = q('.feedback'),
-	feedbackButton = q('.feedback button'),
+	feedbackButton = q('.feedback .button'),
 	hiddenTextArea = q('.hidden-textarea'),
-	hiddenTextButton = q('.hidden-textarea > p'),
 	lineCanvas = q('.line-canvas'),
 	graphPoly = q('#graphPoly'),
 	graph = q('.graph'),
@@ -47,11 +50,28 @@ var buttonNavMain = q('.button-nav-main'),
 	graphVasText = q('.vas-results > p'),
 
 	schemeSettings = q('.scheme-settings'),
+	schemeSettingsCards = q('.scheme-settings .cards'),
+	schemeSettingsButton = q('.scheme-settings .button'),
+	schemeDays = q('.scheme-days'),
+
+	informationScreen = q('.information-screen'),
+	informationButton = q('.information'),
 	progressionGraph = q('.progression-graph'),
+
+	notification = q('.notification'),
+	notificationText = q('.notification p'),
+
+ 	loginButton = q('.login .button'),
+ 	tutorialButtonNo = q('.tutorial-question .button:nth-of-type(1)'),
+ 	tutorialButtonYes = q('.tutorial-question .button:nth-of-type(2)'),
+
+ 	profileScreen = q('.profile'),
 
 	scrollBox = q('.scroll-box'),
 
-	sessions = 1,
+	sessions = 4,
+	tightenTime = 10,
+	relaxTime = 20, 
 
 	hasStarted = false,
 
@@ -81,7 +101,12 @@ var buttonNavMain = q('.button-nav-main'),
 	linePos,
 	element,
 	elementNumber,
-	previousLine;
+	previousLine,
+
+	audio,
+	music,
+
+	planForDays = 7;
 
 
 var screenHierarchy = {
@@ -104,12 +129,12 @@ var screenHierarchy = {
 		},
 		feedback : {
 			name : "exerciseFeedback",
-			title : "Hoe ging het?",
+			title : "Ontspannen",
 			parent : "exercise"
 		},
 		info : {
 			name : "exerciseInfo",
-			title : "Informatie",
+			title : "Uitleg",
 			parent : "exercise"
 		}
 	},
@@ -118,19 +143,267 @@ var screenHierarchy = {
 		title : "Voortgang",
 		graph : {
 			name : "progressGraph",
-			title : "Resultaat per dag",
+			title : "VAS-meting",
 			parent : "progress"
 		}
 	},
-	account : {
-		name : "account",
-		title : "Mijn account"
+	profile : {
+		name : "profile",
+		title : "Profiel",
+		parent : "scheme"
+	},
+	onboarding: {
+		name : "onboarding",
+		title : ""
 	}
 }
 
+var exercisePlanning = [1,1,2,0];
+
+var exerciseData = [
+	[
+		['Co&ouml;rdinatie'],
+		['Aanspannen (s)', 5],
+		['Ontspannen (s)', 15],
+		['Herhalen (aantal keer)', 6],
+		['series', exercisePlanning[0]]
+	],
+	[
+		['Krachttraining (snel)'],
+		['Aanspannen (s)', 1],
+		['Ontspannen (s)', 2],
+		['Herhalen (aantal keer)', 10],
+		['series', exercisePlanning[1]]
+	],
+	[
+		['Krachttraining'],
+		['Aanspannen (s)', 10],
+		['Ontspannen (s)', 20],
+		['Herhalen (aantal keer)', 12],
+		['series', exercisePlanning[2]]
+	],
+	[
+		['Ontspanning'],
+		['Duur (min)', 20],
+		['series', exercisePlanning[3]]
+	],
+
+];
+
 // Set the current screen to load
-currentScreen = screenHierarchy.scheme;
-navigateTo(currentScreen.name);
+currentScreen = screenHierarchy.onboarding;
+navigateTo(currentScreen);
+
+schemeSettingsButton.addEventListener('click', ()=>{
+	inputs = document.querySelectorAll('.scheme-settings input');
+
+	for (i = 0; i < inputs.length; i++){
+		let serie = inputs[i].getAttribute("serie");
+		let key = inputs[i].getAttribute("key");
+
+		if (exerciseData[serie][key][0] === 'series'){
+			exerciseData[serie][key][1] = inputs[i].value;
+			// exercisePlanning[serie]=inputs[i].value;
+		}
+
+		else {
+			exerciseData[serie][key][1] = inputs[i].value;
+		}
+
+		
+	}
+
+	showNotification('Instellingen opgeslagen!', 2000);
+
+	makeScheme();
+});
+
+function makeSchemeSettings(){
+	for (i = 0; i < exercisePlanning.length; i++){
+
+			const li = document.createElement('li');
+
+			const name = document.createElement('h2');
+			name.setAttribute('class','margin-base');
+			name.innerHTML = exerciseData[i][0][0];
+
+			const outline = document.createElement('ul');
+			outline.setAttribute('class','outline margin-base');
+
+			li.appendChild(name);
+			li.appendChild(outline);
+
+			schemeSettingsCards.appendChild(li);
+
+			for(a = 0; a < exerciseData[i].length; a++){
+				const outlineLi = document.createElement('li');
+
+				const outlineName = document.createElement('p');
+				outlineName.innerHTML = exerciseData[i][a][0];
+
+				if (typeof(exerciseData[i][a][1]) === 'number'){
+					const outlineType = document.createElement('input');
+					outlineType.setAttribute('type','number');
+					outlineType.setAttribute('value',exerciseData[i][a][1]);
+					outlineType.setAttribute('serie',i);
+					outlineType.setAttribute('key',a);
+
+					outlineLi.appendChild(outlineName);
+					outlineLi.appendChild(outlineType);
+
+					outline.appendChild(outlineLi);
+				}
+
+			}
+
+	}
+}
+
+var today = 0;
+
+function makeScheme(){
+	schemeDays.innerHTML = '';
+
+	for (i = 0; i < planForDays; i++){
+
+		const day = document.createElement('div');
+
+		if (i==today){
+			day.setAttribute('class','day today');
+		}
+
+		else {
+			day.setAttribute('class','day');
+		}
+
+		const oneDay = document.createElement('h3');
+		oneDay.innerHTML = 'Dag '+(i+1);
+
+		const timeline = document.createElement('div');
+		timeline.setAttribute('class','timeline');
+
+		day.appendChild(oneDay);
+		day.appendChild(timeline);
+
+		schemeDays.appendChild(day);
+		
+		for (a = 0; a < exercisePlanning.length; a++){
+			if (exercisePlanning[a] > 1){
+
+				var amount = exercisePlanning[a]+1;
+
+				for(b = 1; b < amount; b++){
+					createSerie(a);
+				}
+			}
+
+			else if (exercisePlanning[a]===0){
+			}
+
+			else{
+				createSerie(a);
+			}
+			
+
+			function createSerie(serieType){
+				const serie = document.createElement('div');
+				serie.setAttribute('class','exercise');
+
+				if (i===today){
+						serie.addEventListener('click', function(){
+							if (!this.classList.contains('done')) {
+								navigateTo(screenHierarchy.exercise);
+
+								sessions = exerciseData[serieType][3][1];
+								timer.innerHTML = exerciseData[serieType][3][1];	
+
+								navBarTitle.innerHTML =	exerciseData[serieType][0][0];	
+
+								tightenTime = exerciseData[serieType][1][1];	
+								relaxTime = exerciseData[serieType][2][1];		
+
+								// Define the current exercise, to mark it as "done" later
+						 		currentExercise = this;
+							}
+						});	
+				}
+
+				const exerciseLine = document.createElement('div');
+				exerciseLine.setAttribute('class','exercise-line');
+
+				const exerciseBox = document.createElement('div');
+				exerciseBox.setAttribute('class','exercise-box');
+
+				serie.appendChild(exerciseLine);
+				serie.appendChild(exerciseBox);
+
+				const exerciseName = document.createElement('span');
+				exerciseName.setAttribute('class','exercise-name');
+				const exerciseNameTitle = document.createElement('h3');
+
+				const exerciseDuration = document.createElement('span');
+				exerciseDuration.setAttribute('class','exercise-duration');
+				const exerciseDurationText = document.createElement('p');
+
+				const exerciseIndicator = document.createElement('span');
+				exerciseIndicator.setAttribute('class','exercise-indicator');
+
+
+				switch(a){
+					case 0:
+						serie.setAttribute('class', 'exercise coordination');
+
+						exerciseNameTitle.innerHTML = 'Co&ouml;rdinatie';
+						exerciseDurationText.innerHTML = exerciseData[0][3][1]+' herhalingen';
+
+						break;
+					case 1:
+						serie.setAttribute('class', 'exercise power-fast');
+
+						exerciseNameTitle.innerHTML = 'Krachttraining (snel)';
+						exerciseDurationText.innerHTML = exerciseData[1][3][1]+' herhalingen';
+
+						break;
+					case 2:
+						serie.setAttribute('class', 'exercise power-slow');
+
+						exerciseNameTitle.innerHTML = 'Krachttraining';
+						exerciseDurationText.innerHTML = exerciseData[2][3][1]+' herhalingen';
+
+						break;
+					case 3:
+						serie.setAttribute('class', 'exercise relaxation');
+
+						exerciseNameTitle.innerHTML = 'Ontspannen';
+						exerciseDurationText.innerHTML = exerciseData[3][1][1]+' minuten';
+
+						break;
+				}
+
+				exerciseName.appendChild(exerciseNameTitle);
+				exerciseDuration.appendChild(exerciseDurationText);
+
+				exerciseBox.appendChild(exerciseName);
+				exerciseBox.appendChild(exerciseDuration);
+				exerciseBox.appendChild(exerciseIndicator);
+
+				timeline.appendChild(serie);
+			}
+		}
+	}
+}
+
+makeScheme();
+
+function showNotification(text, time){
+	notificationText.innerHTML = text;
+	notification.classList.add('show');
+	closePopupScreen(currentPopup);
+
+	setTimeout(()=>{
+		notification.classList.remove('show');
+	},time)
+}
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
 q('main > div').style.width = window.innerWidth*2 + 'px';
@@ -178,29 +451,20 @@ q('.button-nav-scheme').addEventListener('click', function(){navigateTo(screenHi
 
 // ========== EXERCISES SCHEME ==========
 
-centerOffset = (scrollBox.clientHeight - today.clientHeight) /2;
+if (today){
+	centerOffset = (scrollBox.clientHeight - today.clientHeight) /2;
 
-// A function to center on today's exercises
-function centerOnToday() {
-	scrollBox.scrollTop = (today.offsetTop - centerOffset);
+	// A function to center on today's exercises
+	function centerOnToday() {
+		scrollBox.scrollTop = (today.offsetTop - centerOffset);
+	}
+	centerOnToday();
+
 }
-centerOnToday();
 
 // ========== END EXERCISES SCHEME ==========
 
 // ========== OPEN EXERCISE ========== 
-
-// Navigate back and forth between exercises and exercise screen
-for (var i=0; i < todayExercises.length; i++) {
-	todayExercises[i].addEventListener('click', function(){
-		if (!this.classList.contains('done')) {
-			navigateTo(screenHierarchy.exercise);
-
-			// Define the current exercise, to mark it as "done" later
-	 		currentExercise = this;
-		}
-	});	
-}
 
 navBarTitle.addEventListener('click',function(){
 	if (this.classList.contains('is-sub') && !currentPopup) {
@@ -225,6 +489,22 @@ buttonExerciseVibrate.addEventListener('click', function(){
     }
 }); 
 
+buttonExerciseAudio.addEventListener('click', function(){
+    if (this.checked) {
+        audio = true;
+    } else {
+    	audio = false;
+    }
+}); 
+
+buttonExerciseMusic.addEventListener('click', function(){
+    if (this.checked) {
+        music = true;
+    } else {
+    	music = false;
+    }
+}); 
+
 // ========== END BREATHER SETTINGS ==========
 
 // ========== EXERCISE ==========
@@ -232,8 +512,24 @@ buttonExerciseVibrate.addEventListener('click', function(){
 timer.innerHTML = sessions;
 
 function startExercise() {
+	if (audio){
+		setTimeout(()=>{
+			if (tightenTime == 10){
+				playAudio('voice');
+			}
+		},4000)
+	}
+
+	if (music){
+		setTimeout(()=>{
+			if (tightenTime == 10){
+				playAudio('music');
+			}
+		},4000)
+	}
 	// Defining local variables
-	var duration = q('.interval').value,
+	var duration = 4,
+
 		counterText = q('.countdown-number'),
 		activeRing = q('svg .active-ring'),
 		resetButton = q('.reset'),
@@ -255,12 +551,13 @@ function startExercise() {
 	}
 
 	exerciseScreen.classList.add('active');
-	activeRing.style.animationDuration = duration+'s';
+
+	activeRing.style.strokeDashOffset = '0'
+	activeRing.style.animationDuration = 4+'s';
+	duration = 4;
 
 	counterText.innerHTML = localSeconds;
 	timer.innerHTML = sessionsToGo;
-
-	playAudio(2, false, true);
 	
 	// Create a counter for relaxing and exerting 
 	localCount = setInterval(function(){	
@@ -268,12 +565,37 @@ function startExercise() {
 
 		// Toggle relaxation or exertion after given amount of seconds
 		if(localSeconds > duration){
-
+			if (duration === tightenTime){ 
+				duration = relaxTime;
+				activeRing.style.animationDuration = relaxTime+'s';
+				activeRing.style.animationName = "relax";
+			}
+			else {
+				duration = tightenTime;
+				activeRing.style.animationDuration = tightenTime+'s';
+				activeRing.style.animationName = "tighten";
+			}	
 			localSeconds = 1;		
 			
 			if (didPrecount) {
 				if (breather.classList.contains('release')) {
-					sessionsToGo--;	
+					sessionsToGo--;
+
+					console.log(sessionsToGo)
+
+					if (sessionsToGo !== 0){
+						if (audio){
+							if (tightenTime == 10){
+								playAudio('voice');
+							}
+						}
+
+						if (music){
+							if (tightenTime == 10){
+								playAudio('music');
+							}
+						}
+					}	
 				}
 				breather.classList.toggle('release');
 
@@ -292,6 +614,8 @@ function startExercise() {
 					},250);
 				}
 			}
+
+
 			if (!didPrecount) {
 				breather.classList.remove('release');
 			}
@@ -302,18 +626,7 @@ function startExercise() {
 
 		if (sessionsToGo == 0) {
 			clearBreather();
-			popUpScreen(feedbackScreen, feedbackButton, 1300, false);
-		}
-
-		if (duration - localSeconds == 1){
-			playAudio(localSeconds+1, true);
-		}
-		else if (duration == localSeconds) {
-			playAudio(1, false, true);
-		}
-
-		else {
-			playAudio(localSeconds+1, false);
+			popUpScreenFull(feedbackScreen, screenHierarchy.exercise.feedback, true);
 		}
 		
 	},1000);
@@ -328,7 +641,8 @@ function startExercise() {
 // The button that opens the local "settings" screen
 buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
 q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
-buttonNavEdit.addEventListener('click', function(){popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)})
+buttonNavEdit.addEventListener('click', function(){makeSchemeSettings(); popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
+informationButton.addEventListener('click', function(){popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)});
 
 // ========== END EXERCISE ==========
 
@@ -420,7 +734,7 @@ feedbackButton.addEventListener('click',function(){
 			sw(feedbackButton);
 			hd(feedbackScreen);
 			hd(absoluteWrapper)
-			navigateTo('scheme');
+			navigateTo(screenHierarchy.scheme);
 
 			if (currentExercise) {
 				setTimeout(function(){
@@ -434,9 +748,8 @@ feedbackButton.addEventListener('click',function(){
 	},1100);
 })
 
-hiddenTextButton.addEventListener('click', function(){
-	hiddenTextArea.classList.toggle('invisible');
-	hiddenTextArea.classList.contains('invisible') ? hiddenTextButton.innerHTML = "&or;" : hiddenTextButton.innerHTML = "&and;";
+hiddenTextArea.addEventListener('click', function(){
+	hiddenTextArea.classList.add('open');
 });
 
 // ========== END FEEDBACK SCREEN ==========
@@ -446,7 +759,7 @@ hiddenTextButton.addEventListener('click', function(){
 // An array that contains the user's feedback
 feedback = [
 	[4,"Ik had ergens last van", "19-07"],
-	[6,"Jep last", "20-07"],
+	[7,"Ik had constant last van mijn rechterdij", "20-07"],
 	[10,"Iets", "21-07"],
 	[7,"Ik had last", "22-07"],
 	[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
@@ -624,37 +937,46 @@ function navigateTo(screen){
 	}
 
 	function navigate(){
-	if (screen == 'scheme') {
-		screenCanvas.style.left = '0';
-		navBarTitle.classList.remove('is-sub');
-		navBarTitle.innerHTML = screenHierarchy.scheme.title;
-		hd(stats);
+		sw(navBar);
+		if (screen == 'scheme') {
+			screenCanvas.style.left = '0';
+			navBarTitle.classList.remove('is-sub');
+			navBarTitle.innerHTML = screenHierarchy.scheme.title;
+			hd(stats);
+			hd(onboarding);
 
-		setTimeout(function(){hd(screenStats)}, 300);
-		sw(scheme);		
-		setTimeout(function(){sw(screenScheme)})
-		centerOnToday();
-		currentScreen = screenHierarchy.scheme;
-	} 
+			setTimeout(function(){hd(screenStats)}, 300);
+			sw(scheme);		
+			setTimeout(function(){sw(screenScheme)})
+			// centerOnToday();
+			currentScreen = screenHierarchy.scheme;
+		} 
 
-	else if (screen == 'exercise') {
-		screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
-		navBarTitle.classList.add('is-sub');
-		navBarTitle.innerHTML = screenHierarchy.exercise.title;
-		currentScreen = screenHierarchy.exercise;
-	}
+		else if (screen == 'exercise') {
+			screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
+			navBarTitle.classList.add('is-sub');
+			currentScreen = screenHierarchy.exercise;
+		}
 
-	else if (screen == 'progress') {
-		screenCanvas.style.left = '0';
-		navBarTitle.classList.remove('is-sub');	
-		navBarTitle.innerHTML = screenHierarchy.progress.title;
-		hd(scheme);
+		else if (screen == 'progress') {
+			screenCanvas.style.left = '0';
+			navBarTitle.classList.remove('is-sub');	
+			navBarTitle.innerHTML = screenHierarchy.progress.title;
+			hd(scheme);
+			hd(onboarding);
 
-		setTimeout(function(){hd(scheme)}, 300);
-		sw(stats)		
-		setTimeout(function(){sw(screenStats)}, 300);
-		currentScreen = screenHierarchy.progress;
-	}
+			setTimeout(function(){hd(scheme)}, 300);
+			sw(stats)		
+			setTimeout(function(){sw(screenStats)}, 300);
+			currentScreen = screenHierarchy.progress;
+		}
+		else if (screen == 'onboarding') {
+			screenCanvas.style.left = '0';
+			hd(navBar)
+			hd(scheme);
+			sw(onboarding)		
+			currentScreen = screenHierarchy.onboarding;
+		}
 	}
  };
 
@@ -662,28 +984,117 @@ function navigateTo(screen){
  	screenScheme.style.backgroundPositionY = -this.scrollTop/4 + 'px';
  })
 
- function playAudio(number, isLast, noDelay){
+ // function playAudio(number, isLast, noDelay){
+ // 	var dir = "resources/audio/";
+ // 	var audio;
+
+ // 	if (number){
+ // 		variation = Math.ceil(Math.random() * 3);
+
+ // 		if (isLast) {
+ // 			audio = new Audio(dir+'nr_last'+number+"_"+variation+".ogg");
+ // 			console.log('nr_last'+number+"_"+variation+'.ogg');
+ // 		}
+ // 		// else if (noDelay){
+ // 		// 	audio = new Audio(dir+'nr_nodelay'+number+"_"+variation+".ogg");
+ // 		// }
+
+ // 		else {
+ // 			audio = new Audio(dir+'nr'+number+"_"+variation+".ogg");
+ // 			console.log('nr'+number+"_"+variation+'.ogg');
+ // 		}
+
+ // 		audio.play();
+ // 	}
+ // }
+
+ function playAudio(type){
  	var dir = "resources/audio/";
- 	var audio;
+ 	var audioFile;	
+ 	var musicFile;
 
- 	if (number){
- 		variation = Math.ceil(Math.random() * 3);
+ 	variation = Math.ceil(Math.random() * 3);
 
- 		if (isLast) {
- 			audio = new Audio(dir+'nr_last'+number+"_"+variation+".ogg");
- 			console.log('nr_last'+number+"_"+variation+'.ogg');
- 		}
- 		// else if (noDelay){
- 		// 	audio = new Audio(dir+'nr_nodelay'+number+"_"+variation+".ogg");
- 		// }
-
- 		else {
- 			audio = new Audio(dir+'nr'+number+"_"+variation+".ogg");
- 			console.log('nr'+number+"_"+variation+'.ogg');
- 		}
-
-
- 		audio.play();
+ 	if (type === 'voice'){
+	 	var voiceFile = new Audio(dir+"10x20-"+variation+".ogg");
+	 	voiceFile.play();
  	}
 
+ 	if (type === 'music'){
+	 	var musicFile = new Audio(dir+"music1.ogg");
+	 	musicFile.play();
+ 	}
  }
+
+loginButton.addEventListener('click',()=>{
+	login();
+})
+
+function login(){
+ 	var login = q('.login');
+ 	var errorText = q('.error');
+ 	var loginDate = q('.login input:nth-of-type(1)');
+ 	var loginCode = q('.login input:nth-of-type(2)');
+ 	var tutorialQuestion = q('.tutorial-question');
+
+ 	if(checkCode() && loginDate.value !== ''){
+ 		proceed();
+ 	}
+ 	else if (loginDate.value === ""){
+ 		throwError('Vul a.u.b. een geldige datum in<br/>bijvoorbeeld 25-03-1995');
+ 	}
+ 	else if (!checkCode()){
+ 		throwError('Vul a.u.b. een geldige code in<br/>Een code heeft 9 karakters');
+ 	}
+
+ 	function checkCode(){
+ 		if (loginCode.value !== "" && loginCode.value.length === 9){
+ 			return true;
+ 		}
+ 		else{
+ 			return false;
+ 		}
+ 	}
+
+ 	function throwError(text){
+ 		errorText.innerHTML = text; 
+ 	}
+
+ 	function proceed(){
+ 		hd(login);
+ 		sw(tutorialQuestion);
+ 	}
+ }
+
+ tutorialButtonNo.addEventListener('click', ()=> {
+ 	tutorial(false);
+ });
+
+ tutorialButtonYes.addEventListener('click', ()=> {
+ 	tutorial(true);
+ });
+
+ function tutorial(choice){
+ 	if(choice){
+ 		navigateTo(screenHierarchy.exercise);
+
+		sessions = 2;
+		timer.innerHTML = 2;	
+
+		navBarTitle.innerHTML =	exerciseData[2][0][0];	
+
+		tightenTime = exerciseData[2][1][1];	
+		relaxTime = exerciseData[2][2][1];		
+
+		currentExercise = q('.today .exercise:nth-of-type(3)');
+ 	} 
+ 	else {
+ 		navigateTo(screenHierarchy.scheme);
+ 	}
+ }
+
+
+
+buttonSettings.addEventListener('click',()=>{
+	popUpScreenFull(profileScreen, screenHierarchy.profile);
+})
