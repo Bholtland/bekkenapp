@@ -194,79 +194,6 @@ var exerciseData = [
 currentScreen = screenHierarchy.onboarding;
 navigateTo(currentScreen);
 
-// Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
-q('main > div').style.width = window.innerWidth*2 + 'px';
-
-for(var i=0; i < screens.length; i++) {
-	screens[i].style.width = window.innerWidth + 'px';
-}
-
-screenCanvas.style.height = window.innerHeight + 'px';
-q('main').style.height = window.innerHeight + 'px';
-screenScheme.style.width = window.innerWidth + 'px';
-q('.stats').style.width = window.innerWidth + 'px';
-navBar.style.width = window.innerWidth + 'px';
-q('.graph-background').style.height = window.innerHeight + 'px';
-q('.graph').style.height = window.innerHeight + 'px';
-scrollBox.style.height = window.innerHeight-55 + 'px';
-// Hide and show functions
-function hd(element){
-	element.classList.add('invisible');
-}
-
-function sw(element){
-	element.classList.remove('invisible');
-}
-
-// faster querySelectors
-function q(element){
-	return document.querySelector(element)
-}
-
-function qAll(element){
-	return document.querySelectorAll(element)
-}
-navBarTitle.addEventListener('click',function(){
-	if (this.classList.contains('is-sub') && !currentPopup) {
-		navigateTo(screenHierarchy.scheme);
-	} else if (this.classList.contains('is-sub')) {
-		closePopupScreen(currentPopup);
-	} else {
-		return;
-	}
-})
-
-q('.button-nav-stats').addEventListener('click', function(){navigateTo(screenHierarchy.progress)});
-q('.button-nav-scheme').addEventListener('click', function(){navigateTo(screenHierarchy.scheme)});
-
-buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
-q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
-buttonNavEdit.addEventListener('click', function(){makeSchemeSettings(); popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
-informationButton.addEventListener('click', function(){popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)});
-
-buttonSettings.addEventListener('click',()=>{
-	popUpScreenFull(profileScreen, screenHierarchy.profile);
-})
-
-buttonNavMain.addEventListener('click',function(){
-	var navMainButton = q('.tcon'),
-		nav = q('nav'),
-		navButtons = qAll('.button-nav')
-
-
-	navMainButton.classList.toggle('tcon-transform');
-	nav.classList.toggle('active');
-
-	if (nav.classList.contains('active')) {
-		for(var i=0; i < navButtons.length; i++) {
-			navButtons[i].addEventListener('click', function(){
-				navMainButton.classList.remove('tcon-transform');
-				nav.classList.remove('active');
-			});
-		};
-	};
-});
-
 schemeSettingsButton.addEventListener('click', ()=>{
 	inputs = document.querySelectorAll('.scheme-settings input');
 
@@ -282,12 +209,15 @@ schemeSettingsButton.addEventListener('click', ()=>{
 		else {
 			exerciseData[serie][key][1] = inputs[i].value;
 		}
+
+		
 	}
 
 	showNotification('Instellingen opgeslagen!', 2000);
 
 	makeScheme();
 });
+
 function makeSchemeSettings(){
 	for (i = 0; i < exercisePlanning.length; i++){
 
@@ -356,7 +286,7 @@ function makeScheme(){
 		day.appendChild(timeline);
 
 		schemeDays.appendChild(day);
-
+		
 		for (a = 0; a < exercisePlanning.length; a++){
 			if (exercisePlanning[a] > 1){
 
@@ -373,7 +303,7 @@ function makeScheme(){
 			else{
 				createSerie(a);
 			}
-
+			
 
 			function createSerie(serieType){
 				const serie = document.createElement('div');
@@ -385,17 +315,17 @@ function makeScheme(){
 								navigateTo(screenHierarchy.exercise);
 
 								sessions = exerciseData[serieType][3][1];
-								timer.innerHTML = exerciseData[serieType][3][1];
+								timer.innerHTML = exerciseData[serieType][3][1];	
 
-								navBarTitle.innerHTML =	exerciseData[serieType][0][0];
+								navBarTitle.innerHTML =	exerciseData[serieType][0][0];	
 
-								tightenTime = exerciseData[serieType][1][1];
-								relaxTime = exerciseData[serieType][2][1];
+								tightenTime = exerciseData[serieType][1][1];	
+								relaxTime = exerciseData[serieType][2][1];		
 
 								// Define the current exercise, to mark it as "done" later
 						 		currentExercise = this;
 							}
-						});
+						});	
 				}
 
 				const exerciseLine = document.createElement('div');
@@ -474,6 +404,83 @@ function showNotification(text, time){
 		notification.classList.remove('show');
 	},time)
 }
+
+// Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
+q('main > div').style.width = window.innerWidth*2 + 'px';
+
+for(var i=0; i < screens.length; i++) {
+	screens[i].style.width = window.innerWidth + 'px';
+}
+
+screenCanvas.style.height = window.innerHeight + 'px';
+q('main').style.height = window.innerHeight + 'px';
+screenScheme.style.width = window.innerWidth + 'px';
+q('.stats').style.width = window.innerWidth + 'px';
+navBar.style.width = window.innerWidth + 'px';
+q('.graph-background').style.height = window.innerHeight + 'px';
+q('.graph').style.height = window.innerHeight + 'px';
+scrollBox.style.height = window.innerHeight-55 + 'px';
+
+// ========== NAV MENU ==========
+
+// Toggle navigation buttons onclick
+buttonNavMain.addEventListener('click',function(){
+	var navMainButton = q('.tcon'),
+		nav = q('nav'),
+		navButtons = qAll('.button-nav')
+
+
+	navMainButton.classList.toggle('tcon-transform');
+	nav.classList.toggle('active');
+
+	if (nav.classList.contains('active')) {
+		for(var i=0; i < navButtons.length; i++) {
+			navButtons[i].addEventListener('click', function(){
+				navMainButton.classList.remove('tcon-transform');
+				nav.classList.remove('active');
+			});
+		};
+	};
+});
+
+// Screen to navigate to per button
+q('.button-nav-stats').addEventListener('click', function(){navigateTo(screenHierarchy.progress)});
+q('.button-nav-scheme').addEventListener('click', function(){navigateTo(screenHierarchy.scheme)});
+
+// ========== END NAV MENU ==========
+
+// ========== EXERCISES SCHEME ==========
+
+if (today){
+	centerOffset = (scrollBox.clientHeight - today.clientHeight) /2;
+
+	// A function to center on today's exercises
+	function centerOnToday() {
+		scrollBox.scrollTop = (today.offsetTop - centerOffset);
+	}
+	centerOnToday();
+
+}
+
+// ========== END EXERCISES SCHEME ==========
+
+// ========== OPEN EXERCISE ========== 
+
+navBarTitle.addEventListener('click',function(){
+	if (this.classList.contains('is-sub') && !currentPopup) {
+		navigateTo(screenHierarchy.scheme);
+	} else if (this.classList.contains('is-sub')) {
+		closePopupScreen(currentPopup);
+	} else {
+		return;
+	}
+})
+
+// ========== END OPEN EXERCISE ==========
+
+// ========== BREATHER SETTINGS ==========
+
+// Check if the vibrate setting is on
 buttonExerciseVibrate.addEventListener('click', function(){
     if (this.checked) {
         vibrate = true;
@@ -497,15 +504,10 @@ buttonExerciseMusic.addEventListener('click', function(){
     	music = false;
     }
 }); 
-// When clicking start and the counter hasn't started yet, start the exercise
-buttonExerciseStart.addEventListener('click',function(){
-	if (hasStarted) {
-		hasStarted = false;
-	} else {
-		startExercise();
-		hasStarted = true;
-	}
-});
+
+// ========== END BREATHER SETTINGS ==========
+
+// ========== EXERCISE ==========
 
 timer.innerHTML = sessions;
 
@@ -635,96 +637,84 @@ function startExercise() {
 	});
 
 }
-// This function is used to navigate between popup screens
-function popUpScreenFull(screen, name, manualSub) {
-	currentPopup = screen;
 
-	currentScreen = name;
+// The button that opens the local "settings" screen
+buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
+q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
+buttonNavEdit.addEventListener('click', function(){makeSchemeSettings(); popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
+informationButton.addEventListener('click', function(){popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)});
 
-	sw(screen);
-	screen.classList.add('open');
+// ========== END EXERCISE ==========
 
-	navBarTitle.innerHTML = name.title;
+// ========== CONTROL BUTTONS ==========
 
-	if (manualSub) {
-		manualSub = true;
-		navBarTitle.classList.add('is-sub');
+// When clicking start and the counter hasn't started yet, start the exercise
+buttonExerciseStart.addEventListener('click',function(){
+	if (hasStarted) {
+		hasStarted = false;
+	} else {
+		startExercise();
+		hasStarted = true;
 	}
+});
 
-	navBar.classList.add('popped-up');
+// ========== END CONTROL BUTTONS ==========
 
-}
+// ========== POP UP SCREEN ==========
 
-function closePopupScreen(screen) {
-	screen.classList.remove('open');
+// A function for calling general popup screens
+// screenElement is the screen to be called, closingItem is the element that closes the window on click
+// screenHideDelay is the delay on closing the popup, hideScreenElement hides the screen except for the background overlay
+function popUpScreen(screenElement, closingItem, screenHideDelay, hideScreenElement) {
+	sw(screenElement);
+	screenElement.classList.add('resize')
 
-	var parent = currentScreen.parent;
-	parent = "screenHierarchy."+parent;
-	parent = eval(parent);
+	$('.'+currentScreen).append('<div class="screen-overlay" style="width:'+window.innerWidth+'px;"></div>');
+	overlay = q('.screen-overlay');
+
+	setTimeout(function(){
+		overlay.classList.add('active');
+	},10)
 	
-	navBarTitle.innerHTML = parent.title;
 
-	currentScreen = parent;
+	function closePopup(){
+		screenElement.classList.remove('resize');
+		overlay.classList.remove('active');
 
-	navBar.classList.remove('popped-up');
-	currentPopup = null;
-
-}
-// This function is used to navigate between main screens
-function navigateTo(screen){
-	screen = screen.name
-
-	if (currentPopup){
-		closePopupScreen(currentPopup, "Ontspannen");
-		setTimeout(()=> {navigate()},300);
-	}
-	else {
-		navigate();
-	}
-
-	function navigate(){
-		sw(navBar);
-		if (screen == 'scheme') {
-			screenCanvas.style.left = '0';
-			navBarTitle.classList.remove('is-sub');
-			navBarTitle.innerHTML = screenHierarchy.scheme.title;
-			hd(stats);
-			hd(onboarding);
-
-			setTimeout(function(){hd(screenStats)}, 300);
-			sw(scheme);		
-			setTimeout(function(){sw(screenScheme)})
-			// centerOnToday();
-			currentScreen = screenHierarchy.scheme;
-		} 
-
-		else if (screen == 'exercise') {
-			screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
-			navBarTitle.classList.add('is-sub');
-			currentScreen = screenHierarchy.exercise;
+		if (screenHideDelay) {
+			setTimeout(function(){
+				$('.screen-overlay').remove();
+			},screenHideDelay);
 		}
 
-		else if (screen == 'progress') {
-			screenCanvas.style.left = '0';
-			navBarTitle.classList.remove('is-sub');	
-			navBarTitle.innerHTML = screenHierarchy.progress.title;
-			hd(scheme);
-			hd(onboarding);
+		else {
+			$('.screen-overlay').remove();
+		}	
 
-			setTimeout(function(){hd(scheme)}, 300);
-			sw(stats)		
-			setTimeout(function(){sw(screenStats)}, 300);
-			currentScreen = screenHierarchy.progress;
-		}
-		else if (screen == 'onboarding') {
-			screenCanvas.style.left = '0';
-			hd(navBar)
-			hd(scheme);
-			sw(onboarding)		
-			currentScreen = screenHierarchy.onboarding;
-		}
-	}
- };
+		if (hideScreenElement) {	
+			hd(screenElement);
+		}		
+		this.removeEventListener('click', closePopup);
+	};
+
+	if (closingItem == 'screenOverlay') {
+		closingItem = q('.screen-overlay');
+		closingItem.addEventListener('click',closePopup);
+	} 
+	closingItem.addEventListener('click',closePopup);
+};
+
+// ========== END POP UP SCREEN ==========
+
+// ========== POP UP SCREEN FULL ==========
+
+
+
+// ========== END POP UP SCREEN FULL ==========
+
+// ========== FEEDBACK SCREEN ==========
+
+// When clicking the feedback screen button, the corresponding animation is showed
 feedbackButton.addEventListener('click',function(){
 	var form = q('.feedback form'),
 		absoluteWrapper = q('.absolute-wrapper'),
@@ -761,6 +751,12 @@ feedbackButton.addEventListener('click',function(){
 hiddenTextArea.addEventListener('click', function(){
 	hiddenTextArea.classList.add('open');
 });
+
+// ========== END FEEDBACK SCREEN ==========
+
+// ========== STATS ==========
+
+// An array that contains the user's feedback
 feedback = [
 	[4,"Ik had ergens last van", "19-07"],
 	[7,"Ik had constant last van mijn rechterdij", "20-07"],
@@ -868,6 +864,150 @@ graph.addEventListener('scroll',function(){
 		previousLine = element;
 	}
 })
+
+// END GRAPH FOCUSPOINT
+
+// ========== END STATS ==========
+
+// Hide and show functions
+function hd(element){
+	element.classList.add('invisible');
+}
+
+function sw(element){
+	element.classList.remove('invisible');
+}
+
+// faster querySelectors
+function q(element){
+	return document.querySelector(element)
+}
+
+function qAll(element){
+	return document.querySelectorAll(element)
+}
+
+// This function is used to navigate between popup screens
+function popUpScreenFull(screen, name, manualSub) {
+	currentPopup = screen;
+
+	currentScreen = name;
+
+	sw(screen);
+	screen.classList.add('open');
+
+	navBarTitle.innerHTML = name.title;
+
+	if (manualSub) {
+		manualSub = true;
+		navBarTitle.classList.add('is-sub');
+	}
+
+	navBar.classList.add('popped-up');
+
+}
+
+function closePopupScreen(screen) {
+	screen.classList.remove('open');
+
+	var parent = currentScreen.parent;
+	parent = "screenHierarchy."+parent;
+	parent = eval(parent);
+	
+	navBarTitle.innerHTML = parent.title;
+
+	currentScreen = parent;
+
+	navBar.classList.remove('popped-up');
+	currentPopup = null;
+
+}
+
+
+// This function is used to navigate between main screens
+function navigateTo(screen){
+	screen = screen.name
+
+	if (currentPopup){
+		closePopupScreen(currentPopup, "Ontspannen");
+		setTimeout(()=> {navigate()},300);
+	}
+	else {
+		navigate();
+	}
+
+	function navigate(){
+		sw(navBar);
+		if (screen == 'scheme') {
+			screenCanvas.style.left = '0';
+			navBarTitle.classList.remove('is-sub');
+			navBarTitle.innerHTML = screenHierarchy.scheme.title;
+			hd(stats);
+			hd(onboarding);
+
+			setTimeout(function(){hd(screenStats)}, 300);
+			sw(scheme);		
+			setTimeout(function(){sw(screenScheme)})
+			// centerOnToday();
+			currentScreen = screenHierarchy.scheme;
+		} 
+
+		else if (screen == 'exercise') {
+			screenCanvas.style.left = (-window.innerWidth)-2 + 'px';
+			navBarTitle.classList.add('is-sub');
+			currentScreen = screenHierarchy.exercise;
+		}
+
+		else if (screen == 'progress') {
+			screenCanvas.style.left = '0';
+			navBarTitle.classList.remove('is-sub');	
+			navBarTitle.innerHTML = screenHierarchy.progress.title;
+			hd(scheme);
+			hd(onboarding);
+
+			setTimeout(function(){hd(scheme)}, 300);
+			sw(stats)		
+			setTimeout(function(){sw(screenStats)}, 300);
+			currentScreen = screenHierarchy.progress;
+		}
+		else if (screen == 'onboarding') {
+			screenCanvas.style.left = '0';
+			hd(navBar)
+			hd(scheme);
+			sw(onboarding)		
+			currentScreen = screenHierarchy.onboarding;
+		}
+	}
+ };
+
+ scrollBox.addEventListener('scroll', function(){
+ 	screenScheme.style.backgroundPositionY = -this.scrollTop/4 + 'px';
+ })
+
+ // function playAudio(number, isLast, noDelay){
+ // 	var dir = "resources/audio/";
+ // 	var audio;
+
+ // 	if (number){
+ // 		variation = Math.ceil(Math.random() * 3);
+
+ // 		if (isLast) {
+ // 			audio = new Audio(dir+'nr_last'+number+"_"+variation+".ogg");
+ // 			console.log('nr_last'+number+"_"+variation+'.ogg');
+ // 		}
+ // 		// else if (noDelay){
+ // 		// 	audio = new Audio(dir+'nr_nodelay'+number+"_"+variation+".ogg");
+ // 		// }
+
+ // 		else {
+ // 			audio = new Audio(dir+'nr'+number+"_"+variation+".ogg");
+ // 			console.log('nr'+number+"_"+variation+'.ogg');
+ // 		}
+
+ // 		audio.play();
+ // 	}
+ // }
+
  function playAudio(type){
  	var dir = "resources/audio/";
  	var audioFile;	
@@ -885,6 +1025,7 @@ graph.addEventListener('scroll',function(){
 	 	musicFile.play();
  	}
  }
+
 loginButton.addEventListener('click',()=>{
 	login();
 })
@@ -951,3 +1092,9 @@ function login(){
  		navigateTo(screenHierarchy.scheme);
  	}
  }
+
+
+
+buttonSettings.addEventListener('click',()=>{
+	popUpScreenFull(profileScreen, screenHierarchy.profile);
+})

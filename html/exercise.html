@@ -1,0 +1,82 @@
+<section>
+	<div class="exercise-screen screen">
+		<img class="information" src="resources/img/info-dark.svg" alt="">
+		<div class="breather precount">
+			<p class="remaining-time">Herhalingen: <span></span></p>
+			<div class="countdown">
+				<div class="countdown-number"></div>
+				<svg>
+					<circle class="background-ring" r="90" cx="110" cy="110"></circle>
+					<circle class="active-ring" r="90" cx="110" cy="110"></circle>
+				</svg>
+			</div>
+		</div>
+		<div class="exercise-settings popup">
+			<ul class="popup-inner margin-base outline">
+				<li>
+					<p>Trilsignaal</p>
+					<label class="switch">
+						<input class="vibrate" type="checkbox">
+						<div class="slider round"></div>
+					</label>
+				</li>
+				<li>
+					<p>Stem begeleiding</p>
+					<label class="switch">
+						<input class="playAudio" type="checkbox">
+						<div class="slider round"></div>
+					</label>
+				</li>
+				<li>
+					<p>Muziek</p>
+					<label class="switch">
+						<input class="playMusic" type="checkbox">
+						<div class="slider round"></div>
+					</label>
+				</li>
+			</ul>
+		</div>
+		<div class="information-screen popup">
+			<img src="resources/img/explanationvideo.jpg" alt="">
+			<div class="margin-base">
+				<h5>Uitleg ontspanning</h5>
+				<ol class="margin-base">
+					<li><p>Ga in een confortabele houding zitten.</p></li>
+					<li><p>Haal diep adem en ontspan je buik en je bekkenbodem.</p></li>
+					<li><p>Span de bekkenbodem aan zolang dat wordt aangegeven. Ontspan de bekkenbodem vervolgens wanneer dat wordt aangegeven.</p></li>
+				</ol>
+			</div>
+		</div>
+		<div class="popup feedback dark">
+			<div class="margin-base">
+				<form>
+					<h4>Hoe voelde het?</h4>
+					<p>Geef je klachten bij deze oefening aan door middel van een cijfer</p>
+					<select>
+						<option value="1">Kies je gevoel...</option>
+						<option value="1"><span>1</span> - Geen last!</option>
+						<option value="2"><span>2</span></option>
+						<option value="3"><span>3</span></option>
+						<option value="4"><span>4</span></option>
+						<option value="5"><span>5</span></option>
+						<option value="6"><span>6</span></option>
+						<option value="7"><span>7</span></option>
+						<option value="8"><span>8</span></option>
+						<option value="9"><span>9</span></option>
+						<option value="10"><span>10</span> - Erg veel last</option>
+					</select>
+					<textarea class="hidden-textarea" placeholder="Beschrijf hoe je je voelde tijdens het oefenen..." cols="50" rows="4"></textarea>
+					<a class="button tertiary">Opslaan</a>
+				</form>
+			</div>
+			<span class="absolute-wrapper invisible">
+				<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+			</span>
+		</div>
+		<p class="button-settings">Instellingen</p>
+		<div class="controls">
+			<span class="button secondary reset">RESET</span>
+			<span class="button primary start">START</span>
+		</div>
+	</div>
+</section>
