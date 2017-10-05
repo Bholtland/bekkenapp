@@ -191,7 +191,7 @@ var exerciseData = [
 ];
 
 // Set the current screen to load
-currentScreen = screenHierarchy.onboarding;
+currentScreen = screenHierarchy.scheme;
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.

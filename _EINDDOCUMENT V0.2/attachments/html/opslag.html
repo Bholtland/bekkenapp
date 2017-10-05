@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Eindverslag Berend Holtland</title>
+		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../css/prism.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="top-bar">
+			<div>
+				<span>CODE</span>
+				<p>Berend Holtland</p>
+			</div>
+		</div>
+		<div class="wrapper">
+			<aside>
+				<a href="../../index.html" class="backbutton">< Terug</a>
+				<div id="toc">					
+						<span class="contents-title">INHOUD</span>				
+				</div>
+			</aside>
+			<main>
+
+			<section>
+				<h2>Opslag</h2>
+				<h3>Database keuze</h3>
+				<p>Het vraagstuk dataschema is complex. Er is zoveel gebruikersdata, dat een MySQL database zeer ingewikkeld kan worden. Waar ik tegenaan loop is het opslaan van voortgang. In de client wordt op dit moment een array opgebouwd die de voortgang van de gebruiker kan laten zien.</p>
+				<pre><code class="language-js">
+					feedback = [
+						[4,"Ik had ergens last van", "19-07"],
+						[7,"Ik had constant last van mijn rechterdij", "20-07"],
+						[10,"Iets", "21-07"],
+						[7,"Ik had last", "22-07"],
+						[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
+						[6,"Jep last", "24-07"],
+						[10,"Iets", "25-07"],
+						[7,"Ik had last", "26-07"],
+						[4,"Ik had ergens last van", "27-07"],
+						[6,"Jep last", "28-07"],
+						[10,"Iets", "29-07"],
+						[7,"Ik had last", "30-07"]
+					];
+				</code></pre>
+				<p>Dit werkt in de client behoorlijk goed, maar de opslag ervan is een ander verhaal. Het gebruik van MySQL zou complex zijn. Ik zou deze data kunnen opslaan als platte tekst en JSON. Dat zou echter twee problemen opleveren:</p>
+				<ol>
+					<li>Elke keer wordt de gehele array uit mysql gehaald. Als er dan data wordt toegevoegd moet de gehele array weer worden teruggestuurd om de oude te vervangen.</li>
+					<li>Punt twee is functionaliteit. Door data als JSON op te slaan in MySQL maak je het zeer ingewikkeld, dan wel onmogelijk, om query's te gebruiken voor het vergelijken van data. 
+						Een van de redenen dat data wordt opgeslagen in een database en niet in de local storage, is omdat de data gebruikt moet kunnen worden om later kwantitatieve vergelijkingen te kunnen maken. Daarnaast heb ik plannen om een "control panel" voor therapeuten te maken, die daardoor bij de data moeten kunnen. 
+					</li>
+				</ol>
+				<p>Andere opties zijn CouchDB en MongoDB (NoSQL). Zelf heb ik met beiden geen ervaring, maar het werken met JSON is zeer gunstig. Daarnaast biedt het de mogelijkheid om data op te halen en te vergelijken zoals dat bij MySQL lastig was.</p>
+
+
+			</section>
+			</main>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-scrollspy.js"></script>
+		<script type="text/javascript" src="../../js/prism.js"></script>
+		<script type="text/javascript" src="../../js/list.js"></script>		
+		<script type="text/javascript" src="../../js/script.js"></script>
+	</body>
+</html>
