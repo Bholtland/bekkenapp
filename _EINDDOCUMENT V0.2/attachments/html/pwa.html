@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Eindverslag Berend Holtland</title>
+		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../css/prism.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="top-bar">
+			<div>
+				<span>PWA'S</span>
+				<p>Berend Holtland</p>
+			</div>
+		</div>
+		<div class="wrapper">
+			<aside>
+				<a href="../../index.html" class="backbutton">< Terug</a>
+				<div id="toc">					
+						<span class="contents-title">INHOUD</span>				
+				</div>
+			</aside>
+			<main>
+
+			<section>
+				<h2>Progressive Web Apps</h2>
+					<h3>Wat is een PWA precies?</h3>
+						<p>Een Progressive Web App is de naam die wordt gegeven aan Web app, die gebruik maakt van een aantal nieuwe technieken en api's. Het doel van de Progressive Web App is om een Web app de zelfde functionaliteiten en karakteristieken te geven als een Native app. Op dit moment zijn de meest belangrijke functies het Manifest, de Service Worker en push/notifications api.</p>
+				
+					<h3>Manifest.json</h3>
+						<p>Het manifest is niets meer dan een JSON bestand waarin bepaalde eigenschappen van de PWA worden aangegeven. Hieronder vallen app iconen, naamgeving, kleur, wrapperspecificaties (fullscreen, met of zonder url etc.</p>
+						<p>De manifest zorgt er eigenlijk voor dat je een website/webapp in een native jasje kunt steken, zodat het voelt als een native app. Deze functie werkt echter niet zonder een Service Worker.</p>
+
+					<h3>Service Worker</h3>	
+						<p>Een Service Worker is een Javascript bestand dat wordt uitgevoerd om extra functies uit te voeren. De Service Worker is een extra schakel tussen de Server en de Client. Een Service Worker biedt de mogelijkheid om bestanden te kunnen cachen (zodat de web app ook offline kan werken). Daarnaast is de Service Worker altijd bereikbaar. Dit is vooral handig voor bijvoorbeeld Push notificaties. De Service Worker bevindt zich in een ruststand. Zodra de push server contact maakt, ontwaakt de Service Worker en voert deze taken uit; Ook als de browser, en zelfs de telefoon, niet actief worden gebruikt. Een Service Worker werkt alleen over een https verbinding.</p>
+						<figure>
+							<img src="../img/swdiagram.png" alt=""/>
+							<figcaption>Service Worker Caching. Bron: <a href="https://cdn.auth0.com/blog/offline-first/offline-first-diagram.png">https://cdn.auth0.com/blog/offline-first/offline-first-diagram.png</a></figcaption>
+						</figure>
+
+					<h3>API's</h3>
+						<p>De Push en Notifications api's zijn voorbeelden van api's die gebruikt kunnen worden om functies aan te bieden die vergelijkbaar zijn met native apps. Er verschijnen steeds meer api's die extra mogelijkheden geven. Deze api's zorgen ervoor dat we de batterijstatus kunnen aflezen, de lichtintensiteit kunnen meten, gebruik kunnen maken van de afstandssensor, de gyroscoop en de accelerometer.</p>
+			</section>
+			</main>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-scrollspy.js"></script>
+		<script type="text/javascript" src="../../js/prism.js"></script>
+		<script type="text/javascript" src="../../js/list.js"></script>		
+		<script type="text/javascript" src="../../js/script.js"></script>
+	</body>
+</html>
