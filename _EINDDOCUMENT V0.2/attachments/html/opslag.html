@@ -10,7 +10,7 @@
 	<body>
 		<div class="top-bar">
 			<div>
-				<span>OPSLAG</span>
+				<span>CODE</span>
 				<p>Berend Holtland</p>
 			</div>
 		</div>
@@ -28,20 +28,20 @@
 				<h3>Database keuze</h3>
 				<p>Het vraagstuk dataschema is complex. Er is zoveel gebruikersdata, dat een MySQL database zeer ingewikkeld kan worden. Waar ik tegenaan loop is het opslaan van voortgang. In de client wordt op dit moment een array opgebouwd die de voortgang van de gebruiker kan laten zien.</p>
 				<pre><code class="language-js">
-					feedback = [
-						[4,"Ik had ergens last van", "19-07"],
-						[7,"Ik had constant last van mijn rechterdij", "20-07"],
-						[10,"Iets", "21-07"],
-						[7,"Ik had last", "22-07"],
-						[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
-						[6,"Jep last", "24-07"],
-						[10,"Iets", "25-07"],
-						[7,"Ik had last", "26-07"],
-						[4,"Ik had ergens last van", "27-07"],
-						[6,"Jep last", "28-07"],
-						[10,"Iets", "29-07"],
-						[7,"Ik had last", "30-07"]
-					];
+feedback = [
+	[4,"Ik had ergens last van", "19-07"],
+	[7,"Ik had constant last van mijn rechterdij", "20-07"],
+	[10,"Iets", "21-07"],
+	[7,"Ik had last", "22-07"],
+	[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
+	[6,"Jep last", "24-07"],
+	[10,"Iets", "25-07"],
+	[7,"Ik had last", "26-07"],
+	[4,"Ik had ergens last van", "27-07"],
+	[6,"Jep last", "28-07"],
+	[10,"Iets", "29-07"],
+	[7,"Ik had last", "30-07"]
+];
 				</code></pre>
 				<p>Dit werkt in de client behoorlijk goed, maar de opslag ervan is een ander verhaal. Het gebruik van MySQL zou complex zijn. Ik zou deze data kunnen opslaan als platte tekst en JSON. Dat zou echter twee problemen opleveren:</p>
 				<ol>
@@ -51,7 +51,114 @@
 					</li>
 				</ol>
 				<p>Andere opties zijn CouchDB en MongoDB (NoSQL). Zelf heb ik met beiden geen ervaring, maar het werken met JSON is zeer gunstig. Daarnaast biedt het de mogelijkheid om data op te halen en te vergelijken zoals dat bij MySQL lastig was.</p>
+				<p>Alle data van een user ziet er ongeveer zo uit in JSON:</p>
+				<pre><code class="language-js">
+var user = {
+	name: 'Elsa',
+	email: 'elsa@email.com',
+	pass: 'password123',
 
+	settings: {
+		push: 1,
+		inAppNotifications: 1
+	},
+
+	preferences: {
+		vibrate: false,
+		audio: true,
+		voice: false,
+		music: true
+	},
+
+	planning: [
+		{
+			type: 'Coordinatie',
+			squeezeTime: 5,
+			relaxTime: 15,
+			repeat: 6,
+			amount: 2
+		},
+		{
+			type: 'Krachttraining (snel)',
+			squeezeTime: 5,
+			relaxTime: 15,
+			repeat: 6,
+			amount: 2
+		},
+		{
+			type: 'Krachttraining',
+			squeezeTime: 5,
+			relaxTime: 15,
+			repeat: 6,
+			amount: 2
+		},
+		{
+			type: 'Ontspanning',
+			duration: 20,
+			amount: 2
+		},
+	],
+
+	exercisesPassed: [
+		{
+			dayDate: '20-07-2017',
+			exercises: [
+				{
+					type: 'Coordinatie',
+					squeezeTime: 10,
+					relaxTime: 20,
+					repeat: 6,
+					results: {
+						grade: 5,
+						specification: ['lage rugpijn', 'ademtekort'],
+						description: 'Ik had last van lage rugpijn'
+					}				
+				},
+				{
+					type: 'Krachttraining (snel)',
+					squeezeTime: 1,
+					relaxTime: 2,
+					repeat: 12,
+					results: {
+						grade: 3,
+						specification: ['lage rugpijn'],
+						description: ''
+					}				
+				},
+				{
+					type: 'Krachttraining',
+					squeezeTime: 10,
+					relaxTime: 20,
+					repeat: 12,
+					results: false			
+				}
+		],
+			changesMade: [
+				{
+					type: 'Coordinatie',
+					squeezeTime: '+4s',
+					repeat: '+2'
+				}
+			]
+		}
+	],
+
+	generalData: {
+		pregnant: true,
+		complaints: ['lage rugpijn', 'bekkeninstabiliteit', 'bandenpijn']
+	},
+
+	gameplay: {
+		compliance: {
+			exercisesDone: 12,
+			exercisesTotal: 14,
+			daysPassed: 6,
+		},
+		badgeStage: 2
+	}
+}
+				</code></pre>
+				<p>Een JSON-based NoSQL database zou in dit geval ideaal zijn.</p>
 
 			</section>
 			</main>
