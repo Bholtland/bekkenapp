@@ -200,7 +200,7 @@
 
 					<h3>6.3 Persuasion</h3>
 						<h4>Behaviour Model</h4>
-							<p>Het doel van verleiding is mensen iets te laten doen. Er zijn echter meerdere mogelijkheden dan alleen motiveren. Wanneer je iets gemakkelijk maakt gaan mensen het ook sneller doen. Ik heb hiervoor het Behaviour Model van B.J. Fogg in het achterhoofd gehouden <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 3]</a>. Het Behaviour Model van B.J. Fogg verteld eigenlijk dat er twee krachten zijn die meespelen wanneer je iemand iets wilt laten doen. Deze twee krachten zijn Motivation en Ability. Je kunt iemand dus motiveren om iets te doen, maar als je het de persoon makkelijker maakt, is de kans ook groter dat zij het gaan doen. Daarom zeg ik: Hoe belangrijker de functie is, hoe makkelijker het voor de gebruiker moet zijn om uit te voeren. Een voorbeeld volgt.</p>
+							<p>Verleiding heeft als doel mensen iets te laten doen. Er zijn echter meerdere mogelijkheden dan alleen motiveren. Wanneer je iets gemakkelijk maakt gaan mensen het ook sneller doen. Ik heb hiervoor het Behaviour Model van B.J. Fogg in het achterhoofd gehouden <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 3]</a>. Het Behaviour Model van B.J. Fogg verteld eigenlijk dat er twee krachten zijn die meespelen wanneer je iemand iets wilt laten doen. Deze twee krachten zijn Motivation en Ability. Je kunt iemand dus motiveren om iets te doen, maar als je het de persoon makkelijker maakt, is de kans ook groter dat zij het gaan doen. Daarom zeg ik: Hoe belangrijker de functie is, hoe makkelijker het voor de gebruiker moet zijn om uit te voeren. Een voorbeeld volgt.</p>
 
 						<h4>Persuasion Principles</h4>
 							<p>In het ontwerp heb ik vaker gebruik gemaakt van de Mental Notes van Stephen P Anderson. Het is een collectie van persuasion principles in kaartvorm <a href="attachments/pdf/mentalnotes.pdf" target="_blank">[bijlage]</a>. In het volgende stuk worden de ontwerpen getoond. Wanneer ik &eacute;&eacute;n of meerdere principes gebruik, benoem ik welke dat is/zijn.</p>
@@ -394,14 +394,11 @@
 						<p class="question">Welke scripttaal / welk framework is geschikt voor het maken van de applicatie?</p>
 						<p>Mijn toepassing is een webapplicatie. In de toekomst zou het het best een native app kunnen zijn. Aangezien ik wil afstuderen als Designer met een voorkeur voor web development, heb ik mij hier ook op gefocust. Een goed framework voor mijn applicatie zou React JS zijn. Het biedt de mogelijkheid om modulaire apps op te bouwen die "performant" zijn. Mijn kennis van React is echter bescheiden; daarom zou ik daar te veel tijd aan kwijt zijn geweest.</p>
 
-						<p>De applicatie is gebouwd in HTML. Daarbij maak ik gebruik van Javascript en SCSS. SCSS is een CSS "preprocessor" die het schrijven van CSS effici&euml;nter maakt. Voor Javascript gebruik ik ook jQuerry. Later heb ik het gebruik van jQuerry zoveel mogelijk uitgefaseerd; Backend scripts vallen niet onder het MVP, maar ik heb er wel mee ge&euml;xperimenteerd. Hiervoor heb ik NodeJS en mySQL gebruikt.</p>
+						<p>De applicatie is gebouwd in HTML. Daarbij maak ik gebruik van Javascript en SCSS. SCSS is een CSS "preprocessor" die het schrijven van CSS effici&euml;nter maakt. Voor Javascript gebruik ik ook jQuerry. Later heb ik het gebruik van jQuerry zoveel mogelijk uitgefaseerd; Backend scripts vallen niet onder het MVP, maar ik heb er wel mee ge&euml;xperimenteerd. Hiervoor heb ik NodeJS en mySQL gebruikt. Voor meer diepgang, zie <a href="attachments/html/code.html" target="_blank">[bijlage]</a>.</p>
 
-					<h3>7.3 Opbouw applicatie</h3>
-						<h4>7.3.1 Structuur</h4>
-							<p>De applicatie bestaat uit een enkel HTML bestand. Ik heb plannen om dit uiteindelijk op te breken zodat de applicatie modulair wordt. De CSS code is wel opgedeeld in componenten. Zo kunnen ze eventueel worden hergebruikt en houdt het de applicatie overzichtelijk. Het Javascript is een enkel bestand met daarin alle functies en variabelen.</p>
+					<h3>7.3 Progressive Web App</h3>
 
-						<h4>7.3.2 Progressive Web App</h4>
-							<div class="img-box-screens">
+						<div class="img-box-screens">
 								<figure>
 									<a href="img/pwa_1.png" data-lightbox="pwa" data-title="Progressive Web App">
 										<img src="img/pwa_1.png" alt=""/></a>
@@ -413,7 +410,12 @@
 					<h3>7.4 Code review</h3>
 						<p>Op 12 juli hielden wij als groep een code review. Deze review heeft mij veel verder geholpen en tevens gewezen op een aantal "bad practices" die ik toepaste in mijn project. Voor meer details zie <a href="attachments/html/code.html" target="_blank">bijlage</a>.</p>
 
-					<h3>7.5 Conclusie Development</h3>
+					<h3>7.5 Data</h3>
+						<p>Voor veel bestaande bekken apps hoef je geen account aan te maken. Bij deze applicatie hoeft dat ook niet pers&eacute;. De gebruiker kan aangeven of hij/zij een account wil aanmaken. Als hij/zij dat niet wilt, wordt de data opgeslagen in de "local storage" [Zie bron local storage]. Het doel is dat er een account wordt aangemaakt. Zo kan de data worden gebruikt voor het controlepaneel voor de therapeut, zie <a href="#toekomstbeeld">[toekomstbeeld]</a>.</p>
+
+						<p>Ook kan de data worden gebruikt voor analyses in latere fasen. De effectiveit van oefeningen kan bijvoorbeeld op quantitatieve schaal worden gemeten. De voortgang van de pati&euml;nt kan daar dan naast worden gelegd. Voor meer over de opslag en het gebruik van data, zie <a href="attachments/html/opslag.html" target="_blank">bijlage</a>.</p>
+
+					<h3>7.6 Conclusie Development</h3>
 						<p>Technology driven design werkte voor mij voordelig maar ook nadelig. Ik ben toch vaak teruggekeerd naar Sketch om schermen opnieuw te ontwerpen. Dat ging vaak wat sneller. Wat wel heel fijn is, is dat de applicatie grotendeels al staat. Het is dus relatief weinig werk om het nog te realiseren. Ik zou volgende keer denk ik toch nog wat langer de tijd nemen om alle schermen te ontwerpen binnen Sketch en ze goed te testen om daarna pas te beginnen met coderen.</p>
 			</section>
 			<section>
@@ -440,7 +442,7 @@
 
 						<p>De therapeut inzicht geven is wel makkelijker meetbaar. De therapeut geeft namelijk aan dat herstel van de klacht wordt gemeten tijdens de wekelijkse afspraak <a href="attachments/html/interviews.html#bron-7" target="_blank">[Therapeut > Bron 7]</a>. Aan de hand van de data uit Fysically kan de therapeut direct zien hoeveel de pati&euml;nt heeft geoefend en hoe de pati&euml;nt zich daarbij voelde. De pati&euml;nt hoeft dus niet meer te graven in het geheugen, waardoor informatie specifieker en betrouwbaarder is.</p>
 
-					<h3>8.3 Toekomstbeeld</h3>
+					<h3 id="toekomstbeeld">8.3 Toekomstbeeld</h3>
 						<p>Voor de toekomst van het product staat nog veel op de planning. Graag breng ik het volgende onder de aandacht:</p>
 						<p><strong>Controlepaneel</strong><br/>Aan het begin van dit project wilde ik ook een Controlepaneel maken voor de therapeut <a href="img/controlepaneel.png" data-lightbox="controlepaneel" data-title="Controlepaneel">[zie schetsen]</a>. Hiermee kon hij/zij oefenschema's aanmaken voor de pati&euml;nt. Dit idee had echter niet genoeg prioriteit om binnen het MVP te vallen. In het interview kwam naar voren dat de therapeut liever schema's wou instellen op de telefoon van de pati&euml;nt. Dit toonde namelijk meer betrokkenheid. Daarnaast gaf de therapeut aan toch niet tussen afspraken door naar de data van de pati&euml;nt te kijken <a href="attachments/html/interviews.html#bron-8" target="_blank">[Therapeut > Bron 8]</a>.</p>
 
@@ -454,6 +456,12 @@
 							</div>
 
 						<p><strong>Inloggen en beveiliging</strong><br/>Iets dat binnen dit project niet behandeld is, is inloggen en veiligheid. Wanneer de app daadwerkelijk bruikbaar wordt, is het noodzakelijk dat pati&euml;nten in kunnen loggen en dat er zorgvuldig met hun data wordt omgegaan. Het laatste wat je wilt is dat zulke persoonlijke en intieme data in handen van derden komt.</p>
+
+						<p><strong>Extra informatie</strong><br>Uit onderzoek blijkt dat er behoefte is aan extra informatie over de app en bekkenfysiotherapie zelf. Daarvoor zou een aparte sectie kunnen worden aangemaakt om hier informatie over te geven.</p>
+
+						<p><strong>Klachten wijzigen</strong><br>Klachten kunnen veranderen. Het kan zijn dat iemand na 2 jaar terugkeert naar de app met een nieuwe klacht. Om die reden moeten klachten gewijzigd kunnen worden. Een dergelijke instelling past goed bij het scherm "account", waar de algemene instellingen beheerd kunnen worden.</p>
+
+						<p><strong>Meer gegevens</strong><br>Zodra er gegevens verzameld worden, is het handig om meer informatie te hebben over de gebruiker. Een naam is niet nodig, maar een geboortedatum zou ervoor kunnen zorgen dat je data over 20-jarigen en 50-jarigen kunt scheiden.</p>
 
 			</section>
 			<section>
