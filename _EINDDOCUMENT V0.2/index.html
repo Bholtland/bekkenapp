@@ -93,7 +93,8 @@
 
 						<h4>3.4.4 Development</h4>
 							<li>Welke scripttaal / welk framework is geschikt voor het maken van de applicatie?</li>
-							<li>Wat voor data wordt er opgeslagen en waarvoor wordt dit gebruikt?</li>
+							<li>Wat voor data wordt er opgeslagen en hoe wordt dit gedaan?</li>
+							<li>Waar wordt de opgeslagen data voor gebruikt?</li>
 
 					<h3>3.5 Roadmap</h3>
 						<img src="img/roadmap.png" alt="">
@@ -133,6 +134,10 @@
 							Al deze informatie is afkomstig van interviews met de therapeut. <a href="attachments/html/interviews.html#bron-1" target="_blank">[Therapeut > bron 1]</a>
 						<h4>4.2.2 VAS-score</h4>
 							<p>De VAS-meting is een meting die binnen veel medische instanties wordt gebruikt om subjectieve metingen te doen (meestal pijn) <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 1]</a>. De meting is wereldwijd erkend. Ook wordt het binnen fysiotherapie gebruikt om de heftigheid van bepaalde klachten te meten. Voor deze toepassing is het een belangrijke, makkelijke en relatief betrouwbare manier om voortgang te meten. Het is absoluut niet de bedoeling dat de therapeut op basis van deze informatie beslissingen maakt, maar het dient juist een toevoeging te zijn op de methoden die de therapeut op dit moment al gebruikt. Een van die methoden is bijvoorbeeld het meten door middel van een probe. <a href="attachments/html/interviews.html#bron-7" target="_blank">[Therapeut 2 > Bron 7]</a></p>
+
+						<h4>4.2.3 Protocollen en terminologie</h4>
+
+					<h3>4.3 Apps in bekkenfysiotherapie</h3>
 
 					<h3>4.3 Kansen en bedreigingen</h3>
 						
@@ -209,115 +214,114 @@
 						<p>Ik beschrijf en toon hier de schermen van de applicatie aan de hand van user stories. Alle user stories staan in deze <a href="attachments/html/userstories.html" target="_blank">[bijlage]</a>. Ook vertel ik over aanpassingen die hebben geleid tot het uiteindelijke design.</p>
 						<h4>6.4.1 Onboarding</h4>
 							<q>De pati&euml;nt opent de app voor het eerst </q>
-							<div class="img-box-screens broad4">
+							<div class="img-box-screens broad3">
 								<figure>
-									<a href="img/onboarding_1a.png" data-lightbox="onboarding" data-title="Onboarding 1a">
-										<img src="img/onboarding_1a.png" alt=""/></a>
-									<figcaption>Onboarding 1a</figcaption>
-								</figure>
-								<figure>
-									<a href="img/onboarding_1b.png" data-lightbox="onboarding" data-title="Onboarding 1b">
-										<img src="img/onboarding_1b.png" alt=""/></a>
-									<figcaption>Onboarding 1b</figcaption>
-								</figure>
-								<figure>
-									<a href="img/onboarding_1c.png" data-lightbox="onboarding" data-title="Onboarding 1c">
-										<img src="img/onboarding_1c.png" alt=""/></a>
-									<figcaption>Onboarding 1c</figcaption>
+									<a href="img/onboarding_1.png" data-lightbox="onboarding" data-title="Onboarding 1">
+										<img src="img/onboarding_1.png" alt=""/></a>
+									<figcaption>Onboarding 1</figcaption>
 								</figure>
 								<figure>
 									<a href="img/onboarding_2.png" data-lightbox="onboarding" data-title="Onboarding 2">
 										<img src="img/onboarding_2.png" alt=""/></a>
 									<figcaption>Onboarding 2</figcaption>
-								</figure>								
+								</figure>
+								<figure>
+									<a href="img/onboarding_3.png" data-lightbox="onboarding" data-title="Onboarding 3">
+										<img src="img/onboarding_3.png" alt=""/></a>
+									<figcaption>Onboarding 3</figcaption>
+								</figure>							
 							</div>
-							<p><strong>Stap 1:</strong> De pati&euml;nt is voor het eerst bij de therapeut. Samen installeren zij de app en wordt deze geopend. De therapeut krijgt via het controlepaneel <a href="img/controlepaneel.png" data-lightbox="controlepaneel" data-title="Controlepaneel">[zie schetsen]</a> een unieke code die gekoppeld is aan de gegevens van de pati&euml;nt. Zij vullen deze in [onboarding 1b]. Als de invoer incorrrect is, ontvangt de gebruiker een melding die aangeeft wat er fout is. Als de pati&euml;nt de app pas thuis installeert (wat niet de bedoeling is), en geen code heeft ontvangen, dient hij/zij deze bij de therapeut aan te vragen.</p>
-							<p><strong>Stap 2:</strong> Wanneer de pati&euml;nt succesvol is ingelogd, wordt er gevraagd of hij/zij wil beginnen met een oefening. Als de pati&euml;nt "Nee" klikt. Gaat hij/zij meteen door naar het schema <a href="#oefenschema">[zie schema]</a>. Wanneer de pati&euml;nt "Ja" aangeeft, wordt de eerste oefening geopend.</p>
+							<p><strong>Stap 1:</strong> De pati&euml;nt is voor het eerst bij de therapeut. Samen installeren zij de app en wordt deze geopend. Het eerste scherm dat zij te zien krijgen, vertelt kort wat er nodig is om te kunnen beginnen.</p>
+							<p><strong>Stap 2:</strong> Ze doorlopen de eerste vraag. De patient kan, samen met de therapeut, de klachten invoeren. Deze data wordt opgeslagen om later te kunnen gebruiken voor de wekelijkse evaluatie. Daarnaast wordt het gebruikt om een initieel schema te creeëren op basis van de klachten. 
+							<p>Onderin zie je hoeveel stappen er doorlopen moeten worden. Zo weet de gebruiker dat het geen eindeloze set aan vragen betreft.</p>
+							<p><strong>Stap 3:</strong> Wanneer de klachten zijn ingevuld, wordt er gevraagd of de patient wil beginnen met een voorbeeldoefening. Als de pati&euml;nt "Nee" klikt. Gaat hij/zij meteen door naar het schema <a href="#oefenschema">[zie schema]</a>. Wanneer de pati&euml;nt "Ja" aangeeft, wordt de eerste oefening geopend.</p>
+							<p>Het is belangrijk om de patient een keuze te geven. Stel dat er geen tijd is of dat de patient al bekend is met de oefening, dan zou het irritant zijn als je deze niet kon overslaan.</p>
+							
 
 						<h4>6.4.2 Een oefening uitvoeren</h4>
-							<div class="img-box-screens broad5">
-								<figure>
-									<a href="img/oefening_1a.png" data-lightbox="oefening" data-title="Oefening 1a">
-										<img src="img/oefening_1a.png" alt=""/></a>
-									<figcaption>Oefening 1a</figcaption>
-								</figure>
-								<figure>
-									<a href="img/oefening_instellingen_1.png" data-lightbox="oefening" data-title="Oefening instellingen 1">
-										<img src="img/oefening_instellingen_1.png" alt=""/></a>
-									<figcaption>Oefening instellingen 1</figcaption>
-								</figure>
-								<figure>
-									<a href="img/oefening_uitleg_1.png" data-lightbox="oefening" data-title="Oefening uitleg 1">
-										<img src="img/oefening_uitleg_1.png" alt=""/></a>
-									<figcaption>Oefening uitleg 1</figcaption>
-								</figure>
-								<figure>
-									<a href="img/oefening_1b.png" data-lightbox="oefening" data-title="Oefening 1b">
-										<img src="img/oefening_1b.png" alt=""/></a>
-									<figcaption>Oefening 1b</figcaption>
-								</figure>
-								<figure>
-									<a href="img/oefening_1c.png" data-lightbox="oefening" data-title="Oefening 1c">
-										<img src="img/oefening_1c.png" alt=""/></a>
-									<figcaption>Oefening 1c</figcaption>
-								</figure>								
-							</div>
-							<p><strong>Stap 1:</strong> De eerste oefening is een voorbeeld oefening. Het gaat er hier om dat de pati&euml;nt leert begrijpen hoe de app werkt. Het is dan ook de bedoeling dat pati&euml;nt en therapeut deze stap samen doorlopen.</p>
-							<p><strong>Stap 2:</strong> De pati&euml;nt wordt gewezen op de mogelijkheid tot het instellen van de begeleiding naar voorkeur. Hier kan de pati&euml;nt kiezen tussen begeleiding door trilsignaal, geluid, een stem en muziek [Oefening instellingen 1]. In eerste instantie stonden de instellingen direct in het oefeningen scherm. <a href="img/oefening_oud_1.png" data-lightbox="oefening_oud" data-title="Oefening oud 1">[zie eerdere schermen]</a> er was echter weinig ruimte tot uitbreiding en er waren te veel elementen voor de gebruiker om op te focussen. Door deze elementen te scheiden, waren zij beter te interpreteren <a href="attachments/html/interviews.html#bron-3-3" target="_blank">[User tests > Bron 3]</a></p>
-							<p class="question">Hoeveel uitleg heeft een bekkenfysiotherapiegerelateerde oefening nodig?</p>
-							<p><strong>Stap 3:</strong> Wanneer de pati&euml;nt meer uitleg nodig heeft, of niet bij de therapeut was en geen uitleg heeft gehad, kan hij/zij de uitleg nog eens bekijken in video- of tekstvorm [oefening uitleg 1]. In eerste instantie was er geen uitleg, omdat het belangrijk is dat de uitleg door de therapeut wordt gedaan <a href="attachments/html/interviews.html#bron-7" target="_blank">[Therapeut 2 > Bron 7]</a>. Tijdens de Feedback Frenzy gaven meerdere mensen aan dat ze wel iets van uitleg in de vorm van tekst of beeld wilden zien <a href="attachments/html/feedbackfrenzy.html" target="_blank">[Bijlage feedback frenzy]</a></p>
-							<p><strong>Stap 4:</strong> De pati&euml;nt kan vervolgens beginnen met oefenen. Er wordt afgeteld en de oefening begint [oefening 1b en 1c]. Wanneer de oefening klaar is wordt het feedbackscherm getoont [Oefening feedback 1].</p>
-
 							<div class="img-box-screens broad3">
 								<figure>
-									<a href="img/oefening_feedback_1.png" data-lightbox="oefeningfeedback" data-title="Oefening feedback 1a">
-										<img src="img/oefening_feedback_1.png" alt=""/></a>
-									<figcaption>Oefening feedback 1a</figcaption>
+									<a href="img/oefening_uitleg_1.png" data-lightbox="oefening" data-title="Oefening uitleg">
+										<img src="img/oefening_uitleg_1.png" alt=""/></a>
+									<figcaption>Oefening uitleg</figcaption>
 								</figure>
 								<figure>
-									<a href="img/oefening_feedback_1b.png" data-lightbox="oefeningfeedback" data-title="Oefening feedback 1b">
-										<img src="img/oefening_feedback_1b.png" alt=""/></a>
-									<figcaption>Oefening feedback 1b</figcaption>
+									<a href="img/oefening_1.png" data-lightbox="oefening" data-title="Oefening">
+										<img src="img/oefening_1.png" alt=""/></a>
+									<figcaption>Oefening</figcaption>
 								</figure>
 								<figure>
-									<a href="img/oefening_feedback_2.png" data-lightbox="oefeningfeedback" data-title="Oefening feedback 1">
-										<img src="img/oefening_feedback_2.png" alt=""/></a>
-									<figcaption>Oefening feedback 1</figcaption>
+									<a href="img/oefening_instellingen_1.png" data-lightbox="oefening" data-title="Oefening instellingen ">
+										<img src="img/oefening_instellingen_1.png" alt=""/></a>
+									<figcaption>Oefening instellingen</figcaption>
 								</figure>								
 							</div>
+							<p>De eerste oefening is een voorbeeld oefening. Het gaat er hier om dat de pati&euml;nt leert begrijpen hoe de app werkt. Het is dan ook de bedoeling dat pati&euml;nt en therapeut deze stap samen doorlopen, zodat de therapeut extra uitleg kan geven bij de oefening.</p>
+							<p><strong>Stap 1:</strong>Bij elke nieuwe oefening, wordt de uitleg van de oefening getoond. Het is belangrijk dat de patient weet hoe de oefening moet worden uitgevoerd alvorens er wordt geoefend. In eerste instantie was er geen uitleg, omdat het belangrijk is dat de uitleg door de therapeut wordt gedaan <a href="attachments/html/interviews.html#bron-7" target="_blank">[Therapeut 2 > Bron 7]</a>. Tijdens de Feedback Frenzy gaven meerdere mensen aan dat ze wel iets van uitleg in de vorm van tekst of beeld wilden zien <a href="attachments/html/feedbackfrenzy.html" target="_blank">[Bijlage feedback frenzy]</a></p>
+							<p>De patient kan deze standaard instelling echter uitzetten als er geen extra uitleg nodig is.</p>
 
-							<p><strong>Stap 5:</strong> In het feedbackscherm kan de pati&euml;nt een cijfer aangeven. Volgens de officiele VAS-methode betekent een "10" erg veel last en een "1" geen last. Deze data wordt gebruikt om later de voortgang bij te kunnen houden. De pati&euml;nt kan ook eventueel een gedetailleerde beschrijving geven van het gevoel. Wanneer de pati&euml;nt een beschrijving wil invoeren, wordt het tekstveld groter.</p>
-							<p>Ik heb dit systeem ook getest met een slider. Het werd echter minder goed ontvangen, omdat het op een klein scherm en met grote vingers lastig te besturen was <a href="attachments/html/interviews.html#bron-4-3" target="_blank">[User tests > Bron 4]</a>. <a href="img/VAS_1.png" data-lightbox="Oefening feedback oud" data-title="Oefening feedback oud">[zie eerdere schermen]. </a>Wanneer de pati&euml;nt op "Opslaan" klikt gaat hij/zij naar het oefenschema.</p>
+							<p><strong>Stap 2:</strong> De voorbeeldoefening is ,afhankelijk van de klachten ,een ontspanningsoefening of een krachtoefening. In deze flow gaan we uit van een krachtoefening, omdat onze "klachten" opgelost kunnen worden met krachttraining.</p>
+							<p>De patient ziet hoeveel herhalingen hij/zij moet doen en hoelang de aanspan- en ontspantijd is. De patient kan daarnaast voorkeuren instellen en de uitleg nogmaals bekijken.</p>
+
+							<p><strong>Stap 3:</strong> De pati&euml;nt wordt gewezen op de mogelijkheid tot het instellen van de begeleiding naar voorkeur. Hier kan de pati&euml;nt kiezen tussen begeleiding door trilsignaal, geluid, een stem en muziek [Oefening instellingen 1]. In eerste instantie stonden de instellingen direct in het oefeningen scherm. <a href="img/oefening_oud_1.png" data-lightbox="oefening_oud" data-title="Oefening oud 1">[zie eerdere schermen]</a> er was echter weinig ruimte tot uitbreiding en er waren te veel elementen voor de gebruiker om op te focussen. Door deze elementen te scheiden, waren zij beter te interpreteren <a href="attachments/html/interviews.html#bron-3-3" target="_blank">[User tests > Bron 3]</a></p>
+							
+							<p><strong>Stap 4:</strong> De pati&euml;nt kan vervolgens beginnen met oefenen. Er wordt afgeteld en de oefening begint [oefening 1b en 1c]. Wanneer de oefening voltooid is, wordt het oefenschema getoond en wordt de oefening afgevinkt.</p>
+
 						<h4>6.4.3 Oefenschema</h4>
-							<div class="img-box-screens broad4">
-								<figure>
-									<a href="img/schema_1a.png" data-lightbox="schema" data-title="Oefenschema 1a">
-										<img src="img/schema_1a.png" alt=""/></a>
-									<figcaption>Oefenschema 1a</figcaption>
-								</figure>
-								<figure>
-									<a href="img/schema_aanpassen_1.png" data-lightbox="schema" data-title="Oefenschema aanpassen 1">
-										<img src="img/schema_aanpassen_1.png" alt=""/></a>
-									<figcaption>Oefenschema aanpassen 1</figcaption>
-								</figure>	
-								<figure>
-									<a href="img/schema_aanpassen_1b.png" data-lightbox="schema" data-title="Oefenschema aanpassen 1b">
-										<img src="img/schema_aanpassen_1b.png" alt=""/></a>
-									<figcaption>Oefenschema aanpassen 1b</figcaption>
-								</figure>
+							<div class="img-box-screens broad3">
 								<figure>
 									<a href="img/schema_1b.png" data-lightbox="schema" data-title="Oefenschema 1b">
 										<img src="img/schema_1b.png" alt=""/></a>
-									<figcaption>Oefenschema 1b</figcaption>
-								</figure>							
+									<figcaption>Oefenschema</figcaption>
+								</figure>	
+								<figure>
+									<a href="img/schema_aanpassen_1.png" data-lightbox="schema" data-title="Oefenschema aanpassen 1">
+										<img src="img/schema_aanpassen_1.png" alt=""/></a>
+									<figcaption>Oefenschema aanpassen</figcaption>
+								</figure>	
+								<figure>
+									<a href="img/navigatie_1a.png" data-lightbox="schema" data-title="Oefenschema aanpassen 1">
+										<img src="img/navigatie_1a.png" alt=""/></a>
+									<figcaption>Oefenschema later</figcaption>
+								</figure>
+						
 							</div>	
-							<p><strong>Stap 1:</strong> Er staat een standaard oefenschema ingesteld. Als de pati&euml;nt een eerste oefening heeft voltooid, dan wordt deze gemarkeerd als voltooid. Zo krijgt de pati&euml;nt direct een beter beeld van hoe de applicatie werkt en wordt hij/zij vast op weg geholpen.</p>
+							<p><strong>Stap 1:</strong> Op basis van de eerder aangegeven klachten, wordt er een oefenschema ingesteld. Hierin wordt gekeken naar het type klacht(en). Als de klachten oorzaak zijn van een te gespannen bekkenbodem, wordt er een ontspanningsschema getoond. Wanneer het om een te ontspannen bekkenbodem gaat, wordt er een krachttrainingsschema ingesteld. Uiteraard is het gehele schema aanpasbaar. Het dient slechts als "good default" [bron]. Iedere patient krijgt namelijk een ander schema dat door de therapeut moet worden ingesteld. 
+
+							Als de pati&euml;nt een eerste oefening heeft voltooid, dan wordt deze afgevinkt. Zo krijgt de pati&euml;nt direct een beter beeld van hoe de applicatie werkt en wordt hij/zij vast op weg geholpen. Doordat de voorbeeldoefening is afgevinkt, krijgt de patient hopelijk het gevoel dat hij/zij al op weg is en begint hij/zij niet bij 0. Dit zorgt ervoor dat het set-completion [bron] principe in werking treedt. De gebruiker wordt visueel gestimuleerd om 100% van de oefeningen te doen.</p>
 							<p>Het oefenschema laat per dag de oefeningen zien die gedaan dienen te worden. Een oefening wordt ook wel een "serie" genoemd. Er zijn dus vier soorten series <a href="attachments/html/oefeningen.html" target="_blank">[bijlage series]</a>. Wanneer een serie voltooid is, wordt deze ingekleurd. Dit zorgt voor een stimulerend effect <a href="attachments/html/interviews.html#bron-5-3" target="_blank">[User tests > Bron 5]</a>.</p>
 							<p>Het "kaarten" systeem dat ik in eerste instantie had gebruikt, kwam nog niet goed over als een planning <a href="attachments/html/interviews.html#bron-5-3" target="_blank">[User tests > Bron 5]</a> <a href="img/schema_oud_1.png" data-lightbox="Oefenschema oud" data-title="Oefenschema oud">[zie eerdere schermen]</a>. (Een serie wordt weergegeven als "kaart".) Daarnaast was er veel onnodige witruimte.</p>
 							<p>Ik besloot om de kaarten in het laatste scherm kleiner te maken. Zo kwam er ruimte vrij voor een tijdlijn en een manier om beter aan te geven dat een oefening/kaart afgevinkt was. Die aanpassing leidde tot meer duidelijkheid.</p>
-							<p><strong>Stap 2:</strong> Door op de "Material design" button te tikken, Kunnen er series worden aangepast, toegevoegd of verwijderd [Oefenschema aanpassen 1]. Elke serie heeft zijn eigen parameters. De ingestelde series worden elke dag herhaald totdat deze weer aangepast worden. Series kunnen worden toegevoegd door op "oefening toevoegen" te tikken. Er wordt dan een "native picker" geopend. Het aanpassen dient alleen te gebeuren in overleg met de therapeut.</p>
+							<p><strong>Stap 2:</strong> Door op de "Material design" button te tikken, Kunnen oefeningen worden aangepast [Oefenschema aanpassen 1]. Elke oefening heeft zijn eigen parameters. De ingestelde oefeningen worden elke dag herhaald totdat deze weer aangepast worden. Het aanpassen dient alleen te gebeuren in overleg met de therapeut.</p>
 							<p><strong>Stap: 3</strong> Na een aantal dagen zou het schema er dus uit kunnen zien zoals in [oefenschema 1b]. Er zit geen restrictie op het aantal oefening dat mag worden toegevoegd.</p>
 
+						<h4>6.4.2 Evaluatie</h4>
+							<div class="img-box-screens broad4">
+								<figure>
+									<a href="img/notificatie_evaluatie.jpg" data-lightbox="oefening" data-title="Oefening uitleg">
+										<img src="img/notificatie_evaluatie.jpg" alt=""/></a>
+									<figcaption>Notificatie Evaluatie</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_feedback_1.png" data-lightbox="oefening" data-title="Oefening uitleg">
+										<img src="img/oefening_feedback_1.png" alt=""/></a>
+									<figcaption>Meting intensiteit</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_feedback_2.png" data-lightbox="oefening" data-title="Oefening">
+										<img src="img/oefening_feedback_2.png" alt=""/></a>
+									<figcaption>Meting klachtspecificaties</figcaption>
+								</figure>
+								<figure>
+									<a href="img/oefening_feedback_3.png" data-lightbox="oefening" data-title="Oefening instellingen ">
+										<img src="img/oefening_feedback_3.png" alt=""/></a>
+									<figcaption>Feedback</figcaption>
+								</figure>								
+							</div>
+							<p>Elke week wordt er een evaluatie gehouden. De patient wordt hier door middel van een push notificatie aan herinnerd. Het doel hiervan is om inzicht te krijgen in de voortgang van de afgelopen week. De evaluatie bestaat uit een reeks vragen volgens de VAS-methode. De reeks vragen wordt gesteld per klacht. In het feedbackscherm kan de pati&euml;nt door middel van een emoticon aangeven wat de intensiteit van de klachten was. Deze data wordt gebruikt om later de voortgang bij te kunnen houden zodat zowel de patient als de therapeut een beeld krijg bij de effectiviteit van de oefeningen.</p>
+							<p>Ik heb dit systeem ook getest met een slider. Het werd echter minder goed ontvangen, omdat het op een klein scherm en met grote vingers lastig te besturen was <a href="attachments/html/interviews.html#bron-4-3" target="_blank">[User tests > Bron 4]</a>. <a href="img/VAS_1.png" data-lightbox="Oefening feedback oud" data-title="Oefening feedback oud">[zie eerdere schermen]. Deze nieuwe manier werd echter goed gewaardeerd. Het werd zelfs omschreven als een innovatie op het gebied van de VAS [bron].</a></p>
+							<p>Daarnaast wordt gevraagd of de patient wil aangeven waar hij/zij last van had. Deze data is van belang om te kunnen zien waarom iets beter of slechter ging.</p>
+							
 						<h4>6.4.4 Navigatie</h4>
 							<div class="img-box-screens broad2">
 								<figure>
@@ -335,29 +339,40 @@
 							<p>Waarom koos ik ervoor om het menu uitklapbaar te maken? Je zou kunnen zeggen dat de drie knoppen prima in de navigatiebalk passen. Dat klopt in principe in dit geval, maar op kleine telefoons en schermen met een lange titel, is er niet zoveel ruimte meer.</p>
 
 						<h4>6.4.5 Voortgang bekijken</h4>
-							<div class="img-box-screens broad2">
+							<div class="img-box-screens broad4">
 								<figure>
 									<a href="img/voortgang_1.png" data-lightbox="voortgang" data-title="Voortgang 1">
 										<img src="img/voortgang_1.png" alt=""/></a>
-									<figcaption>Voortgang 1</figcaption>
+									<figcaption>Voortgang</figcaption>
 								</figure>
+								<figure>
+									<a href="img/voortgang_keuze.png" data-lightbox="voortgang" data-title="voortgang_keuze">
+									<img src="img/voortgang_keuze.png" alt=""/></a>
+									<figcaption>Voortgang keuze</figcaption>
+								</figure>	
 								<figure>
 									<a href="img/voortgang_grafiek_1.png" data-lightbox="voortgang" data-title="Voortgang VAS-meting 1">
 										<img src="img/voortgang_grafiek_1.png" alt=""/></a>
-									<figcaption>Voortgang VAS-meting 1</figcaption>
+									<figcaption>Voortgang Grafiek</figcaption>
+								</figure>	
+								<figure>
+									<a href="img/voortgang_grafiek_1b.png" data-lightbox="voortgang" data-title="Voortgang VAS-meting 1">
+										<img src="img/voortgang_grafiek_1b.png" alt=""/></a>
+									<figcaption>Voortgang Data</figcaption>
 								</figure>							
 							</div>	
 							<p>Een van de belangrijkste functies van de applicatie is het bijhouden van de voortgang. De opgeslagen data moet op een makkelijke manier inzichtelijk maken of de oefeningen effectief zijn en hoe vaak de pati&euml;nt oefeningen uitvoert.</p>
-							<p>Om de pati&euml;nt te motiveren, kan hij/zij badges ontvangen voor het uitvoeren van oefeningen. Een progressiebalk toont wanneer de pati&euml;nt een nieuwe badge haalt [Voortgang VAS-meting 1]. Door badges te halen kan de pati&euml;nt nieuwe achtergrondmuziek uitspelen. In eerste instantie waren dat stemmen, maar die bleken te cruciaal te zijn voor de applicatie <a href="attachments/html/interviews.html#bron-1-1" target="_blank">[Therapeut 2 > Bron 1]</a>. De pati&euml;nt kan ook zien hoeveel van de oefeningen hij/zij uitgevoerd heeft ten opzichte van het totaal. Dit bleek effectief te zijn. De gebruiker wilde namelijk 100% halen <a href="attachments/html/interviews.html#bron-5" target="_blank">[Therapeut > Bron 5]</a>.</p>
-							<p>Aan de hand van de hoeveelheid uitgevoerde oefeningen en de mate van verbetering van de VAS-score. Wordt een "efficientie index" getoond. Dit moet een makkelijke manier zijn om snel te kunnen zien hoe effectief de oefening is. Om meer inzicht te krijgen in de effectiviteit, kan er een datavisualisatie getoond worden [Voortgang VAS-meting 1]. Om door de tabel heen te bewegen, swipe je naar lings of rechts. Dit was voor de tester vrij vanzelfsprekend. Wat wel opviel was dat de tester ook op bolletjes probeerde te klikken in plaats van alleen te swipen. In een eerdere versie zat de grafiek bovenaan in het scherm <a href="img/grafiek_1.png" data-lightbox="Grafiek oud 1" data-title="Grafiek oud 1">[zie eerdere schermen]</a>. Wat uit de eerste test naar boven kwam was dat de bediening in het eerste scherm erg onhandig was <a href="attachments/html/interviews.html#bron-9-3" target="_blank">[User tests > Bron 9]</a>. De tester kwam er namelijk lastig bij met haar vinger, en de grafiek was erg klein. In scherm 2 heb ik dit opgelost door de grafiek onderaan te plaatsen en groter te maken.</p>
-							<p>Alle data wordt vernieuwd nadat de series zijn aangepast. Zo kan de therapeut bij elke afspraak zien hoe het de afgelopen week is gegaan.</p>							
+							<p>Om de pati&euml;nt te motiveren, kan hij/zij prestaties ontvangen voor het uitvoeren van oefeningen. Een prestatie is gebaseerd op verschillende factoren. Dit kan zijn, het uitvoeren van een set oefeningen, het behalen van een percentage, of het verhogen van de aanspanningstijd etc. In eerste instantie konden de gebruikers stemmen en achtergrondmuziek uitspelen, maar die bleken te cruciaal te zijn voor de applicatie <a href="attachments/html/interviews.html#bron-1-1" target="_blank">[Therapeut 2 > Bron 1]</a> en voegten verder weinig toe aan de motivatie. De pati&euml;nt kan ook zien hoeveel van de oefeningen hij/zij uitgevoerd heeft ten opzichte van het totaal. Dit bleek effectief te zijn. De gebruiker wilde namelijk 100% halen <a href="attachments/html/interviews.html#bron-5" target="_blank">[Therapeut > Bron 5]</a>.</p>
+							<p>Om inzicht te krijgen in de effectiviteit van de oefeningen, kan er een datavisualisatie getoond worden [Voortgang VAS-meting 1]. Eerst kiest de gebruiker een klacht uit, waarna specifiek voor deze klacht de resulaten uit de VAS-metingen worden getoond. Om door de tabel heen te bewegen, swipe je naar links of rechts. Dit was voor de tester vrij vanzelfsprekend. Wat wel opviel was dat de tester ook op bolletjes probeerde te klikken in plaats van alleen te swipen. In een eerdere versie zat de grafiek bovenaan in het scherm <a href="img/grafiek_1.png" data-lightbox="Grafiek oud 1" data-title="Grafiek oud 1">[zie eerdere schermen]</a>. Wat uit de eerste test naar boven kwam was dat de bediening in het eerste scherm erg onhandig was <a href="attachments/html/interviews.html#bron-9-3" target="_blank">[User tests > Bron 9]</a>. De tester kwam er namelijk lastig bij met haar vinger, en de grafiek was erg klein. In scherm 2 heb ik dit opgelost door de grafiek onderaan te plaatsen en groter te maken.</p>
+							<p>De meting waarop gefocust wordt, toont een preview van de resultaten. Door daarop te tikken, wordt er meer informatie getoond. Hierin zien de patient en de therapeut wat de veranderingen zijn ten opzichte van de voorgaande week. En zien ze eventuele details van de klachten.</p>
+
 
 						<h4>6.4.6 Mijn Account</h4>
 							<div class="img-box-screens">
 								<figure>
 									<a href="img/profiel_1.png" data-lightbox="profiel" data-title="Profiel 1">
 										<img src="img/profiel_1.png" alt=""/></a>
-									<figcaption>Profiel 1</figcaption>
+									<figcaption>Profiel</figcaption>
 								</figure>								
 							</div>
 							<p>Het profiel is op dit moment redelijk leeg. De pati&euml;nt kan hier uitloggen en meldingen aan of uitzetten. Er zullen naarmate de app complexer wordt, ook meer instellingen komen.</p>
@@ -367,15 +382,15 @@
 								<figure>
 									<a href="img/notificatie.jpg" data-lightbox="notificaties" data-title="Notificaties 1">
 										<img src="img/notificatie.jpg" alt=""/></a>
-									<figcaption>Notificaties 1</figcaption>
+									<figcaption>Push</figcaption>
 								</figure>								
 								<figure>
 									<a href="img/inapp_notificaties.png" data-lightbox="notificaties" data-title="Notificaties 2">
 										<img src="img/inapp_notificaties.png" alt=""/></a>
-									<figcaption>Notificaties 2</figcaption>
+									<figcaption>Notificaties</figcaption>
 								</figure>
 							</div>
-							<p>Ik heb ervoor gekozen om alleen gebruik te maken van push berichten wanneer de pati&euml;nt een paar dagen niet heeft geoefend. Een push bericht moet vooral gebruikt worden om nuttige informatie af te leveren waar de gebruiker van op de hoogte wil worden gesteld, zoals een Whatsapp bericht. Push berichten ter motivatie kunnen nuttig zijn om iemand te triggeren, maar moeten niet vaak worden gebruikt <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 2]</a>. Het is dan ook de bedoeling dat een push bericht, zoals in [Notificaties 1] maximaal 1 keer per week kan worden verstuurd.</p>
+							<p>Ik heb ervoor gekozen om alleen gebruik te maken van push berichten wanneer de pati&euml;nt een paar dagen niet heeft geoefend, of als er ge&euml;valueerd moet worden. Een push bericht moet vooral gebruikt worden om nuttige informatie af te leveren waar de gebruiker van op de hoogte wil worden gesteld, zoals een Whatsapp bericht. Push berichten ter motivatie kunnen nuttig zijn om iemand te triggeren, maar moeten niet vaak worden gebruikt <a href="attachments/html/bibliografie.html#websites" target="_blank">[websites > bron 2]</a>. Het is dan ook de bedoeling dat een push bericht, zoals in [Notificaties 1] maximaal 1 keer per week kan worden verstuurd.</p>
 							<p>Naast push notificaties, heb ik ook "in-app" notificaties ge&iuml;ntroduceerd. Deze notificaties dienen deels ter motivatie en anderzijds als heads-up. Stel dat je bijvoorbeeld elke dag heel veel oefeningen moet doen. Dan is zo'n heads-up handig om aan te geven hoeveel oefeningen er nog gedaan moeten worden. De testers gaven aan dat ze dit wel fijn vonden voor het overzicht, maar alleen op de juiste momenten en niet te vaak.<a href="attachments/html/interviews.html#bron-11-1" target="_blank">[User tests > bron 11]</a></p>
 
 					<h3>6.5 Conclusie Design</h3>
