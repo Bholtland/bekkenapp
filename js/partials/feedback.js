@@ -17,15 +17,7 @@ feedbackButton.addEventListener('click',function(){
 			sw(feedbackButton);
 			hd(feedbackScreen);
 			hd(absoluteWrapper)
-			navigateTo(screenHierarchy.scheme);
-
-			if (currentExercise) {
-				setTimeout(function(){
-					currentExercise.classList.add('done','shine');
-					var node = document.createElement("i");                 // Create a <li> node                              // Append the text to <li>
-					currentExercise.appendChild(node); 
-				}, 400);	
-			}		
+			navigateTo(screenHierarchy.scheme);	
 
 		},200);
 	},1100);

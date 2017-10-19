@@ -121,11 +121,18 @@ function startExercise() {
 			didPrecount = true;
 			breather.classList.remove('precount');
 		}		
-		counterText.innerHTML = localSeconds;
+		counterText.innerHTML = localSeconds+"<span>/"+duration+"</span";
 
 		if (sessionsToGo == 0) {
 			clearBreather();
-			popUpScreenFull(feedbackScreen, screenHierarchy.exercise.feedback, true);
+			navigateTo(screenHierarchy.scheme);
+			if (currentExercise) {
+				setTimeout(function(){
+					currentExercise.classList.add('done','shine');
+					var node = document.createElement("i");                 // Create a <li> node                              // Append the text to <li>
+					currentExercise.appendChild(node); 
+				}, 400);	
+			}	
 		}
 		
 	},1000);

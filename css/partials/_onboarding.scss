@@ -7,51 +7,108 @@
 		margin-top: 20px;
 	}
 
-	h2 {
+	h3 {
 		text-align: center;
 		color: $white;
 		font-size: 2em;
 	}
 
-	form {
+	p {
+		text-align: center;
+		color: $white;
+	}
 
-		input {
-			margin-top: 10px;
-			font-family: $regular;
+	.button {
+		margin-top: 10px;
+		margin-top: 20px;
+	}
+
+	.onboarding-entry {
+		h3 {
+			margin-top: 20%;
 		}
 
 		p {
-			text-align: center;
-			color: $white;
-		}
-		
-		.no-code {			
-			margin-top: 20px;
+			margin-top: 10%;
 		}
 
 		.button {
-			margin-top: 10px;
-			margin-top: 20px;
-		}
-
-		.error {
-			height: 44px;
-			margin-top: 20px;
-		}
-
-		.discretion {
-			position: absolute;
-    		bottom: 20px;
-    		width: calc(100% - 40px);
-    		font-size: 0.8em;
-
-    		strong {
-    			font-size: inherit;
-    		}
+			margin-top: 10%;
 		}
 	}
 
-	.tutorial-question {
+	.step {
+		position: absolute;
+		bottom: -90px;
+		p {
+			text-align: center;
+			width: 100%;
+		}
+	}
+
+	.onboarding-complaints {
+		.complaints {
+			margin-top: 20px;
+
+			input {
+				width: 99%;
+			    height: 43px;
+			    background-color: rgba(255,255,255,0);
+			    border: 1px dashed rgba(255,255,255,0.6);
+			    color: #fff;
+			    text-indent: 10px;
+			}
+
+			input::-webkit-input-placeholder{
+				color: #fff;
+			}
+
+			.complaint {
+				padding: 10px;
+				background-color: rgba(255,255,255,0.3);
+				display: flex;
+				margin-bottom: 10px;
+				border-radius: 2px;
+
+				.checkbox {
+				    width: 20px;
+				    height: 20px;
+				    border: 2px solid rgba(255,255,255,0.6);
+				    border-radius: 2px;
+				}
+
+				p {
+					margin-left: 10px;
+				}
+			}
+
+			.complaint.istrue {
+				background-color: #fff;
+				
+				p {
+					color: $color-1;
+				}
+
+				.checkbox {
+					border-color: $color-1;
+				}
+
+				> .checkbox:before {
+					content: '';
+				    width: 14px;
+				    height: 14px;
+				    position: relative;
+				    background-color: $color-1;
+				    display: block;
+				    left: 3px;
+				    top: 3px;
+				    border-radius: 1px;
+				}
+			}
+		}
+	}
+
+	.onboarding-question {
 		padding-top: 50%;
 
 		p {

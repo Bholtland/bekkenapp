@@ -43,17 +43,6 @@
 		</div>
 	</div>
 	<div class="progression">
-		<div class="progression-bar margin-base">
-			<div>
-				<img src="" alt="">
-			</div>
-			<div class="progression-bar-box">
-				<span class="bar-full"></span>
-				<span class="bar-empty"></span>
-				<p>73%</p>
-			</div>
-			<p>Nog <strong>2</strong> oefeningen tot zilver</p>
-		</div>
 		<ul class="outline margin-base">
 			<li>
 				<p>Oefeningen voltooid <span>(%)</span></p>
@@ -64,30 +53,22 @@
 				<p>7 / 13</p>
 			</li>
 			<li>
-				<p>Effectiviteit van de oefeningen</p>
-				<p class="good">Zeer goed</p>
-			</li>
-			<li>
 				<button class="button secondary testbtn">Toon grafiek</button>
 			</ul>
 			<div class="progression-unlock">
-				<p class="margin-base">Achtergrondmuziek vrijspelen</p>
+				<p class="margin-base">Prestaties</p>
 				<div class="progression-unlock-container">
 					<div>
 						<img src="resources/img/music1.jpg" alt="">
-						<p><strong>Woodwind</strong></p>
+						<p><strong>Nieuw begin</strong><br>Voer de voorbeeld-oefening uit</p>
 					</div>
 					<div>
 						<img src="resources/img/music2.jpg" alt="">
-						<p><strong>Sunrise</strong></p>
+						<p><strong>Juiste pad</strong><br>Voer 3 oefeningen uit</p>
 					</div>
 					<div class="locked">
 						<img src="resources/img/music3.jpg" alt="">
-						<p><strong>Windwake</strong><br>Haal zilver</p>
-					</div>
-					<div class="locked">
-						<img src="resources/img/music4.jpg" alt="">
-						<p><strong>Seashell</strong><br>Haal goud</p>
+						<p><strong>Powerwoman</strong><br>Voer een week lang meer dan 80% van de oefeningen uit</p>
 					</div>
 				</div>
 			</div>
@@ -127,6 +108,47 @@
 	</div>
 </section>
 <section class="onboarding invisible">
+	<div class="wrap margin-base onboarding-entry">
+		<h3>Hoi!<br>Laten we beginnen.</h3>
+		<p>We stellen een paar vragen zodat we de app op jou persoonlijk kunnen afstemmen.</p>
+		<a class="button tertiary">Oke</a>
+	</div>
+	<div class="wrap margin-base onboarding-complaints invisible flyUp">
+		<h3>Wat voor <br>Klacht(en) heb je?</h3>
+		<div class="complaints">
+			<div class="complaint">
+				<span class="checkbox"></span>
+				<p>Pijn in de bekkenbodem</p>
+			</div>
+			<div class="complaint">
+				<span class="checkbox"></span>
+				<p>Urineverlies</p>
+			</div>
+			<div class="complaint">
+				<span class="checkbox"></span>
+				<p>Obstipatie</p>
+			</div>
+			<div class="complaint">
+				<span class="checkbox"></span>
+				<p>Pijn tijdens het vrijen</p>
+			</div>
+			<div class="complaint">
+				<span class="checkbox"></span>
+				<p>Druk op de bekkenbodem</p>
+			</div>
+			<input type="text" placeholder="Anders, namelijk">
+		</div>
+		<a class="button tertiary">Opslaan</a>
+	</div>
+	<div class="wrap margin-base onboarding-question invisible flyUp">
+		<p>Wil je beginnen<br>met een <strong>korte oefening?</strong></p>
+		<form action="">
+			<a class="button quartiary">Nee</a>
+			<a class="button tertiary">Ja</a>
+		</form>
+	</div>
+</section>
+<section class="onboarding invisible">
 	<div class="wrap margin-base login">
 		<h2>Fysically</h2>
 		<form action="">
@@ -149,7 +171,6 @@
 </section>
 <section>
 	<div class="exercise-screen screen">
-		<img class="information" src="resources/img/info-dark.svg" alt="">
 		<div class="breather precount">
 			<p class="remaining-time">Herhalingen: <span></span></p>
 			<div class="countdown">
@@ -186,6 +207,10 @@
 			</ul>
 		</div>
 		<div class="information-screen popup">
+			<div class="show-everytime">
+				<p>Toon bij elke nieuwe oefening</p>
+				<input type="checkbox" checked="checked">
+			</div>
 			<img src="resources/img/explanationvideo.jpg" alt="">
 			<div class="margin-base">
 				<h5>Uitleg ontspanning</h5>
@@ -222,11 +247,19 @@
 				<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
 			</span>
 		</div>
-		<p class="button-settings">Instellingen</p>
 		<div class="controls">
 			<span class="button secondary reset">RESET</span>
 			<span class="button primary start">START</span>
 		</div>
+		<ul class="outline">
+			<li class="button-settings">
+				<p>Voorkeuren</p>
+
+			</li>
+			<li class="information">
+				<p>Uitleg</p>
+			</li>
+		</ul>
 	</div>
 </section>
 </div>

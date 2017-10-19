@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var sass = require('gulp-sass');
 
 gulp.task('js', function() {
   return gulp.src([
@@ -30,6 +31,7 @@ return gulp.src([
     './html/progression.html',
     './html/scheme.html',
     './html/onboarding.html',
+    './html/login.html',
     './html/exercise.html',
     './html/main-close.html',
     './html/nav.html',
@@ -37,4 +39,16 @@ return gulp.src([
 ])
 .pipe(concat('index.html'))
 .pipe(gulp.dest('./'));
+});
+
+gulp.task('sass', function () {
+  return gulp.src('./css/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./css'));
+});
+ 
+gulp.task('sass:watch', function () {
+  gulp.watch('./css/**/*.scss', ['sass']);
+  gulp.watch('./html/*.html', ['html']);
+  gulp.watch('./js/partials/*.js', ['js']);
 });

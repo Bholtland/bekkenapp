@@ -38,12 +38,16 @@
 		}
 	}
 
-	.information {
-		width: 25px;
-		height: 25px;
-		position: absolute;
-    	right: 21px;
-    	top: 14px;
+	> .outline {
+		margin-top: 40px;
+
+		li:nth-of-type(1), {
+			border-top: 1px solid $border-light;
+		}
+		li:nth-of-type(2), {
+			border-bottom: 1px solid $border-light;
+		}
+
 	}
 
 	.breather {
@@ -68,6 +72,11 @@
 		  font-family: $regular;
 		  font-weight: 700;
 		  top: 68px;
+		}
+
+		.countdown-number span {
+			font-size: 0.6em;
+			color: $semidark;
 		}
 
 		.countdown-number:before {
@@ -188,25 +197,16 @@
 	}
 }
 
-.button-settings {
-	text-align: right;
-	margin: 10px 0 30px 0;
-	font-weight: 700;
-	right: 6px;
+.button-settings:after,
+.information:after {
+    content: '';
+    background-image: url(../resources/img/caret-right-dark.svg);
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+   	top: 7px;
 	position: relative;
-	color: $color-1;
-
-	&:after {
-	    content: '';
-	    background-image: url(../resources/img/settings.svg);
-	    background-size: 30px 30px;
-	    width: 30px;
-	    height: 30px;
-	    position: relative;
-	    display: inline-block;
-	    top: 9px;
-	    left: 6px;
-	}
 }
 
 .feedback {
@@ -280,6 +280,17 @@
 
 	li {
 		margin: 10px 0;
+	}
+
+	.show-everytime {
+		margin: 20px;
+		display: flex;
+		justify-content: space-between;
+
+		input {
+			width: 20px;
+			height: 20px;
+		}
 	}
 }
 

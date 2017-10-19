@@ -1,0 +1,76 @@
+.onboarding {
+	margin: 0;
+	background-color: $color-1;
+	position: relative;
+
+	.wrap {
+		margin-top: 20px;
+	}
+
+	h3 {
+		text-align: center;
+		color: $white;
+		font-size: 2em;
+	}
+
+	form {
+
+		input {
+			margin-top: 10px;
+			font-family: $regular;
+		}
+
+		p {
+			text-align: center;
+			color: $white;
+		}
+		
+		.no-code {			
+			margin-top: 20px;
+		}
+
+		.button {
+			margin-top: 10px;
+			margin-top: 20px;
+		}
+
+		.error {
+			height: 44px;
+			margin-top: 20px;
+		}
+
+		.discretion {
+			position: absolute;
+    		bottom: 20px;
+    		width: calc(100% - 40px);
+    		font-size: 0.8em;
+
+    		strong {
+    			font-size: inherit;
+    		}
+		}
+	}
+
+	.tutorial-question {
+		padding-top: 50%;
+
+		p {
+			font-size: 1.6em;
+			text-align: center;
+			color: $white;
+
+			strong {
+				font-size: inherit;
+			}
+		}
+
+		form {
+			display: flex;
+			justify-content: space-between;
+
+			.button {
+				width: 34%;
+			}
+		}
+	}
+}

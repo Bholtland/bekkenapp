@@ -1,66 +1,56 @@
-loginButton.addEventListener('click',()=>{
-	login();
+var onboardingEntry = q('.onboarding-entry');
+var onboardingComplaints = q('.onboarding-complaints');
+var onboardingQuestion = q('.onboarding-question');
+
+var complaints = document.querySelectorAll('.complaint');
+
+entryButton.addEventListener('click',()=>{
+	hd(onboardingEntry);
+	sw(onboardingComplaints);
 })
 
-function login(){
- 	var login = q('.login');
- 	var errorText = q('.error');
- 	var loginDate = q('.login input:nth-of-type(1)');
- 	var loginCode = q('.login input:nth-of-type(2)');
- 	var tutorialQuestion = q('.tutorial-question');
+complaintsButton.addEventListener('click', ()=>{
+	hd(onboardingComplaints);
+	sw(onboardingQuestion);
+})
 
- 	if(checkCode() && loginDate.value !== ''){
- 		proceed();
- 	}
- 	else if (loginDate.value === ""){
- 		throwError('Vul a.u.b. een geldige datum in<br/>bijvoorbeeld 25-03-1995');
- 	}
- 	else if (!checkCode()){
- 		throwError('Vul a.u.b. een geldige code in<br/>Een code heeft 9 karakters');
- 	}
+tutorialButtonNo.addEventListener('click', ()=> {
+	tutorial(false);
+});
 
- 	function checkCode(){
- 		if (loginCode.value !== "" && loginCode.value.length === 9){
- 			return true;
- 		}
- 		else{
- 			return false;
- 		}
- 	}
+tutorialButtonYes.addEventListener('click', ()=> {
+	tutorial(true);
+	setTimeout(()=>{popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)},400)
+});
 
- 	function throwError(text){
- 		errorText.innerHTML = text; 
- 	}
+function tutorial(choice){
+	if(choice){
+		navigateTo(screenHierarchy.exercise);
 
- 	function proceed(){
- 		hd(login);
- 		sw(tutorialQuestion);
- 	}
- }
+	sessions = 2;
+	timer.innerHTML = 2;	
 
- tutorialButtonNo.addEventListener('click', ()=> {
- 	tutorial(false);
- });
+	navBarTitle.innerHTML =	exerciseData[2][0][0];	
 
- tutorialButtonYes.addEventListener('click', ()=> {
- 	tutorial(true);
- });
+	tightenTime = exerciseData[2][1][1];	
+	relaxTime = exerciseData[2][2][1];		
 
- function tutorial(choice){
- 	if(choice){
- 		navigateTo(screenHierarchy.exercise);
+	currentExercise = q('.today .exercise:nth-of-type(1)');
+	} 
+	else {
+		navigateTo(screenHierarchy.scheme);
+	}
+}
 
-		sessions = 2;
-		timer.innerHTML = 2;	
+// for (var c = 0; c < complaints.length; c++){
+// 	complaints[c].addEventListener('click', (index)=>{
+// 		this.classList.add('true');
+// 		console.log(c)
+// 	})
+// }
 
-		navBarTitle.innerHTML =	exerciseData[2][0][0];	
-
-		tightenTime = exerciseData[2][1][1];	
-		relaxTime = exerciseData[2][2][1];		
-
-		currentExercise = q('.today .exercise:nth-of-type(3)');
- 	} 
- 	else {
- 		navigateTo(screenHierarchy.scheme);
- 	}
- }
+$('.complaint').each(function(index){
+	$(this).click(function(){
+		$(this).toggleClass('istrue')
+	})
+})

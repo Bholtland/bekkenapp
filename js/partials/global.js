@@ -15,7 +15,8 @@ var buttonNavMain = q('.button-nav-main'),
 	centerOffset,
 	currentExercise,
 	vibrate = false,
-	audio = false,
+	audio = true,
+	music = true,
 
 	exerciseScreen = q('.exercise-screen'),
 	breather = q('.breather'),
@@ -62,8 +63,10 @@ var buttonNavMain = q('.button-nav-main'),
 	notificationText = q('.notification p'),
 
  	loginButton = q('.login .button'),
- 	tutorialButtonNo = q('.tutorial-question .button:nth-of-type(1)'),
- 	tutorialButtonYes = q('.tutorial-question .button:nth-of-type(2)'),
+ 	entryButton = q('.onboarding-entry .button'),
+ 	complaintsButton = q('.onboarding-complaints .button'),
+ 	tutorialButtonNo = q('.onboarding-question .button:nth-of-type(1)'),
+ 	tutorialButtonYes = q('.onboarding-question .button:nth-of-type(2)'),
 
  	profileScreen = q('.profile'),
 
@@ -191,7 +194,7 @@ var exerciseData = [
 ];
 
 // Set the current screen to load
-currentScreen = screenHierarchy.onboarding;
+currentScreen = screenHierarchy.progress;
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.

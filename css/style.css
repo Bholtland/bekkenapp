@@ -1,6 +1,7 @@
 @font-face {
   font-family: TitleFont;
   src: url(../font/TitleFont.otf); }
+
 * {
   padding: 0;
   margin: 0;
@@ -313,10 +314,10 @@ nav {
     color: #333; }
 
 .average {
-  color: #DF810A !important; }
+  color: #DF810A; }
 
 .good {
-  color: #07A817 !important; }
+  color: #07A817; }
 
 .cards > li, .cards .exercise-box {
   width: 100%;
@@ -384,43 +385,80 @@ main > div > section {
   position: relative; }
   .onboarding .wrap {
     margin-top: 20px; }
-  .onboarding h2 {
+  .onboarding h3 {
     text-align: center;
     color: #ffffff;
     font-size: 2em; }
-  .onboarding form input {
-    margin-top: 10px;
-    font-family: "Open Sans", helvetica, sans-serif; }
-  .onboarding form p {
+  .onboarding p {
     text-align: center;
     color: #ffffff; }
-  .onboarding form .no-code {
-    margin-top: 20px; }
-  .onboarding form .button {
+  .onboarding .button {
     margin-top: 10px;
     margin-top: 20px; }
-  .onboarding form .error {
-    height: 44px;
-    margin-top: 20px; }
-  .onboarding form .discretion {
+  .onboarding .onboarding-entry h3 {
+    margin-top: 20%; }
+  .onboarding .onboarding-entry p {
+    margin-top: 10%; }
+  .onboarding .onboarding-entry .button {
+    margin-top: 10%; }
+  .onboarding .step {
     position: absolute;
-    bottom: 20px;
-    width: calc(100% - 40px);
-    font-size: 0.8em; }
-    .onboarding form .discretion strong {
-      font-size: inherit; }
-  .onboarding .tutorial-question {
+    bottom: -90px; }
+    .onboarding .step p {
+      text-align: center;
+      width: 100%; }
+  .onboarding .onboarding-complaints .complaints {
+    margin-top: 20px; }
+    .onboarding .onboarding-complaints .complaints input {
+      width: 99%;
+      height: 43px;
+      background-color: rgba(255, 255, 255, 0);
+      border: 1px dashed rgba(255, 255, 255, 0.6);
+      color: #fff;
+      text-indent: 10px; }
+    .onboarding .onboarding-complaints .complaints input::-webkit-input-placeholder {
+      color: #fff; }
+    .onboarding .onboarding-complaints .complaints .complaint {
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.3);
+      display: flex;
+      margin-bottom: 10px;
+      border-radius: 2px; }
+      .onboarding .onboarding-complaints .complaints .complaint .checkbox {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-radius: 2px; }
+      .onboarding .onboarding-complaints .complaints .complaint p {
+        margin-left: 10px; }
+    .onboarding .onboarding-complaints .complaints .complaint.istrue {
+      background-color: #fff; }
+      .onboarding .onboarding-complaints .complaints .complaint.istrue p {
+        color: #08C1CF; }
+      .onboarding .onboarding-complaints .complaints .complaint.istrue .checkbox {
+        border-color: #08C1CF; }
+      .onboarding .onboarding-complaints .complaints .complaint.istrue > .checkbox:before {
+        content: '';
+        width: 14px;
+        height: 14px;
+        position: relative;
+        background-color: #08C1CF;
+        display: block;
+        left: 3px;
+        top: 3px;
+        border-radius: 1px; }
+  .onboarding .onboarding-question {
     padding-top: 50%; }
-    .onboarding .tutorial-question p {
+    .onboarding .onboarding-question p {
       font-size: 1.6em;
       text-align: center;
       color: #ffffff; }
-      .onboarding .tutorial-question p strong {
+      .onboarding .onboarding-question p strong {
         font-size: inherit; }
-    .onboarding .tutorial-question form {
+    .onboarding .onboarding-question form {
       display: flex;
       justify-content: space-between; }
-      .onboarding .tutorial-question form .button {
+      .onboarding .onboarding-question form .button {
         width: 34%; }
 
 .timeline {
@@ -607,9 +645,11 @@ main > div > section {
   animation-iteration-count: infinite;
   animation-name: tighten;
   animation-duration: 4s; }
+
 .exercise-screen.active .breather .countdown-number:before {
   content: "Vasthouden";
   color: #cf3b0d; }
+
 .exercise-screen.active .breather svg .active-ring {
   stroke: #cf3b0d; }
 
@@ -628,12 +668,12 @@ main > div > section {
       color: #08C1CF;
       width: 100%;
       text-align: center; }
-  .exercise-screen .information {
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    right: 21px;
-    top: 14px; }
+  .exercise-screen > .outline {
+    margin-top: 40px; }
+    .exercise-screen > .outline li:nth-of-type(1) {
+      border-top: 1px solid rgba(0, 0, 0, 0.1); }
+    .exercise-screen > .outline li:nth-of-type(2) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .exercise-screen .breather {
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
@@ -653,6 +693,9 @@ main > div > section {
       font-family: "Open Sans", helvetica, sans-serif;
       font-weight: 700;
       top: 68px; }
+    .exercise-screen .breather .countdown-number span {
+      font-size: 0.6em;
+      color: #aaa; }
     .exercise-screen .breather .countdown-number:before {
       content: "Druk op start";
       position: relative;
@@ -690,11 +733,13 @@ main > div > section {
     .exercise-screen .breather .remaining-time span {
       font-weight: 700;
       font-size: 1.4rem; }
+
 @keyframes tighten {
   from {
     stroke-dashoffset: 0px; }
   to {
     stroke-dashoffset: 565px; } }
+
 @keyframes relax {
   from {
     stroke-dashoffset: 0px; }
@@ -726,23 +771,16 @@ main > div > section {
     .exercise-screen .controls .button {
       width: 34%; }
 
-.button-settings {
-  text-align: right;
-  margin: 10px 0 30px 0;
-  font-weight: 700;
-  right: 6px;
-  position: relative;
-  color: #08C1CF; }
-  .button-settings:after {
-    content: '';
-    background-image: url(../resources/img/settings.svg);
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    display: inline-block;
-    top: 9px;
-    left: 6px; }
+.button-settings:after,
+.information:after {
+  content: '';
+  background-image: url(../resources/img/caret-right-dark.svg);
+  background-size: 18px 18px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  top: 7px;
+  position: relative; }
 
 .feedback {
   display: block;
@@ -789,8 +827,17 @@ main > div > section {
 
 .information-screen img {
   max-width: 100%; }
+
 .information-screen li {
   margin: 10px 0; }
+
+.information-screen .show-everytime {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between; }
+  .information-screen .show-everytime input {
+    width: 20px;
+    height: 20px; }
 
 .checkmark_circle {
   stroke-dasharray: 166;
@@ -850,14 +897,17 @@ main > div > section {
 @keyframes stroke {
   100% {
     stroke-dashoffset: 565px; } }
+
 @keyframes scale {
   0%, 100% {
     transform: none; }
   50% {
     transform: scale3d(1.1, 1.1, 1); } }
+
 @keyframes fill {
   100% {
     box-shadow: inset 0px 0px 0px 50px #08C1CF; } }
+
 @keyframes flyUp {
   0% {
     top: 40px;
@@ -865,6 +915,7 @@ main > div > section {
   100% {
     top: 0;
     opacity: 1; } }
+
 .flyUp {
   animation: flyUp 200ms ease-in-out;
   position: relative; }
@@ -896,8 +947,8 @@ main > div > section {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
   /* IE6-9 */
   /* forming the shine element
-      play around with the width, skew and gradient to get different effects
-    */
+    play around with the width, skew and gradient to get different effects
+  */
   width: 15%;
   height: 100%;
   transform: skew(-10deg, 0deg);
@@ -938,6 +989,7 @@ main > div > section {
     opacity: 0.0; }
   100% {
     left: 92%; } }
+
 @-webkit-keyframes move {
   0% {
     left: 0;
@@ -950,6 +1002,7 @@ main > div > section {
     opacity: 0.0; }
   100% {
     left: 82%; } }
+
 @-moz-keyframes move {
   0% {
     left: 0;
@@ -962,6 +1015,7 @@ main > div > section {
     opacity: 0.0; }
   100% {
     left: 88%; } }
+
 @-ms-keyframes move {
   0% {
     left: 0;
@@ -974,6 +1028,7 @@ main > div > section {
     opacity: 0.0; }
   100% {
     left: 82%; } }
+
 @-o-keyframes move {
   0% {
     left: 0;
@@ -986,6 +1041,7 @@ main > div > section {
     opacity: 0.0; }
   100% {
     left: 82%; } }
+
 #stats {
   display: block; }
   #stats .button {
@@ -1173,5 +1229,3 @@ main > div > section {
   position: relative;
   top: 4px;
   left: 6px; }
-
-/*# sourceMappingURL=style.css.map */
