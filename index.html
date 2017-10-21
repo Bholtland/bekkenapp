@@ -28,31 +28,73 @@
 				</div>
 			</div>
 			<div class="graph">
+				<div class="week-data invisible">
+					<div class="top margin-base">
+						<div>
+							<p>VAS-score:</p>
+						</div>
+						<img src="resources/img/close.svg" class="close-week-data" alt="">
+					</div>
+					<div class="margin-base">
+						<p>Details</p>
+						<p>Ik had minder pijn dan vorige week. Ik had ook beter geslapen, dus wellicht dat dat invloed had.</p>
+						<p>Aanpassingen sinds vorige week</p>
+						<ul>
+							<li>
+								<p>Krachttraining</p>
+								<p>Herhaling <strong>+2s</strong></p>
+								<p>Aanspannen <strong>+5s</strong></p>
+							</li>
+							<li>
+								<p>Krachttraining (snel)</p>
+								<p>Ontspannen <strong>-1s</strong></p>
+							</li>
+						</ul>
+					</div>
+				</div>
 				<div class="line-canvas"></div>
-				<span class="graph-background"></span>
-				<?xml version="1.0" encoding="UTF-8"?>
-				<svg class="graphSVG" width="375px" height="400px" viewBox="0 0 375 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<div class="vertical-axis">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<svg class="graphSVG" width="375px" height="500px" viewBox="0 0 375 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					<defs></defs>
 					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.300000012">
 					<polygon id="graphPoly" fill="#fff" points=""></polygon>
-				</g>
-			</svg>
-			<div class="dates">
-				<p></p>
+					</g>
+				</svg>
+				<span class="graph-background"></span>
+				<?xml version="1.0" encoding="UTF-8"?>
+
+				<div class="dates">
+					<p></p>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="progression">
-		<ul class="outline margin-base">
-			<li>
-				<p>Oefeningen voltooid <span>(%)</span></p>
-				<p class="average">55%</p>
-			</li>
-			<li>
-				<p>Oefeningen voltooid</p>
-				<p>7 / 13</p>
-			</li>
-			<li>
+		<div class="progression-graph-menu popup">
+			<ul class="outline margin-base">
+				<li class="caret-right">
+					<p>Pijnklachten</p>
+				</li>				
+				<li class="caret-right">
+					<p>Druk op de bekkenbodem</p>
+				</li>
+			</ul>
+		</div>
+		<div class="progression">
+			<ul class="outline margin-base">
+				<li>
+					<p>Oefeningen voltooid <span>(%)</span></p>
+					<p class="average">55%</p>
+				</li>
+				<li>
+					<p>Oefeningen voltooid</p>
+					<p>7 / 13</p>
+				</li>
+				<li>
 				<button class="button secondary testbtn">Toon grafiek</button>
 			</ul>
 			<div class="progression-unlock">
@@ -88,10 +130,66 @@
 					<p>Elke dag</p>
 				</li>
 				<li>
-					<p>Berend</p>
+					<p>elsa@email.com</p>
 					<p>Uitloggen</p>
 				</li>
 			</ul>
+		</div>
+		<div class="login-screen popup">
+			<div class="wrap margin-base login">
+				<h3>Voortgang bijhouden</h3>
+				<div class="login-step-1 flyUp">
+					
+					<p>Bewaar je progressie in een <strong>veilige, anonieme</strong> omgeving.</p>
+					<p>Je therapeut heeft meer inzicht in je voortgang en kan je <strong>sneller</strong> helpen.</p>
+
+					<form action="">
+						<div class="loginChoice">
+							<a class="button quartiary">Liever niet</a>
+							<a class="button tertiary">Verder</a>
+						</div>
+					</form>
+					<a class="go-to-login">Ik heb al een account</a>
+				</div>
+
+				<div class="login-step-2 flyUp invisible">
+					<form action="">
+						<label for="">E-mailadres</label>
+						<input type="email" placeholder="voorbeeld@email.com">
+						<p class="error"></p>
+					</form>
+					
+					<a class="button tertiary">Verder</a>
+					<p class="step">stap <strong>1</strong> van <strong>2</strong></p>
+				</div>
+				<div class="login-step-3 flyUp invisible">
+					<form action="">
+						<label for="">Wachtwoord</label>
+						<input type="password" placeholder="VeiligWachtwoord#!05">
+						<p class="error"></p>
+					</form>
+					
+					<a class="button tertiary">Aanmelden</a>
+					<p class="step">stap <strong>2</strong> van <strong>2</strong></p>
+				</div>
+				<div class="login-step-4 flyUp invisible">
+					<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+				</div>
+				<p class="discretion">Wij gaan zeer zorgvuldig om met gevoelige informatie. Persoonlijke gegevens worden daarom <strong>in geen enkel geval gedeeld</strong> met derden.</p>
+			</div>
+<!-- 			<div class="wrap margin-base login">
+				<h3>Progressie bijhouden</h3>
+				<form action="">
+					
+					<input type="date" placeholder="Geboortedatum">
+					<input type="text" placeholder="Unieke code: Za4Thm#3">
+					<p class="no-code"><strong>Nog geen unieke code?</strong><br>
+					Neem contact op met je therapeut</p>
+					<a class="button tertiary">Inloggen</a>
+					<p class="discretion">Wij gaan zeer zorgvuldig om met gevoelige informatie. Persoonlijke gegevens worden daarom <strong>in geen enkel geval gedeeld</strong> met derden.</p>
+				</form>
+			</div> -->
+
 		</div>
 		<div class="scheme-settings popup">
 			<ul class="cards margin-base">
@@ -148,27 +246,7 @@
 		</form>
 	</div>
 </section>
-<section class="onboarding invisible">
-	<div class="wrap margin-base login">
-		<h2>Fysically</h2>
-		<form action="">
-			<p class="error"></p>
-			<input type="date" placeholder="Geboortedatum">
-			<input type="text" placeholder="Unieke code: Za4Thm#3">
-			<p class="no-code"><strong>Nog geen unieke code?</strong><br>
-			Neem contact op met je therapeut</p>
-			<a class="button tertiary">Inloggen</a>
-			<p class="discretion">Wij gaan zeer zorgvuldig om met gevoelige informatie. Persoonlijke gegevens worden daarom <strong>in geen enkel geval gedeeld</strong> met derden.</p>
-		</form>
-	</div>
-	<div class="wrap margin-base tutorial-question invisible flyUp">
-		<p>Wil je beginnen<br>met een <strong>korte oefening?</strong></p>
-		<form action="">
-			<a class="button quartiary">Nee</a>
-			<a class="button tertiary">Ja</a>
-		</form>
-	</div>
-</section>
+
 <section>
 	<div class="exercise-screen screen">
 		<div class="breather precount">
@@ -252,11 +330,11 @@
 			<span class="button primary start">START</span>
 		</div>
 		<ul class="outline">
-			<li class="button-settings">
+			<li class="button-settings caret-right">
 				<p>Voorkeuren</p>
 
 			</li>
-			<li class="information">
+			<li class="information caret-right">
 				<p>Uitleg</p>
 			</li>
 		</ul>

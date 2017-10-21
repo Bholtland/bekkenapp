@@ -58,6 +58,7 @@ var buttonNavMain = q('.button-nav-main'),
 	informationScreen = q('.information-screen'),
 	informationButton = q('.information'),
 	progressionGraph = q('.progression-graph'),
+	progressionGraphMenu = q('.progression-graph-menu'),
 
 	notification = q('.notification'),
 	notificationText = q('.notification p'),
@@ -120,6 +121,11 @@ var screenHierarchy = {
 			name : "schemeEdit",
 			title : "Schema aanpassen",
 			parent : "scheme"
+		},
+		login: {
+			name: "login",
+			title: "Aanmelden",
+			parent: "scheme"
 		}
 	},
 	exercise : {
@@ -146,8 +152,13 @@ var screenHierarchy = {
 		title : "Voortgang",
 		graph : {
 			name : "progressGraph",
-			title : "VAS-meting",
-			parent : "progress"
+			title : "Voortgang pijnklachten",
+			parent : "progress.graphmenu"
+		},
+		graphmenu : {
+			name: "progressGraphMenu",
+			title: "Toon evaluaties",
+			parent: "progress"
 		}
 	},
 	profile : {
@@ -158,7 +169,7 @@ var screenHierarchy = {
 	onboarding: {
 		name : "onboarding",
 		title : ""
-	}
+	},
 }
 
 var exercisePlanning = [1,1,2,0];
@@ -194,7 +205,7 @@ var exerciseData = [
 ];
 
 // Set the current screen to load
-currentScreen = screenHierarchy.progress;
+currentScreen = screenHierarchy.scheme;
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.

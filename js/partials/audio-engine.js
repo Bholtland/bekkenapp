@@ -1,3 +1,12 @@
+if (audio){
+	buttonExerciseAudio.checked = true;
+}
+
+if (music){
+	buttonExerciseMusic.checked = true;
+}
+
+
  function playAudio(type){
  	var dir = "resources/audio/";
  	var audioFile;	
@@ -5,13 +14,26 @@
 
  	variation = Math.ceil(Math.random() * 3);
 
+ 	var voiceFile = new Audio(dir+"10x20-"+variation+".ogg");
+ 	var musicFile = new Audio(dir+"music1.ogg");
+
  	if (type === 'voice'){
-	 	var voiceFile = new Audio(dir+"10x20-"+variation+".ogg");
+	 	
 	 	voiceFile.play();
  	}
 
  	if (type === 'music'){
-	 	var musicFile = new Audio(dir+"music1.ogg");
+	 	
 	 	musicFile.play();
+ 	}
+
+ 	if (type === 'stop'){
+ 		if(voiceFile){
+			voiceFile.pause();
+		}
+		
+		if(musicFile){
+			musicFile.pause();
+		}
  	}
  }

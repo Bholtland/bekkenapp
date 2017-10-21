@@ -5,11 +5,11 @@
 	position: absolute;
 	width: 100%;
 	z-index: 11;
-	left: 0;
-    top: 100px;
+	left: 400px;
+    top: 0px;
 	height: 92vh;
 	transition: $ease;
-	opacity: 0;
+	opacity: 1;
 	overflow: scroll;
 
 	.popup-inner {
@@ -17,16 +17,16 @@
 		top: 10px;
 		transition: $ease;
 	}
+}
 
-	&.open {
-		opacity: 1;
-		top: 0px;
-		visibility: visible;
-	}
+.popup.open {
+	opacity: 1;
+	left: 0;
+	visibility: visible;	
+}
 
-	&.dark {
-		background-color: $color-1;
-	}
+.popup.dark {
+	background-color: $color-1;
 }
 
 

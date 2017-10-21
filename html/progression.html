@@ -9,31 +9,73 @@
 				</div>
 			</div>
 			<div class="graph">
+				<div class="week-data invisible">
+					<div class="top margin-base">
+						<div>
+							<p>VAS-score:</p>
+						</div>
+						<img src="resources/img/close.svg" class="close-week-data" alt="">
+					</div>
+					<div class="margin-base">
+						<p>Details</p>
+						<p>Ik had minder pijn dan vorige week. Ik had ook beter geslapen, dus wellicht dat dat invloed had.</p>
+						<p>Aanpassingen sinds vorige week</p>
+						<ul>
+							<li>
+								<p>Krachttraining</p>
+								<p>Herhaling <strong>+2s</strong></p>
+								<p>Aanspannen <strong>+5s</strong></p>
+							</li>
+							<li>
+								<p>Krachttraining (snel)</p>
+								<p>Ontspannen <strong>-1s</strong></p>
+							</li>
+						</ul>
+					</div>
+				</div>
 				<div class="line-canvas"></div>
-				<span class="graph-background"></span>
-				<?xml version="1.0" encoding="UTF-8"?>
-				<svg class="graphSVG" width="375px" height="400px" viewBox="0 0 375 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<div class="vertical-axis">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<svg class="graphSVG" width="375px" height="500px" viewBox="0 0 375 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					<defs></defs>
 					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.300000012">
 					<polygon id="graphPoly" fill="#fff" points=""></polygon>
-				</g>
-			</svg>
-			<div class="dates">
-				<p></p>
+					</g>
+				</svg>
+				<span class="graph-background"></span>
+				<?xml version="1.0" encoding="UTF-8"?>
+
+				<div class="dates">
+					<p></p>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="progression">
-		<ul class="outline margin-base">
-			<li>
-				<p>Oefeningen voltooid <span>(%)</span></p>
-				<p class="average">55%</p>
-			</li>
-			<li>
-				<p>Oefeningen voltooid</p>
-				<p>7 / 13</p>
-			</li>
-			<li>
+		<div class="progression-graph-menu popup">
+			<ul class="outline margin-base">
+				<li class="caret-right">
+					<p>Pijnklachten</p>
+				</li>				
+				<li class="caret-right">
+					<p>Druk op de bekkenbodem</p>
+				</li>
+			</ul>
+		</div>
+		<div class="progression">
+			<ul class="outline margin-base">
+				<li>
+					<p>Oefeningen voltooid <span>(%)</span></p>
+					<p class="average">55%</p>
+				</li>
+				<li>
+					<p>Oefeningen voltooid</p>
+					<p>7 / 13</p>
+				</li>
+				<li>
 				<button class="button secondary testbtn">Toon grafiek</button>
 			</ul>
 			<div class="progression-unlock">

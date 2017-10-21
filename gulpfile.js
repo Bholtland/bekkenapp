@@ -6,9 +6,9 @@ gulp.task('js', function() {
   return gulp.src([
   		'./js/partials/global.js', 
   		'./js/partials/quickys.js',
+      './js/partials/notification.js',
   		'./js/partials/navigation.js',
   		'./js/partials/make-scheme.js',
-  		'./js/partials/notification.js',
   		'./js/partials/exercise-settings.js',
   		'./js/partials/exercise.js',
   		'./js/partials/popup-screen.js',
@@ -16,7 +16,8 @@ gulp.task('js', function() {
   		'./js/partials/feedback.js',
   		'./js/partials/progression.js',
   		'./js/partials/audio-engine.js',
-  		'./js/partials/onboarding.js'
+  		'./js/partials/onboarding.js',
+      './js/partials/login.js'
   	])
     .pipe(concat('script.js'))
     .pipe(gulp.dest('./js/'));

@@ -197,18 +197,6 @@
 	}
 }
 
-.button-settings:after,
-.information:after {
-    content: '';
-    background-image: url(../resources/img/caret-right-dark.svg);
-    background-size: 18px 18px;
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-   	top: 7px;
-	position: relative;
-}
-
 .feedback {
 	display: block;
 	width: 100%;
@@ -295,12 +283,12 @@
 }
 
 // source: https://codepen.io/haniotis/pen/KwvYLO
-.checkmark_circle {
-  stroke-dasharray: 166;
+.checkmark__circle {
+  // stroke-dasharray: 166;
   stroke-dashoffset: 166;
   stroke-width: 4;
   stroke-miterlimit: 10;
-  stroke: $color-1;
+  stroke: $white;
   fill: none;
   animation: stroke .6s $curve forwards;
 }
@@ -308,7 +296,7 @@
 .checkmark {
   width: 80px;
   height: 80px;
-  position: relative;
+  // position: relative;
   border-radius: 50%;
   display: block;
   stroke-width: 5px;
@@ -319,7 +307,7 @@
   animation: fill .3s ease-in-out .3s forwards, scale .3s ease-in-out .7s both;
 }
 
-.checkmark_check {
+.checkmark__check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;

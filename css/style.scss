@@ -47,7 +47,7 @@ h1, h2 {
 	text-transform: uppercase;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, p, a, label {
 	font-family: $regular;
 }
 
@@ -239,14 +239,14 @@ input:checked + .slider:before {
     position: fixed;
     top: 40px;
     z-index: 100;
-    width: 100%;
+    width: 50%;
 	visibility: hidden;
 	transition: $bouncy;
 
     span {
 		padding: 10px;
 	    background: $color-3;
-	    width: 50%;
+	    width: 80%;
 	    min-width: 100px;
 	    display: block;
 	    margin: 0 auto;
@@ -254,11 +254,11 @@ input:checked + .slider:before {
 	    border-radius: 4px;
 	    box-shadow: 0 3px 20px rgba(0,0,0,0.3);
     }
+}
 
-    &.show {
-    	top: 70px;
-    	visibility: visible;
-    }
+.notification.show {
+    top: 70px;
+    visibility: visible;
 }
 
 form {
@@ -278,6 +278,18 @@ form {
 
 .invisible {
 	display: none !important;
+}
+
+.caret-right:after{
+    content: '';
+    background-image: url(../resources/img/caret-right-dark.svg);
+    background-size: 14px 14px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    opacity: 0.6;
+   	top: 7px;
+	position: relative;
 }
 
 // END COMMON COMPONENTS
@@ -304,13 +316,13 @@ main > div > section:first-child {
 main > div > section {
 	margin-top: 55px;
 }
-
+@import "partials/popup.scss";
 @import "partials/onboarding";
+
+@import "partials/inloggen";
 
 @import "partials/scheme";
 @import "partials/exercise";
-
-@import "partials/popup.scss";
 
 
 @import "partials/animations";

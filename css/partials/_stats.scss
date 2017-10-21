@@ -26,7 +26,8 @@
 
 		.graphSVG {
 			position: absolute;
-			bottom: 55px;
+			bottom: 88px;
+			z-index: 2;
 
 			g {
 				opacity: 0.4;
@@ -36,12 +37,11 @@
 		.line-canvas {
 			display: block;
 			position: absolute;
-			bottom: 55px;
-			z-index: 1;
+			bottom: 88px;
+			z-index: 3;
 
 			span {
 				width: 1px;
-				background-color: #fff;
 				display: inline-block;
 				margin-left: 74px;
 				transition: $bouncy;
@@ -101,7 +101,7 @@
 		    height: 30px;
 		    z-index: 2;
 		    width: 100%;
-		    background-color: #e3f0f5;
+		    background-color: $white;
 		    position: absolute;
 		    display: block;
 		    padding-top: 3px;
@@ -120,11 +120,138 @@
 		    	border: none;
 		    }
 		}
+
+		.week-data {
+			background-color: #fff;
+		    width: 50%;
+		    display: block;
+		    height: 360px;
+		    position: fixed;
+		    z-index: 10;
+		    bottom: 0;
+			box-shadow: 0 -2px 28px 0 rgba(0,0,0,0.20);
+			
+			.top {
+				display: flex;
+				justify-content: space-between;
+				border-bottom: 1px solid $border-light;
+
+				.close-week-data {
+					max-width: 20px;
+				}
+				> div {
+					display: flex;
+
+					p {
+						font-weight: bold;
+    					font-size: 1.2em;
+    					margin-top: 10px;
+					}
+
+					p:after{
+						content: "+2";
+					    background-image: url(../resources/img/vas-emoji-3-2.svg);
+					    background-size: 50px;
+					    color: $color-1;
+					    background-repeat: no-repeat;
+					    text-indent: 56px;
+					    width: 80px;
+					    height: 50px;
+					    position: relative;
+					    display: inline-block;
+					    left: 20px;
+					}
+				}
+			}
+
+			div:nth-of-type(2){
+				> p:nth-of-type(odd){
+					font-weight: bold;
+					margin-top: 10px;
+				}
+
+				ul {
+					width: 200%;
+
+					li {
+						list-style-type: none;
+						min-width: 120px;
+					    margin-top: 10px;
+					    background-color: $background-light;
+					    padding: 10px;
+					    border-radius: 4px;
+					    min-height: 90px;
+					    display: inline-block;
+					    vertical-align: top;
+
+						p:nth-of-type(1){
+							font-weight: bold
+						}
+					}
+				}
+			}
+		}
+
+		.vertical-axis {
+			position: fixed;
+		    z-index: 1;
+		    bottom: 132px;
+		    width: 610px;
+		    opacity: 0.4;
+
+			span {
+				width: 100%;
+			    height: 1px;
+			    background-color: #ffffff;
+			    display: block;
+			    margin-top: 98px;
+			}
+
+			span:after {
+			    background-color: #08C1CF;
+			    color: #ffffff;
+			    position: relative;
+    			left: 10px;
+			    font-family: $regular;
+			    font-weight: bold;
+			    padding: 4px;
+			}
+
+			span:nth-of-type(1):after {
+				content: url(../resources/img/vas-emoji-1.png);
+				top: -14px;
+				padding: 10px;
+			}
+
+			span:nth-of-type(2):after {
+				content: url(../resources/img/vas-emoji-2.png);
+				top: -14px;
+				padding: 10px;
+			}
+
+			span:nth-of-type(3):after {
+				content: url(../resources/img/vas-emoji-3.png);
+				top: -14px;
+				padding: 10px;
+			}
+
+			span:nth-of-type(4):after {
+				content: url(../resources/img/vas-emoji-4.png);
+				top: -14px;
+				padding: 10px;
+			}
+
+			span:nth-of-type(5):after{
+				content: 'VAS-SCORE';
+				top: -11px;
+			}
+		}
 	}
 
 	.vas-results {
 		background-color: $white;
 		width: 100%;
+		display: none;
 		position: absolute;
 		z-index: 2;
 		max-height: 150px;
@@ -205,7 +332,7 @@
 
 	.progression-unlock {
 		width: 100%;
-	    height: 200px;
+	    height: 500px;
 	    background: $input-background;
 	    display: block;
 
@@ -220,14 +347,14 @@
 	    	width: 200%;
 
 	    	> div {
-				max-width: 80px;
+				max-width: 120px;
 				margin-left: 20px;
 				display: inline-block;
 				vertical-align: top;
 
 				img {
-					width: 80px;
-					height: 80px;
+					width: 120px;
+					height: 120px;
 					border-radius: 100%;
 					background-color: $input-background;
 					border: 2px solid $color-1;
@@ -238,6 +365,10 @@
 					display: block;
 					text-align: center;
 				}
+			} 
+
+			> div:nth-of-type(1){
+				margin-left: 20px;
 			}
 
 			.locked {

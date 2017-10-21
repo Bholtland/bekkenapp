@@ -54,10 +54,6 @@
 .scheme {
 	position: relative;
 
-	.button {
-		width: 100%;
-	}
-
 	.scroll-box {
 		overflow-y: scroll;    
 		transform: translateZ(0);
@@ -187,6 +183,10 @@
 				background-color: rgba(0,0,0,0);
 				box-shadow: none;
 			}	
+		}
+
+		.button {
+			width: 100%;
 		}
 	}
 }

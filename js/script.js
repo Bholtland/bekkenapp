@@ -58,6 +58,7 @@ var buttonNavMain = q('.button-nav-main'),
 	informationScreen = q('.information-screen'),
 	informationButton = q('.information'),
 	progressionGraph = q('.progression-graph'),
+	progressionGraphMenu = q('.progression-graph-menu'),
 
 	notification = q('.notification'),
 	notificationText = q('.notification p'),
@@ -120,6 +121,11 @@ var screenHierarchy = {
 			name : "schemeEdit",
 			title : "Schema aanpassen",
 			parent : "scheme"
+		},
+		login: {
+			name: "login",
+			title: "Aanmelden",
+			parent: "scheme"
 		}
 	},
 	exercise : {
@@ -146,8 +152,13 @@ var screenHierarchy = {
 		title : "Voortgang",
 		graph : {
 			name : "progressGraph",
-			title : "VAS-meting",
-			parent : "progress"
+			title : "Voortgang pijnklachten",
+			parent : "progress.graphmenu"
+		},
+		graphmenu : {
+			name: "progressGraphMenu",
+			title: "Toon evaluaties",
+			parent: "progress"
 		}
 	},
 	profile : {
@@ -158,7 +169,7 @@ var screenHierarchy = {
 	onboarding: {
 		name : "onboarding",
 		title : ""
-	}
+	},
 }
 
 var exercisePlanning = [1,1,2,0];
@@ -194,7 +205,7 @@ var exerciseData = [
 ];
 
 // Set the current screen to load
-currentScreen = screenHierarchy.progress;
+currentScreen = screenHierarchy.scheme;
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
@@ -229,6 +240,22 @@ function q(element){
 function qAll(element){
 	return document.querySelectorAll(element)
 }
+function showNotification(text, time, action, actionParam1, actionParam2, actionParam3){
+	notificationText.innerHTML = text;
+
+	notification.classList.add('show');
+
+	notification.addEventListener('click', ()=>{
+		action(actionParam1, actionParam2, actionParam3);
+		notification.classList.remove('show');
+	})
+
+	setTimeout(()=>{
+		notification.classList.remove('show');
+	},time)
+}
+var progressionMenuItem = q('.progression-graph-menu ul li:nth-of-type(1)')
+
 navBarTitle.addEventListener('click',function(){
 	if (this.classList.contains('is-sub') && !currentPopup) {
 		navigateTo(screenHierarchy.scheme);
@@ -243,9 +270,14 @@ q('.button-nav-stats').addEventListener('click', function(){navigateTo(screenHie
 q('.button-nav-scheme').addEventListener('click', function(){navigateTo(screenHierarchy.scheme)});
 
 buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
-q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
+q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraphMenu, screenHierarchy.progress.graphmenu, true)});
 buttonNavEdit.addEventListener('click', function(){makeSchemeSettings(); popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
 informationButton.addEventListener('click', function(){popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)});
+
+progressionMenuItem.addEventListener('click',function(){
+	hd(currentPopup)
+	popUpScreenFull(progressionGraph, screenHierarchy.progress.graph);
+});
 
 buttonSettings.addEventListener('click',()=>{
 	popUpScreenFull(profileScreen, screenHierarchy.profile);
@@ -468,15 +500,6 @@ function makeScheme(){
 
 makeScheme();
 
-function showNotification(text, time){
-	notificationText.innerHTML = text;
-	notification.classList.add('show');
-	closePopupScreen(currentPopup);
-
-	setTimeout(()=>{
-		notification.classList.remove('show');
-	},time)
-}
 buttonExerciseVibrate.addEventListener('click', function(){
     if (this.checked) {
         vibrate = true;
@@ -633,6 +656,7 @@ function startExercise() {
 					currentExercise.classList.add('done','shine');
 					var node = document.createElement("i");                 // Create a <li> node                              // Append the text to <li>
 					currentExercise.appendChild(node); 
+					setTimeout(()=>{showLogin();},1400)
 				}, 400);	
 			}	
 		}
@@ -642,6 +666,7 @@ function startExercise() {
 	// When clicking reset, all is cleared
 	resetButton.addEventListener('click',function(){
 		clearBreather();
+		playAudio('stop');		
 	});
 
 }
@@ -763,37 +788,35 @@ feedbackButton.addEventListener('click',function(){
 hiddenTextArea.addEventListener('click', function(){
 	hiddenTextArea.classList.add('open');
 });
+var weekData = q('.week-data');
+var closeWeekData = q('.close-week-data');
+
 feedback = [
-	[4,"Ik had ergens last van", "19-07"],
-	[7,"Ik had constant last van mijn rechterdij", "20-07"],
-	[10,"Iets", "21-07"],
-	[7,"Ik had last", "22-07"],
-	[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
-	[6,"Jep last", "24-07"],
-	[10,"Iets", "25-07"],
-	[7,"Ik had last", "26-07"],
-	[4,"Ik had ergens last van", "27-07"],
-	[6,"Jep last", "28-07"],
-	[10,"Iets", "29-07"],
-	[7,"Ik had last", "30-07"]
+	[4,"Ik had ergens last van", "Week 1"],
+	[5,"Ik had constant last van mijn rechterdij", "Week 2"],
+	[7,"Iets", "Week 3"],
+	[8,"Ik had last", "Week 4"],
+	[10,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "Week 5"],
 ];
 
 // Defining the space between feedback points
-pointWidth = window.innerWidth/3.5;
+pointWidth = window.innerWidth/2.5;
 
 // Defining the graph size based on the amount of feedback
-graphWidth = (feedback.length -1) * pointWidth;
-graphHeight = 400;
+graphWidth = (feedback.length ) * pointWidth;
+graphHeight = 500;
 
 graphSVG = q('.graphSVG');
+verticalAxis = q('.vertical-axis');
 
 graphSVG.setAttribute('width' ,graphWidth);
 graphSVG.setAttribute('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
 lineCanvas.style.width = graphWidth+10+'px';
+verticalAxis.style.width = graphWidth+'px';
 lineCanvas.style.height = graphHeight+'px';
 
 // A loop that takes data from the feedback array and visualizes that into the graph
-for(i=0; i < feedback.length; i++) {
+for(let i=0; i < feedback.length; i++) {
 	// Define absolute height of an SVG poly
 	pointHeight = (feedback[i][0]*-graphHeight/10)+graphHeight;
 
@@ -809,7 +832,8 @@ for(i=0; i < feedback.length; i++) {
 	// Define the height of a line and create a span element to add to the DOM
 	lineHeight = (graphHeight/10)*feedback[i][0]+"px";
 	line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;'></span>";
-	$('.line-canvas').append(line);
+
+	$('.line-canvas').append(line)
 
 	$('.dates').append("<p>"+feedback[i][2]+"</p>");
 }
@@ -870,6 +894,29 @@ graph.addEventListener('scroll',function(){
 		previousLine = element;
 	}
 })
+
+$('.line-canvas span').each(function(){
+	$(this).click(function(){
+		showWeekData();
+	})
+})
+
+function showWeekData(){
+	sw(weekData);
+}
+
+closeWeekData.addEventListener('click',function(){
+	hd(weekData);
+});
+if (audio){
+	buttonExerciseAudio.checked = true;
+}
+
+if (music){
+	buttonExerciseMusic.checked = true;
+}
+
+
  function playAudio(type){
  	var dir = "resources/audio/";
  	var audioFile;	
@@ -877,14 +924,27 @@ graph.addEventListener('scroll',function(){
 
  	variation = Math.ceil(Math.random() * 3);
 
+ 	var voiceFile = new Audio(dir+"10x20-"+variation+".ogg");
+ 	var musicFile = new Audio(dir+"music1.ogg");
+
  	if (type === 'voice'){
-	 	var voiceFile = new Audio(dir+"10x20-"+variation+".ogg");
+	 	
 	 	voiceFile.play();
  	}
 
  	if (type === 'music'){
-	 	var musicFile = new Audio(dir+"music1.ogg");
+	 	
 	 	musicFile.play();
+ 	}
+
+ 	if (type === 'stop'){
+ 		if(voiceFile){
+			voiceFile.pause();
+		}
+		
+		if(musicFile){
+			musicFile.pause();
+		}
  	}
  }
 var onboardingEntry = q('.onboarding-entry');
@@ -943,3 +1003,108 @@ $('.complaint').each(function(index){
 		$(this).toggleClass('istrue')
 	})
 })
+var loginScreen = q('.login-screen');
+var loginChoiceYes = q('.loginChoice a:nth-of-type(2)');
+var loginChoiceNo = q('.loginChoice a:nth-of-type(1)');
+
+var buttonUseremail = q('.login-step-2 .button');
+var buttonUserpassword = q('.login-step-3 .button');
+
+var login = q('.login');
+
+var loginStep1 = q('.login-step-1');
+var loginStep2 = q('.login-step-2');
+var loginStep3 = q('.login-step-3');
+var loginStep4 = q('.login-step-4');
+
+function showLogin(){
+	popUpScreenFull(loginScreen, screenHierarchy.scheme.login, true);
+}
+
+loginChoiceYes.addEventListener('click',()=>{
+	hd(loginStep1);
+	sw(loginStep2);
+});
+
+loginChoiceNo.addEventListener('click',()=>{
+	closeLogin();
+});
+
+buttonUseremail.addEventListener('click',()=>{
+	registerLogin('email');
+});
+
+buttonUserpassword.addEventListener('click',()=>{
+	registerLogin('password');
+});
+
+function registerLogin(type){
+ 	var errorText = q('.error');
+ 	
+ 	var loginEmail = q('.login-step-2 input');
+ 	var loginPassword = q('.login-step-3 input');
+
+ 	if (type === 'email'){
+	 	if(loginEmail.value !== '' && loginEmail.value.includes('@')){
+	 		hd(loginStep2);
+	 		sw(loginStep3);
+	 	}
+	 	else if (loginEmail.value === ''){
+	 		throwError('Vul a.u.b. een e-mailadres in');
+	 	}
+	 	else if (!loginEmail.value.includes("@")){
+	 		throwError('Een e-mailadres bevat een @');
+	 	}
+ 	}
+
+ 	else if (type === "password"){
+ 		if (!loginPassword.value) {
+ 			throwError('Voer een wachtwoord in');
+ 		}
+ 		else {
+ 			hd(loginStep3);
+ 			sw(loginStep4);
+ 			q('.login h3').innerHTML = 'Gelukt!<br/>Nu kunnen we echt aan de slag';
+ 			setTimeout(()=>{closeLogin();},2000);
+ 		}
+ 	}
+
+ 	function throwError(text){
+ 		errorText.innerHTML = text; 
+ 	}
+
+ }
+
+ function closeLogin(){
+ 	closePopupScreen(loginScreen);
+ 	setTimeout(()=>{
+ 		showNotification('Het is tijd om te evalueren! Klik hier', 4000, popUpScreenFull, schemeSettings, screenHierarchy.scheme.edit, true);
+ 	},1000);
+ }
+
+ tutorialButtonNo.addEventListener('click', ()=> {
+ 	tutorial(false);
+ });
+
+ tutorialButtonYes.addEventListener('click', ()=> {
+ 	tutorial(true);
+ });
+
+ function tutorial(choice){
+ 	if(choice){
+ 		navigateTo(screenHierarchy.exercise);
+
+		sessions = 2;
+		timer.innerHTML = 2;	
+
+		navBarTitle.innerHTML =	exerciseData[2][0][0];	
+
+		tightenTime = exerciseData[2][1][1];	
+		relaxTime = exerciseData[2][2][1];		
+
+		currentExercise = q('.today .exercise:nth-of-type(3)');
+ 	} 
+ 	else {
+ 		navigateTo(screenHierarchy.scheme);
+ 	}
+ }

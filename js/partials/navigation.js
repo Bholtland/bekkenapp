@@ -1,3 +1,5 @@
+var progressionMenuItem = q('.progression-graph-menu ul li:nth-of-type(1)')
+
 navBarTitle.addEventListener('click',function(){
 	if (this.classList.contains('is-sub') && !currentPopup) {
 		navigateTo(screenHierarchy.scheme);
@@ -12,9 +14,14 @@ q('.button-nav-stats').addEventListener('click', function(){navigateTo(screenHie
 q('.button-nav-scheme').addEventListener('click', function(){navigateTo(screenHierarchy.scheme)});
 
 buttonExerciseSettings.addEventListener('click',function(){popUpScreenFull(exerciseSettings, screenHierarchy.exercise.settings)});
-q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraph, screenHierarchy.progress.graph, true)});
+q('.testbtn').addEventListener('click', ()=> {popUpScreenFull(progressionGraphMenu, screenHierarchy.progress.graphmenu, true)});
 buttonNavEdit.addEventListener('click', function(){makeSchemeSettings(); popUpScreenFull(schemeSettings, screenHierarchy.scheme.edit, true)});
 informationButton.addEventListener('click', function(){popUpScreenFull(informationScreen, screenHierarchy.exercise.info, true)});
+
+progressionMenuItem.addEventListener('click',function(){
+	hd(currentPopup)
+	popUpScreenFull(progressionGraph, screenHierarchy.progress.graph);
+});
 
 buttonSettings.addEventListener('click',()=>{
 	popUpScreenFull(profileScreen, screenHierarchy.profile);

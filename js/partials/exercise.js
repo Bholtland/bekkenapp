@@ -131,6 +131,7 @@ function startExercise() {
 					currentExercise.classList.add('done','shine');
 					var node = document.createElement("i");                 // Create a <li> node                              // Append the text to <li>
 					currentExercise.appendChild(node); 
+					setTimeout(()=>{showLogin();},1400)
 				}, 400);	
 			}	
 		}
@@ -140,6 +141,7 @@ function startExercise() {
 	// When clicking reset, all is cleared
 	resetButton.addEventListener('click',function(){
 		clearBreather();
+		playAudio('stop');		
 	});
 
 }

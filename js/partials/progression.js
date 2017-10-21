@@ -1,34 +1,32 @@
+var weekData = q('.week-data');
+var closeWeekData = q('.close-week-data');
+
 feedback = [
-	[4,"Ik had ergens last van", "19-07"],
-	[7,"Ik had constant last van mijn rechterdij", "20-07"],
-	[10,"Iets", "21-07"],
-	[7,"Ik had last", "22-07"],
-	[4,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "23-07"],
-	[6,"Jep last", "24-07"],
-	[10,"Iets", "25-07"],
-	[7,"Ik had last", "26-07"],
-	[4,"Ik had ergens last van", "27-07"],
-	[6,"Jep last", "28-07"],
-	[10,"Iets", "29-07"],
-	[7,"Ik had last", "30-07"]
+	[4,"Ik had ergens last van", "Week 1"],
+	[5,"Ik had constant last van mijn rechterdij", "Week 2"],
+	[7,"Iets", "Week 3"],
+	[8,"Ik had last", "Week 4"],
+	[10,"Ik had ergens last van dus daarom voelde het niet goed maar nu gaat het wel weer wat beter dus we gaan gewoon door.", "Week 5"],
 ];
 
 // Defining the space between feedback points
-pointWidth = window.innerWidth/3.5;
+pointWidth = window.innerWidth/2.5;
 
 // Defining the graph size based on the amount of feedback
-graphWidth = (feedback.length -1) * pointWidth;
-graphHeight = 400;
+graphWidth = (feedback.length ) * pointWidth;
+graphHeight = 500;
 
 graphSVG = q('.graphSVG');
+verticalAxis = q('.vertical-axis');
 
 graphSVG.setAttribute('width' ,graphWidth);
 graphSVG.setAttribute('viewBox', '0 0 ' +graphWidth+ ' '+ graphHeight);
 lineCanvas.style.width = graphWidth+10+'px';
+verticalAxis.style.width = graphWidth+'px';
 lineCanvas.style.height = graphHeight+'px';
 
 // A loop that takes data from the feedback array and visualizes that into the graph
-for(i=0; i < feedback.length; i++) {
+for(let i=0; i < feedback.length; i++) {
 	// Define absolute height of an SVG poly
 	pointHeight = (feedback[i][0]*-graphHeight/10)+graphHeight;
 
@@ -44,7 +42,8 @@ for(i=0; i < feedback.length; i++) {
 	// Define the height of a line and create a span element to add to the DOM
 	lineHeight = (graphHeight/10)*feedback[i][0]+"px";
 	line = "<span style='height:"+lineHeight+"; margin-left: "+(pointWidth-1)+"px;'></span>";
-	$('.line-canvas').append(line);
+
+	$('.line-canvas').append(line)
 
 	$('.dates').append("<p>"+feedback[i][2]+"</p>");
 }
@@ -105,3 +104,17 @@ graph.addEventListener('scroll',function(){
 		previousLine = element;
 	}
 })
+
+$('.line-canvas span').each(function(){
+	$(this).click(function(){
+		showWeekData();
+	})
+})
+
+function showWeekData(){
+	sw(weekData);
+}
+
+closeWeekData.addEventListener('click',function(){
+	hd(weekData);
+});

@@ -15,7 +15,7 @@ body {
 h1, h2 {
   text-transform: uppercase; }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, p, a, label {
   font-family: "Open Sans", helvetica, sans-serif; }
 
 h4 {
@@ -330,22 +330,23 @@ nav {
   position: fixed;
   top: 40px;
   z-index: 100;
-  width: 100%;
+  width: 50%;
   visibility: hidden;
   transition: all 300ms cubic-bezier(0.755, -0.46, 0.195, 1.425); }
   .notification span {
     padding: 10px;
     background: #58687a;
-    width: 50%;
+    width: 80%;
     min-width: 100px;
     display: block;
     margin: 0 auto;
     text-align: center;
     border-radius: 4px;
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3); }
-  .notification.show {
-    top: 70px;
-    visibility: visible; }
+
+.notification.show {
+  top: 70px;
+  visibility: visible; }
 
 form input,
 form select,
@@ -361,6 +362,17 @@ form textarea {
 
 .invisible {
   display: none !important; }
+
+.caret-right:after {
+  content: '';
+  background-image: url(../resources/img/caret-right-dark.svg);
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  opacity: 0.6;
+  top: 7px;
+  position: relative; }
 
 main {
   overflow-x: hidden; }
@@ -378,6 +390,32 @@ main > div > section:first-child {
 
 main > div > section {
   margin-top: 55px; }
+
+.popup {
+  display: block;
+  visibility: hidden;
+  background-color: #ffffff;
+  position: absolute;
+  width: 100%;
+  z-index: 11;
+  left: 400px;
+  top: 0px;
+  height: 92vh;
+  transition: all 300ms ease-in-out;
+  opacity: 1;
+  overflow: scroll; }
+  .popup .popup-inner {
+    position: relative;
+    top: 10px;
+    transition: all 300ms ease-in-out; }
+
+.popup.open {
+  opacity: 1;
+  left: 0;
+  visibility: visible; }
+
+.popup.dark {
+  background-color: #08C1CF; }
 
 .onboarding {
   margin: 0;
@@ -461,6 +499,70 @@ main > div > section {
       .onboarding .onboarding-question form .button {
         width: 34%; }
 
+.login-screen {
+  background-color: #08C1CF; }
+  .login-screen .wrap {
+    margin-top: 20px; }
+  .login-screen h3 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2em; }
+  .login-screen .step {
+    text-align: center;
+    margin-top: 10px;
+    opacity: 0.6; }
+  .login-screen input {
+    margin-top: 10px;
+    font-family: "Open Sans", helvetica, sans-serif; }
+  .login-screen p, .login-screen a {
+    text-align: center;
+    color: #ffffff; }
+  .login-screen .no-code {
+    margin-top: 20px; }
+  .login-screen .button {
+    margin-top: 10px;
+    margin-top: 20px; }
+  .login-screen .error {
+    height: 44px;
+    margin-top: 20px; }
+  .login-screen .discretion {
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px);
+    font-size: 0.8em; }
+    .login-screen .discretion strong {
+      font-size: inherit; }
+  .login-screen .login .checkmark {
+    margin-top: 20px; }
+  .login-screen .login label {
+    color: #ffffff; }
+  .login-screen .login form {
+    margin-top: 30px; }
+    .login-screen .login form div {
+      display: flex;
+      justify-content: space-between; }
+    .login-screen .login form .button {
+      width: 34%; }
+  .login-screen .login .go-to-login {
+    text-decoration: underline;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 30px; }
+  .login-screen .tutorial-question {
+    padding-top: 50%; }
+    .login-screen .tutorial-question p {
+      font-size: 1.6em;
+      text-align: center;
+      color: #ffffff; }
+      .login-screen .tutorial-question p strong {
+        font-size: inherit; }
+    .login-screen .tutorial-question form {
+      display: flex;
+      justify-content: space-between; }
+      .login-screen .tutorial-question form .button {
+        width: 34%; }
+
 .timeline {
   margin-left: 20px;
   min-height: 40px;
@@ -507,8 +609,6 @@ main > div > section {
 
 .scheme {
   position: relative; }
-  .scheme .button {
-    width: 100%; }
   .scheme .scroll-box {
     overflow-y: scroll;
     transform: translateZ(0);
@@ -598,6 +698,8 @@ main > div > section {
       margin-top: 10px;
       background-color: transparent;
       box-shadow: none; }
+    .scheme .scheme-settings .button {
+      width: 100%; }
 
 .button-nav-edit {
   visibility: visible;
@@ -771,17 +873,6 @@ main > div > section {
     .exercise-screen .controls .button {
       width: 34%; }
 
-.button-settings:after,
-.information:after {
-  content: '';
-  background-image: url(../resources/img/caret-right-dark.svg);
-  background-size: 18px 18px;
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-  top: 7px;
-  position: relative; }
-
 .feedback {
   display: block;
   width: 100%;
@@ -839,19 +930,17 @@ main > div > section {
     width: 20px;
     height: 20px; }
 
-.checkmark_circle {
-  stroke-dasharray: 166;
+.checkmark__circle {
   stroke-dashoffset: 166;
   stroke-width: 4;
   stroke-miterlimit: 10;
-  stroke: #08C1CF;
+  stroke: #ffffff;
   fill: none;
   animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
 
 .checkmark {
   width: 80px;
   height: 80px;
-  position: relative;
   border-radius: 50%;
   display: block;
   stroke-width: 5px;
@@ -861,7 +950,7 @@ main > div > section {
   box-shadow: inset 0px 0px 0px #08C1CF;
   animation: fill .3s ease-in-out .3s forwards, scale .3s ease-in-out .7s both; }
 
-.checkmark_check {
+.checkmark__check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
@@ -869,30 +958,6 @@ main > div > section {
 
 .absolute-wrapper.active .checkmark {
   top: 200px; }
-
-.popup {
-  display: block;
-  visibility: hidden;
-  background-color: #ffffff;
-  position: absolute;
-  width: 100%;
-  z-index: 11;
-  left: 0;
-  top: 100px;
-  height: 92vh;
-  transition: all 300ms ease-in-out;
-  opacity: 0;
-  overflow: scroll; }
-  .popup .popup-inner {
-    position: relative;
-    top: 10px;
-    transition: all 300ms ease-in-out; }
-  .popup.open {
-    opacity: 1;
-    top: 0px;
-    visibility: visible; }
-  .popup.dark {
-    background-color: #08C1CF; }
 
 @keyframes stroke {
   100% {
@@ -1062,17 +1127,17 @@ main > div > section {
       position: absolute; }
     #stats .graph .graphSVG {
       position: absolute;
-      bottom: 55px; }
+      bottom: 88px;
+      z-index: 2; }
       #stats .graph .graphSVG g {
         opacity: 0.4; }
     #stats .graph .line-canvas {
       display: block;
       position: absolute;
-      bottom: 55px;
-      z-index: 1; }
+      bottom: 88px;
+      z-index: 3; }
       #stats .graph .line-canvas span {
         width: 1px;
-        background-color: #fff;
         display: inline-block;
         margin-left: 74px;
         transition: all 300ms cubic-bezier(0.755, -0.46, 0.195, 1.425); }
@@ -1117,7 +1182,7 @@ main > div > section {
       height: 30px;
       z-index: 2;
       width: 100%;
-      background-color: #e3f0f5;
+      background-color: #ffffff;
       position: absolute;
       display: block;
       padding-top: 3px; }
@@ -1131,9 +1196,99 @@ main > div > section {
       #stats .graph .dates p:first-child {
         width: 53px;
         border: none; }
+    #stats .graph .week-data {
+      background-color: #fff;
+      width: 50%;
+      display: block;
+      height: 360px;
+      position: fixed;
+      z-index: 10;
+      bottom: 0;
+      box-shadow: 0 -2px 28px 0 rgba(0, 0, 0, 0.2); }
+      #stats .graph .week-data .top {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+        #stats .graph .week-data .top .close-week-data {
+          max-width: 20px; }
+        #stats .graph .week-data .top > div {
+          display: flex; }
+          #stats .graph .week-data .top > div p {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px; }
+          #stats .graph .week-data .top > div p:after {
+            content: "+2";
+            background-image: url(../resources/img/vas-emoji-3-2.svg);
+            background-size: 50px;
+            color: #08C1CF;
+            background-repeat: no-repeat;
+            text-indent: 56px;
+            width: 80px;
+            height: 50px;
+            position: relative;
+            display: inline-block;
+            left: 20px; }
+      #stats .graph .week-data div:nth-of-type(2) > p:nth-of-type(odd) {
+        font-weight: bold;
+        margin-top: 10px; }
+      #stats .graph .week-data div:nth-of-type(2) ul {
+        width: 200%; }
+        #stats .graph .week-data div:nth-of-type(2) ul li {
+          list-style-type: none;
+          min-width: 120px;
+          margin-top: 10px;
+          background-color: #f1f1f1;
+          padding: 10px;
+          border-radius: 4px;
+          min-height: 90px;
+          display: inline-block;
+          vertical-align: top; }
+          #stats .graph .week-data div:nth-of-type(2) ul li p:nth-of-type(1) {
+            font-weight: bold; }
+    #stats .graph .vertical-axis {
+      position: fixed;
+      z-index: 1;
+      bottom: 132px;
+      width: 610px;
+      opacity: 0.4; }
+      #stats .graph .vertical-axis span {
+        width: 100%;
+        height: 1px;
+        background-color: #ffffff;
+        display: block;
+        margin-top: 98px; }
+      #stats .graph .vertical-axis span:after {
+        background-color: #08C1CF;
+        color: #ffffff;
+        position: relative;
+        left: 10px;
+        font-family: "Open Sans", helvetica, sans-serif;
+        font-weight: bold;
+        padding: 4px; }
+      #stats .graph .vertical-axis span:nth-of-type(1):after {
+        content: url(../resources/img/vas-emoji-1.png);
+        top: -14px;
+        padding: 10px; }
+      #stats .graph .vertical-axis span:nth-of-type(2):after {
+        content: url(../resources/img/vas-emoji-2.png);
+        top: -14px;
+        padding: 10px; }
+      #stats .graph .vertical-axis span:nth-of-type(3):after {
+        content: url(../resources/img/vas-emoji-3.png);
+        top: -14px;
+        padding: 10px; }
+      #stats .graph .vertical-axis span:nth-of-type(4):after {
+        content: url(../resources/img/vas-emoji-4.png);
+        top: -14px;
+        padding: 10px; }
+      #stats .graph .vertical-axis span:nth-of-type(5):after {
+        content: 'VAS-SCORE';
+        top: -11px; }
   #stats .vas-results {
     background-color: #ffffff;
     width: 100%;
+    display: none;
     position: absolute;
     z-index: 2;
     max-height: 150px;
@@ -1188,7 +1343,7 @@ main > div > section {
       font-weight: bold; }
   .progression .progression-unlock {
     width: 100%;
-    height: 200px;
+    height: 500px;
     background: #f1f1f1;
     display: block; }
     .progression .progression-unlock > p {
@@ -1199,13 +1354,13 @@ main > div > section {
       overflow: hidden;
       width: 200%; }
       .progression .progression-unlock .progression-unlock-container > div {
-        max-width: 80px;
+        max-width: 120px;
         margin-left: 20px;
         display: inline-block;
         vertical-align: top; }
         .progression .progression-unlock .progression-unlock-container > div img {
-          width: 80px;
-          height: 80px;
+          width: 120px;
+          height: 120px;
           border-radius: 100%;
           background-color: #f1f1f1;
           border: 2px solid #08C1CF;
@@ -1213,6 +1368,8 @@ main > div > section {
         .progression .progression-unlock .progression-unlock-container > div p {
           display: block;
           text-align: center; }
+      .progression .progression-unlock .progression-unlock-container > div:nth-of-type(1) {
+        margin-left: 20px; }
       .progression .progression-unlock .progression-unlock-container .locked {
         filter: grayscale(100%); }
         .progression .progression-unlock .progression-unlock-container .locked img {
