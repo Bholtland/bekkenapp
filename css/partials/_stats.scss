@@ -45,6 +45,8 @@
 				display: inline-block;
 				margin-left: 74px;
 				transition: $bouncy;
+				vertical-align: bottom;
+				transform-origin: 50% 50%;
 
 				&:nth-of-type(1) {
 					margin:0 !important;
@@ -66,15 +68,25 @@
 				}
 
 				&::after {
-					content:'';
+					content:'Ik had minde..';
 					transition: ease-in-out 0.1s;
-					// transition-delay: 0.1s;
 					border:none;
 					border-color: rgba(255,255,255,0);
-				    width: 0;
-				    height: 0;
-				    position: absolute;
-				    bottom: 0;
+				   	width: 100px;
+				    height: 20px;
+					left: -57px;
+				    z-index: 0;
+				    position: relative;
+				    top: -10px;
+				    opacity: 0;
+				    border-radius: 4px;
+				    padding: 10px;
+				    background-color: #fff;
+				    display: block;
+				    font-family: $regular;
+				    color: $color-3;
+				    font-size: 0.9em;
+				    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
 				}
 
 				&.active::before {
@@ -85,13 +97,7 @@
 				}
 
 				&.active::after {
-
-				    display: block;
-				    border-left: 20px solid transparent;
-				    border-right: 20px solid transparent;
-				    border-bottom: 18px solid #ffffff;
-				    margin-left: -20px;
-				   	z-index: 0;
+				    opacity: 1;    
 				}
 			}
 		}
@@ -108,7 +114,7 @@
 
 		    p {
 		    	text-align: center;
-		    	width: 106px;
+		    	// width: 106px;
 		    	border-left: 1px solid $border-light;
 		    	display: inline-block;
 		    	padding:3px 0 0 0;

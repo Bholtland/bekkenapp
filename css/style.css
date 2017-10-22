@@ -73,7 +73,7 @@ input[type="number"] {
     box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.5); }
 
 input:checked + .slider {
-  background-color: #08C1CF;
+  background-color: #04C7D5;
   border-color: #067982; }
 
 input:checked + .slider:before {
@@ -103,12 +103,12 @@ input:checked + .slider:before {
   font-weight: 600; }
 
 .primary {
-  background-color: #08C1CF;
+  background-color: #04C7D5;
   color: #ffffff; }
 
 .secondary {
-  color: #08C1CF;
-  border: 1.5px dashed #08C1CF;
+  color: #04C7D5;
+  border: 1.5px dashed #04C7D5;
   background-color: transparent; }
 
 .tertiary {
@@ -419,11 +419,11 @@ main > div > section {
   visibility: visible; }
 
 .popup.dark {
-  background-color: #08C1CF; }
+  background-color: #04C7D5; }
 
 .onboarding {
   margin: 0;
-  background-color: #08C1CF;
+  background-color: #04C7D5;
   position: relative; }
   .onboarding .wrap {
     margin-top: 20px; }
@@ -476,15 +476,15 @@ main > div > section {
     .onboarding .onboarding-complaints .complaints .complaint.istrue {
       background-color: #fff; }
       .onboarding .onboarding-complaints .complaints .complaint.istrue p {
-        color: #08C1CF; }
+        color: #04C7D5; }
       .onboarding .onboarding-complaints .complaints .complaint.istrue .checkbox {
-        border-color: #08C1CF; }
+        border-color: #04C7D5; }
       .onboarding .onboarding-complaints .complaints .complaint.istrue > .checkbox:before {
         content: '';
         width: 14px;
         height: 14px;
         position: relative;
-        background-color: #08C1CF;
+        background-color: #04C7D5;
         display: block;
         left: 3px;
         top: 3px;
@@ -504,7 +504,7 @@ main > div > section {
         width: 34%; }
 
 .login-screen {
-  background-color: #08C1CF; }
+  background-color: #04C7D5; }
   .login-screen .wrap {
     margin-top: 20px; }
   .login-screen h3 {
@@ -686,9 +686,9 @@ main > div > section {
     .scheme .exercise.done .exercise-indicator {
       display: none; }
     .scheme .exercise.done .exercise-box {
-      background-color: #08C1CF; }
+      background-color: #04C7D5; }
     .scheme .exercise.done .exercise-line::before {
-      background-color: #08C1CF;
+      background-color: #04C7D5;
       background-image: url(../resources/img/check-light.svg);
       background-size: 19px;
       background-position: 6px;
@@ -708,7 +708,7 @@ main > div > section {
 .button-nav-edit {
   visibility: visible;
   transform: scale(1);
-  background-color: #08C1CF;
+  background-color: #04C7D5;
   overflow: hidden;
   width: 60px;
   height: 60px;
@@ -771,7 +771,7 @@ main > div > section {
     position: relative; }
     .exercise-screen .top .exercise-name {
       font-size: 22px;
-      color: #08C1CF;
+      color: #04C7D5;
       width: 100%;
       text-align: center; }
   .exercise-screen > .outline {
@@ -861,14 +861,14 @@ main > div > section {
     content: 'Bereid je voor!';
     color: #333; }
   .exercise-screen .breather.release svg .active-ring {
-    stroke: #08C1CF; }
+    stroke: #04C7D5; }
   .exercise-screen .breather.release svg {
     transform: rotateY(-180deg) rotateZ(-90deg); }
   .exercise-screen .breather.release .countdown-number {
-    color: #08C1CF; }
+    color: #04C7D5; }
   .exercise-screen .breather.release .countdown-number:before {
     content: 'Ontspannen';
-    color: #08C1CF; }
+    color: #04C7D5; }
   .exercise-screen .controls {
     display: flex;
     justify-content: space-between;
@@ -908,7 +908,7 @@ main > div > section {
   stroke: #fff;
   stroke-miterlimit: 10;
   margin: 0 auto;
-  box-shadow: inset 0px 0px 0px #08C1CF;
+  box-shadow: inset 0px 0px 0px #04C7D5;
   animation: fill .3s ease-in-out .3s forwards, scale .3s ease-in-out .7s both; }
 
 .checkmark__check {
@@ -1043,7 +1043,7 @@ main > div > section {
 
 @keyframes fill {
   100% {
-    box-shadow: inset 0px 0px 0px 50px #08C1CF; } }
+    box-shadow: inset 0px 0px 0px 50px #04C7D5; } }
 
 @keyframes flyUp {
   0% {
@@ -1194,7 +1194,7 @@ main > div > section {
     #stats .graph .graph-background {
       width: 100%;
       height: 430px;
-      background-color: #08C1CF;
+      background-color: #04C7D5;
       display: block;
       position: absolute; }
     #stats .graph .graphSVG {
@@ -1212,7 +1212,9 @@ main > div > section {
         width: 1px;
         display: inline-block;
         margin-left: 74px;
-        transition: all 300ms cubic-bezier(0.755, -0.46, 0.195, 1.425); }
+        transition: all 300ms cubic-bezier(0.755, -0.46, 0.195, 1.425);
+        vertical-align: bottom;
+        transform-origin: 50% 50%; }
         #stats .graph .line-canvas span:nth-of-type(1) {
           margin: 0 !important; }
         #stats .graph .line-canvas span::before {
@@ -1223,32 +1225,38 @@ main > div > section {
           left: -6px;
           display: block;
           border: 2px solid #ffffff;
-          background-color: #08C1CF;
+          background-color: #04C7D5;
           border-radius: 100%;
           position: relative;
           transition: ease-in-out 0.1s;
           z-index: 1; }
         #stats .graph .line-canvas span::after {
-          content: '';
+          content: 'Ik had minde..';
           transition: ease-in-out 0.1s;
           border: none;
           border-color: rgba(255, 255, 255, 0);
-          width: 0;
-          height: 0;
-          position: absolute;
-          bottom: 0; }
+          width: 100px;
+          height: 20px;
+          left: -57px;
+          z-index: 0;
+          position: relative;
+          top: -10px;
+          opacity: 0;
+          border-radius: 4px;
+          padding: 10px;
+          background-color: #fff;
+          display: block;
+          font-family: "Open Sans", helvetica, sans-serif;
+          color: #58687a;
+          font-size: 0.9em;
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); }
         #stats .graph .line-canvas span.active::before {
           width: 50px;
           height: 50px;
           top: -25px;
           left: -26px; }
         #stats .graph .line-canvas span.active::after {
-          display: block;
-          border-left: 20px solid transparent;
-          border-right: 20px solid transparent;
-          border-bottom: 18px solid #ffffff;
-          margin-left: -20px;
-          z-index: 0; }
+          opacity: 1; }
     #stats .graph .dates {
       bottom: 55px;
       height: 30px;
@@ -1260,7 +1268,6 @@ main > div > section {
       padding-top: 3px; }
       #stats .graph .dates p {
         text-align: center;
-        width: 106px;
         border-left: 1px solid rgba(0, 0, 0, 0.1);
         display: inline-block;
         padding: 3px 0 0 0;
@@ -1293,7 +1300,7 @@ main > div > section {
             content: "+2";
             background-image: url(../resources/img/vas-emoji-3-2.svg);
             background-size: 50px;
-            color: #08C1CF;
+            color: #04C7D5;
             background-repeat: no-repeat;
             text-indent: 56px;
             width: 80px;
@@ -1369,7 +1376,7 @@ main > div > section {
     #stats .vas-results .vas-grade {
       text-align: center;
       font-size: 30px;
-      color: #08C1CF; }
+      color: #04C7D5; }
     #stats .vas-results > p {
       position: absolute;
       color: #333;
@@ -1393,7 +1400,7 @@ main > div > section {
       display: block;
       position: relative; }
     .progression .progression-bar .progression-bar-box .bar-full {
-      background: #08C1CF;
+      background: #04C7D5;
       z-index: 1;
       width: 73%;
       border-radius: 4px 0 0 4px;
@@ -1435,7 +1442,7 @@ main > div > section {
           height: 120px;
           border-radius: 100%;
           background-color: #f1f1f1;
-          border: 2px solid #08C1CF;
+          border: 2px solid #04C7D5;
           box-sizing: border-box; }
         .progression .progression-unlock .progression-unlock-container > div p {
           display: block;

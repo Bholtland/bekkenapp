@@ -273,7 +273,7 @@ var buttonNavMain = q('.button-nav-main'),
 	graph = q('.graph'),
 	graphBackground = q('.graph-background'),
 	dates = q('.dates'),
-	datesElement = q('.dates p'),
+	datesElement,
 	datesElementFirst = q('.dates p:first-child'),
 	graphVasGrade = q('.vas-grade'),
 	graphVasDate = q('.vas-results > div > p'),
@@ -441,7 +441,7 @@ var exerciseData = [
 ];
 
 // Set the current screen to load
-currentScreen = screenHierarchy.scheme;
+currentScreen = screenHierarchy.progress;
 navigateTo(currentScreen);
 
 // Set width and height of some elements with JS. For some reason CSS doesn't like doing this. Should look into that again.
@@ -1090,6 +1090,8 @@ graphBackground.style.width = graphWidth+(focus*2)+10+'px';
 dates.style.width =  graphWidth+(focus*2)+10+'px';
 lineCanvas.style.left = focus+'px';
 graphSVG.style.left = focus+'px';
+
+datesElement = document.querySelectorAll('.dates p');
 
 for (let i=0; i < datesElement.length; i++) {
 	datesElement[i].style.width = pointWidth-1+'px';
