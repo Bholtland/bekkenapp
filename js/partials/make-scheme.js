@@ -1,5 +1,5 @@
 function makeSchemeSettings(){
-	for (i = 0; i < exercisePlanning.length; i++){
+	for (let i = 0; i < exercisePlanning.length; i++){
 
 			const li = document.createElement('li');
 
@@ -44,7 +44,7 @@ var today = 0;
 function makeScheme(){
 	schemeDays.innerHTML = '';
 
-	for (i = 0; i < planForDays; i++){
+	for (let i = 0; i < planForDays; i++){
 
 		const day = document.createElement('div');
 

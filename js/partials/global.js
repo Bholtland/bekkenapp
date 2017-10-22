@@ -110,8 +110,15 @@ var buttonNavMain = q('.button-nav-main'),
 	audio,
 	music,
 
+	isDesktop=false,
+
 	planForDays = 7;
 
+if (window.innerWidth > 700){
+	window.innerHeight = 667;
+	window.innerWidth = 375;
+	isDesktop = true;
+}
 
 var screenHierarchy = {
 	scheme : {
@@ -134,11 +141,6 @@ var screenHierarchy = {
 		settings : {
 			name : "exerciseSettings",
 			title : "Instellingen",
-			parent : "exercise"
-		},
-		feedback : {
-			name : "exerciseFeedback",
-			title : "Ontspannen",
 			parent : "exercise"
 		},
 		info : {
@@ -169,6 +171,11 @@ var screenHierarchy = {
 	onboarding: {
 		name : "onboarding",
 		title : ""
+	},
+	feedback : {
+		name : "exerciseFeedback",
+		title : "Evaluatie",
+		parent : "scheme"
 	},
 }
 

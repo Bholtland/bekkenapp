@@ -73,7 +73,7 @@ function registerLogin(type){
  function closeLogin(){
  	closePopupScreen(loginScreen);
  	setTimeout(()=>{
- 		showNotification('Het is tijd om te evalueren! Klik hier', 4000, popUpScreenFull, schemeSettings, screenHierarchy.scheme.edit, true);
+ 		showNotification('Het is tijd om te evalueren! Klik hier', 4000, popUpScreenFull, feedbackScreen, screenHierarchy.feedback, true);
  	},1000);
  }
 

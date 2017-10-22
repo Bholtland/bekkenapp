@@ -21,6 +21,9 @@ informationButton.addEventListener('click', function(){popUpScreenFull(informati
 progressionMenuItem.addEventListener('click',function(){
 	hd(currentPopup)
 	popUpScreenFull(progressionGraph, screenHierarchy.progress.graph);
+	if (isDesktop){
+		showNotification('Je zit op een computer, scroll opzij met je muis om door de grafiek heen te gaan', 5000);
+	}
 });
 
 buttonSettings.addEventListener('click',()=>{

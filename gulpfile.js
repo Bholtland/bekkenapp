@@ -4,6 +4,7 @@ var sass = require('gulp-sass');
 
 gulp.task('js', function() {
   return gulp.src([
+      './js/partials/evaluation-slider.js',
   		'./js/partials/global.js', 
   		'./js/partials/quickys.js',
       './js/partials/notification.js',
@@ -18,6 +19,7 @@ gulp.task('js', function() {
   		'./js/partials/audio-engine.js',
   		'./js/partials/onboarding.js',
       './js/partials/login.js'
+
   	])
     .pipe(concat('script.js'))
     .pipe(gulp.dest('./js/'));

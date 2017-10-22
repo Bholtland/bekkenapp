@@ -65,7 +65,7 @@ dates.style.width =  graphWidth+(focus*2)+10+'px';
 lineCanvas.style.left = focus+'px';
 graphSVG.style.left = focus+'px';
 
-for (var i=0; i < datesElement.length; i++) {
+for (let i=0; i < datesElement.length; i++) {
 	datesElement[i].style.width = pointWidth-1+'px';
 }
 

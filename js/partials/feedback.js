@@ -1,26 +1,23 @@
 feedbackButton.addEventListener('click',function(){
-	var form = q('.feedback form'),
-		absoluteWrapper = q('.absolute-wrapper'),
-		checkmark = q('.checkmark');
+	checkmark = q('.checkmark');
+	absoluteWrapper = q('.absolute-wrapper');
 
-	sw(absoluteWrapper);
 	hd(feedbackButton);
-	hd(form);
-	absoluteWrapper.classList.add('active');
-
+	hd(evaluationStep2);
+	sw(checkmark);
+	sw(absoluteWrapper)
 	setTimeout(function(){
 		hd(checkmark);
+		hd(absoluteWrapper)
+		closePopupScreen(currentPopup)	
 		setTimeout(function(){
-			absoluteWrapper.classList.remove('active');
 			sw(checkmark);
-			sw(form);
+			sw(evaluationStep2);
 			sw(feedbackButton);
-			hd(feedbackScreen);
-			hd(absoluteWrapper)
-			navigateTo(screenHierarchy.scheme);	
+			
 
-		},200);
-	},1100);
+		},500);
+	},1600);
 })
 
 hiddenTextArea.addEventListener('click', function(){
