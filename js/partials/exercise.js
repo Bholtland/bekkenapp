@@ -33,7 +33,7 @@ function startExercise() {
 		activeRing = q('svg .active-ring'),
 		resetButton = q('.reset'),
 
-		localSeconds = 1,
+		localSeconds = duration,
 		didPrecount = false,
 
 		localCount,
@@ -60,10 +60,10 @@ function startExercise() {
 	
 	// Create a counter for relaxing and exerting 
 	localCount = setInterval(function(){	
-		localSeconds++;
+		localSeconds--;
 
 		// Toggle relaxation or exertion after given amount of seconds
-		if(localSeconds > duration){
+		if(localSeconds === 0){
 			if (duration === tightenTime){ 
 				duration = relaxTime;
 				activeRing.style.animationDuration = relaxTime+'s';
@@ -74,7 +74,7 @@ function startExercise() {
 				activeRing.style.animationDuration = tightenTime+'s';
 				activeRing.style.animationName = "tighten";
 			}	
-			localSeconds = 1;		
+			localSeconds = duration;		
 			
 			if (didPrecount) {
 				if (breather.classList.contains('release')) {
